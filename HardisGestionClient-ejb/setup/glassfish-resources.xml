@@ -11,5 +11,6 @@
     <property name="DatabaseName" value="Hardis_Client"/>
     <property name="User" value="root"/>
     <property name="Password" value="root"/>
+   
   </jdbc-connection-pool>
 </resources>
