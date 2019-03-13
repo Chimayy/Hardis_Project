@@ -42,6 +42,7 @@ public class Accueil extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>boulou boulouloulou " + request.getContextPath() + "</h1>");
+            out.println("<p> git c chiant</p>");
             out.println("</body>");
             out.println("</html>");
         }
