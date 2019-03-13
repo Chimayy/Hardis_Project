@@ -29,5 +29,9 @@ public interface Historique_QuestionFacadeLocal {
     List<Historique_Question> findRange(int[] range);
 
     int count();
+
+    List<Historique_Question> listeQuestion();
+
+    List<Historique_Question> rechercherQuestionUser(long id);
     
 }
