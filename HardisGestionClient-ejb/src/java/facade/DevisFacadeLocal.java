@@ -5,7 +5,10 @@
  */
 package facade;
 
+import entite.Agence;
+import entite.Client;
 import entite.Devis;
+import entite.Service;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -31,5 +34,9 @@ public interface DevisFacadeLocal {
     int count();
 
     List<Devis> listeDevis();
+
+    void demandeDevisClient(String zoneLibre, Client Client, Service service, String standardOuPas);
+
+    void affecterDevisAuReferentLocal(Devis devis);
     
 }
