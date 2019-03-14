@@ -5,6 +5,8 @@
  */
 package session;
 
+import facade.UtilisateurFacadeLocal;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -13,6 +15,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionAdmin implements gestionAdminLocal {
+
+    @EJB
+    private UtilisateurFacadeLocal utilisateurFacade;
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
