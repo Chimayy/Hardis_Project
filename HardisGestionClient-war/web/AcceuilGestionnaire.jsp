@@ -1,6 +1,6 @@
 <%-- 
     Document   : AcceuilGestionnaire
-    Created on : 14 mars 2019, 09:50:15
+    Created on : 14 mars 2019, 10:55:51
     Author     : Mathieu Harmand
 --%>
 
@@ -9,9 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Acceuil Gestionnaire</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Acceuil Gestionaire</h1>
+                <td width="25%"><a href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions</a></td>
+                <td width="25%"><a href="AcceuilGestionnaire?action=AffectationDevis">Affectation devis</a></td>
+                <td width="25%"><a href="AcceuilGestionnaire?action=GestionDevis">Gestion des devis</a></td>
+                <td width="25%"><a href="AcceuilGestionnaire?action=VisuClients">Liste des clients</a></td>
     </body>
 </html>

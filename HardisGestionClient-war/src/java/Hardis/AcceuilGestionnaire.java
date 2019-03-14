@@ -1,25 +1,32 @@
-package Global;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Hardis;
 
+import entite.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import session.gestionClientLocal;
 
 /**
  *
- * @author thoma
+ * @author Mathieu Harmand
  */
-@WebServlet(urlPatterns = {"/Accueil"})
-public class Accueil extends HttpServlet {
+@WebServlet(name = "AcceuilGestionnaire", urlPatterns = {"/AcceuilGestionnaire"})
+public class AcceuilGestionnaire extends HttpServlet {
+
+    @EJB
+    private gestionClientLocal gestionClient;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,37 +37,45 @@ public class Accueil extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
-    
-    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Global</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>boulou boulouloulou " + request.getContextPath() + "</h1>");
+        
+        
+      
+       String jspClient=null;
+       String act=request.getParameter("action");
+           if((act==null)||(act.equals("vide")))
+           {
+               jspClient="/AcceuilGestionnaire.jsp";
+               request.setAttribute("message","pas d'information");
+           }
+           else if (act.equals("ReponseQuestions")) {
+               jspClient="/ReponseQuestions.jsp";
+               
+            }
+           
+           else if (act.equals("AffectationDevis")){
+               jspClient="/AffectationDevis.jsp";
+           }
+           
+           else if (act.equals("GestionDevis")){
+               jspClient="/GestionDevis.jsp";
+           }
+           
+           else if(act.equals("VisuClients")){
+               List<Client> ListeCli = gestionClient.ListeClient();
+              jspClient="/VisuClients.jsp";
+               request.setAttribute("message","pas d'information");
+               request.setAttribute("ListeClient", ListeCli);
+                
+           }
 
-            out.println("<p> git c chiant</p>");
-            out.println("<h1>Servlet Global at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Servlet Global at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Servlet Global at " + request.getContextPath() + "</h1>");
-            out.println("<h1>C'est le TEST</h1>");
-            out.println("<h1>C'est la branche du Totsi</h1>");
-
-            out.println("<font color='red'>coucocu c alleau</font>");
-
-            out.println("</body>");
-            out.println("</html>");
-            
-            
+       RequestDispatcher Rd;
+       Rd = getServletContext().getRequestDispatcher(jspClient);
+       Rd.forward(request, response);
+       response.setContentType("text/html;charset=UTF-8");
         }
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
