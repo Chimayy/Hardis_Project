@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package session;
-
+import entite.Utilisateur;
+import facade.UtilisateurFacadeLocal;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -14,6 +16,26 @@ import javax.ejb.Stateless;
 @Stateless
 public class gestionVisiteur implements gestionVisiteurLocal {
 
+    @EJB
+    private UtilisateurFacadeLocal utilisateurFacade;
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public Utilisateur authentification(String mail, String mdp) {
+        Utilisateur user;
+        if(!mail.equals("") && !mdp.equals(""))
+        {
+         user = utilisateurFacade.authentification(mail,mdp);
+        }
+        else user = null;
+        return user;
+    
+    }
+
+   
+
+    
+
+   
 }
