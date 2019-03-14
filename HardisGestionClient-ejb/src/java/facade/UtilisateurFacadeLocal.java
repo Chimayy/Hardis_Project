@@ -31,7 +31,9 @@ public interface UtilisateurFacadeLocal {
     int count();
 
     List<Utilisateur> listeUtilisateur();
-
+    
     Utilisateur rechercheUtilisateur(long id);
+    
+    String NomparId(long id);
     
 }
