@@ -59,6 +59,7 @@ String jspClient=null;
             else if ((act.equals("authentification")))
             {
                 doActionAuthentifier(request,response);
+                request.setAttribute("message","pas d'information");
             }
             
             
@@ -98,9 +99,17 @@ String jspClient=null;
     protected void doActionAuthentifier(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
         String login = request.getParameter("login");
-        String pass = request.getParameter("pass");       
-        
+        String pass = request.getParameter("pass");        
         Utilisateur utilisateur;
+        String message;
+        message="";
+        
+        //fail de message d'erreur en cas de champs vides ==> à coriger
+        if(login.trim().isEmpty()|| pass.trim().isEmpty())
+        {
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
+        }
+        else {
         utilisateur = gestionVisiteur.authentification(login,pass);
         
     // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
@@ -122,8 +131,12 @@ String jspClient=null;
             {
                 jspClient="MenuVisualisation";
             }
+            message = "utilisateur connecté";
            }
         }
+        request.setAttribute("message", message);
+        }
+    
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
