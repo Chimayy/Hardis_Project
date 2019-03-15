@@ -5,6 +5,10 @@
  */
 package session;
 
+import entite.Client;
+import facade.ClientFacadeLocal;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -13,7 +17,19 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionClient implements gestionClientLocal {
+    
+    @EJB
+    private ClientFacadeLocal ClientFacade;
+    
+    
+    
+        
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public List<Client> ListeClient() {
+        return ClientFacade.listeClient();
+    }
 }

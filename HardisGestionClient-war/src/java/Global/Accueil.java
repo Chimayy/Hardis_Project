@@ -6,14 +6,20 @@ package Global;
  * and open the template in the editor.
  */
 
+import entite.Utilisateur;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import session.gestionVisiteur;
+import session.gestionVisiteurLocal;
+import entite.Utilisateur;
+import entite.Utilisateur_Hardis;
 /**
  *
  * @author thoma
@@ -21,6 +27,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/Accueil"})
 public class Accueil extends HttpServlet {
 
+    @EJB
+    private gestionVisiteurLocal gestionVisiteur;
+String jspClient=null;
+        String act= null;
+       
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,8 +41,37 @@ public class Accueil extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+   
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//        String jspClient = "/Menu_principal.jsp";
+//        RequestDispatcher Rd;
+//        String message = "Transmission de variables : OK !";
+//        request.setAttribute( "test", message );
+//        Rd = getServletContext().getRequestDispatcher(jspClient);
+//        Rd.forward(request, response);
+        act = request.getParameter("action");
+        String act=request.getParameter("action");
+            if((act==null)||(act.equals("vide")))
+            {
+                jspClient="/Menu_principal.jsp";
+                request.setAttribute("message","pas d'information");
+            }
+            else if ((act.equals("authentification")))
+            {
+                doActionAuthentifier(request,response);
+                request.setAttribute("message","pas d'information");
+            }
+            
+            
+        RequestDispatcher Rd;
+        Rd = getServletContext().getRequestDispatcher(jspClient);
+        Rd.forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -54,8 +94,54 @@ public class Accueil extends HttpServlet {
 
             out.println("</body>");
             out.println("</html>");
+            
+            
         }
+        
+        }
+    
+    //Authentification de l'utilisateur
+    protected void doActionAuthentifier(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");        
+        Utilisateur utilisateur;
+        String message;
+        message="";
+        
+        //fail de message d'erreur en cas de champs vides ==> à coriger
+        if(login.trim().isEmpty()|| pass.trim().isEmpty())
+        {
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
+        }
+     
+        
+    // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
+        /*if (utilisateur instanceof entite.Client)
+            {
+                jspClient = "MenuClient";
+            }
+        else if (utilisateur instanceof Utilisateur_Hardis){
+            Utilisateur_Hardis utilisateur_H = (Utilisateur_Hardis)utilisateur;
+            if(utilisateur_H.getProfil_Technique().toString().equals("admin"))
+            {
+                jspClient="MenuAdmin";
+            }
+            else if (utilisateur_H.getProfil_Technique().toString().equals("gestionnaire"))
+            {
+                jspClient="MenuGestionnaire";
+            }
+            else
+            {
+                jspClient="MenuVisualisation";
+            }
+            message = "utilisateur connecté";
+           }
+        }
+        request.setAttribute("message", message);*/
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -97,3 +183,4 @@ public class Accueil extends HttpServlet {
     }// </editor-fold>
 
 }
+

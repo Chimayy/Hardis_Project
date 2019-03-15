@@ -48,6 +48,5 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         result=(Utilisateur)req.getSingleResult();
         return result;
     }
-    
-    
+
 }
