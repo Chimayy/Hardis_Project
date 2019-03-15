@@ -21,18 +21,7 @@ public class gestionVisiteur implements gestionVisiteurLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
-    @Override
-    public Utilisateur authentification(String mail, String mdp) {
-        Utilisateur user;
-        if(!mail.equals("") && !mdp.equals(""))
-        {
-         user = utilisateurFacade.authentification(mail,mdp);
-        }
-        else user = null;
-        return user;
-    
-    }
-
+   
    
 
     

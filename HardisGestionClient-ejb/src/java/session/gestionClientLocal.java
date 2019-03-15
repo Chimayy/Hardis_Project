@@ -17,5 +17,7 @@ import javax.ejb.Local;
 public interface gestionClientLocal {
 
     List<Client> ListeClient();
+
+    Client RechercheClient(Long id);
     
 }

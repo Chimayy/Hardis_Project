@@ -49,10 +49,6 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         return result;
     }
 
-    @Override
-    public String NomparId(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+   
     
 }

@@ -8,6 +8,7 @@ package Hardis;
 import entite.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -65,9 +66,15 @@ public class AcceuilGestionnaire extends HttpServlet {
            else if(act.equals("VisuClients")){
                List<Client> ListeCli = gestionClient.ListeClient();
               jspClient="/VisuClients.jsp";
-               request.setAttribute("message","pas d'information");
-               request.setAttribute("ListeClient", ListeCli);
+              request.setAttribute("ListeClient", ListeCli);
                 
+           }
+           else if (act.equals("DetailClient")){
+               Client c = doChercherClient(request,response);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";
+               
+               
            }
 
        RequestDispatcher Rd;
@@ -116,4 +123,18 @@ public class AcceuilGestionnaire extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+
+protected Client doChercherClient(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            String x = request.getParameter("x");     
+        
+            int x1 = Integer.valueOf(x);
+            
+            List <Client> ListeCli = gestionClient.ListeClient();
+            return ListeCli.get(x1);
+            
+                    
+            
+        }
+        
 }

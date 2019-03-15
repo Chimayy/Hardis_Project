@@ -6,6 +6,8 @@
             <name>HardisGestionClient-ejb</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <included-library dirs="200">libs.CopyLibs.classpath</included-library>
+            <included-library dirs="200">libs.javaee-endorsed-api-6.0.classpath</included-library>
+            <included-library dirs="200">libs.javaee-web-api-7.0.classpath</included-library>
             <source-roots>
                 <root id="src.dir" name="Source Packages"/>
             </source-roots>

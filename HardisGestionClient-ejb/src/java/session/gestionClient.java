@@ -32,4 +32,13 @@ public class gestionClient implements gestionClientLocal {
     public List<Client> ListeClient() {
         return ClientFacade.listeClient();
     }
+
+    @Override
+    public Client RechercheClient(Long id) {
+        
+        Client c = ClientFacade.rechercheClient(id);
+        return c;
+    }
+    
+    
 }
