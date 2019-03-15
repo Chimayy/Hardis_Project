@@ -32,23 +32,9 @@ public class Accueil extends HttpServlet {
 String jspClient=null;
         String act= null;
        
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+ 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        String jspClient = "/Menu_principal.jsp";
-//        RequestDispatcher Rd;
-//        String message = "Transmission de variables : OK !";
-//        request.setAttribute( "test", message );
-//        Rd = getServletContext().getRequestDispatcher(jspClient);
-//        Rd.forward(request, response);
         act = request.getParameter("action");
         String act=request.getParameter("action");
             if((act==null)||(act.equals("vide")))
@@ -66,9 +52,7 @@ String jspClient=null;
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
         Rd.forward(request, response);
-        response.setContentType("text/html;charset=UTF-8");
-        
-        
+        response.setContentType("text/html;charset=UTF-8");       
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -93,7 +77,9 @@ String jspClient=null;
             out.println("</html>");
         }
         
-        }
+    }
+    
+    
     
     //Authentification de l'utilisateur
     protected void doActionAuthentifier(HttpServletRequest request, HttpServletResponse response) 
