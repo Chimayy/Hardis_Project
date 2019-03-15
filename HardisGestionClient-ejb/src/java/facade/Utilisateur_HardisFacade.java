@@ -46,15 +46,6 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         em.persist(userACreer);
     }
 
-    @Override
-    public Utilisateur_Hardis authentification(String mail, String mdp) {
-        Utilisateur_Hardis user;
-        String txt = "SELECT a FROM Utilisateur AS a WHERE a.mail_Connexion=:lo AND a.mot_De_Passe=:motp";
-        Query req = getEntityManager().createQuery(txt);
-        req=req.setParameter("lo", mail);
-        req=req.setParameter("motp", mdp);
-        user=(Utilisateur_Hardis)req.getSingleResult();
-        return user;
-    }
+  
     
 }

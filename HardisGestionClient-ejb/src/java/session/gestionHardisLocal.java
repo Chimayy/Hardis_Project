@@ -5,7 +5,7 @@
  */
 package session;
 
-import entite.Utilisateur_Hardis;
+import entite.Utilisateur;
 import javax.ejb.Local;
 
 /**
@@ -15,6 +15,6 @@ import javax.ejb.Local;
 @Local
 public interface gestionHardisLocal {
 
-    Utilisateur_Hardis authentif(String mail, String mdp);
+    
     
 }

@@ -34,6 +34,5 @@ public interface Utilisateur_HardisFacadeLocal {
 
     void creerUtilisateurHardis(String mail, String mdp, String nom, String prenom,  Consentement_RGPD leConsentement, double plafond, profil_Technique profiltechnique, boolean statut_actif);
 
-    Utilisateur_Hardis authentification(String mail, String mdp);
     
 }
