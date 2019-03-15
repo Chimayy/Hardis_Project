@@ -42,12 +42,18 @@ public class ServletAdmin extends HttpServlet {
         String plafond = request.getParameter("plafond");
         String profil_t = request.getParameter("profil");
         String statut = request.getParameter("statut");
+        Utilisateur_Hardis user = gestionAdmin.rechercheUtilisateurHardisMail(mail);
       
         String message ;
         if (nom.trim().trim().isEmpty()||prenom.trim().isEmpty()||mail.trim().isEmpty()||motdepasse.trim().isEmpty()||plafond.trim().isEmpty()
-                ||profil_t.trim().isEmpty()||statut.trim().isEmpty())
+                ||profil_t.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Entraineur";
+        }
+        
+        else if (user != null){
+            message = "Erreur, un compte utilisateur existe déjà pour ce mail";
+            
         }
         else {
             double pla = Double.parseDouble(plafond);

@@ -27,4 +27,6 @@ public interface gestionAdminLocal {
 
     public List<Utilisateur> affichageUtilisateursHardis();
 
+    public Utilisateur_Hardis rechercheUtilisateurHardisMail(String mail);
+
 }

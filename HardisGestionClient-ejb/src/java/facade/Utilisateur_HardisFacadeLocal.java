@@ -44,5 +44,7 @@ public interface Utilisateur_HardisFacadeLocal {
     public void creerUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
 
     public void modifierUtilisateurHardis(Utilisateur_Hardis user, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
+
+    public Utilisateur_Hardis rechercherUtilisateurHardisMail(String mail);
     
 }

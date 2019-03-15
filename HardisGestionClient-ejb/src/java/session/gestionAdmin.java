@@ -50,4 +50,10 @@ public class gestionAdmin implements gestionAdminLocal {
         return utilisateur_HardisFacade.afficherUtilisateurs_Hardis();
     }
     
+    @Override
+    public Utilisateur_Hardis rechercheUtilisateurHardisMail(String mail){
+        Utilisateur_Hardis user = null;
+        user = utilisateur_HardisFacade.rechercherUtilisateurHardisMail(mail);
+        return user;
+    }
 }
