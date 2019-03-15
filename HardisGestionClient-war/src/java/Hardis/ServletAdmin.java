@@ -44,7 +44,7 @@ public class ServletAdmin extends HttpServlet {
         String statut = request.getParameter("statut");
         Utilisateur_Hardis user = gestionAdmin.rechercheUtilisateurHardisMail(mail);
       
-        String message ;
+        String message;
         if (nom.trim().trim().isEmpty()||prenom.trim().isEmpty()||mail.trim().isEmpty()||motdepasse.trim().isEmpty()||plafond.trim().isEmpty()
                 ||profil_t.trim().isEmpty())
         {
@@ -78,7 +78,7 @@ public class ServletAdmin extends HttpServlet {
         String statut = request.getParameter("statut");
         String message ;
        if (idUser.trim().isEmpty()||nom.trim().trim().isEmpty()||prenom.trim().isEmpty()||mail.trim().isEmpty()||motdepasse.trim().isEmpty()||plafond.isEmpty()
-                ||profil_t.isEmpty()||statut.isEmpty())
+                ||profil_t.isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour modifier l'utilisateur";
         }
@@ -113,11 +113,45 @@ public class ServletAdmin extends HttpServlet {
    
         if(act.equals("AfficherUtilisateursHardis")) 
         {
-            List <Utilisateur> listeUser  = gestionAdmin.affichageUtilisateursHardis();
+            List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
             request.setAttribute("listeUser", listeUser);
             jspClient="/GestionUtilisateurHardis.jsp";
         }
         
+        if(act.equals("RechercherUtilisateurHardis"))
+        {        
+           String nom = request.getParameter("nom");
+            if(!nom.trim().isEmpty()){
+            List <Utilisateur_Hardis> listeUser  = gestionAdmin.rechercherUtilisateurHardisNom(nom);
+                if(listeUser.size()>0){
+            request.setAttribute("listeUser", listeUser);
+            jspClient="/GestionUtilisateurHardis.jsp";
+                }
+                else{
+                List <Utilisateur_Hardis> listeUser2  = gestionAdmin.affichageUtilisateursHardis();
+                request.setAttribute("listeUser", listeUser2);
+                jspClient="/GestionUtilisateurHardis.jsp";
+                }                    
+            }
+            else{
+            List <Utilisateur_Hardis> listeUser2  = gestionAdmin.affichageUtilisateursHardis();
+            request.setAttribute("listeUser", listeUser2);
+            jspClient="/GestionUtilisateurHardis.jsp";
+            message = "Veuillez rentrer une valeur";
+            request.setAttribute("message", message);  
+            }
+             }
+        
+  
+        
+        if(act.equals("RechercherUtilisateurHardisModif"))
+        {   
+            String idUser = request.getParameter("idUser");
+            long id = Long.parseLong(idUser);
+            List<Utilisateur_Hardis> ListeUser = gestionAdmin.recherchercherUtilisateurHardisId(id);
+            request.setAttribute("listeUser",ListeUser);
+            jspClient="/ModificationUtilisateurHardis.jsp";
+        }
         else if (act.equals("CreerUtilisateur"))
         {
             jspClient = "/MenuAdmin.jsp";
@@ -130,10 +164,15 @@ public class ServletAdmin extends HttpServlet {
         }
          else if (act.equals("ModifierUtilisateur"))
         {
-            List <Utilisateur> listeUser = gestionAdmin.affichageUtilisateursHardis();
+            List <Utilisateur_Hardis> listeUser = gestionAdmin.affichageUtilisateursHardis();
             request.setAttribute("listeUser", listeUser);
             jspClient="/ModificationUtilisateurHardis.jsp";
         }
+        
+         else if(act.isEmpty()){
+             jspClient = "/MenuAdmin.jsp";
+             
+         }
      
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);

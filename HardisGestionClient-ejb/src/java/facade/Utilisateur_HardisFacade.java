@@ -56,7 +56,7 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         user.setNom_Utilisateur(nom);
         user.setProfil_Technique(profiltechnique);
         user.setPrenom_Utilisateur(prenom);
-        user.setStatut_Actif(statut_actif);
+        user.setStatut_Actif(false);
         em.persist(user);        
     }
     
@@ -66,14 +66,14 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
     }
     
     @Override
-    public Utilisateur_Hardis rechercherUtilisateurHardisId(int id){
+    public List<Utilisateur_Hardis> rechercherUtilisateurHardisId(long id){
         Utilisateur_Hardis user ;
         String txt= "select user from Utilisateur AS user where user.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req.setParameter("id", id);     
         List<Utilisateur_Hardis> liste =  req.getResultList();
         if (!liste.isEmpty()){
-            return liste.get(0);
+            return liste;
         }           
         else {return null;}    
     }
@@ -90,6 +90,16 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         }
         else {return null;}    
     }
+    
+    @Override
+    public List<Utilisateur_Hardis> rechercherUtilisateurHardisNom(String nom){
+        Utilisateur_Hardis user;
+        String txt = "SELECT user FROM Utilisateur AS user where user.nom_Utilisateur =:nom";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("nom",nom);
+        List<Utilisateur_Hardis> liste = req.getResultList();
+        return liste;
+    }
 
     @Override
     public Utilisateur_Hardis authentification(String mail, String mdp) {
@@ -103,11 +113,11 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
     }
     
     @Override
-    public List<Utilisateur> afficherUtilisateurs_Hardis(){
-        List<Utilisateur> user = new ArrayList<Utilisateur>();
+    public List<Utilisateur_Hardis> afficherUtilisateurs_Hardis(){
+        List<Utilisateur_Hardis> user = new ArrayList<Utilisateur_Hardis>();
         String text ="SELECT user FROM Utilisateur AS user";
         Query req = getEntityManager().createQuery(text);
-        user = (List<Utilisateur>)req.getResultList();
+        user = (List<Utilisateur_Hardis>)req.getResultList();
         return user;
     }
 

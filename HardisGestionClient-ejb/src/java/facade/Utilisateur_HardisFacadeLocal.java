@@ -35,16 +35,18 @@ public interface Utilisateur_HardisFacadeLocal {
 
     Utilisateur_Hardis authentification(String mail, String mdp);
 
-    public Utilisateur_Hardis rechercherUtilisateurHardisId(int id);
+    public List<Utilisateur_Hardis> rechercherUtilisateurHardisId(long id);
 
     public void supprimerUtilisateurHardis(Utilisateur_Hardis user);
 
-    public List<Utilisateur> afficherUtilisateurs_Hardis();
+    public List<Utilisateur_Hardis> afficherUtilisateurs_Hardis();
 
     public void creerUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
 
     public void modifierUtilisateurHardis(Utilisateur_Hardis user, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
 
     public Utilisateur_Hardis rechercherUtilisateurHardisMail(String mail);
+
+    public List<Utilisateur_Hardis> rechercherUtilisateurHardisNom(String nom);
     
 }

@@ -25,8 +25,12 @@ public interface gestionAdminLocal {
 
     public void suppressionUtilisateurHardis(int id);
 
-    public List<Utilisateur> affichageUtilisateursHardis();
+    public List<Utilisateur_Hardis> affichageUtilisateursHardis();
 
     public Utilisateur_Hardis rechercheUtilisateurHardisMail(String mail);
+
+    public List<Utilisateur_Hardis> rechercherUtilisateurHardisNom(String nom);
+
+    public List<Utilisateur_Hardis> recherchercherUtilisateurHardisId(long id);
 
 }

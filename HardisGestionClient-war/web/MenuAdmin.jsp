@@ -14,7 +14,7 @@
     <body>
         <h1>Menu Administrateur</h1>
         <div class="message"><% String attribut = (String)request.getAttribute("message");
-        out.println(attribut);
+            out.println(attribut);
         %></div>
         <p> 
         
