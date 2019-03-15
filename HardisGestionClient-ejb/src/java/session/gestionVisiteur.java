@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package session;
+import entite.Service;
 import entite.Utilisateur;
 import facade.UtilisateurFacadeLocal;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import facade.ServiceFacadeLocal;
 
 /**
  *
@@ -15,6 +18,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionVisiteur implements gestionVisiteurLocal {
+
+    @EJB
+    private ServiceFacadeLocal serviceFacade;
 
     @EJB
     private UtilisateurFacadeLocal utilisateurFacade;
@@ -32,9 +38,9 @@ public class gestionVisiteur implements gestionVisiteurLocal {
     
     }
 
-   
-
-    
-
-   
+    @Override
+    public List<Service> AffichageService() {
+        List<Service> liste = serviceFacade.listeService(); 
+        return liste;
+    }      
 }

@@ -7,6 +7,7 @@ package Global;
  */
 
 import entite.Client;
+import entite.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import session.gestionVisiteurLocal;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
-import java.util.Properties;
+import java.util.List;
 /**
  *
  * @author thoma
@@ -29,13 +30,12 @@ public class Accueil extends HttpServlet {
 
     @EJB
     private gestionVisiteurLocal gestionVisiteur;
-String jspClient=null;
-        String act= null;
+
        
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        act = request.getParameter("action");
+       String jspClient=null;
         String act=request.getParameter("action");
             if((act==null)||(act.equals("vide")))
             {
@@ -47,9 +47,12 @@ String jspClient=null;
                 doActionAuthentifier(request,response);
                 request.setAttribute("message","pas d'information");
             }
-            else if ((act.equals("Contact")))
+            else if (act.equals("Catalogue"))
             {
-                doActionDemandeContact(request, response);
+             jspClient="/Catalogue_service.jsp";
+             List<Service> liste = gestionVisiteur.AffichageService();
+             request.setAttribute("listeService",liste);
+             
             }
             
             
@@ -57,7 +60,7 @@ String jspClient=null;
         Rd = getServletContext().getRequestDispatcher(jspClient);
         Rd.forward(request, response);
         response.setContentType("text/html;charset=UTF-8");       
-        response.setContentType("text/html;charset=UTF-8");
+       
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -93,7 +96,7 @@ String jspClient=null;
         Utilisateur utilisateur;
         String message;
         message="";
-        
+         String jspClient=null;
         //fail de message d'erreur en cas de champs vides ==> à coriger
         if(login.trim().isEmpty()|| pass.trim().isEmpty())
         {
@@ -138,27 +141,7 @@ String jspClient=null;
         request.setAttribute("message", message);
       //  request.setAttribute("idClient",client );
         }
-    protected void doActionDemandeContact(HttpServletRequest request, HttpServletResponse response) 
-        throws ServletException, IOException {
-       // email ID of Recipient. 
-      String recipient = "aureliencheyrou@gmail.com"; 
-  
-      // email ID of  Sender. 
-      String sender = "aureliencheyrou@hotmail.com"; 
-  
-      // using host as localhost 
-      String host = "127.0.0.1"; 
-  
-      // Getting system properties 
-      Properties properties = System.getProperties(); 
-  
-      // Setting up mail server 
-      properties.setProperty("mail.smtp.host", host); 
-  
-      // creating session object to get properties 
-      Session session = Session.getDefaultInstance(properties); 
-  
-    }
+
     
     
 

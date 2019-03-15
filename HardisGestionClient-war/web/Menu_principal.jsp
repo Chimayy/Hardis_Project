@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="bootstrap.min.css">
         <title>JSP Page</title>
     </head>
     <body>
@@ -20,7 +21,7 @@
             <a href="Connexion.jsp"> Connexion </a>
           <table>
             <tr>
-                <td width="25%"><a href="Catalogue_service.jsp">Catalogue des services</a></td>
+                <td width="25%"><a href="Accueil?action=Catalogue">Catalogue des services</a></td>
                 <td width="25%"><a href="Interface_question.jsp">Interface des questions</a></td>
                 <td width="25%"><a href="Contact.jsp">Faire une demande de contact</a></td>
             </tr>
