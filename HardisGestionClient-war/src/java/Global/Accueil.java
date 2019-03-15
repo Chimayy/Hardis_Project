@@ -6,7 +6,7 @@ package Global;
  * and open the template in the editor.
  */
 
-import entite.Utilisateur;
+import entite.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -16,10 +16,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import session.gestionVisiteur;
 import session.gestionVisiteurLocal;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
+import java.util.Properties;
 /**
  *
  * @author thoma
@@ -46,6 +46,10 @@ String jspClient=null;
             {
                 doActionAuthentifier(request,response);
                 request.setAttribute("message","pas d'information");
+            }
+            else if ((act.equals("Contact")))
+            {
+                doActionDemandeContact(request, response);
             }
             
             
@@ -98,30 +102,63 @@ String jspClient=null;
         else {
         utilisateur = gestionVisiteur.authentification(login,pass);
         
+        if (!utilisateur.equals(null))
+        {
+        
     // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
         if (utilisateur instanceof entite.Client)
             {
+                Client utilisateur_C = (Client)utilisateur;
+                request.setAttribute("idClient", utilisateur_C.getId());
                 jspClient = "MenuClient";
             }
         else if (utilisateur instanceof Utilisateur_Hardis){
             Utilisateur_Hardis utilisateur_H = (Utilisateur_Hardis)utilisateur;
             if(utilisateur_H.getProfil_Technique().toString().equals("admin"))
             {
-                jspClient="MenuAdmin";
+                jspClient="ServletAdmin.java";
             }
             else if (utilisateur_H.getProfil_Technique().toString().equals("gestionnaire"))
             {
-                jspClient="MenuGestionnaire";
+                jspClient="ServletGestionnaire.java";
             }
             else
             {
-                jspClient="MenuVisualisation";
+                jspClient="ServletVisualisation.java";
             }
             message = "utilisateur connecté";
            }
         }
-        request.setAttribute("message", message);
+        else
+            {
+                message="utilisateur introuvable";
+            }
         }
+        
+        request.setAttribute("message", message);
+      //  request.setAttribute("idClient",client );
+        }
+    protected void doActionDemandeContact(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException {
+       // email ID of Recipient. 
+      String recipient = "aureliencheyrou@gmail.com"; 
+  
+      // email ID of  Sender. 
+      String sender = "aureliencheyrou@hotmail.com"; 
+  
+      // using host as localhost 
+      String host = "127.0.0.1"; 
+  
+      // Getting system properties 
+      Properties properties = System.getProperties(); 
+  
+      // Setting up mail server 
+      properties.setProperty("mail.smtp.host", host); 
+  
+      // creating session object to get properties 
+      Session session = Session.getDefaultInstance(properties); 
+  
+    }
     
     
 

@@ -21,7 +21,8 @@
           <table>
             <tr>
                 <td width="25%"><a href="Catalogue_service.jsp">Catalogue des services</a></td>
-                <td width="25%"><a href="Interface_question.jsp">Interface des questions</a></td>              
+                <td width="25%"><a href="Interface_question.jsp">Interface des questions</a></td>
+                <td width="25%"><a href="Contact.jsp">Faire une demande de contact</a></td>
             </tr>
         </table>
     </body>
