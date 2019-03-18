@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/UtilisateurFacade.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionHardis.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/lieu_Intervention.java</file>
@@ -25,6 +26,20 @@
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/profil_Technique.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Prestation.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/ClientFacade.java</file>
+=======
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/AgenceFacade.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionVisiteur.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionClient.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionHardis.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Prestation_Non_StandardFacade.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionClientLocal.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Utilisateur_HardisFacade.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Utilisateur_HardisFacadeLocal.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/UtilisateurFacadeLocal.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/DevisFacadeLocal.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/DevisFacade.java</file>
+            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/UtilisateurFacade.java</file>
+>>>>>>> MasterCopie2
         </group>
     </open-files>
 </project-private>

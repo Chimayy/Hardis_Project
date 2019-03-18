@@ -5,6 +5,7 @@
  */
 package session;
 
+
 import entite.Consentement_RGPD;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
@@ -12,6 +13,7 @@ import entite.profil_Technique;
 import facade.UtilisateurFacadeLocal;
 import facade.Utilisateur_HardisFacadeLocal;
 import java.util.List;
+import facade.UtilisateurFacadeLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -50,4 +52,10 @@ public class gestionAdmin implements gestionAdminLocal {
         return utilisateur_HardisFacade.afficherUtilisateurs_Hardis();
     }
     
+
+    private UtilisateurFacadeLocal utilisateurFacade;
+
+    // Add business logic below. (Right-click in editor and choose
+    // "Insert Code > Add Business Method")
+
 }

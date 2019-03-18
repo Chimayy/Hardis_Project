@@ -32,6 +32,8 @@ public interface Prestation_StandardFacadeLocal {
 
     int count();
 
-    void creerPrestationStandard(String nom, String description, String nomresp, String telresp, String mailresp, double cout, boolean facturation, int delai, Service service, lieu_Intervention lieu, String Expertise, double montantJour, double nbJour );
+    void creerPrestationStandard( String description, String nomresp, String telresp, String mailresp, double cout, boolean facturation, int delai, Service service, lieu_Intervention lieu, String Expertise, double montantJour, double nbJour );
+
+    void creerPrestaS(Service service);
     
 }

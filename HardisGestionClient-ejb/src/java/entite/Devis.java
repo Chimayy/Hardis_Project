@@ -51,6 +51,22 @@ public class Devis implements Serializable {
     @ManyToOne
     private Client leClient;
 
+    public List<Historique_Consultant> getHistorique_Consultants() {
+        return historique_Consultants;
+    }
+
+    public void setHistorique_Consultants(List<Historique_Consultant> historique_Consultants) {
+        this.historique_Consultants = historique_Consultants;
+    }
+
+    public List<Historique_Question> getHistorique_Questions() {
+        return historique_Questions;
+    }
+
+    public void setHistorique_Questions(List<Historique_Question> historique_Questions) {
+        this.historique_Questions = historique_Questions;
+    }
+
     public List<Historique_Echange> getHistorique_Echanges() {
         return historique_Echanges;
     }

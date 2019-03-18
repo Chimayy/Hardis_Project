@@ -42,9 +42,18 @@ public class Service implements Serializable {
     private List<Prestation> prestations = new ArrayList<Prestation>();
 
     private String description_Service;
+    private String nom_Service;
     private double cout_Service;
     @ManyToOne
     private Offre lOffre;
+
+    public String getNom_Service() {
+        return nom_Service;
+    }
+
+    public void setNom_Service(String nom_Service) {
+        this.nom_Service = nom_Service;
+    }
     
 
     public String getDescription_Service() {
