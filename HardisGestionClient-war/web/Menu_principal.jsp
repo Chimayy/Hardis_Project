@@ -10,25 +10,49 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="bootstrap.min.css"> 
-        <link rel="stylesheet" href="MyStyle.css">        
+        <link rel="stylesheet" href="MyStyle.css">  
+        <link rel="stylesheet" href="mdb.min.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Menu Visisteur hardis</h1>
-=
+     
+
             <div class="container">
-                <div class="col"> </div>
-                <div class="col"><img src="Images/Logo_Hardis_Group.png" alt="" height="20%" width="30%"></div>
-                         </div> 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-2">   <a class="btn btn-primary" href="Accueil?action=Catalogue" role="button">Catalogue des services</a></div>
-                <div class="col-sm-2">   <a class="btn btn-primary" href="Interface_question.jsp" role="button">Interface des questions</a></div>
-                <div class="col-sm-2 ">   <a class="btn btn-primary" href="Contact.jsp" role="button">Faire une demande de contact</a></div>
-                <div class="col-sm-1 offset-5 right">   <a class="btn btn-secondary" href="Connexion.jsp" role="button"> connexion</a></div>    
+                <div class="col"><img src="Images/Logo_Hardis_Group.png" class="rounded mx-auto d-block" alt="" height="20%" width="30%"></div>   
+                <div class="col"><a  href="Connexion.jsp" > <img src="Images/person-3x.png" alt=""></div>
             </div>
-        </div> 
-       
+           
+
           
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm"> 
+                        <div class="view overlay">
+                            <a href="Accueil?action=Catalogue"><img src="Images/catalogue.jpg" class="img-thumbnail " alt=""></a>    
+                                <div class="mask flex-center rgba-white-strong"> 
+                                    <h2>Catalogue</h2>
+                                </div>
+                        </div>    
+                    </div>
+                    <div class="col-sm col-md  ">
+                        <div class="view overlay">
+                            <a href="Interface_question.jsp"><img src="Images/question.jpg"class="img-thumbnail " alt="" ></a> 
+                                <div class="mask flex-center rgba-white-strong"> 
+                                    <h2>Interface Question</h2>
+                                </div>
+                        </div>
+                    </div>   
+                    <div class="col-sm">
+                        <a href="Contact.jsp">
+                            <div class="view overlay">
+                                <img src="Images/contact.jpg"class="img-thumbnail" alt="">
+                                <div class="mask flex-center rgba-white-strong"> 
+                                    <h2><span class=black> Nous Contacter </span></h2>
+                            </div>
+                        </a>
+                    </div>
+                </div> 
+            </div>
+
     </body>
 </html>

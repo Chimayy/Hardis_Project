@@ -5,13 +5,17 @@
 h1{
 	color:#3c3c3d;
 }
-btn{
-    padding-left: 5px;
-    padding-right: 5px;
+mybtn{
+    padding-left: 500px;
+    padding-right: 500px;
+    background-color: red;
 }
 .right{
     text-align: right;
 }
 .center{
     align-content: center;
+}
+.black {
+    
 }
