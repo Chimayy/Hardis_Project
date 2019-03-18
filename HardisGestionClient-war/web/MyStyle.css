@@ -1,0 +1,17 @@
+.red {
+	height: 200px;
+	background-color:white;
+}
+h1{
+	color:#3c3c3d;
+}
+btn{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.right{
+    text-align: right;
+}
+.center{
+    align-content: center;
+}
