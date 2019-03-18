@@ -5,6 +5,7 @@
  */
 package session;
 
+import entite.Utilisateur;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +14,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface gestionVisiteurLocal {
+
     
 }

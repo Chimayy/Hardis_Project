@@ -114,11 +114,10 @@ String jspClient=null;
         {
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
         }
-        else {
-        utilisateur = gestionVisiteur.authentification(login,pass);
+     
         
     // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
-        if (utilisateur instanceof entite.Client)
+        /*if (utilisateur instanceof entite.Client)
             {
                 jspClient = "MenuClient";
             }
@@ -139,8 +138,8 @@ String jspClient=null;
             message = "utilisateur connecté";
            }
         }
-        request.setAttribute("message", message);
-        }
+        request.setAttribute("message", message);*/
+    }
     
     
 
