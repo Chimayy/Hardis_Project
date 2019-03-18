@@ -48,5 +48,7 @@ public interface Utilisateur_HardisFacadeLocal {
     public Utilisateur_Hardis rechercherUtilisateurHardisMail(String mail);
 
     public List<Utilisateur_Hardis> rechercherUtilisateurHardisNom(String nom);
+
+    public Utilisateur_Hardis rechercherUtilisateurHaridsParId(long id);
     
 }

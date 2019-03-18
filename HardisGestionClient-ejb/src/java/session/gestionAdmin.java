@@ -40,7 +40,7 @@ public class gestionAdmin implements gestionAdminLocal {
     }
     
     @Override
-    public void suppressionUtilisateurHardis(int id){
+    public void suppressionUtilisateurHardis(long id){
         Utilisateur_Hardis user = utilisateur_HardisFacade.rechercherUtilisateurHardisId(id).get(0);
         utilisateur_HardisFacade.supprimerUtilisateurHardis(user);
     }
@@ -65,5 +65,9 @@ public class gestionAdmin implements gestionAdminLocal {
     @Override
     public List<Utilisateur_Hardis> recherchercherUtilisateurHardisId(long id){
         return utilisateur_HardisFacade.rechercherUtilisateurHardisId(id);
+    }
+    
+    public Utilisateur rechercherUtilisateurHardisParId(long id){
+        return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
     }
 }

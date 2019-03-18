@@ -23,6 +23,9 @@
         <input type ="hidden" name="action" value="RechercherUtilisateurHardis">
         <table border width="50%">
         </p>
+        <p>
+             <a href = "CreationUtilisateurHardis.jsp"> Créer un nouvel utilisateur </a>
+        </p>
             <tr> <td>Id</td>
                  <td>Nom</td>
                  <td>Prénom</td>
@@ -41,6 +44,7 @@
                  <td Width=15%><%=user.getPlafond_Delegation()%></td>
                  <td Width=15%><%=user.getProfil_Technique()%></td>
                  <td Width=15%><a href="ServletAdmin?action=RechercherUtilisateurHardisModif&idUser=<%=user.getId()%>" >Modifier</a>
+                 <td Width=15%><a href="ServletAdmin?action=SupprimerUtilisateurHardis&idUser=<%=user.getId()%>">Supprimer</a>
               <%}%>
         </table></hr>
         <div class='retour'>

@@ -13,16 +13,12 @@
     </head>
     <body>
         <h1>Menu Administrateur</h1>
-        <div class="message"><% String attribut = (String)request.getAttribute("message");
-            out.println(attribut);
-        %></div>
         <p> 
-        
         <div clas='menu'>  
             <div class="menubis"><a href ="ServletAdmin?action=AfficherUtilisateursHardis"> Gestion des utilisateurs Hardis </a></div>
-            <div class="menubis"><a href ="CreationUtilisateurHardis.jsp"> Création utilisateur Hardis </a></div>
-            <div class="menubis"><a href ="ServletAdmin?action=ModifierUtilisateur"> Modification utilisateur Hardis </a></div>
+            <div class="menubis"><a href ="ServletAdmin?action=AfficherEntreprises"> Gestion des entreprises </a></div>
             </div>
+        </p>
         <div class="retour">
             <a href =""> Retour Auth </a>
         </div>
