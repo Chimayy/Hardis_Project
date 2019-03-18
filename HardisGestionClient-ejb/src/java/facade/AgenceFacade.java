@@ -40,11 +40,21 @@ public class AgenceFacade extends AbstractFacade<Agence> implements AgenceFacade
     }
 
     @Override
-    public Agence rechercheAgence(long id) {
+    public Agence rechercherAgenceParId(long id) {
         Agence result;
         String txt = "SELECT a FROM Agence AS a WHERE a.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req=req.setParameter("id", id);
+        result=(Agence)req.getSingleResult();
+        return result;
+    }
+    
+    @Override
+    public Agence rechercherAgenceParVille(String ville){
+        Agence result;
+        String txt = "SELECT a FROM Agence AS a WHERE a.ville_Agence=:ville";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("ville", ville);
         result=(Agence)req.getSingleResult();
         return result;
     }

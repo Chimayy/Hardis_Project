@@ -40,14 +40,38 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> implements Entr
     }
 
     @Override
-    public Entreprise rechercheEntreprise(long id) {
+    public Entreprise rechercherEntrepriseParId(long id) {
         Entreprise result;
-        String txt = "SELECT a FROM Agence AS a WHERE a.id=:id";
+        String txt = "SELECT e FROM Entreprise AS e WHERE e.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req=req.setParameter("id", id);
         result=(Entreprise)req.getSingleResult();
         return result;
     }
+    
+    @Override
+    public Entreprise rechercherEntrepriseParSiret(String siret){
+        Entreprise result;
+        String txt = "SELECT e FROM Entreprise AS e WHERE e.numero_SIRET=:siret";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("siret", siret);
+        List<Entreprise> liste = req.getResultList();
+        if(!liste.isEmpty()){
+            return liste.get(0);
+        }
+        else {return null;} 
+    }
+    
+    @Override
+     public List<Entreprise> rechercherEntrepriseParNom(String nom){
+        Entreprise result;
+        String txt = "SELECT e FROM Entreprise AS e WHERE e.nom_Entreprise=:nom";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("nom", nom);
+        List<Entreprise> liste = req.getResultList();
+        return liste;      
+    }
+        
 
     @Override
     public void creerEntreprise(String cp, String nom, String siret, String rue, String ville, Agence agence) {
@@ -61,6 +85,8 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> implements Entr
         em.persist(entrepriseACreer);
     }
     
-    
-    
+    @Override
+    public void supprimerEntreprise(Entreprise ent){
+        em.remove(ent);
+    }
 }

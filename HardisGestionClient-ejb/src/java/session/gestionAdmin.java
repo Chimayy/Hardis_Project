@@ -5,10 +5,14 @@
  */
 package session;
 
+import entite.Agence;
 import entite.Consentement_RGPD;
+import entite.Entreprise;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
 import entite.profil_Technique;
+import facade.AgenceFacadeLocal;
+import facade.EntrepriseFacadeLocal;
 import facade.UtilisateurFacadeLocal;
 import facade.Utilisateur_HardisFacadeLocal;
 import java.util.List;
@@ -23,6 +27,12 @@ import javax.ejb.Stateless;
 public class gestionAdmin implements gestionAdminLocal {
 
     @EJB
+    private AgenceFacadeLocal agenceFacade;
+
+    @EJB
+    private EntrepriseFacadeLocal entrepriseFacade;
+
+    @EJB
     private Utilisateur_HardisFacadeLocal utilisateur_HardisFacade;
 
     @EJB
@@ -33,6 +43,10 @@ public class gestionAdmin implements gestionAdminLocal {
         utilisateur_HardisFacade.creerUtilisateurHardis(mail, mdp, nom, prenom, plafond, profiltechnique, statut_actif);   
     }
     
+    @Override
+    public void creationEntreprise(String cp, String nom, String siret, String rue, String ville, Agence agence){
+        entrepriseFacade.creerEntreprise(cp, nom, siret, rue, ville, agence);
+    }
     @Override
     public void modificationUtilisateurHardis(int id, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif){
         Utilisateur_Hardis user = utilisateur_HardisFacade.rechercherUtilisateurHardisId(id).get(0);
@@ -46,12 +60,28 @@ public class gestionAdmin implements gestionAdminLocal {
     }
     
     @Override
+    public void suppressionEntreprise(long id){
+        Entreprise ent = entrepriseFacade.rechercherEntrepriseParId(id);
+        entrepriseFacade.supprimerEntreprise(ent);
+    }
+    
+    @Override
     public List<Utilisateur_Hardis> affichageUtilisateursHardis(){
         return utilisateur_HardisFacade.afficherUtilisateurs_Hardis();
     }
     
     @Override
-    public Utilisateur_Hardis rechercheUtilisateurHardisMail(String mail){
+    public List<Entreprise> affichageEntreprises(){
+        return entrepriseFacade.listeEntreprise();
+    }
+    
+    @Override
+    public List<Agence> affichageAgences(){
+        return agenceFacade.listeAgence();
+    }
+    
+    @Override
+    public Utilisateur_Hardis rechercherUtilisateurHardisMail(String mail){
         Utilisateur_Hardis user = null;
         user = utilisateur_HardisFacade.rechercherUtilisateurHardisMail(mail);
         return user;
@@ -67,7 +97,34 @@ public class gestionAdmin implements gestionAdminLocal {
         return utilisateur_HardisFacade.rechercherUtilisateurHardisId(id);
     }
     
+    @Override
     public Utilisateur rechercherUtilisateurHardisParId(long id){
         return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
     }
-}
+    
+    @Override
+    public Entreprise rechercherEntrepriseParSiret(String siret){
+        return entrepriseFacade.rechercherEntrepriseParSiret(siret);
+    }
+    
+    @Override
+     public List<Entreprise> rechercherEntrepriseParNom(String nom){
+        return entrepriseFacade.rechercherEntrepriseParNom(nom);
+     }
+     
+    @Override
+     public Entreprise rechercherEntrepriseParId(long id){
+        return entrepriseFacade.rechercherEntrepriseParId(id);
+     }
+     
+    @Override
+    public Agence rechercherAgenceParVille(String ville){
+        return agenceFacade.rechercherAgenceParVille(ville);
+    }
+    
+    @Override
+    public Agence rechercherAgenceParId(long id){
+        return agenceFacade.rechercherAgenceParId(id);
+    }
+    
+}  

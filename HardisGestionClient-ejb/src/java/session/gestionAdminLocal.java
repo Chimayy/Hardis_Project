@@ -5,7 +5,9 @@
  */
 package session;
 
+import entite.Agence;
 import entite.Consentement_RGPD;
+import entite.Entreprise;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
 import entite.profil_Technique;
@@ -25,12 +27,32 @@ public interface gestionAdminLocal {
 
     public List<Utilisateur_Hardis> affichageUtilisateursHardis();
 
-    public Utilisateur_Hardis rechercheUtilisateurHardisMail(String mail);
+    public Utilisateur_Hardis rechercherUtilisateurHardisMail(String mail);
 
     public List<Utilisateur_Hardis> rechercherUtilisateurHardisNom(String nom);
 
     public List<Utilisateur_Hardis> recherchercherUtilisateurHardisId(long id);
 
     public void suppressionUtilisateurHardis(long id);
+
+    public List<Entreprise> affichageEntreprises();
+
+    public Entreprise rechercherEntrepriseParSiret(String siret);
+
+    public Utilisateur rechercherUtilisateurHardisParId(long id);
+
+    public void creationEntreprise(String cp, String nom, String siret, String rue, String ville, Agence agence);
+
+    public Agence rechercherAgenceParVille(String ville);
+
+    public List<Agence> affichageAgences();
+
+    public Agence rechercherAgenceParId(long id);
+
+    public List<Entreprise> rechercherEntrepriseParNom(String nom);
+
+    public Entreprise rechercherEntrepriseParId(long id);
+
+    public void suppressionEntreprise(long id);
 
 }

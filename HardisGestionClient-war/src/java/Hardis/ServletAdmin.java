@@ -5,6 +5,8 @@
  */
 package Hardis;
 
+import entite.Agence;
+import entite.Entreprise;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
 import entite.profil_Technique;
@@ -42,13 +44,13 @@ public class ServletAdmin extends HttpServlet {
         String plafond = request.getParameter("plafond");
         String profil_t = request.getParameter("profil");
         String statut = request.getParameter("statut");
-        Utilisateur_Hardis user = gestionAdmin.rechercheUtilisateurHardisMail(mail);
+        Utilisateur_Hardis user = gestionAdmin.rechercherUtilisateurHardisMail(mail);
       
         String message;
         if (nom.trim().trim().isEmpty()||prenom.trim().isEmpty()||mail.trim().isEmpty()||motdepasse.trim().isEmpty()||plafond.trim().isEmpty()
                 ||profil_t.trim().isEmpty())
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs pour creer un Entraineur";
+            message = "Erreur, vous n'avez pas rempli tous les champs pour créer un utilisateur";
         }
         
         else if (user != null){
@@ -64,6 +66,39 @@ public class ServletAdmin extends HttpServlet {
         }
         request.setAttribute("message", message);
     }
+    
+    protected void creerEntreprise(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String nom = request.getParameter("nom");
+        String siret = request.getParameter("siret");
+        String adresse = request.getParameter("adresse");
+        String code_postal = request.getParameter("code_postal");
+        String ville = request.getParameter("ville");
+        String ag = request.getParameter("agence");
+        Entreprise ent = gestionAdmin.rechercherEntrepriseParSiret(siret);
+        String idAgence = request.getParameter("idAgence");
+        
+        String message;
+        if (nom.trim().trim().isEmpty()||siret.trim().isEmpty()||adresse.trim().isEmpty()||code_postal.trim().isEmpty()||ville.trim().isEmpty())
+                
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs pour créer une entreprise";
+        }
+        
+        else if (ent != null){
+            message = "Erreur, entreprise déjà existante";
+            
+        }
+        else {
+            Long id = Long.parseLong(idAgence);
+            Agence agence = gestionAdmin.rechercherAgenceParId(id);
+            gestionAdmin.creationEntreprise(code_postal, nom, siret, adresse, ville, agence);
+            message = "Entreprise créée avec succès !";          
+        }
+        request.setAttribute("message", message);
+    }
+    
     
     protected void modifierUtilisateurHardis(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
@@ -119,7 +154,9 @@ public class ServletAdmin extends HttpServlet {
         }
         
         else if(act.equals("AfficherEntreprises")){
-            
+            List<Entreprise> listeEnt = gestionAdmin.affichageEntreprises();
+            request.setAttribute("listeEnt", listeEnt);
+            jspClient="/GestionEntreprise.jsp";
         }
         
         else if(act.equals("RechercherUtilisateurHardis"))
@@ -141,6 +178,30 @@ public class ServletAdmin extends HttpServlet {
             List <Utilisateur_Hardis> listeUser2  = gestionAdmin.affichageUtilisateursHardis();
             request.setAttribute("listeUser", listeUser2);
             jspClient="/GestionUtilisateurHardis.jsp";
+            message = "Veuillez rentrer une valeur";
+            request.setAttribute("message", message);  
+            }
+             }
+        
+         else if(act.equals("RechercherEntreprise"))
+        {        
+            String nom = request.getParameter("nom");
+            if(!nom.trim().isEmpty()){
+            List <Entreprise> listeEnt  = gestionAdmin.rechercherEntrepriseParNom(nom);
+                if(listeEnt.size()>0){
+            request.setAttribute("listeEnt", listeEnt);
+            jspClient="/GestionEntreprise.jsp";
+                }
+                else{
+                List <Entreprise> listeEnt2  = gestionAdmin.affichageEntreprises();
+                request.setAttribute("listeEnt", listeEnt2);
+                jspClient="/GestionEntreprise.jsp";
+                }                    
+            }
+            else{
+            List <Entreprise> listeEnt2  = gestionAdmin.affichageEntreprises();
+            request.setAttribute("listeEnt", listeEnt2);
+            jspClient="/GestionEntreprise.jsp";
             message = "Veuillez rentrer une valeur";
             request.setAttribute("message", message);  
             }
@@ -174,12 +235,47 @@ public class ServletAdmin extends HttpServlet {
                 request.setAttribute("message", message); 
             }
         }
+        
+         else if(act.equals("SupprimerEntreprise"))
+        {
+            String idEnt = request.getParameter("idEnt");
+            long id = Long.parseLong(idEnt);
+            Entreprise Ent = gestionAdmin.rechercherEntrepriseParId(id);
+            
+            if(Ent != null){   
+            gestionAdmin.suppressionEntreprise(id);
+            List <Entreprise> listeEnt  = gestionAdmin.affichageEntreprises();
+            request.setAttribute("listeEnt", listeEnt);
+            jspClient="/GestionEntreprise.jsp";
+            }
+            
+            else 
+            {
+                message = "Cette entrepris n'existe pas";
+                request.setAttribute("message", message); 
+            }
+        }
         else if (act.equals("CreerUtilisateur"))
         {      
             jspClient = "/GestionUtilisateurHardis.jsp";
             creerUtilisateurHardis(request,response);
             List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
             request.setAttribute("listeUser", listeUser);
+        }
+        
+        else if (act.equals("CreerEntreprise"))
+        {      
+            jspClient = "/GestionEntreprise.jsp";
+            creerEntreprise(request,response);
+            List <Entreprise> listeEnt = gestionAdmin.affichageEntreprises();
+            request.setAttribute("listeEnt", listeEnt);
+        }
+        
+         else if (act.equals("CreationEntreprise"))
+        {      
+            List<Agence> ListeAgence= gestionAdmin.affichageAgences();
+            request.setAttribute("listeAgence",ListeAgence);
+            jspClient="/CreationEntreprise.jsp";
         }
         
         else if (act.equals("ActionModifierUtilisateur")){

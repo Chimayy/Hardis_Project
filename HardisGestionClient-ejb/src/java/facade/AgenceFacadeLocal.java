@@ -32,8 +32,10 @@ public interface AgenceFacadeLocal {
 
     List<Agence> listeAgence();
 
-    Agence rechercheAgence(long id);
+    Agence rechercherAgenceParId(long id);
 
     void creerAgence(String rue_Agence, String ville_Agence, String CP_Agence, String pays_Agence);
+
+    public Agence rechercherAgenceParVille(String ville);
     
 }
