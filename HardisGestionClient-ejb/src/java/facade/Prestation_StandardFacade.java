@@ -31,7 +31,7 @@ public class Prestation_StandardFacade extends AbstractFacade<Prestation_Standar
     }
 
     @Override
-    public void creerPrestationStandard(String nom, String description, String nomresp, String telresp, String mailresp, double cout, boolean facturation, int delai, Service service, lieu_Intervention lieu, String Expertise, double montantJour, double nbJour ) {
+    public void creerPrestationStandard( String description, String nomresp, String telresp, String mailresp, double cout, boolean facturation, int delai, Service service, lieu_Intervention lieu, String Expertise, double montantJour, double nbJour ) {
         Prestation_Standard PrestaACreer = new Prestation_Standard();
         PrestaACreer.setDelai_Relance(delai);
         PrestaACreer.setLieu_Intervention(lieu);
@@ -41,14 +41,21 @@ public class Prestation_StandardFacade extends AbstractFacade<Prestation_Standar
         PrestaACreer.setcout_Prestation(cout);
         PrestaACreer.setdescription_Prestation(description);
         PrestaACreer.setfacturation_Frais_Inclus(facturation);
-        PrestaACreer.setnom_Prestation(nomresp);
         PrestaACreer.setLeService(service);
         PrestaACreer.setExpertise_Minimum(Expertise);
         PrestaACreer.setMontant_Jour(montantJour);
         PrestaACreer.setNb_Jours(nbJour);
         em.persist(PrestaACreer);
     }
+
+    @Override
+    public void creerPrestaS(Service service) {
+        Prestation_Standard presta = new Prestation_Standard();
+        presta.setLeService(service);
+        em.persist(presta);
+    }
         
+    
     }
     
 

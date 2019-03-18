@@ -36,5 +36,7 @@ public interface EntrepriseFacadeLocal {
     Entreprise rechercheEntreprise(long id);
 
     void creerEntreprise(String cp, String nom, String siret, String rue, String ville, Agence agence);
+
+    void entreprisePersist(Object o);
     
 }

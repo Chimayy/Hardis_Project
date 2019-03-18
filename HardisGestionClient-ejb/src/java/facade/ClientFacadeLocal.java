@@ -39,5 +39,7 @@ public interface ClientFacadeLocal {
     void creerClient(String nom_Client, String mdp, String mail, Entreprise etp, Consentement_RGPD consentement);
 
     Client authentif(String mail, String mdp);
+
+    void clientPersist(Object o);
     
 }

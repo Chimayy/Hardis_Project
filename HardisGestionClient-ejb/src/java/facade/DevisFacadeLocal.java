@@ -35,8 +35,10 @@ public interface DevisFacadeLocal {
 
     List<Devis> listeDevis();
 
-    void demandeDevisClient(String zoneLibre, Client Client, Service service, String standardOuPas);
+    void demandeDevisClient(String zoneLibre, Client Client, Service service);
 
     void affecterDevisAuReferentLocal(Devis devis);
+
+    Devis rechercheDevis(long id);
     
 }

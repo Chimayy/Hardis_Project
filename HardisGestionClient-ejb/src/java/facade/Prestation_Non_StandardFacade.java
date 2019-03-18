@@ -33,7 +33,7 @@ public class Prestation_Non_StandardFacade extends AbstractFacade<Prestation_Non
     }
 
     @Override
-    public void creerPrestationNonStandard(String nom, String description, String nomresp, String telresp, String mailresp, double cout, boolean facturation, int delai, Service service, lieu_Intervention lieu ) {
+    public void creerPrestationNonStandard(String description, String nomresp, String telresp, String mailresp, double cout, boolean facturation, int delai, Service service, lieu_Intervention lieu ) {
         Prestation_Non_Standard PrestaACreer = new Prestation_Non_Standard();
         PrestaACreer.setDelai_Relance(delai);
         PrestaACreer.setLieu_Intervention(lieu);
@@ -43,9 +43,16 @@ public class Prestation_Non_StandardFacade extends AbstractFacade<Prestation_Non
         PrestaACreer.setcout_Prestation(cout);
         PrestaACreer.setdescription_Prestation(description);
         PrestaACreer.setfacturation_Frais_Inclus(facturation);
-        PrestaACreer.setnom_Prestation(nomresp);
         PrestaACreer.setLeService(service);
         em.persist(PrestaACreer);
+    }
+
+    //méthode à appeler lors de la demande de devis client
+    @Override
+    public void creerPrestaNS(Service service) {
+        Prestation_Non_Standard presta = new Prestation_Non_Standard();
+        presta.setLeService(service);
+        em.persist(presta);
     }
     
     

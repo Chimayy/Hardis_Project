@@ -13,6 +13,7 @@ import entite.Prestation_Non_Standard;
 import entite.Prestation_Standard;
 import entite.Service;
 import entite.Utilisateur_Hardis;
+import entite.statut_Devis;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -40,40 +41,21 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
 
     @Override
     public List<Devis> listeDevis() {
-        String txt = "SELECT a FROM Agence AS a";
+        String txt = "SELECT d FROM Devis AS d";
         Query req = getEntityManager().createQuery(txt);
         List<Devis> liste = req.getResultList();
         return liste;
     }
+    
+    
 
     @Override
-    public void demandeDevisClient(String zoneLibre, Client Client, Service service, String standardOuPas) {
-       
-        if (standardOuPas.equals("standard"))
-        {
-            Prestation_Standard standardACreer = new Prestation_Standard();
-            standardACreer.setLeService(service);
-            Devis devisPreRempli = new Devis();
-            devisPreRempli.setlOffre(service.getlOffre());
-            devisPreRempli.setFormulaire_Client(zoneLibre);
-            devisPreRempli.setLeClient(Client);
-            devisPreRempli.setLaPrestation(standardACreer);
-            em.persist(standardACreer);
-            em.persist(devisPreRempli);
-        }
-        else
-        {
-            Prestation_Non_Standard nonstandardACreer = new Prestation_Non_Standard();           
-            nonstandardACreer.setLeService(service);
-            Devis devisPreRempli = new Devis();
-            devisPreRempli.setlOffre(service.getlOffre());
-            devisPreRempli.setFormulaire_Client(zoneLibre);
-            devisPreRempli.setLeClient(Client);
-            devisPreRempli.setLaPrestation(nonstandardACreer);
-            em.persist(nonstandardACreer);
-            em.persist(devisPreRempli);
-        }
-            
+    public void demandeDevisClient(String zoneLibre, Client Client, Service service) {
+        Devis brouillonDevisClient = new Devis();
+        brouillonDevisClient.setLeClient(Client);
+        brouillonDevisClient.setFormulaire_Client(zoneLibre);
+        brouillonDevisClient.setStatut(statut_Devis.en_cours);
+        em.persist(brouillonDevisClient);
     }
 
     @Override
@@ -98,7 +80,20 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         referent.setLeDevis(devis);
         referent.setLeConsultant(referentLocal);
         referent.setFonctionConsultant("chef de projet");
-        em.persist(referent);       
+        devis.getLaPrestation().setNom_Responsable(referentLocal.getNom_Utilisateur());
+        devis.getLaPrestation().setMail_Responsable(referentLocal.getMail_Connexion());
+        em.persist(referent);
+        em.persist(devis);
+    }
+
+    @Override
+    public Devis rechercheDevis(long id) {
+        Devis result;
+        String txt = "SELECT d FROM Devis AS d WHERE d.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("id", id);
+        result=(Devis)req.getSingleResult();
+        return result;
     }
     
     

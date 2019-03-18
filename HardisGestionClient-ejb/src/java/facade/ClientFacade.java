@@ -72,9 +72,12 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
         user=(Client)req.getSingleResult();
         return user;
     }
-    
-    
-    
+
+    @Override
+    public void clientPersist(Object o) {
+        em.persist(o);
+    }
+       
     
     
 }
