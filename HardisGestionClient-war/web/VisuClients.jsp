@@ -18,7 +18,7 @@
         <h1>Visualisation Client</h1>
         <table border width=50%>
             <tr> 
-                <td>num</td>
+                
                 <td>id</td>
                 <td>Nom</td>
                 <td>Prenom</td>
@@ -28,16 +28,17 @@
             <% List<Client> lesCli = ListeClient;
                 for(Client c : lesCli){%>
                 <tr>
-                    <%x =x+1;%>
-                    <td width=15%><%=x%></td>
-                    
+                         
+                    <% x = x+1;%>                                       
                     <td width=15%><%=c.getId()%></td>
                     <td width=15%><%=c.getNom_Utilisateur()%></td>
                     <td width=15%><%=c.getPrenom_Utilisateur()%></td>                                       
-                    <td><input type="hidden" name="x" value="<%=x%>"></td>   </tr>
-                    <td width=15%><a href="AcceuilGestionnaire?action=DetailClient">Voir +</a></td>
-                                        
+                     
+                    <td width=15%><a href="AcceuilGestionnaire?action=<%=x%>">Voir +</a></td>
+                    </tr>
+                                  
                 </tr><%}%>     
+                
         </table>
     </body>
 </html>

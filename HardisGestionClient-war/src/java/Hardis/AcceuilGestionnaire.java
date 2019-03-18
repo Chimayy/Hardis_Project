@@ -68,14 +68,65 @@ public class AcceuilGestionnaire extends HttpServlet {
               jspClient="/VisuClients.jsp";
               request.setAttribute("ListeClient", ListeCli);
                 
-           }
-           else if (act.equals("DetailClient")){
-               Client c = doChercherClient(request,response);
+           } 
+           else if (act.endsWith("0")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
                request.setAttribute("Client", c);
-               jspClient="/DetailClient.jsp";
+               jspClient="/DetailClient.jsp";}
+               
+           else if (act.endsWith("1")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";}
+               
+               else if (act.endsWith("2")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";}
+           
+           else if (act.endsWith("3")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";}
+           
+           else if (act.endsWith("4")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";}
+           
+           else if (act.endsWith("5")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";}
+           else if (act.endsWith("6")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";}
+           else if (act.endsWith("7")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";}
+           else if (act.endsWith("8")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";}
+           else if (act.endsWith("9")) {
+                long id = Long.parseLong(act);
+               Client c = gestionClient.RechercheClient(id);
+               request.setAttribute("Client", c);
+               jspClient="/DetailClient.jsp";}
                
                
-           }
+           
 
        RequestDispatcher Rd;
        Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -124,17 +175,8 @@ public class AcceuilGestionnaire extends HttpServlet {
     }// </editor-fold>
 
 
-protected Client doChercherClient(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-            String x = request.getParameter("x");     
-        
-            int x1 = Integer.valueOf(x);
-            
-            List <Client> ListeCli = gestionClient.ListeClient();
-            return ListeCli.get(x1);
-            
+
                     
             
         }
         
-}
