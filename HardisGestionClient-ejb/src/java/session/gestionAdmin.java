@@ -37,25 +37,44 @@ public class gestionAdmin implements gestionAdminLocal {
     
     @Override
     public void modificationUtilisateurHardis(int id, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif){
-        Utilisateur_Hardis user = utilisateur_HardisFacade.rechercherUtilisateurHardisId(id);
+        Utilisateur_Hardis user = utilisateur_HardisFacade.rechercherUtilisateurHardisId(id).get(0);
         utilisateur_HardisFacade.modifierUtilisateurHardis(user, mail, mdp, nom, prenom, plafond, profiltechnique, statut_actif);
     }
     
     @Override
     public void suppressionUtilisateurHardis(int id){
-        Utilisateur_Hardis user = utilisateur_HardisFacade.rechercherUtilisateurHardisId(id);
+        Utilisateur_Hardis user = utilisateur_HardisFacade.rechercherUtilisateurHardisId(id).get(0);
         utilisateur_HardisFacade.supprimerUtilisateurHardis(user);
     }
     
     @Override
-    public List<Utilisateur> affichageUtilisateursHardis(){
+    public List<Utilisateur_Hardis> affichageUtilisateursHardis(){
         return utilisateur_HardisFacade.afficherUtilisateurs_Hardis();
     }
     
+<<<<<<< HEAD
 
     private UtilisateurFacadeLocal utilisateurFacade;
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+=======
+    @Override
+    public Utilisateur_Hardis rechercheUtilisateurHardisMail(String mail){
+        Utilisateur_Hardis user = null;
+        user = utilisateur_HardisFacade.rechercherUtilisateurHardisMail(mail);
+        return user;
+    }
+    
+    @Override
+    public List<Utilisateur_Hardis> rechercherUtilisateurHardisNom(String nom){
+       return utilisateur_HardisFacade.rechercherUtilisateurHardisNom(nom);
+    }
+    
+    @Override
+    public List<Utilisateur_Hardis> recherchercherUtilisateurHardisId(long id){
+        return utilisateur_HardisFacade.rechercherUtilisateurHardisId(id);
+    }
+>>>>>>> schellen
 }
