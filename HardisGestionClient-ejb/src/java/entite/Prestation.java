@@ -55,13 +55,6 @@ public class Prestation implements Serializable {
         this.bon_De_Commandes = bon_De_Commandes;
     }
 
-    public String getNom_Prestation() {
-        return nom_Prestation;
-    }
-
-    public void setNom_Prestation(String nom_Prestation) {
-        this.nom_Prestation = nom_Prestation;
-    }
 
     public String getDescription_Prestation() {
         return description_Prestation;
@@ -107,7 +100,6 @@ public class Prestation implements Serializable {
     @OneToMany(mappedBy = "laPrestation")
     private List<Bon_De_Commande> bon_De_Commandes = new ArrayList<Bon_De_Commande>();
 
-    private String nom_Prestation;
     private String description_Prestation;
     private String nom_Responsable;
     private String tel_Responsable;
@@ -126,15 +118,7 @@ public class Prestation implements Serializable {
     public void setLieu_Intervention(lieu_Intervention lieu_Intervention) {
         this.lieu_Intervention = lieu_Intervention;
     }
-
-    public String getnom_Prestation() {
-        return nom_Prestation;
-    }
-
-    public void setnom_Prestation(String nom_Prestation) {
-        this.nom_Prestation = nom_Prestation;
-    }
-
+    
     public String getdescription_Prestation() {
         return description_Prestation;
     }

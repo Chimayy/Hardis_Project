@@ -28,7 +28,6 @@ public class Client extends Utilisateur implements Serializable {
     private Entreprise lEntreprise;
 
     
-
     public List<Devis> getLesDevis() {
         return lesDevis;
     }

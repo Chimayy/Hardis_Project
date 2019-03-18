@@ -22,12 +22,23 @@ import javax.persistence.OneToMany;
 public class Agence implements Serializable {
 
     @OneToMany(mappedBy = "lAgence")
+    private List<Utilisateur_Hardis> lesUtilisateur_Hardis = new ArrayList<Utilisateur_Hardis>();
+
+    @OneToMany(mappedBy = "lAgence")
     private List<Entreprise> entreprises = new ArrayList<Entreprise>();
 
     private String rue_Agence;
     private String ville_Agence;
     private String CP_Agence;
     private String pays_Agence;
+
+    public List<Utilisateur_Hardis> getLesUtilisateur_Hardis() {
+        return lesUtilisateur_Hardis;
+    }
+
+    public void setLesUtilisateur_Hardis(List<Utilisateur_Hardis> lesUtilisateur_Hardis) {
+        this.lesUtilisateur_Hardis = lesUtilisateur_Hardis;
+    }
 
     public List<Entreprise> getEntreprises() {
         return entreprises;

@@ -60,6 +60,11 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> implements Entr
         entrepriseACreer.setlAgence(agence);
         em.persist(entrepriseACreer);
     }
+
+    @Override
+    public void entreprisePersist(Object o) {
+        em.persist(o);
+    }
     
     
     
