@@ -21,7 +21,7 @@
             <div class="input1">
                 <% for (Utilisateur_Hardis user : leUser) {%>
                 <form method ="get" action="ServletAdmin">
-                    <p> Id : <input type="text" name="idUser" value="<%=user.getId()%>" disabled="disabled" class='input'/></P>
+                <input type="hidden" name="id" value="<%=user.getId()%>" class='input'/>
                 <p> Nom : <input type ="text" name="nom" value="<%=user.getNom_Utilisateur()%>" class='input'/></p>
                 <p> Prénom : <input type ="text" name="prenom" value="<%=user.getPrenom_Utilisateur()%>" class='input'/></p>
                 <p> Mail : <input type ="text" name="mail" value="<%=user.getMail_Connexion()%>" class='input'/></p>

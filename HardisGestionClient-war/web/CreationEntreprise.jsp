@@ -22,7 +22,7 @@
                 <input type ="text" placeholder='N° SIRET'name="siret" class='input'/>
                 <input type ="text" placeholder='Adresse' name="adresse" class='input'/>
                 <input type ="text" placeholder='Code postal' name="code_postal" class='input'/>
-                <input type ="text" placeholder='Ville' name="ville" classe='input' class='input'/></br>     
+                <input type ="text" placeholder='Ville' name="ville" classe='input' class='input'/><br/>    
                 <div class="input1">
                 <label for="Agence" class='textinput'> Agence : </label>
                 <select name="idAgence" class='custom-dropdown__select custom-dropdown__select--white'>
@@ -30,15 +30,14 @@
                     <option value="<%=agence.getId()%>"><%=agence.getVille_Agence()%>
                     </option>
                     <%}%>
-                </select> 
-            </br>
+                </select><br/>
+                <a href="ServletAdmin?action=AfficherAgences" >L'agence n'est pas dans la liste ? </a>
                 <input type ="hidden" name="action" value="CreerEntreprise">
-
             </div>
             <div class='bouton1'>
             </br>
             <input  class='bouton' type="submit" value="Valider"/>
-            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            <input  class='bouton'type="reset" value="Effacer"/>       
             </div>
             </br>
             <div class='retour'>

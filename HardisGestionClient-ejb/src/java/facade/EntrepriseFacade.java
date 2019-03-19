@@ -40,18 +40,16 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> implements Entr
     }
 
     @Override
-    public Entreprise rechercherEntrepriseParId(long id) {
-        Entreprise result;
+    public List<Entreprise> rechercherEntrepriseParId(long id) {
         String txt = "SELECT e FROM Entreprise AS e WHERE e.id=:id";
         Query req = getEntityManager().createQuery(txt);
-        req=req.setParameter("id", id);
-        result=(Entreprise)req.getSingleResult();
+        req = req.setParameter("id", id);
+        List <Entreprise> result= req.getResultList();
         return result;
     }
     
     @Override
     public Entreprise rechercherEntrepriseParSiret(String siret){
-        Entreprise result;
         String txt = "SELECT e FROM Entreprise AS e WHERE e.numero_SIRET=:siret";
         Query req = getEntityManager().createQuery(txt);
         req.setParameter("siret", siret);
@@ -62,6 +60,15 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> implements Entr
         else {return null;} 
     }
     
+    @Override
+    public List<Entreprise> rechercherEntrepriseParAgence(Agence agence){
+        String txt = "SELECT e FROM Entreprise AS e WHERE e.lAgence=:agence";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("agence", agence);
+        List<Entreprise> liste = req.getResultList();
+        return liste;
+        }
+
     @Override
      public List<Entreprise> rechercherEntrepriseParNom(String nom){
         Entreprise result;
@@ -83,6 +90,17 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> implements Entr
         entrepriseACreer.setVille_Entreprise(ville);
         entrepriseACreer.setlAgence(agence);
         em.persist(entrepriseACreer);
+    }
+    
+    @Override
+     public void modifierEntreprise(Entreprise ent, String nom, String siret, String cp, String adresse, String ville, Agence agence){
+        ent.setNom_Entreprise(nom);
+        ent.setNumero_SIRET(siret);
+        ent.setCP_Entreprise(cp);
+        ent.setRue_Entreprise(adresse);
+        ent.setVille_Entreprise(ville);
+        ent.setlAgence(agence);
+        em.merge(ent);        
     }
     
     @Override

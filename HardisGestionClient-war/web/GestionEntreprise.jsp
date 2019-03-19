@@ -31,6 +31,7 @@
                  <td>Adresse</td>
                  <td>Code postal</td>
                  <td>Ville</td>
+                 <td>Agence Hardis</td>
             </tr>
                  <% List <Entreprise> lesEnt = listeEnt;
                  for(Entreprise ent : lesEnt){%>
@@ -40,7 +41,8 @@
                  <td Width=15%><%=ent.getRue_Entreprise()%></td>
                  <td Width=15%><%=ent.getCP_Entreprise()%></td>
                  <td Width=15%><%=ent.getVille_Entreprise()%></td>
-                 <td Width=15%><a href="ServletAdmin?action=<%=ent.getId()%>" >Modifier</a>
+                 <td Wifth=15%><%=ent.getlAgence().getVille_Agence()%></td>
+                 <td Width=15%><a href="ServletAdmin?action=ModifierEntreprise&idEnt=<%=ent.getId()%>">Modifier</a>
                  <td Width=15%><a href="ServletAdmin?action=SupprimerEntreprise&idEnt=<%=ent.getId()%>">Supprimer</a>
               <%}%>
         </table></hr>

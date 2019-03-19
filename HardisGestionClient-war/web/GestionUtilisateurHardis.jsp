@@ -43,7 +43,7 @@
                  <td Width=15%><%=user.getMot_De_Passe()%></td>
                  <td Width=15%><%=user.getPlafond_Delegation()%></td>
                  <td Width=15%><%=user.getProfil_Technique()%></td>
-                 <td Width=15%><a href="ServletAdmin?action=RechercherUtilisateurHardisModif&idUser=<%=user.getId()%>" >Modifier</a>
+                 <td Width=15%><a href="ServletAdmin?action=ModifierUtilisateurHardis&idUser=<%=user.getId()%>" >Modifier</a>
                  <td Width=15%><a href="ServletAdmin?action=SupprimerUtilisateurHardis&idUser=<%=user.getId()%>">Supprimer</a>
               <%}%>
         </table></hr>

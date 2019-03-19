@@ -40,23 +40,24 @@ public class AgenceFacade extends AbstractFacade<Agence> implements AgenceFacade
     }
 
     @Override
-    public Agence rechercherAgenceParId(long id) {
-        Agence result;
+    public List<Agence> rechercherAgenceParId(long id) {
         String txt = "SELECT a FROM Agence AS a WHERE a.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req=req.setParameter("id", id);
-        result=(Agence)req.getSingleResult();
-        return result;
+        List<Agence> liste = req.getResultList();
+        return liste;
     }
     
     @Override
     public Agence rechercherAgenceParVille(String ville){
-        Agence result;
         String txt = "SELECT a FROM Agence AS a WHERE a.ville_Agence=:ville";
         Query req = getEntityManager().createQuery(txt);
-        req=req.setParameter("ville", ville);
-        result=(Agence)req.getSingleResult();
-        return result;
+        req = req.setParameter("ville", ville);
+        List<Agence> liste = req.getResultList();
+        if(!liste.isEmpty()){
+            return liste.get(0);
+        }
+        else {return null;} 
     }
 
     @Override
@@ -67,6 +68,20 @@ public class AgenceFacade extends AbstractFacade<Agence> implements AgenceFacade
         agenceACreer.setPays_Agence(pays_Agence);
         agenceACreer.setVille_Agence(ville_Agence);
         em.persist(agenceACreer);
+    }
+    
+    @Override
+     public void modifierAgence(Agence agence, String cp, String pays, String adresse, String ville){
+        agence.setCP_Agence(cp);
+        agence.setPays_Agence(pays);
+        agence.setRue_Agence(adresse);
+        agence.setVille_Agence(ville);
+        em.merge(agence);        
+    }
+    
+    @Override
+    public void supprimerAgence(Agence agence){
+        em.remove(agence);
     }
     
     

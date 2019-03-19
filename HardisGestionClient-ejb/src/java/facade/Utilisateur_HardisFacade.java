@@ -57,7 +57,7 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         user.setProfil_Technique(profiltechnique);
         user.setPrenom_Utilisateur(prenom);
         user.setStatut_Actif(false);
-        em.persist(user);        
+        em.merge(user);        
     }
     
     @Override

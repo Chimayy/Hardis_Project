@@ -33,7 +33,7 @@ public interface EntrepriseFacadeLocal {
 
     List<Entreprise> listeEntreprise();
 
-    Entreprise rechercherEntrepriseParId(long id);
+    List<Entreprise> rechercherEntrepriseParId(long id);
 
     void creerEntreprise(String cp, String nom, String siret, String rue, String ville, Agence agence);
 
@@ -42,5 +42,9 @@ public interface EntrepriseFacadeLocal {
     public List<Entreprise> rechercherEntrepriseParNom(String nom);
 
     public void supprimerEntreprise(Entreprise ent);
+
+    public void modifierEntreprise(Entreprise ent, String nom, String siret, String cp, String adresse, String ville, Agence agence);
+
+    public List<Entreprise> rechercherEntrepriseParAgence(Agence agence);
     
 }

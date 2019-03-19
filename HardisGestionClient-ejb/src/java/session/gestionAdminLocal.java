@@ -8,6 +8,8 @@ package session;
 import entite.Agence;
 import entite.Consentement_RGPD;
 import entite.Entreprise;
+import entite.Offre;
+import entite.Service;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
 import entite.profil_Technique;
@@ -23,7 +25,7 @@ public interface gestionAdminLocal {
 
     public void creationUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
 
-    public void modificationUtilisateurHardis(int id, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
+    public void modificationUtilisateurHardis(long id, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
 
     public List<Utilisateur_Hardis> affichageUtilisateursHardis();
 
@@ -47,12 +49,34 @@ public interface gestionAdminLocal {
 
     public List<Agence> affichageAgences();
 
-    public Agence rechercherAgenceParId(long id);
+    public List<Agence> rechercherAgenceParId(long id);
 
     public List<Entreprise> rechercherEntrepriseParNom(String nom);
 
-    public Entreprise rechercherEntrepriseParId(long id);
+    public List<Entreprise> rechercherEntrepriseParId(long id);
 
     public void suppressionEntreprise(long id);
+
+    public void modificationEntreprise(long id, String nom, String siret, String cp, String adresse, String ville, Agence agence);
+
+    public void creationAgence(String cp, String pays, String adresse, String ville);
+
+    public void suppressionAgence(long id);
+
+    public List<Entreprise> rechercherEntrepriseParAgence(Agence agence);
+
+    public void modificationAgence(long id, String cp, String pays, String adresse, String ville);
+
+    public List<Service> affichageServices();
+
+    public List<Offre> affichageOffres();
+
+    public List<Offre> rechercherOffreParId(long id);
+
+    public void creationService(String description, String nom, double cout, Offre offre);
+
+    public List<Service> rechercherServiceParId(long id);
+
+    public void modificationService(long id, String nom, String description, double cout, Offre offre);
 
 }
