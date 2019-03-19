@@ -35,7 +35,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="pass"> Pass <span class="requis">*</span></label>
-                                                <input type="password" class="form-control" name="pass" value="" size="20" maxlength="20"/>
+                                                <input type="text" class="form-control" name="pass" value="" size="20" maxlength="20"/>
                                             </div>
                                             <br/>           
                                         </fieldset>
