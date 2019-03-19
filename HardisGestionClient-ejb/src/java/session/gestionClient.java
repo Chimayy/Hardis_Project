@@ -6,6 +6,7 @@
 package session;
 
 import entite.Client;
+import facade.ClientFacadeLocal;
 import entite.Devis;
 import entite.Service;
 import facade.ClientFacadeLocal;
@@ -24,6 +25,13 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionClient implements gestionClientLocal {
+    
+    @EJB
+    private ClientFacadeLocal ClientFacade;
+    
+    
+    
+        
 
     @EJB
     private Prestation_StandardFacadeLocal prestation_StandardFacade;
@@ -44,6 +52,9 @@ public class gestionClient implements gestionClientLocal {
     // "Insert Code > Add Business Method")
 
     @Override
+    public List<Client> ListeClient() {
+        return ClientFacade.listeClient();
+    }
     public void demandeDevis(String zoneLibre, Client client, long idService) {
         Service service = serviceFacade.rechercheService(idService);
         
@@ -107,7 +118,5 @@ public class gestionClient implements gestionClientLocal {
     public List<Devis> devisAtraiter(long id) {
         return devisFacade.listDevisAtraiter(id);
     }
-    
-    
     
 }

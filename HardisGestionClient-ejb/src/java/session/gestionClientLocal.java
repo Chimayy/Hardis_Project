@@ -6,8 +6,10 @@
 package session;
 
 import entite.Client;
+
 import entite.Devis;
 import entite.Service;
+
 import java.util.List;
 import javax.ejb.Local;
 
@@ -17,6 +19,8 @@ import javax.ejb.Local;
  */
 @Local
 public interface gestionClientLocal {
+
+    List<Client> ListeClient();
 
     void demandeDevis(String zoneLibre, Client client, long idService);
 

@@ -33,5 +33,4 @@ public interface UtilisateurFacadeLocal {
     List<Utilisateur> listeUtilisateur();
 
     Utilisateur rechercheUtilisateur(long id);
-    
 }
