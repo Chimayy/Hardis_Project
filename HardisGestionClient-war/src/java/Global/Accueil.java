@@ -36,6 +36,7 @@ public class Accueil extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        String jspClient=null;
+       
         String act=request.getParameter("action");
             if((act==null)||(act.equals("vide")))
             {
