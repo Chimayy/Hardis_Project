@@ -85,7 +85,7 @@ public class ServletClient extends HttpServlet {
             else if (act.equals("visuDevis"))
             {
                 jspClient="/listDevisClient.jsp";
-                List<Devis> list = gestionClient.listeDevis();
+                List<Devis> list = gestionClient.devisAtraiter(c.getId());
                 request.setAttribute("listeDevis", list);
                 request.setAttribute("message","yo");
             }
@@ -96,6 +96,36 @@ public class ServletClient extends HttpServlet {
                 Long idDevisLong = Long.parseLong(idDevis);
                 Devis devis = gestionClient.rechercheDevis(idDevisLong);
                 request.setAttribute("devis", devis);
+                request.setAttribute("message", "et mais yo ça marche pas");
+            }
+            else if(act.equals("Accepter"))
+            {
+                jspClient="/MenuClient.jsp";
+                String idDevisString = request.getParameter("devis");
+                Long idDevisLong = Long.valueOf(idDevisString);
+                gestionClient.accepterDevisClient(idDevisLong);
+                request.setAttribute("message", "cimer pour l'acceptation, mtn propose une date");
+            }
+            else if(act.equals("Modifier"))
+            {
+                jspClient="/MenuClient.jsp";
+                String remarques = request.getParameter("zoneLibre");
+                String idDevisString = request.getParameter("devis");
+                Long idDevisLong = Long.valueOf(idDevisString);
+                String montantString = request.getParameter("montant");
+                Double montantDouble = Double.valueOf(montantString);
+                Devis devisAModifier = gestionClient.rechercheDevis(idDevisLong);
+                gestionClient.modifierDevis(remarques,montantDouble, devisAModifier );
+                request.setAttribute("message", "ceban modification du devis transmise au gestionnaire");
+            }
+            else if(act.equals("Refuser"))
+            {
+                jspClient="/MenuClient.jsp";
+                String motifRefus = request.getParameter("refus");
+                String idDevisString = request.getParameter("devis");
+                Long idDevisLong = Long.valueOf(idDevisString);
+                gestionClient.refuserDevis(idDevisLong, motifRefus);
+                request.setAttribute("message", "ceban refus c'est OK");
             }
                        
                 

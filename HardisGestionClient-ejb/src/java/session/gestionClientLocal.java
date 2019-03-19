@@ -29,5 +29,13 @@ public interface gestionClientLocal {
     List<Devis> listeDevis();
 
     Devis rechercheDevis(long idDevis);
+
+    void modifierDevis(String zoneLibre, double montant, Devis Devis);
+
+    void accepterDevisClient(long idDevis);
+
+    void refuserDevis(long idDevis, String motif);
+
+    List<Devis> devisAtraiter(long id);
     
 }

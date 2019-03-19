@@ -9,8 +9,7 @@ import entite.Client;
 import entite.Devis;
 import entite.Historique_Consultant;
 import entite.Prestation;
-import entite.Prestation_Non_Standard;
-import entite.Prestation_Standard;
+import entite.statut_Devis;
 import entite.Service;
 import entite.Utilisateur_Hardis;
 import entite.statut_Devis;
@@ -83,7 +82,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         devis.getLaPrestation().setNom_Responsable(referentLocal.getNom_Utilisateur());
         devis.getLaPrestation().setMail_Responsable(referentLocal.getMail_Connexion());
         em.persist(referent);
-        em.persist(devis);
+        em.merge(devis);
     }
 
     @Override
@@ -94,6 +93,43 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         req=req.setParameter("id", id);
         result=(Devis)req.getSingleResult();
         return result;
+    }
+
+    
+    
+    @Override
+    public void modifierDevis(double montant, Devis d, String zoneLibre) {
+        if(d.getMontant_Devis() != montant || d.getFormulaire_Client() != zoneLibre)
+        {
+            d.setMontant_Devis(montant);
+            d.setFormulaire_Client(zoneLibre);
+            d.setMotif_Refus(zoneLibre);
+            d.setStatut(statut_Devis.en_negociation);
+            em.merge(d);
+        }
+    }
+
+    @Override
+    public void accepterDevis(Devis Devis) {
+        Devis.setStatut(statut_Devis.valide);
+        em.merge(Devis);
+    }
+
+    @Override
+    public List<Devis> listDevisAtraiter(long id) {
+        String txt = "SELECT h FROM Historique_Consultant h JOIN h.leDevis d JOIN d.leClient c WHERE d.statut =:statut AND c.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);
+        req = req.setParameter("statut", statut_Devis.envoye);
+        List<Devis> liste = req.getResultList();
+        return liste;
+    }
+//, d.leClient c  AND c.Id =:id  
+    @Override
+    public void refuserDevis(Devis Devis, String motif) {
+        Devis.setMotif_Refus(motif);
+        Devis.setStatut(statut_Devis.refuse);
+        em.merge(Devis);    
     }
     
     

@@ -78,13 +78,34 @@ public class gestionClient implements gestionClientLocal {
 
     @Override
     public List<Devis> listeDevis() {
-       List<Devis> list = new ArrayList<Devis>();
-        return list = devisFacade.listeDevis();
+        return devisFacade.listeDevis();
     }
 
     @Override
     public Devis rechercheDevis(long idDevis) {
         return devisFacade.rechercheDevis(idDevis);
+    }
+
+    @Override
+    public void modifierDevis(String zoneLibre, double montant, Devis Devis) {
+        devisFacade.modifierDevis(montant, Devis, zoneLibre);
+    }
+
+    @Override
+    public void accepterDevisClient(long idDevis) {
+        Devis devisAccepte = devisFacade.rechercheDevis(idDevis);
+        devisFacade.accepterDevis(devisAccepte);
+    }
+
+    @Override
+    public void refuserDevis(long idDevis, String motif) {
+        Devis devisRefuse = devisFacade.rechercheDevis(idDevis);
+        devisFacade.refuserDevis(devisRefuse, motif);
+    }
+
+    @Override
+    public List<Devis> devisAtraiter(long id) {
+        return devisFacade.listDevisAtraiter(id);
     }
     
     

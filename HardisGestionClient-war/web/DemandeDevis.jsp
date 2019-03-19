@@ -23,7 +23,7 @@
                 <input type="text" name="idService" value="" size="80" maxlength="80"/>
                 <br/>
 
-                <input type="hidden" name="action" value="demandeDevis">
+                <input type="hidden" name="action" value="changerDevis">
             </fieldset>
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à zéro"/><br/>

@@ -40,5 +40,13 @@ public interface DevisFacadeLocal {
     void affecterDevisAuReferentLocal(Devis devis);
 
     Devis rechercheDevis(long id);
+
+    void modifierDevis(double montant, Devis d, String zoneLibre);
+
+    void accepterDevis(Devis Devis);
+
+    List<Devis> listDevisAtraiter(long id);
+
+    void refuserDevis(Devis Devis, String motif);
     
 }
