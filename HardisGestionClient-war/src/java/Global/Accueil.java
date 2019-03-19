@@ -57,7 +57,7 @@ public class Accueil extends HttpServlet {
             }
             else if ((act.equals("authentification")))
             {
-                doActionAuthentifier(request,response);
+                //doActionAuthentifier(request,response);
                 request.setAttribute("message","pas d'information");
             }
             else if (act.equals("Catalogue"))
@@ -104,7 +104,7 @@ public class Accueil extends HttpServlet {
     
     
     //Authentification de l'utilisateur
-    protected void doActionAuthentifier(HttpServletRequest request, HttpServletResponse response) 
+   /* protected void doActionAuthentifier(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");        
@@ -122,8 +122,8 @@ public class Accueil extends HttpServlet {
         if (!utilisateur.equals(null))
         {
         
-    // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
-        /*if (utilisateur instanceof entite.Client)
+     //on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
+        if (utilisateur instanceof entite.Client)
             {
                 Client utilisateur_C = (Client)utilisateur;
                 request.setAttribute("idClient", utilisateur_C.getId());
@@ -157,7 +157,7 @@ public class Accueil extends HttpServlet {
         }
 
         request.setAttribute("message", message);*/
-    }
+   
     
     
 
@@ -199,6 +199,6 @@ public class Accueil extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+ }
 
-}
 
