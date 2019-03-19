@@ -7,6 +7,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-14T16:47:31")
 
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-14T17:14:04")
@@ -17,6 +18,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 =======
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-15T17:10:48")
+>>>>>>> schellen
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-18T09:42:31")
 >>>>>>> schellen
 @StaticMetamodel(Historique_Echange.class)
 public class Historique_Echange_ { 
