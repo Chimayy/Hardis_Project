@@ -26,18 +26,21 @@
                                     connexion
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <form method="get" action="authentification">
-                                        <fieldset>
+                                    <form method="get" action="authentification" class="container">
+                                        <fieldset >
                                             <h1>Connexion</h1>
-                                            <label for="login"> Login <span class="requis">*</span></label>
-                                            <input type="text" name="login" value="" size="20" maxlength="20"/>
-                                            <br/>
-                                            <label for="pass"> Pass <span class="requis">*</span></label>
-                                            <input type="text" name="pass" value="" size="20" maxlength="20"/>
+                                            <div class="form-group">
+                                                <label for="login"> Login <span class="requis">*</span></label>
+                                                <input type="text" class="form-control" name="login" value="" size="20" maxlength="20"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pass"> Pass <span class="requis">*</span></label>
+                                                <input type="text" class="form-control" name="pass" value="" size="20" maxlength="20"/>
+                                            </div>
                                             <br/>           
                                         </fieldset>
-                                          <input type="submit" value="Valider"/>
-                                        <input type="reset" value="Remettre à zéro"/><br/>
+                                          <input class="btn btn-secondary" type="submit" value="Valider"/>
+                                        <input class="btn btn-secondary" type="reset" value="Remettre à zéro"/><br/>
                                     </form>
                                 </div>
                             </div>
@@ -48,7 +51,10 @@
         </header>
         
         <div class="container"> 
-            <div class="col-12 center"><h1> Menu utilisateur </h1></div>
+            <div class="mx-auto" style="width: 400px;">
+                <h1>Menu Principal</h1>
+            </div>
+
             <hr class="my-6">
         </div>
 
