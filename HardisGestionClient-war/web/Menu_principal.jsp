@@ -35,7 +35,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="pass"> Pass <span class="requis">*</span></label>
-                                                <input type="text" class="form-control" name="pass" value="" size="20" maxlength="20"/>
+                                                <input type="password" class="form-control" name="pass" value="" size="20" maxlength="20"/>
                                             </div>
                                             <br/>           
                                         </fieldset>
@@ -51,7 +51,7 @@
         </header>
         
         <div class="container"> 
-            <div class="mx-auto" style="width: 400px;">
+            <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
                 <h1>Menu Principal</h1>
             </div>
 
