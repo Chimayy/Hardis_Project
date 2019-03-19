@@ -33,6 +33,18 @@ public class Accueil extends HttpServlet {
 
        
  
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+   
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        String jspClient=null;
@@ -83,6 +95,8 @@ public class Accueil extends HttpServlet {
 
             out.println("</body>");
             out.println("</html>");
+            
+            
         }
         
     }
@@ -103,14 +117,13 @@ public class Accueil extends HttpServlet {
         {
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
         }
-        else {
-        utilisateur = gestionVisiteur.authentification(login,pass);
+     
         
         if (!utilisateur.equals(null))
         {
         
     // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
-        if (utilisateur instanceof entite.Client)
+        /*if (utilisateur instanceof entite.Client)
             {
                 Client utilisateur_C = (Client)utilisateur;
                 request.setAttribute("idClient", utilisateur_C.getId());
@@ -143,6 +156,8 @@ public class Accueil extends HttpServlet {
       //  request.setAttribute("idClient",client );
         }
 
+        request.setAttribute("message", message);*/
+    }
     
     
 

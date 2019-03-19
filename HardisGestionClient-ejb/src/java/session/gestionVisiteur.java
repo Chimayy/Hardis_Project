@@ -43,4 +43,7 @@ public class gestionVisiteur implements gestionVisiteurLocal {
         List<Service> liste = serviceFacade.listeService(); 
         return liste;
     }      
+      
+
+   
 }

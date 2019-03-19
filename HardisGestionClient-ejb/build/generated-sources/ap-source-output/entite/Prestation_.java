@@ -11,7 +11,20 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
+
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-19T12:28:31")
+
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-14T16:47:31")
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-14T17:14:04")
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-14T17:14:04")
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-18T11:01:56")
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-15T17:10:48")
+
 @StaticMetamodel(Prestation.class)
 public class Prestation_ { 
 
@@ -20,7 +33,6 @@ public class Prestation_ {
     public static volatile SingularAttribute<Prestation, String> nom_Responsable;
     public static volatile SingularAttribute<Prestation, String> mail_Responsable;
     public static volatile ListAttribute<Prestation, Livrable> livrables;
-    public static volatile SingularAttribute<Prestation, String> nom_Prestation;
     public static volatile SingularAttribute<Prestation, lieu_Intervention> lieu_Intervention;
     public static volatile SingularAttribute<Prestation, Service> leService;
     public static volatile SingularAttribute<Prestation, Integer> delai_Relance;

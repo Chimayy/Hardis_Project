@@ -8,6 +8,18 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-19T12:28:31")
+
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-14T16:47:31")
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-14T17:14:04")
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-14T17:14:04")
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-18T11:01:56")
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-15T17:10:48")
+
 @StaticMetamodel(Service.class)
 public class Service_ { 
 
@@ -16,5 +28,6 @@ public class Service_ {
     public static volatile SingularAttribute<Service, String> description_Service;
     public static volatile SingularAttribute<Service, Double> cout_Service;
     public static volatile SingularAttribute<Service, Long> id;
+    public static volatile SingularAttribute<Service, String> nom_Service;
 
 }

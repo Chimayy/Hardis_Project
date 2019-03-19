@@ -8,6 +8,7 @@ package session;
 import entite.Service;
 import entite.Utilisateur;
 import java.util.List;
+import entite.Utilisateur;
 import javax.ejb.Local;
 
 /**
@@ -18,5 +19,7 @@ import javax.ejb.Local;
 public interface gestionVisiteurLocal {
     Utilisateur authentification(String mail, String mdp);
     List<Service> AffichageService();
+
+    
 }
 

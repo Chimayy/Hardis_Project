@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -51,7 +52,25 @@ public class Utilisateur_Hardis extends Utilisateur implements Serializable {
     private double plafond_Delegation;
     private boolean statut_Actif;
     private profil_Technique profil_Technique;
+    @ManyToOne
+    private Agence lAgence;
 
+    public List<Historique_Consultant> getHistorique_Consultants() {
+        return historique_Consultants;
+    }
+
+    public void setHistorique_Consultants(List<Historique_Consultant> historique_Consultants) {
+        this.historique_Consultants = historique_Consultants;
+    }
+
+    public Agence getlAgence() {
+        return lAgence;
+    }
+
+    public void setlAgence(Agence lAgence) {
+        this.lAgence = lAgence;
+    }
+    
     public double getPlafond_Delegation() {
         return plafond_Delegation;
     }

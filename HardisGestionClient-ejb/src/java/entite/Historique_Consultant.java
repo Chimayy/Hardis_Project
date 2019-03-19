@@ -27,6 +27,46 @@ public class Historique_Consultant implements Serializable {
     private Utilisateur_Hardis leConsultant;
     @ManyToOne
     private Devis leDevis;
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public String getFonctionConsultant() {
+        return fonctionConsultant;
+    }
+
+    public void setFonctionConsultant(String fonctionConsultant) {
+        this.fonctionConsultant = fonctionConsultant;
+    }
+
+    public Utilisateur_Hardis getLeConsultant() {
+        return leConsultant;
+    }
+
+    public void setLeConsultant(Utilisateur_Hardis leConsultant) {
+        this.leConsultant = leConsultant;
+    }
+
+    public Devis getLeDevis() {
+        return leDevis;
+    }
+
+    public void setLeDevis(Devis leDevis) {
+        this.leDevis = leDevis;
+    }
     
     private static final long serialVersionUID = 1L;
     @Id
