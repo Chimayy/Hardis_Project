@@ -118,7 +118,11 @@ public class ServletAdmin extends HttpServlet {
             jspClient="/GestionUtilisateurHardis.jsp";
         }
         
-        if(act.equals("RechercherUtilisateurHardis"))
+        else if(act.equals("AfficherEntreprises")){
+            
+        }
+        
+        else if(act.equals("RechercherUtilisateurHardis"))
         {        
            String nom = request.getParameter("nom");
             if(!nom.trim().isEmpty()){
@@ -142,9 +146,7 @@ public class ServletAdmin extends HttpServlet {
             }
              }
         
-  
-        
-        if(act.equals("RechercherUtilisateurHardisModif"))
+        else if(act.equals("RechercherUtilisateurHardisModif"))
         {   
             String idUser = request.getParameter("idUser");
             long id = Long.parseLong(idUser);
@@ -152,15 +154,39 @@ public class ServletAdmin extends HttpServlet {
             request.setAttribute("listeUser",ListeUser);
             jspClient="/ModificationUtilisateurHardis.jsp";
         }
-        else if (act.equals("CreerUtilisateur"))
+        
+        else if(act.equals("SupprimerUtilisateurHardis"))
         {
-            jspClient = "/MenuAdmin.jsp";
+            String idUser = request.getParameter("idUser");
+            long id = Long.parseLong(idUser);
+            Utilisateur_Hardis User = gestionAdmin.recherchercherUtilisateurHardisId(id).get(0);
+            
+            if(User != null){   
+            gestionAdmin.suppressionUtilisateurHardis(id);  
+            List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
+            request.setAttribute("listeUser", listeUser);
+            jspClient="/GestionUtilisateurHardis.jsp";
+            }
+            
+            else 
+            {
+                message = "Cet utilisateur n'existe pas";
+                request.setAttribute("message", message); 
+            }
+        }
+        else if (act.equals("CreerUtilisateur"))
+        {      
+            jspClient = "/GestionUtilisateurHardis.jsp";
             creerUtilisateurHardis(request,response);
+            List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
+            request.setAttribute("listeUser", listeUser);
         }
         
         else if (act.equals("ActionModifierUtilisateur")){
-            jspClient ="/MenuAdmin.jsp";
+            jspClient ="/GestionUtilisateurHardis.jsp";
             modifierUtilisateurHardis(request,response);
+            List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
+            request.setAttribute("listeUser", listeUser);
         }
          else if (act.equals("ModifierUtilisateur"))
         {

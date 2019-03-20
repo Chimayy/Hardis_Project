@@ -79,6 +79,19 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
     }
     
     @Override
+    public Utilisateur_Hardis rechercherUtilisateurHaridsParId(long id){
+        Utilisateur_Hardis user;
+        String txt = "SELECT user FROM Utilisateur AS user WHERE user.id =:id";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("id",id);
+        List<Utilisateur_Hardis> liste = req.getResultList();
+        if(!liste.isEmpty()){
+            return liste.get(0);
+        }
+        else {return null;} 
+    }
+    
+    @Override
     public Utilisateur_Hardis rechercherUtilisateurHardisMail(String mail){
         Utilisateur_Hardis user;
         String txt = "SELECT user FROM Utilisateur AS user where user.mail_Connexion =:mail";

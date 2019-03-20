@@ -23,8 +23,6 @@ public interface gestionAdminLocal {
 
     public void modificationUtilisateurHardis(int id, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
 
-    public void suppressionUtilisateurHardis(int id);
-
     public List<Utilisateur_Hardis> affichageUtilisateursHardis();
 
     public Utilisateur_Hardis rechercheUtilisateurHardisMail(String mail);
@@ -32,5 +30,7 @@ public interface gestionAdminLocal {
     public List<Utilisateur_Hardis> rechercherUtilisateurHardisNom(String nom);
 
     public List<Utilisateur_Hardis> recherchercherUtilisateurHardisId(long id);
+
+    public void suppressionUtilisateurHardis(long id);
 
 }
