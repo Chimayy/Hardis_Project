@@ -1,0 +1,36 @@
+
+h1{
+	color:#3c3c3d;
+}
+mybtn{
+    padding-left: 500px;
+    padding-right: 500px;
+    background-color: red;
+}
+.right{
+    float:right;
+}
+.center{
+    align-content: center;
+}
+.myborders{
+    border-style: solid;
+}
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between
+}
+.nopad{
+    padding:0px;
+}
+.blur{
+     -webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-o-filter: blur(5px);
+-ms-filter: blur(5px);
+filter: blur(5px);
+}
+
+

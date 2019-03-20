@@ -12,6 +12,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form method="get" action="authentification">
+            <fieldset>
+                <h1>Connexion</h1>
+                <label for="login"> Login <span class="requis">*</span></label>
+                <input type="text" name="login" value="" size="20" maxlength="20"/>
+                <br/>
+                <label for="pass"> Pass <span class="requis">*</span></label>
+                <input type="text" name="pass" value="" size="20" maxlength="20"/>
+                <br/>           
+            </fieldset>
+              <input type="submit" value="Valider"/>
+            <input type="reset" value="Remettre à zéro"/><br/>
+        </form>
     </body>
 </html>

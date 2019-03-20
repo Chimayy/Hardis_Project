@@ -6,7 +6,8 @@ package Global;
  * and open the template in the editor.
  */
 
-import entite.Utilisateur;
+import entite.Client;
+import entite.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -16,10 +17,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import session.gestionVisiteur;
 import session.gestionVisiteurLocal;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
+import java.util.List;
 /**
  *
  * @author thoma
@@ -29,9 +30,9 @@ public class Accueil extends HttpServlet {
 
     @EJB
     private gestionVisiteurLocal gestionVisiteur;
-String jspClient=null;
-        String act= null;
+
        
+ 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,13 +47,8 @@ String jspClient=null;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        String jspClient = "/Menu_principal.jsp";
-//        RequestDispatcher Rd;
-//        String message = "Transmission de variables : OK !";
-//        request.setAttribute( "test", message );
-//        Rd = getServletContext().getRequestDispatcher(jspClient);
-//        Rd.forward(request, response);
-        act = request.getParameter("action");
+       String jspClient=null;
+       
         String act=request.getParameter("action");
             if((act==null)||(act.equals("vide")))
             {
@@ -61,18 +57,23 @@ String jspClient=null;
             }
             else if ((act.equals("authentification")))
             {
-                doActionAuthentifier(request,response);
+                //doActionAuthentifier(request,response);
                 request.setAttribute("message","pas d'information");
+            }
+            else if (act.equals("Catalogue"))
+            {
+             jspClient="/Catalogue_service.jsp";
+             List<Service> liste = gestionVisiteur.AffichageService();
+             request.setAttribute("listeService",liste);
+             
             }
             
             
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
         Rd.forward(request, response);
-        response.setContentType("text/html;charset=UTF-8");
-        
-        
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");       
+       
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -98,17 +99,19 @@ String jspClient=null;
             
         }
         
-        }
+    }
+    
+    
     
     //Authentification de l'utilisateur
-    protected void doActionAuthentifier(HttpServletRequest request, HttpServletResponse response) 
+   /* protected void doActionAuthentifier(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");        
         Utilisateur utilisateur;
         String message;
         message="";
-        
+         String jspClient=null;
         //fail de message d'erreur en cas de champs vides ==> à coriger
         if(login.trim().isEmpty()|| pass.trim().isEmpty())
         {
@@ -116,30 +119,45 @@ String jspClient=null;
         }
      
         
-    // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
-        /*if (utilisateur instanceof entite.Client)
+        if (!utilisateur.equals(null))
+        {
+        
+     //on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
+        if (utilisateur instanceof entite.Client)
             {
+                Client utilisateur_C = (Client)utilisateur;
+                request.setAttribute("idClient", utilisateur_C.getId());
                 jspClient = "MenuClient";
             }
         else if (utilisateur instanceof Utilisateur_Hardis){
             Utilisateur_Hardis utilisateur_H = (Utilisateur_Hardis)utilisateur;
             if(utilisateur_H.getProfil_Technique().toString().equals("admin"))
             {
-                jspClient="MenuAdmin";
+                jspClient="ServletAdmin.java";
             }
             else if (utilisateur_H.getProfil_Technique().toString().equals("gestionnaire"))
             {
-                jspClient="MenuGestionnaire";
+                jspClient="ServletGestionnaire.java";
             }
             else
             {
-                jspClient="MenuVisualisation";
+                jspClient="ServletVisualisation.java";
             }
             message = "utilisateur connecté";
            }
         }
+        else
+            {
+                message="utilisateur introuvable";
+            }
+        }
+        
+        request.setAttribute("message", message);
+      //  request.setAttribute("idClient",client );
+        }
+
         request.setAttribute("message", message);*/
-    }
+   
     
     
 
@@ -181,6 +199,6 @@ String jspClient=null;
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+ }
 
-}
 

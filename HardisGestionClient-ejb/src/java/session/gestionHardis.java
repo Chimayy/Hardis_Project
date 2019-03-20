@@ -23,6 +23,7 @@ import facade.UtilisateurFacadeLocal;
 import facade.Utilisateur_HardisFacadeLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import entite.Utilisateur;
 
 /**
  *
@@ -30,6 +31,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionHardis implements gestionHardisLocal {
+
+    @EJB
+    private UtilisateurFacadeLocal utilisateurFacade1;
 
     @EJB
     private Historique_EchangeFacadeLocal historique_EchangeFacade;
@@ -83,17 +87,7 @@ public class gestionHardis implements gestionHardisLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
-    @Override
-    public Utilisateur_Hardis authentif(String mail, String mdp) {
-        Utilisateur_Hardis user;
-        if(!mail.equals("") && !mdp.equals(""))
-        {
-         user = utilisateur_HardisFacade.authentification(mail, mdp);
-        }
-        else user = null;
-        return user;
     
-    }
     
     
 }

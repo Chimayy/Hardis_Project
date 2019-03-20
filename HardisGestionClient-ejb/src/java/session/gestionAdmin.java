@@ -52,14 +52,7 @@ public class gestionAdmin implements gestionAdminLocal {
         return utilisateur_HardisFacade.afficherUtilisateurs_Hardis();
     }
     
-<<<<<<< HEAD
 
-    private UtilisateurFacadeLocal utilisateurFacade;
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-
-=======
     @Override
     public Utilisateur_Hardis rechercheUtilisateurHardisMail(String mail){
         Utilisateur_Hardis user = null;
@@ -76,12 +69,9 @@ public class gestionAdmin implements gestionAdminLocal {
     public List<Utilisateur_Hardis> recherchercherUtilisateurHardisId(long id){
         return utilisateur_HardisFacade.rechercherUtilisateurHardisId(id);
     }
-<<<<<<< HEAD
->>>>>>> schellen
-=======
-    
-    public Utilisateur rechercherUtilisateurHardisParId(long id){
-        return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
-    }
->>>>>>> schellen
 }
+    
+//    public Utilisateur rechercherUtilisateurHardisParId(long id){
+//        return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
+//    }
+

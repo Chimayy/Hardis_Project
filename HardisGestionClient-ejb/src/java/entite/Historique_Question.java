@@ -25,6 +25,23 @@ public class Historique_Question implements Serializable {
     private String mot_Cle;
     @ManyToOne
     private Devis leDevis;
+    private String Reponse;
+
+    public Devis getLeDevis() {
+        return leDevis;
+    }
+
+    public void setLeDevis(Devis leDevis) {
+        this.leDevis = leDevis;
+    }
+
+    public String getReponse() {
+        return Reponse;
+    }
+
+    public void setReponse(String Reponse) {
+        this.Reponse = Reponse;
+    }
     
 
     public String getContenu_Question() {
