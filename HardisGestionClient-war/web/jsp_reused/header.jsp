@@ -6,7 +6,7 @@
 
 
     
-        <nav class="navbar navbar-default">
+        <nav class="navbar ">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <!--                   <img src="Images/Logo_Hardis_Group.png" class="rounded mx-auto d-block" alt="" max-height="10%" width="10%">  -->
