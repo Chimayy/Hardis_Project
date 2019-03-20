@@ -11,7 +11,7 @@ mybtn{
     float:right;
 }
 .center{
-    align-content: center;
+    float:center;
 }
 .myborders{
     border-style: solid;

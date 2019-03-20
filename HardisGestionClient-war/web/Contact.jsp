@@ -24,7 +24,7 @@
                             <div  style=" margin-top:1%;margin-bottom: 1%">
                                 <h1>Formulaire de demande de contact</h1>
                             </div>
-                             <hr class="my-6">
+                            <hr class="my-6">
                             <div class="form-group">
                                 <label for="nom"> Nom <span class="requis">*</span></label>
                                 <input type="text"class="form-control" name="nom" value="" size="20" maxlength="20"/>
@@ -34,11 +34,11 @@
                                 <input type="text"class="form-control" name="prenom" value="" size="20" maxlength="20"/>
                             </div>
                             <div class="form-group">
-                            <label for="numtel"> Numéro de de téléphone <span class="requis">*</span></label>
-                            <input type="text"class="form-control" name="numtel" value="" size="20" maxlenght="20"/>
+                                <label for="numtel"> Numéro de de téléphone <span class="requis">*</span></label>
+                                <input type="text"class="form-control" name="numtel" value="" size="20" maxlenght="20"/>
                             </div>
                             <div class="form-group">
-                                 <label for="noment"> Nom de votre entreprise <span class="requis">*</span></label>
+                                <label for="noment"> Nom de votre entreprise <span class="requis">*</span></label>
                                 <input type="text"class="form-control" name="noment" value="" size="20" maxlenght="20"/>
                             </div>
                             <div class="form-group">
@@ -51,13 +51,15 @@
                             </div>
 
                         </fieldset>
-                          <input class="btn btn-secondary" type="submit" value="Valider"/>
+                        <input class="btn btn-secondary" type="submit" value="Valider"/>
                         <input class="btn btn-secondary" ype="reset" value="Remettre à zéro"/><br/>
                     </form>
-                     <hr class="my-6">
-                <a class="btn btn-outline-teal right" href="Menu_principal.jsp" value="retour"> Retour </a> 
+                    <hr class="my-6">
+                    <a class="btn btn-outline-teal right" href="Menu_principal.jsp" value="retour"> Retour </a> 
                 </div>
-            </div>              
+            </div>
+        </div>
+    
 <!--                footer-->
                 <%@include file="jsp_reused/footer.jsp"%>
         </div>

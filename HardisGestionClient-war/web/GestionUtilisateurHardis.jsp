@@ -12,48 +12,77 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeUser" scope="request" class="java.util.List"></jsp:useBean>
-             <title>Utilisateurs Hardis</title>
+        <%@include file="jsp_reused/style.jsp" %>
+        <title>Utilisateurs Hardis</title>
     </head>
     <body>
-        <h1>Liste des utilisateurs Hardis</h1>
-        <p><form method ="get" action="ServletAdmin">
-        <div style="overflow-x:auto;"> 
-        <input type ="text" placeholder='Nom' name="nom" class='input'/>
-        <input class='bouton' type="submit" value="Valider"/></br>
-        <input type ="hidden" name="action" value="RechercherUtilisateurHardis">
-        <table border width="50%">
-        </p>
-        <p>
-             <a href = "CreationUtilisateurHardis.jsp"> Créer un nouvel utilisateur </a>
-        </p>
-            <tr> <td>Id</td>
-                 <td>Nom</td>
-                 <td>Prénom</td>
-                 <td>Mail</td>
-                 <td>Mot de passe</td>
-                 <td>Plafond de délégation</td>
-                 <td>Profil technique</td>
-            </tr>
-                 <% List <Utilisateur_Hardis> lesUser = listeUser;
-                 for(Utilisateur_Hardis user : lesUser){%>
-            <tr> <td Width=15%><%=user.getId()%></td>
-                 <td Width=15%><%=user.getNom_Utilisateur()%></td>
-                 <td Width=15%><%=user.getPrenom_Utilisateur()%></td>
-                 <td Width=15%><%=user.getMail_Connexion()%></td>
-                 <td Width=15%><%=user.getMot_De_Passe()%></td>
-                 <td Width=15%><%=user.getPlafond_Delegation()%></td>
-                 <td Width=15%><%=user.getProfil_Technique()%></td>
-                 <td Width=15%><a href="ServletAdmin?action=ModifierUtilisateurHardis&idUser=<%=user.getId()%>" >Modifier</a>
-                 <td Width=15%><a href="ServletAdmin?action=SupprimerUtilisateurHardis&idUser=<%=user.getId()%>">Supprimer</a>
-              <%}%>
-        </table></hr>
-        <div class='retour'>
-            <a href ="MenuAdmin.jsp"> Retour Menu </a>
+        <div class="flex-wrapper">
+            <div class="container-fluid nopad">
+                <header>
+                    <%@include file="jsp_reused/header.jsp" %>
+                </header>
+
+                <div class="container">
+                    <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
+                        <h1>Menu Administrateur</h1>
+                    </div>
+
+                    <hr class="my-6">
+
+                    <h2>Liste des utilisateurs Hardis</h2>
+                    <hr class="my-4">
+
+                    <form method ="get" action="ServletAdmin" class="form-inline">
+                        <div class="form-group mb-2">
+                            <label for="Nom User" class="sr-only">Nom de l'utilisateur</label>
+                            <input type="text" readonly class="form-control-plaintext" value="Nom de l'utilisateur">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="input nom" class="sr-only">Nom</label>
+                            <input type ="text"  name="nom" class="form-control"  >
+                        </div>
+                        <button type="submit" class="btn btn-indigo mb-2">Valider</button>
+                        <input type ="hidden" name="action" value="RechercherUtilisateurHardis"/>  
+                    </form>
+
+                    <p>
+                        <a href = "CreationUtilisateurHardis.jsp"style="margin-bottom: 20px" class='btn btn-outline-light-green right'> Créer un nouvel utilisateur </a>
+                    </p>
+                    <table class='table table-bordered'>
+                        <thead >
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Mail</th>
+                                <th>Mot de passe</th>
+                                <th>Plafond de délégation</th>
+                                <th>Profil technique</th>
+                            </tr>
+                        </thead>
+                        <% List<Utilisateur_Hardis> lesUser = listeUser;
+                            for (Utilisateur_Hardis user : lesUser) {%>
+                        <tr> <td Width=15%><%=user.getId()%></td>
+                            <td Width=15%><%=user.getNom_Utilisateur()%></td>
+                            <td Width=15%><%=user.getPrenom_Utilisateur()%></td>
+                            <td Width=15%><%=user.getMail_Connexion()%></td>
+                            <td Width=15%><%=user.getMot_De_Passe()%></td>
+                            <td Width=15%><%=user.getPlafond_Delegation()%></td>
+                            <td Width=15%><%=user.getProfil_Technique()%></td>
+                            <td Width=15%><a style="color:grey"href="ServletAdmin?action=ModifierUtilisateurHardis&idUser=<%=user.getId()%>" >Modifier</a>
+                            <td Width=15%><a style="color:grey"href="ServletAdmin?action=SupprimerUtilisateurHardis&idUser=<%=user.getId()%>">Supprimer</a>
+                                <%}%>
+                    </table>
+                    <hr class="my-6">
+                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 
+
+                    <div class="message"><% String attribut = (String) request.getAttribute("message");
+                        out.println(attribut);
+                        %></div>
+                </div>              
+            </div>
+            <%@include file="jsp_reused/footer.jsp"%>
         </div>
-        <div class="message"><% String attribut = (String)request.getAttribute("message");
-        out.println(attribut);
-        %></div>
-      
-        </form>
+        <%@include file="jsp_reused/javascript.jsp"%>
     </body>
 </html>

@@ -38,5 +38,6 @@
         
         <!--pages de script-->
         <%@include file="jsp_reused/javascript.jsp"%>
+        
     </body>
 </html>
