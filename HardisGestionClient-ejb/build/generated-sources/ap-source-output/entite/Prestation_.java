@@ -13,6 +13,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-14T16:47:31")
 
@@ -27,6 +28,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 >>>>>>> schellen
 =======
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-18T09:42:31")
+>>>>>>> schellen
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-19T18:20:53")
 >>>>>>> schellen
 @StaticMetamodel(Prestation.class)
 public class Prestation_ { 
