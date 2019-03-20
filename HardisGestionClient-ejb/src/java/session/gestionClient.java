@@ -56,7 +56,7 @@ public class gestionClient implements gestionClientLocal {
         return ClientFacade.listeClient();
     }
     public void demandeDevis(String zoneLibre, Client client, long idService) {
-        Service service = serviceFacade.rechercheService(idService);
+        Service service = serviceFacade.rechercheService(idService).get(0);
         
         //si le service fait partie de la liste des services standards, on lie le brouillon de devis à une nouvelle prestation standard
         if(service.getNom_Service().equals("prestation standard")||service.getNom_Service().equals("prestation standard 2"))

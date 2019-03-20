@@ -26,6 +26,15 @@ public class Utilisateur implements Serializable {
     private String mail_Connexion;
     private String nom_Utilisateur;
     private String prenom_Utilisateur;
+    private String DType;
+
+    public String getDType() {
+        return DType;
+    }
+
+    public void setDType(String DType) {
+        this.DType = DType;
+    }
 
     public Consentement_RGPD getLeConsentement() {
         return leConsentement;

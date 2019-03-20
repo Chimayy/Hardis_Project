@@ -37,9 +37,9 @@ public interface EntrepriseFacadeLocal {
 
     void creerEntreprise(String cp, String nom, String siret, String rue, String ville, Agence agence);
 
-<<<<<<< HEAD
+
     void entreprisePersist(Object o);
-=======
+
     public Entreprise rechercherEntrepriseParSiret(String siret);
 
     public List<Entreprise> rechercherEntrepriseParNom(String nom);
@@ -49,6 +49,6 @@ public interface EntrepriseFacadeLocal {
     public void modifierEntreprise(Entreprise ent, String nom, String siret, String cp, String adresse, String ville, Agence agence);
 
     public List<Entreprise> rechercherEntrepriseParAgence(Agence agence);
->>>>>>> schellen
+
     
 }

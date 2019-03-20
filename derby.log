@@ -1,9 +1,23 @@
-Fri Mar 15 11:23:44 CET 2019 : Apache Derby Network Server - 10.11.1.2 - (1629631) démarré et prêt à accepter les connexions sur le port 1527
+
+b5b3d187c388aba43b2d9c8859de8202e0c08f13
+Fri Mar 15 11:23:44 CET 2019 : Apache Derby Network Server - 10.11.1.2 - (1629631) dï¿½marrï¿½ et prï¿½t ï¿½ accepter les connexions sur le port 1527
 ----------------------------------------------------------------
 Fri Mar 15 11:25:21 CET 2019:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631) : instance a816c00e-0169-80e0-f34a-ffffbcc6d501 
-dans le répertoire de base de données C:\Users\Utilisateur\Desktop\Hardis_Project\Hardis_Client avec le chargeur de classe sun.misc.Launcher$AppClassLoader@1d44bcfa
-Chargé de file:/C:/Program%20Files/Java/jdk1.8.0_151/db/lib/derby.jar
+Amorï¿½age de Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631) : instance a816c00e-0169-80e0-f34a-ffffbcc6d501 
+
+Mon Mar 18 08:34:26 CET 2019 : Apache Derby Network Server - 10.11.1.2 - (1629631) dï¿½marrï¿½ et prï¿½t ï¿½ accepter les connexions sur le port 1527
+----------------------------------------------------------------
+Mon Mar 18 08:36:38 CET 2019:
+Amorï¿½age de Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631) : instance a816c00e-0169-8fb9-075c-ffffbcc6d501 
+
+Tue Mar 19 08:38:12 CET 2019 : Apache Derby Network Server - 10.11.1.2 - (1629631) dï¿½marrï¿½ et prï¿½t ï¿½ accepter les connexions sur le port 1527
+----------------------------------------------------------------
+Tue Mar 19 08:39:21 CET 2019:
+Amorï¿½age de Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631) : instance a816c00e-0169-94e2-d61d-ffffbcc6d501 
+>>>>>>> schellen
+>>>>>>> b5b3d187c388aba43b2d9c8859de8202e0c08f13
+dans le rï¿½pertoire de base de donnï¿½es C:\Users\Utilisateur\Desktop\Hardis_Project\Hardis_Client avec le chargeur de classe sun.misc.Launcher$AppClassLoader@1d44bcfa
+Chargï¿½ de file:/C:/Program%20Files/Java/jdk1.8.0_151/db/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_151-b12
 user.dir=C:\Program Files\Java\jdk1.8.0_151\db
@@ -11,12 +25,12 @@ os.name=Windows 10
 os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Utilisateur\Desktop\Hardis_Project
-Chargeur de classe de la base de données démarré - derby.database.classpath = ''
+Chargeur de classe de la base de donnï¿½es dï¿½marrï¿½ - derby.database.classpath = ''
 ----------------------------------------------------------------
 Fri Mar 15 15:09:01 CET 2019:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631) : instance 71a988c4-0169-80e0-f34a-ffffbcc6d501 
-dans le répertoire de base de données C:\Users\Utilisateur\Desktop\Hardis_Project\DBfoot avec le chargeur de classe sun.misc.Launcher$AppClassLoader@1d44bcfa
-Chargé de file:/C:/Program%20Files/Java/jdk1.8.0_151/db/lib/derby.jar
+Amorï¿½age de Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631) : instance 71a988c4-0169-80e0-f34a-ffffbcc6d501 
+dans le rï¿½pertoire de base de donnï¿½es C:\Users\Utilisateur\Desktop\Hardis_Project\DBfoot avec le chargeur de classe sun.misc.Launcher$AppClassLoader@1d44bcfa
+Chargï¿½ de file:/C:/Program%20Files/Java/jdk1.8.0_151/db/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_151-b12
 user.dir=C:\Program Files\Java\jdk1.8.0_151\db
@@ -24,4 +38,4 @@ os.name=Windows 10
 os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Utilisateur\Desktop\Hardis_Project
-Chargeur de classe de la base de données démarré - derby.database.classpath = ''
+Chargeur de classe de la base de donnï¿½es dï¿½marrï¿½ - derby.database.classpath = ''

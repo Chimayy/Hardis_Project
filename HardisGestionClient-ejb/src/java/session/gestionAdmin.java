@@ -5,11 +5,10 @@
  */
 package session;
 
-<<<<<<< HEAD
 
-=======
+
 import entite.Agence;
->>>>>>> schellen
+
 import entite.Consentement_RGPD;
 import entite.Entreprise;
 import entite.Offre;
@@ -160,26 +159,22 @@ public class gestionAdmin implements gestionAdminLocal {
     public List<Utilisateur_Hardis> recherchercherUtilisateurHardisId(long id){
         return utilisateur_HardisFacade.rechercherUtilisateurHardisId(id);
     }
-<<<<<<< HEAD
-}
+
+
     
 //    public Utilisateur rechercherUtilisateurHardisParId(long id){
 //        return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
 //    }
 
-=======
-<<<<<<< HEAD
->>>>>>> schellen
-=======
+
     
     @Override
     public Utilisateur rechercherUtilisateurHardisParId(long id){
         return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
     }
-<<<<<<< HEAD
->>>>>>> schellen
-}
-=======
+
+
+
     
     @Override
     public Entreprise rechercherEntrepriseParSiret(String siret){
@@ -221,5 +216,4 @@ public class gestionAdmin implements gestionAdminLocal {
         return serviceFacade.rechercheService(id);
     }
 }  
->>>>>>> schellen
->>>>>>> b5b3d187c388aba43b2d9c8859de8202e0c08f13
+

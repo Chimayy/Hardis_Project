@@ -119,8 +119,9 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
     @Override
     public List<Utilisateur_Hardis> afficherUtilisateurs_Hardis(){
         List<Utilisateur_Hardis> user = new ArrayList<Utilisateur_Hardis>();
-        String text ="SELECT user FROM Utilisateur AS user";
+        String text ="SELECT user FROM Utilisateur AS user WHERE user.DType =:cat";     
         Query req = getEntityManager().createQuery(text);
+        req.setParameter("cat","Utilisateur_Hardis");
         user = (List<Utilisateur_Hardis>)req.getResultList();
         return user;
     }
