@@ -32,8 +32,7 @@ public interface OffreFacadeLocal {
 
     List<Offre> listeOffre();
 
-    Offre rechercheOffre(long id);
+    List<Offre> rechercheOffre(long id);
 
-    void creerOffre(String description, String nom);
-    
+    void creerOffre(String description, String nom);    
 }
