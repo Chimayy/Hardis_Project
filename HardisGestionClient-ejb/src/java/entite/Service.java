@@ -46,6 +46,7 @@ public class Service implements Serializable {
     private double cout_Service;
     @ManyToOne
     private Offre lOffre;
+<<<<<<< HEAD
 
     public String getNom_Service() {
         return nom_Service;
@@ -54,6 +55,9 @@ public class Service implements Serializable {
     public void setNom_Service(String nom_Service) {
         this.nom_Service = nom_Service;
     }
+=======
+    private String nom_Service;
+>>>>>>> schellen
     
 
     public String getDescription_Service() {
@@ -71,8 +75,15 @@ public class Service implements Serializable {
     public void setCout_Service(double cout_Service) {
         this.cout_Service = cout_Service;
     }
- 
-    
+
+    public String getNom_Service() {
+        return nom_Service;
+    }
+
+    public void setNom_Service(String nom_Service) {
+        this.nom_Service = nom_Service;
+    }
+      
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

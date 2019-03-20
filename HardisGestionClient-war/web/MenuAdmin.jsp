@@ -17,6 +17,8 @@
         <div clas='menu'>  
             <div class="menubis"><a href ="ServletAdmin?action=AfficherUtilisateursHardis"> Gestion des utilisateurs Hardis </a></div>
             <div class="menubis"><a href ="ServletAdmin?action=AfficherEntreprises"> Gestion des entreprises </a></div>
+            <div class="menubis"><a href="ServletAdmin?action=AfficherAgences"> Gestion des agences </a></div>
+            <div class="menubis"><a href="ServletAdmin?action=AfficherServices"> Gestion des services </a></div>
             </div>
         </p>
         <div class="retour">

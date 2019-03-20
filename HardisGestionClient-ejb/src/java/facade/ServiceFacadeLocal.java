@@ -5,6 +5,7 @@
  */
 package facade;
 
+import entite.Offre;
 import entite.Service;
 import java.util.List;
 import javax.ejb.Local;
@@ -32,8 +33,12 @@ public interface ServiceFacadeLocal {
 
     List<Service> listeService();
 
-    Service rechercheService(long id);
+    List<Service> rechercheService(long id);
 
-    void creerService(String description_Service, double cout_Service);
+    public void creerService(String description_Service, String nom, double cout_Service, Offre offre);
+
+    public void modifierService(Service service, String description, String nom, double cout, Offre offre);
+
+    public void supprimerService(Service service);
     
 }

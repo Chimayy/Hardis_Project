@@ -17,40 +17,29 @@
     </head>
     <body>
         <h1>Modifier un utilisateur</h1>
-        <% List<Utilisateur> leUser = listeUser;%>
-        <form method ="get" action="ServletAdmin">     
-           <div class="input1">
-           </br>   
-           <div class ='input2'>  
-           <label for="User" class='textinput'> Utilisateurs : </label>
-                <select name="idUser" class='custom-dropdown__select custom-dropdown__select--white'>
-                    <% for (Utilisateur user : leUser ){%>
-                    <option value="<%=user.getId()%>"><%=user.getNom_Utilisateur()%><%=" "%><%=user.getPrenom_Utilisateur()%>
-                    </option>
-                    <%}%>
-                </select> 
-                <input type ="hidden" name="action" value="RechercherUtilisateurHardisModif">
-                <input class='bouton' type="submit" value="Valider"/></br
-            </div>
+        <% List<Utilisateur_Hardis> leUser = listeUser;%>
             <div class="input1">
-            </br>
-                <% for (Utilisateur user : leUser) {%>
-                <input type ="text" name="nom" value="<%=user.getNom_Utilisateur()%>" class='input'/>
-                <input type ="text" name="prenom" class='input'/>
-                <input type ="text" name="mail" class='input'/>
-                <input type ="text" name="motdepasse" class='input'/>
-                <input type ="text" name='plafond' classe='input' class='input'/></br>
-                <%}%>
-                </select></br>
-                 <a> Profil Technique </a><select name="profil" size="1">
+                <% for (Utilisateur_Hardis user : leUser) {%>
+                <form method ="get" action="ServletAdmin">
+                <input type="hidden" name="id" value="<%=user.getId()%>" class='input'/>
+                <p> Nom : <input type ="text" name="nom" value="<%=user.getNom_Utilisateur()%>" class='input'/></p>
+                <p> Prénom : <input type ="text" name="prenom" value="<%=user.getPrenom_Utilisateur()%>" class='input'/></p>
+                <p> Mail : <input type ="text" name="mail" value="<%=user.getMail_Connexion()%>" class='input'/></p>
+                <p> Mot de passe : <input type ="text" name="motdepasse" value="<%=user.getMot_De_Passe()%>" class='input'/></P>
+                <p> Plafond de délégation : <input type ="text" name="plafond" value="<%=user.getPlafond_Delegation()%>"class='input'/></p>
+              
+                </select>
+                 <a> Profil technique </a><select name="profil" size="1">
                     <option> administrateur
                     <option> gestionnaire
                     <option> visualisation        
                 </select>
-                <input type ="hidden" name="action" value="ActionModifierUtilisateur">         
+          
             </div>
             <div class='bouton1'>
             </br>
+            <input type ="hidden" name="action" value="ActionModifierUtilisateur"/>     
+            <%}%>
             <input  class='bouton' type="submit" value="Valider"/>
             <input  class='bouton'type="reset" value="Effacer"/>       
             </div>
