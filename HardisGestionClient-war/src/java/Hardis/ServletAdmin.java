@@ -138,7 +138,7 @@ public class ServletAdmin extends HttpServlet {
         
         if (cout_offre.trim().trim().isEmpty()||nom.trim().isEmpty()||description.trim().isEmpty()||idOffre.trim().isEmpty())              
         {
-            message = "Erreur, vous n'avez pas rempli tous les champs pour créer une agence";
+            message = "Erreur, vous n'avez pas rempli tous les champs pour créer un service";
         }
        
         else {
@@ -147,6 +147,31 @@ public class ServletAdmin extends HttpServlet {
             Offre offre = gestionAdmin.rechercherOffreParId(id).get(0);
             gestionAdmin.creationService(description, nom, cout, offre);
             message = "Service créé avec succès !";          
+        }
+        request.setAttribute("message", message);
+    }
+    
+    protected void creerOffre(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String description = request.getParameter("description");
+        String nom = request.getParameter("nom");
+        Offre offre = gestionAdmin.rechercherOffreParNom(nom);
+        String message;
+        
+        if (description.trim().trim().isEmpty()||nom.trim().isEmpty())            
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs pour créer une offre";
+        }
+        
+        else if(offre !=null){
+            
+            message = "Erreur, cette offre existe déjà";
+        }
+       
+        else {
+            gestionAdmin.creationOffre(description, nom);
+            message = "Offre créée avec succès !";          
         }
         request.setAttribute("message", message);
     }
@@ -297,6 +322,13 @@ public class ServletAdmin extends HttpServlet {
             jspClient="/GestionService.jsp";
         }
         
+        else if(act.equals("AfficherOffres")){
+            List<Offre> listeOffre = gestionAdmin.affichageOffres();
+            request.setAttribute("listeOffre", listeOffre);
+            jspClient="/GestionOffre.jsp";
+        }
+        
+        
         else if(act.equals("RechercherUtilisateurHardis"))
         {        
            String nom = request.getParameter("nom");
@@ -326,6 +358,29 @@ public class ServletAdmin extends HttpServlet {
             String nom = request.getParameter("nom");
             if(!nom.trim().isEmpty()){
             List <Entreprise> listeEnt  = gestionAdmin.rechercherEntrepriseParNom(nom);
+                if(listeEnt.size()>0){
+            request.setAttribute("listeEnt", listeEnt);
+            jspClient="/GestionEntreprise.jsp";
+                }
+                else{
+                List <Entreprise> listeEnt2  = gestionAdmin.affichageEntreprises();
+                request.setAttribute("listeEnt", listeEnt2);
+                jspClient="/GestionEntreprise.jsp";
+                }                    
+            }
+            else{
+            List <Entreprise> listeEnt2  = gestionAdmin.affichageEntreprises();
+            request.setAttribute("listeEnt", listeEnt2);
+            jspClient="/GestionEntreprise.jsp";
+            message = "Veuillez rentrer une valeur";
+            request.setAttribute("message", message);  
+            }
+        }
+          else if(act.equals("RechercherOffre"))
+        {        
+            String nom = request.getParameter("nom");
+            if(!nom.trim().isEmpty()){
+            List <Offre> listeEnt  = gestionAdmin.rechercherListeOffreParNom(nom);
                 if(listeEnt.size()>0){
             request.setAttribute("listeEnt", listeEnt);
             jspClient="/GestionEntreprise.jsp";
@@ -451,6 +506,13 @@ public class ServletAdmin extends HttpServlet {
             request.setAttribute("listeServ", listeServ);
         }
         
+        else if (act.equals("CreerOffre"))
+        {      
+            jspClient = "/GestionOffre.jsp";
+            creerOffre(request,response);
+            List <Offre> listeOffre = gestionAdmin.affichageOffres();
+            request.setAttribute("listeOffre", listeOffre);
+        }
         
          else if (act.equals("CreationEntreprise"))
         {      
@@ -532,6 +594,15 @@ public class ServletAdmin extends HttpServlet {
             List <Service> listeServ = gestionAdmin.rechercherServiceParId(id);
             request.setAttribute("listeServ", listeServ);
             jspClient="/ModificationService.jsp";
+        }
+        
+         else if (act.equals("ModifierOffre"))
+        {   
+            String idOffre = request.getParameter("idOffre");
+            long id = Long.parseLong(idOffre);
+            List <Offre> listeOffre = gestionAdmin.rechercherOffreParId(id);
+            request.setAttribute("listeOffre", listeOffre);
+            jspClient="/ModificationOffre.jsp";
         }
          
          else if(act.isEmpty()){

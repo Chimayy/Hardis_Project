@@ -79,4 +79,10 @@ public interface gestionAdminLocal {
 
     public void modificationService(long id, String nom, String description, double cout, Offre offre);
 
+    public void creationOffre(String description, String nom);
+
+    public Offre rechercherOffreParNom(String nom);
+
+    public List<Offre> rechercherListeOffreParNom(String nom);
+
 }

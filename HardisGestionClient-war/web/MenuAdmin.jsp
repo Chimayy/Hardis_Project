@@ -19,6 +19,7 @@
             <div class="menubis"><a href ="ServletAdmin?action=AfficherEntreprises"> Gestion des entreprises </a></div>
             <div class="menubis"><a href="ServletAdmin?action=AfficherAgences"> Gestion des agences </a></div>
             <div class="menubis"><a href="ServletAdmin?action=AfficherServices"> Gestion des services </a></div>
+            <div class="menubis"><a href="ServletAdmin?action=AfficherOffres"> Gestion des offres </a></div>
             </div>
         </p>
         <div class="retour">
