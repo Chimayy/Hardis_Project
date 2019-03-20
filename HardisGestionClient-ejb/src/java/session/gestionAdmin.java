@@ -69,16 +69,9 @@ public class gestionAdmin implements gestionAdminLocal {
     public List<Utilisateur_Hardis> recherchercherUtilisateurHardisId(long id){
         return utilisateur_HardisFacade.rechercherUtilisateurHardisId(id);
     }
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> schellen
-=======
-    
-    public Utilisateur rechercherUtilisateurHardisParId(long id){
-        return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
-    }
->>>>>>> schellen
->>>>>>> MasterCopie2
 }
+    
+//    public Utilisateur rechercherUtilisateurHardisParId(long id){
+//        return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
+//    }
+
