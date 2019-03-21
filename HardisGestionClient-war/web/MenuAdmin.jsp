@@ -13,6 +13,7 @@
         <title>Menu Administrateur</title>
     </head>
     <body>
+<<<<<<< HEAD
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
@@ -33,6 +34,16 @@
                      <hr class="my-6">
                                         
                 </div>
+=======
+        <h1>Menu Administrateur</h1>
+        <p> 
+        <div clas='menu'>  
+            <div class="menubis"><a href ="ServletAdmin?action=AfficherUtilisateursHardis"> Gestion des utilisateurs Hardis </a></div>
+            <div class="menubis"><a href ="ServletAdmin?action=AfficherEntreprises"> Gestion des entreprises </a></div>
+            <div class="menubis"><a href="ServletAdmin?action=AfficherAgences"> Gestion des agences </a></div>
+            <div class="menubis"><a href="ServletAdmin?action=AfficherServices"> Gestion des services </a></div>
+            <div class="menubis"><a href="ServletAdmin?action=AfficherOffres"> Gestion des offres </a></div>
+>>>>>>> schellen
             </div>
                 <%@include file="jsp_reused/footer.jsp"%>
         </div>

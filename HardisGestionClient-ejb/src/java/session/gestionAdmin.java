@@ -49,8 +49,6 @@ public class gestionAdmin implements gestionAdminLocal {
     @EJB
     private Utilisateur_HardisFacadeLocal utilisateur_HardisFacade;
 
-    @EJB
-    private UtilisateurFacadeLocal utilisateurFacade;
      
     @Override
     public void creationUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif){
@@ -70,6 +68,11 @@ public class gestionAdmin implements gestionAdminLocal {
     @Override
     public void creationService(String description, String nom, double cout, Offre offre){
         serviceFacade.creerService(description, nom, cout, offre);
+    }
+    
+    @Override
+    public void creationOffre(String description, String nom){
+        offreFacade.creerOffre(description, nom);
     }
             
     @Override
@@ -214,6 +217,16 @@ public class gestionAdmin implements gestionAdminLocal {
     @Override
     public List<Service> rechercherServiceParId(long id){
         return serviceFacade.rechercheService(id);
+    }
+    
+    @Override
+    public Offre rechercherOffreParNom(String nom){
+        return offreFacade.rechercheOffreNom(nom);
+    }
+    
+    @Override
+    public List<Offre> rechercherListeOffreParNom(String nom){
+        return offreFacade.rechercherListeOffreNom(nom);
     }
 }  
 

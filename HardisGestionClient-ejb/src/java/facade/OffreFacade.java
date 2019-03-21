@@ -47,6 +47,30 @@ public class OffreFacade extends AbstractFacade<Offre> implements OffreFacadeLoc
         List<Offre> liste = req.getResultList();
         return liste;
     }
+    
+    @Override
+    public List<Offre> rechercherListeOffreNom(String nom){
+        String txt = "SELECT o FROM Offre AS o WHERE o.nom_Ofre =:nom";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", nom);
+        List<Offre> liste = req.getResultList();
+        if(liste!=null){
+            return liste;
+        }
+        else{return null;}
+    }
+    
+    @Override
+    public Offre rechercheOffreNom(String nom){
+        String txt = "SELECT o FROM Offre AS o WHERE o.nom_Offre=:nom";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", nom);
+        List<Offre> liste = req.getResultList();
+        if(!liste.isEmpty()){
+            return liste.get(0);
+        }
+        else {return null;} 
+    }
 
     @Override
     public void creerOffre(String description, String nom) {
@@ -55,7 +79,5 @@ public class OffreFacade extends AbstractFacade<Offre> implements OffreFacadeLoc
         offreACreer.setNom_Offre(nom);
         em.persist(offreACreer);
     }
-    
-    
-    
+       
 }

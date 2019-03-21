@@ -11,10 +11,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Modifier une entreprise</title>
+    <title>Modifier une agence</title>
     </head>
     <body>
-        <h1>Modifier un entreprise</h1>
+        <h1>Modifier une agence</h1>
         <% List<Agence> lesAgences = listeAgence;%>
             <div class="input1">
                 <% for (Agence agence : lesAgences) {%>
