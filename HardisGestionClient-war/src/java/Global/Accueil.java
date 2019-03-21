@@ -114,34 +114,34 @@ String jspClient=null;
         {
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires.";
         }
-        else {
-        utilisateur = gestionVisiteur.authentification(login,pass);
-        
-    // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
-        if (utilisateur instanceof entite.Client)
-            {
-                jspClient = "MenuClient";
-            }
-        else if (utilisateur instanceof Utilisateur_Hardis){
-            Utilisateur_Hardis utilisateur_H = (Utilisateur_Hardis)utilisateur;
-            if(utilisateur_H.getProfil_Technique().toString().equals("admin"))
-            {
-                jspClient="MenuAdmin";
-            }
-            else if (utilisateur_H.getProfil_Technique().toString().equals("gestionnaire"))
-            {
-                jspClient="MenuGestionnaire";
-            }
-            else
-            {
-                jspClient="MenuVisualisation";
-            }
-            message = "utilisateur connecté";
-           }
-        }
-        request.setAttribute("message", message);
-        }
-    
+//        else {
+//        utilisateur = gestionVisiteur.authentification(login,pass);
+//        
+//    // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
+//        if (utilisateur instanceof entite.Client)
+//            {
+//                jspClient = "MenuClient";
+//            }
+//        else if (utilisateur instanceof Utilisateur_Hardis){
+//            Utilisateur_Hardis utilisateur_H = (Utilisateur_Hardis)utilisateur;
+//            if(utilisateur_H.getProfil_Technique().toString().equals("admin"))
+//            {
+//                jspClient="MenuAdmin";
+//            }
+//            else if (utilisateur_H.getProfil_Technique().toString().equals("gestionnaire"))
+//            {
+//                jspClient="MenuGestionnaire";
+//            }
+//            else
+//            {
+//                jspClient="MenuVisualisation";
+//            }
+//            message = "utilisateur connecté";
+//           }
+//        }
+//        request.setAttribute("message", message);
+//        }
+//    
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -152,7 +152,7 @@ String jspClient=null;
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     */
+     */}
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

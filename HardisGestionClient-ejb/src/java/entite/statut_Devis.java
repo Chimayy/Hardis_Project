@@ -12,5 +12,5 @@ package entite;
  * @author thoma
  */
 public enum statut_Devis {
-   incomplet, en_cours, envoye, valide, refuse, en_negociation,  acompte_regle, prestation_termine, 
+   a_affecter,a_traiter,envoye,incomplet,valide,refuse,en_negociation, 
 }

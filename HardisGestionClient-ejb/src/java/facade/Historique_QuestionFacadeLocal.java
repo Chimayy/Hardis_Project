@@ -33,5 +33,9 @@ public interface Historique_QuestionFacadeLocal {
     List<Historique_Question> listeQuestion();
 
     List<Historique_Question> rechercherQuestionUser(long id);
+
+    Historique_Question RechercheQuestion(long id);
+
+    void setReponse(long id,String reponse);
     
 }

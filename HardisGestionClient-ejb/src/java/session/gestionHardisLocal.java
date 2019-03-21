@@ -5,7 +5,10 @@
  */
 package session;
 
+import entite.Devis;
+import entite.Historique_Question;
 import entite.Utilisateur_Hardis;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -16,5 +19,13 @@ import javax.ejb.Local;
 public interface gestionHardisLocal {
 
     Utilisateur_Hardis authentif(String mail, String mdp);
+
+    List listeDevis();
+
+    List ListeQuestion(Devis d);
+
+    Historique_Question RechercheQuestion(long id);
+
+    void setReponse(long id, String reponse);
     
 }

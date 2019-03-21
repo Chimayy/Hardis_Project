@@ -53,7 +53,7 @@ public class gestionAdmin implements gestionAdminLocal {
     }
     
 
-    private UtilisateurFacadeLocal utilisateurFacade;
+    
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

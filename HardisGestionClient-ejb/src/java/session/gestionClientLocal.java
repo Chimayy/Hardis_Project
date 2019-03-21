@@ -9,6 +9,7 @@ import entite.Client;
 
 import entite.Devis;
 import entite.Service;
+import java.util.Date;
 
 import java.util.List;
 import javax.ejb.Local;
@@ -22,9 +23,9 @@ public interface gestionClientLocal {
 
     List<Client> ListeClient();
 
-<<<<<<< HEAD
+
     Client RechercheClient(Long id);
-=======
+
     void demandeDevis(String zoneLibre, Client client, long idService);
 
     void affecterDevisReferentLocal(long idDevis);
@@ -36,6 +37,9 @@ public interface gestionClientLocal {
     List<Devis> listeDevis();
 
     Devis rechercheDevis(long idDevis);
->>>>>>> MasterCopie2
-    
+
+    void ModifDevisA_traiter(long id, int montant);
+
+    void ModifDevisEn_negociation(long id, int montant, Date dateinter);
+
 }
