@@ -45,7 +45,7 @@
                 <input type="hidden" name="action" value="ValiderDevis">
                 <td width=15%><input type="submit"  value="Valider le devis"></td> <%}%>
                     <% if (d.getStatut() == statut_Devis.a_traiter) {
-                            x = 1;%>                      
+                            x = 1;%>                       
                 <input type="hidden" name="action" value="EnvoyerDevis">
                 <td width=15%><input type="submit" value="Envoyer le devis"></td> <%}%>               
 
