@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> exilessmath
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -154,7 +151,7 @@ public class ServletAdmin extends HttpServlet {
         }
         request.setAttribute("message", message);
     }
-<<<<<<< HEAD
+
     
     protected void creerOffre(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
@@ -633,8 +630,7 @@ public class ServletAdmin extends HttpServlet {
             out.println("</html>");
         }
     }
-=======
->>>>>>> exilessmath
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -645,11 +641,9 @@ public class ServletAdmin extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-<<<<<<< HEAD
+
     @Override
-=======
-   
->>>>>>> exilessmath
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -663,11 +657,9 @@ public class ServletAdmin extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-<<<<<<< HEAD
+
     @Override
-=======
-    
->>>>>>> exilessmath
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -678,18 +670,16 @@ public class ServletAdmin extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-<<<<<<< HEAD
+
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
-}
-=======
+
+
    
-    public String getServletInfo() {
-        return "Short description";
-    }}
+    }
 
 
 /*
@@ -697,4 +687,3 @@ public class ServletAdmin extends HttpServlet {
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
->>>>>>> exilessmath

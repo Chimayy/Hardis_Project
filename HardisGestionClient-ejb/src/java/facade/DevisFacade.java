@@ -8,20 +8,18 @@ import entite.Agence;
 import entite.Client;
 import entite.Devis;
 import entite.Historique_Consultant;
-<<<<<<< HEAD
-=======
+
 import entite.Historique_Question;
->>>>>>> exilessmath
+
 import entite.Prestation;
 import entite.Prestation_Non_Standard;
 import entite.Prestation_Standard;
 import entite.Service;
 import entite.Utilisateur_Hardis;
 import entite.statut_Devis;
-<<<<<<< HEAD
-=======
+
 import java.util.Date;
->>>>>>> exilessmath
+
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -62,11 +60,9 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         Devis brouillonDevisClient = new Devis();
         brouillonDevisClient.setLeClient(Client);
         brouillonDevisClient.setFormulaire_Client(zoneLibre);
-<<<<<<< HEAD
-        brouillonDevisClient.setStatut(statut_Devis.en_cours);
-=======
+
         brouillonDevisClient.setStatut(statut_Devis.a_affecter);
->>>>>>> exilessmath
+
         em.persist(brouillonDevisClient);
     }
 
@@ -107,9 +103,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         result=(Devis)req.getSingleResult();
         return result;
     }
-<<<<<<< HEAD
-    
-=======
+
 
     @Override
     public List ListeQuestions(Devis d) {
@@ -142,15 +136,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
     }
 
     
-     
->>>>>>> exilessmath
-    
-    
-    
-    
-<<<<<<< HEAD
-}
-=======
-    
 
->>>>>>> exilessmath
+    
+    
+    

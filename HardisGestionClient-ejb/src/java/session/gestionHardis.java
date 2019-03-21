@@ -38,14 +38,14 @@ import entite.Utilisateur;
 public class gestionHardis implements gestionHardisLocal {
 
     @EJB
-<<<<<<< HEAD
+
     private UtilisateurFacadeLocal utilisateurFacade1;
-=======
+
     private Historique_QuestionFacadeLocal historique_QuestionFacade;
 
     @EJB
     private DevisFacadeLocal devisFacade1;
->>>>>>> exilessmath
+
 
     @EJB
     private Historique_EchangeFacadeLocal historique_EchangeFacade;
@@ -99,10 +99,9 @@ public class gestionHardis implements gestionHardisLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+
+
     
-<<<<<<< HEAD
-=======
-    }
 
     @Override
     public List listeDevis() {
@@ -123,7 +122,7 @@ public class gestionHardis implements gestionHardisLocal {
     public void setReponse(long id, String reponse) {
         historique_QuestionFacade.setReponse(id, reponse);
     }
->>>>>>> exilessmath
+
     
     
 }

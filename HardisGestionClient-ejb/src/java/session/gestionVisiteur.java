@@ -27,7 +27,7 @@ public class gestionVisiteur implements gestionVisiteurLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
-<<<<<<< HEAD
+
     public Utilisateur authentification(String mail, String mdp) {
         Utilisateur user;
         if(!mail.equals("") && !mdp.equals(""))
@@ -45,12 +45,11 @@ public class gestionVisiteur implements gestionVisiteurLocal {
         return liste;
     }      
       
-=======
-   
+
    
 
     
->>>>>>> exilessmath
+
 
    
 }

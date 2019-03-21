@@ -5,14 +5,14 @@
  */
 package session;
 
-<<<<<<< HEAD
+
 import entite.Utilisateur;
-=======
+
 import entite.Devis;
 import entite.Historique_Question;
 import entite.Utilisateur_Hardis;
 import java.util.List;
->>>>>>> exilessmath
+
 import javax.ejb.Local;
 
 /**
@@ -22,10 +22,8 @@ import javax.ejb.Local;
 @Local
 public interface gestionHardisLocal {
 
-<<<<<<< HEAD
-    
-=======
-    Utilisateur_Hardis authentif(String mail, String mdp);
+
+//    Utilisateur_Hardis authentif(String mail, String mdp);
 
     List listeDevis();
 
@@ -34,6 +32,6 @@ public interface gestionHardisLocal {
     Historique_Question RechercheQuestion(long id);
 
     void setReponse(long id, String reponse);
->>>>>>> exilessmath
+
     
 }

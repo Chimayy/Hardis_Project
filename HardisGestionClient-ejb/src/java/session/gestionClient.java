@@ -15,10 +15,9 @@ import facade.Prestation_Non_StandardFacadeLocal;
 import facade.Prestation_StandardFacadeLocal;
 import facade.ServiceFacadeLocal;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
+
 import java.util.Date;
->>>>>>> exilessmath
+
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -59,12 +58,8 @@ public class gestionClient implements gestionClientLocal {
     public List<Client> ListeClient() {
         return ClientFacade.listeClient();
     }
-<<<<<<< HEAD
-    public void demandeDevis(String zoneLibre, Client client, long idService) {
-        Service service = serviceFacade.rechercheService(idService).get(0);
-=======
 
-
+  
     @Override
     public Client RechercheClient(Long id) {
         
@@ -76,8 +71,8 @@ public class gestionClient implements gestionClientLocal {
 
 
     public void demandeDevis(String zoneLibre, Client client, long idService) {
-        Service service = serviceFacade.rechercheService(idService);
->>>>>>> exilessmath
+        Service service = serviceFacade.rechercheService(idService).get(0);
+
         
         //si le service fait partie de la liste des services standards, on lie le brouillon de devis à une nouvelle prestation standard
         if(service.getNom_Service().equals("prestation standard")||service.getNom_Service().equals("prestation standard 2"))
@@ -118,8 +113,7 @@ public class gestionClient implements gestionClientLocal {
     public Devis rechercheDevis(long idDevis) {
         return devisFacade.rechercheDevis(idDevis);
     }
-<<<<<<< HEAD
-=======
+
 
     @Override
     public void ModifDevisA_traiter(long id, int montant) {
@@ -131,7 +125,7 @@ public class gestionClient implements gestionClientLocal {
         devisFacade.ModifDevisEn_negociation(id, montant, dateinter);
     }
     
->>>>>>> exilessmath
+
     
 }
 

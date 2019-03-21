@@ -158,7 +158,7 @@ public class Accueil extends HttpServlet {
         request.setAttribute("message", message);*/
    
     
-=======
+
 //        else {
 //        utilisateur = gestionVisiteur.authentification(login,pass);
 //        
@@ -186,8 +186,8 @@ public class Accueil extends HttpServlet {
 //        }
 //        request.setAttribute("message", message);
 //        }
-//    
->>>>>>> exilessmath
+   
+
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -198,7 +198,7 @@ public class Accueil extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     */}
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

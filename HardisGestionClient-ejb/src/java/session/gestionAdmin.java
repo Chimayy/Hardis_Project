@@ -6,12 +6,10 @@
 package session;
 
 
-<<<<<<< HEAD
+
 
 import entite.Agence;
 
-=======
->>>>>>> exilessmath
 import entite.Consentement_RGPD;
 import entite.Entreprise;
 import entite.Offre;
@@ -130,7 +128,7 @@ public class gestionAdmin implements gestionAdminLocal {
     }
     
 
-<<<<<<< HEAD
+
     @Override
     public List<Entreprise> affichageEntreprises(){
         return entrepriseFacade.listeEntreprise();
@@ -234,11 +232,10 @@ public class gestionAdmin implements gestionAdminLocal {
     }
 }  
 
-=======
+
     
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
-}
->>>>>>> exilessmath
+
