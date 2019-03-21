@@ -27,11 +27,11 @@
                             <hr class="my-6">
                             <div class="form-group">
                                 <label for="nom"> Nom <span class="requis">*</span></label>
-                                <input type="text"class="form-control" name="nom" value="" size="20" maxlength="20"/>
+                                <input type="text" class="form-control" name="nom" value="" size="20" maxlength="20"/>
                             </div>
                             <div class="form-group">
                                 <label for="prenom"> Prenom <span class="requis">*</span></label>
-                                <input type="text"class="form-control" name="prenom" value="" size="20" maxlength="20"/>
+                                <input type="text" class="form-control" name="prenom" value="" size="20" maxlength="20"/>
                             </div>
                             <div class="form-group">
                                 <label for="numtel"> Numéro de de téléphone <span class="requis">*</span></label>

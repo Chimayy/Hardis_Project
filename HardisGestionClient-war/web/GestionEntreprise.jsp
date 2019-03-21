@@ -28,7 +28,7 @@
                     <hr class="my-6">
                     <h1>Liste des entreprises</h1>
                     <hr class="my-6">
-                    <p><form method ="get" action="ServletAdmin"class="form-inline">
+                    <p><form method ="get" action="ServletAdmin" class="form-inline">
                         
                         <label style="margin-right:10px" > Nom </label>
                         <input type ="text"  name="nom" class='form-control'/>
@@ -38,7 +38,7 @@
                         <table class="table table-bordered">
                    
                     
-                            </p>
+                           
                             <p>
                                 <a class="btn btn-outline-light-green right" style="margin-bottom: 20px" href = "ServletAdmin?action=CreationEntreprise"> Créer une nouvelle entreprise </a>
                             </p>
@@ -62,7 +62,7 @@
                                 <td Width=15%><a style="color:grey" href="ServletAdmin?action=ModifierEntreprise&idEnt=<%=ent.getId()%>">Modifier</a>
                                 <td Width=15%><a style="color:grey"href="ServletAdmin?action=SupprimerEntreprise&idEnt=<%=ent.getId()%>">Supprimer</a>
                                     <%}%>
-                        </table></hr>
+                        </table>
                          <hr class="my-6">
                     <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a>
                         <div class="message"><% String attribut = (String) request.getAttribute("message");
