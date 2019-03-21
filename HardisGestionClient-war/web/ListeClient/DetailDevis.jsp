@@ -23,7 +23,7 @@
     <body>
         <form method="get" action="AcceuilGestionnaire">
             <%Devis d = Devis;
-            int x = 0;%>
+                int x = 0;%>
             <h1>Edition du devis  <%=d.getStatut()%></h1
             <table border width=50%>
 
@@ -37,15 +37,15 @@
                 <p>Formulaire client :<td width=15%><input type="text" readonly name="FClient" value ="<%=d.getFormulaire_Client()%>" required minlength="0" maxlength="100" size="10"></td></p>
                 <p>Type de prestation :<td width=15%><input type="text" readonly name="Prestation" value ="<%=d.getlOffre().getNom_Offre()%>" required minlength="0" maxlength="100" size="10"></td></p>
                     <% DecimalFormat format = new DecimalFormat();
-                    String SM = String.valueOf(d.getMontant_Devis());
-                    int m = format.parse(SM).intValue() ;%>
+                        String SM = String.valueOf(d.getMontant_Devis());
+                        int m = format.parse(SM).intValue();%>
                 <p>Montant : <td width=15%><input type="text"  name="Montant" value ="<%=m%>" required minlength="0" maxlength="100" size="10"></td></p>
                 <input type="hidden" name="x" value="<%=d.getId()%>">
                 <% if (d.getStatut() == statut_Devis.en_negociation) {%>    
                 <input type="hidden" name="action" value="ValiderDevis">
                 <td width=15%><input type="submit"  value="Valider le devis"></td> <%}%>
                     <% if (d.getStatut() == statut_Devis.a_traiter) {
-                       x = 1;%>                      
+                            x = 1;%>                      
                 <input type="hidden" name="action" value="EnvoyerDevis">
                 <td width=15%><input type="submit" value="Envoyer le devis"></td> <%}%>               
 
