@@ -31,7 +31,7 @@
                     <p><form method ="get" action="ServletAdmin"class="form-inline">
                         
                         <label style="margin-right:10px" > Nom </label>
-                        <input type ="text" placeholder='nom' name="nom" class='form-control'/>
+                        <input type ="text"  name="nom" class='form-control'/>
                         <input class='btn btn-indigo' type="submit" value="Valider"/></br>
                         <input type ="hidden" name="action" value="RechercherEntreprise">
                     </form>

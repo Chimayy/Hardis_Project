@@ -41,7 +41,7 @@
                             <input type ="text" class="form-control"  name="motdepasse" class='input'/>
                         </div>
                         <div class="form-group">
-                            <label for="nom"> Prenom <span class="requis">*</span></label>
+                            <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
                             <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
                         </div> 
                             <a> Profil Technique </a>
