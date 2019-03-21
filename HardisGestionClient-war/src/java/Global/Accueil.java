@@ -6,14 +6,12 @@ package Global;
  * and open the template in the editor.
  */
 
-import entite.Client;
-import entite.Service;
 
 import entite.Client;
-import entite.Utilisateur;
+
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,8 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import session.gestionVisiteurLocal;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
-
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -103,7 +99,7 @@ public class Accueil extends HttpServlet {
         Rd.forward(request, response);
         response.setContentType("text/html;charset=UTF-8");
 
-
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -144,5 +140,5 @@ public class Accueil extends HttpServlet {
     }// </editor-fold>
  }
 
-}
+
 

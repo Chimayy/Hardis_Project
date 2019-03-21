@@ -128,7 +128,8 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         d.setStatut(statut_Devis.valide);
         em.merge(d);
     
-    
+    }
+   
     @Override
     public void modifierDevis(double montant, Devis d, String zoneLibre) {
         if(d.getMontant_Devis() != montant || d.getFormulaire_Client() != zoneLibre)

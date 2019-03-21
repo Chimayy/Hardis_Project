@@ -20,7 +20,6 @@ public interface gestionVisiteurLocal {
     Utilisateur authentification(String mail, String mdp);
     List<Service> AffichageService();
 
-    Utilisateur authentification(String log, String mdp);
 
     
 }

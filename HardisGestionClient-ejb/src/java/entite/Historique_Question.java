@@ -29,12 +29,6 @@ public class Historique_Question implements Serializable {
 
     private String Reponse;
 
-
-
-    @Column(name="REPONSE")
-    private String Reponse;
-
->
     public Devis getLeDevis() {
         return leDevis;
     }
@@ -50,10 +44,6 @@ public class Historique_Question implements Serializable {
 
     public void setReponse(String Reponse) {
         this.Reponse = Reponse;
-    }
-
-    public void setReponse(String reponse) {
-        this.Reponse = reponse;
     }
 
 
