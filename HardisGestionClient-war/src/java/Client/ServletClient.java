@@ -1,3 +1,5 @@
+package Client;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -44,39 +46,27 @@ public class ServletClient extends HttpServlet {
             throws ServletException, IOException {
             HttpSession sess= request.getSession(true);
             String jspClient="";
+            String message="";
             String act=request.getParameter("action");
-            
-    
-            
+        
+                     
+      
 
-//récupération de l'id Client envoyé par la servlet d'authentification
-//            String cli = request.getParameter("idClient");
-//            Long id = Long.valueOf(cli);
-//            Client c = gestionClient.rechercheClient(id);
-            
-
-
-
-// TEMPORAIRE EN ATTENDANT AUTHENTIF
-                Client c = new Client();
-                c.setMail_Connexion("ptipote");
-                c.setNom_Utilisateur("jean");
-               c.setPrenom_Utilisateur("coucou");
-               gestionClient.objectPersist(c);
-               
-               
+//récupération de l'id Client envoyé par la servlet d'authentification         
+           Client user = (Client)sess.getAttribute("UserARecup");
                
             if((act==null)||(act.equals("vide")))
             {
+                sess.setAttribute("user", user);
                 jspClient="/MenuClient.jsp";
             }
-            else if(act.equals("demandeDevis"))
+            else if(act.equals("changerDevis"))
             {
              
                 String zoneLibre = request.getParameter("zoneLibre");
               String idServiceString = request.getParameter("idService");
                 Long idServiceLong = Long.valueOf(idServiceString);              
-             gestionClient.demandeDevis(zoneLibre, c, idServiceLong);
+               gestionClient.demandeDevis(zoneLibre, user, idServiceLong);
 //             gestionClient.affecterDevisReferentLocal(d.getId());
                 jspClient="/MenuClient.jsp";
                 request.setAttribute("message", "devis bien envoyé au référent local");
@@ -85,9 +75,10 @@ public class ServletClient extends HttpServlet {
             else if (act.equals("visuDevis"))
             {
                 jspClient="/listDevisClient.jsp";
-                List<Devis> list = gestionClient.devisAtraiter(c.getId());
+                List<Devis> list = gestionClient.devisAtraiter(user.getId());
                 request.setAttribute("listeDevis", list);
                 request.setAttribute("message","yo");
+                request.setAttribute("clientTest", user);
             }
             else if(act.equals("modifDevis"))
             {
@@ -127,12 +118,12 @@ public class ServletClient extends HttpServlet {
                 gestionClient.refuserDevis(idDevisLong, motifRefus);
                 request.setAttribute("message", "ceban refus c'est OK");
             }
-                       
-                
-        RequestDispatcher Rd;
-        Rd = getServletContext().getRequestDispatcher(jspClient);
-        Rd.forward(request, response);
-        response.setContentType("text/html;charset=UTF-8");
+            RequestDispatcher Rd;
+            Rd = getServletContext().getRequestDispatcher(jspClient);
+            Rd.forward(request, response);
+            response.setContentType("text/html;charset=UTF-8");
+                     
+
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

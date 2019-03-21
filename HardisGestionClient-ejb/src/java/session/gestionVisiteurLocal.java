@@ -15,5 +15,7 @@ import javax.ejb.Local;
 @Local
 public interface gestionVisiteurLocal {
 
+    Utilisateur authentification(String log, String mdp);
+
     
 }

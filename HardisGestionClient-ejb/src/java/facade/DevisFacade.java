@@ -13,6 +13,7 @@ import entite.statut_Devis;
 import entite.Service;
 import entite.Utilisateur_Hardis;
 import entite.statut_Devis;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -53,7 +54,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         Devis brouillonDevisClient = new Devis();
         brouillonDevisClient.setLeClient(Client);
         brouillonDevisClient.setFormulaire_Client(zoneLibre);
-        brouillonDevisClient.setStatut(statut_Devis.en_cours);
+        brouillonDevisClient.setStatut(statut_Devis.a_affecter);
         em.persist(brouillonDevisClient);
     }
 
@@ -124,12 +125,16 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         List<Devis> liste = req.getResultList();
         return liste;
     }
-//, d.leClient c  AND c.Id =:id  
+ 
     @Override
     public void refuserDevis(Devis Devis, String motif) {
         Devis.setMotif_Refus(motif);
         Devis.setStatut(statut_Devis.refuse);
         em.merge(Devis);    
+    }
+
+    @Override
+    public void proposerDateetConsultants(Devis devis, Date DateIntervention, List listeConsultants) {
     }
     
     

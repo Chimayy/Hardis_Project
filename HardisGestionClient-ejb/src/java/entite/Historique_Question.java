@@ -7,6 +7,7 @@ package entite;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,26 @@ public class Historique_Question implements Serializable {
     private String mot_Cle;
     @ManyToOne
     private Devis leDevis;
+    @Column(name="REPONSE")
+    private String Reponse;
+
+    public Devis getLeDevis() {
+        return leDevis;
+    }
+
+    public void setLeDevis(Devis leDevis) {
+        this.leDevis = leDevis;
+    }
+
+    public String getReponse() {
+        return Reponse;
+    }
+
+    public void setReponse(String reponse) {
+        this.Reponse = reponse;
+    }
+    
+    
     
 
     public String getContenu_Question() {

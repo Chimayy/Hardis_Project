@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeDevis" scope="request" class="java.util.List"></jsp:useBean>
+        <jsp:useBean id="clientTest" scope="request" class="entite.Client"></jsp:useBean>
         <title>JSP Page</title>
     </head>
     <body>
@@ -23,7 +24,7 @@
                 <td>Statut</td>
             </tr>
             <% List<Devis> lesDevis=listeDevis;
-                for(Devis devisEnCours : lesDevis){%>s
+                for(Devis devisEnCours : lesDevis){%>
                 <tr>
                     <td width=15%><%=devisEnCours.getId()%></td>
                     <td width=15%><%=devisEnCours.getStatut() %></td>
@@ -31,6 +32,7 @@
                 
                 </tr><%}%>     
         </table>
+        <%=out.println(clientTest.getMail_Connexion())%>
         <hr>
     <td width=25%><a href="MenuClient.jsp"> Retour Menu </a></td>
     <hr>

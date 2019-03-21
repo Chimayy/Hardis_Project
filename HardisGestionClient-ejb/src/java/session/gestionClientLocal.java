@@ -28,8 +28,6 @@ public interface gestionClientLocal {
 
     Client rechercheClient(long id);
 
-    void objectPersist(Object object);
-
     List<Devis> listeDevis();
 
     Devis rechercheDevis(long idDevis);

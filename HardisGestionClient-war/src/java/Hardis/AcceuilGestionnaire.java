@@ -6,6 +6,7 @@
 package Hardis;
 
 import entite.Client;
+import entite.Utilisateur_Hardis;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import session.gestionClientLocal;
 
 /**
@@ -41,9 +43,15 @@ public class AcceuilGestionnaire extends HttpServlet {
             throws ServletException, IOException {
         
         
+        HttpSession sess= request.getSession(true);
+        String jspClient=null;
+        String act=request.getParameter("action");
       
-       String jspClient=null;
-       String act=request.getParameter("action");
+       // récupération de l'utilisateur qui s'est loggué
+        Utilisateur_Hardis user =(Utilisateur_Hardis) sess.getAttribute("UserARecup");
+      
+      
+      
            if((act==null)||(act.equals("vide")))
            {
                jspClient="/AcceuilGestionnaire.jsp";

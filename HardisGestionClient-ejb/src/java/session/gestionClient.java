@@ -82,10 +82,7 @@ public class gestionClient implements gestionClientLocal {
       return c;
     }
 
-    @Override
-    public void objectPersist(Object object) {
-        clientFacade.clientPersist(object);
-    }
+    
 
     @Override
     public List<Devis> listeDevis() {

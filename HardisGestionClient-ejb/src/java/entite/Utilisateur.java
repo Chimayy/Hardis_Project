@@ -19,6 +19,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class Utilisateur implements Serializable {
 
+    
+    
     @OneToOne(mappedBy = "user")
     private Consentement_RGPD leConsentement;
 

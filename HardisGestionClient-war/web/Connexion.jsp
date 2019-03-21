@@ -12,6 +12,27 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+         
+        <%
+               String attribut = (String) request.getAttribute("message");
+               if(!attribut.isEmpty())
+               {
+                    out.println(attribut);
+               }
+
+           %>
+        
+        <form method ="get" action="Accueil">
+            </br>
+                <input type ="text" placeholder='Mail' name="mail" class='input'/>
+                <input type ="text" placeholder='mdp'name="mdp" class='input'/>             
+                <input type ="hidden" name="action" value="authentif">
+            <div class='bouton1'>
+            </br>
+            <input  class='bouton' type="submit" value="Valider"/>
+            <input  class='bouton'type="reset" value="Remise à 0"/>       
+            </div>
+            </br>         
+        </form>
     </body>
 </html>

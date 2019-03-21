@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:useBean id="user" scope="session" class = "entite.Client"> </jsp:useBean>
         <title>JSP Page</title>
     </head>
     <body>
@@ -16,6 +17,8 @@
         <%
                String attribut = (String) request.getAttribute("message");
                out.println(attribut);
+               out.println("Mais YOO "+ user.getMail_Connexion());
+               
            %>
         <a href="DemandeDevis.jsp">Demander un devis</a><br>
         <a href="ServletClient?action=visuDevis">Visualiser un formulaire</a><br>

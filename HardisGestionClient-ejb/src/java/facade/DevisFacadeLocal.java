@@ -9,6 +9,7 @@ import entite.Agence;
 import entite.Client;
 import entite.Devis;
 import entite.Service;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -48,5 +49,7 @@ public interface DevisFacadeLocal {
     List<Devis> listDevisAtraiter(long id);
 
     void refuserDevis(Devis Devis, String motif);
+
+    void proposerDateetConsultants(Devis devis, Date DateIntervention, List listeConsultants);
     
 }

@@ -33,4 +33,6 @@ public interface UtilisateurFacadeLocal {
     List<Utilisateur> listeUtilisateur();
 
     Utilisateur rechercheUtilisateur(long id);
+
+    Utilisateur authentification(String log, String mdp);
 }

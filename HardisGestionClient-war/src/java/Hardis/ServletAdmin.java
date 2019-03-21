@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import session.gestionAdminLocal;
 
 /**
@@ -103,22 +104,29 @@ public class ServletAdmin extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+       
+         HttpSession sess= request.getSession(true);
         String message="";
         String jspClient = null;
                
         String act = request.getParameter("action");
-        System.out.println("Action : "+ act);
-   
-        if(act.equals("AfficherUtilisateursHardis")) 
+      
+        
+        // récupération de l'utilisateur qui s'est loggué
+        Utilisateur_Hardis user =(Utilisateur_Hardis)sess.getAttribute("UserARecup");
+         
+        if(act==null||act==""){
+             jspClient = "/MenuAdmin.jsp";
+             
+         }
+        else if(act.equals("AfficherUtilisateursHardis")) 
         {
             List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
             request.setAttribute("listeUser", listeUser);
             jspClient="/GestionUtilisateurHardis.jsp";
         }
         
-        if(act.equals("RechercherUtilisateurHardis"))
+        else if(act.equals("RechercherUtilisateurHardis"))
         {        
            String nom = request.getParameter("nom");
             if(!nom.trim().isEmpty()){
@@ -144,7 +152,7 @@ public class ServletAdmin extends HttpServlet {
         
   
         
-        if(act.equals("RechercherUtilisateurHardisModif"))
+        else if(act.equals("RechercherUtilisateurHardisModif"))
         {   
             String idUser = request.getParameter("idUser");
             long id = Long.parseLong(idUser);
@@ -169,15 +177,12 @@ public class ServletAdmin extends HttpServlet {
             jspClient="/ModificationUtilisateurHardis.jsp";
         }
         
-         else if(act.isEmpty()){
-             jspClient = "/MenuAdmin.jsp";
-             
-         }
+        
      
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
         Rd.forward(request, response);
-        
+         response.setContentType("text/html;charset=UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

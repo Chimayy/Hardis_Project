@@ -49,4 +49,17 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         return result;
     }
 
+    @Override
+    public Utilisateur authentification(String log, String mdp) {
+         Utilisateur user;
+        String txt = "SELECT a FROM Utilisateur AS a WHERE a.mail_Connexion=:lo AND a.mot_De_Passe=:motp";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("lo", log);
+        req=req.setParameter("motp", mdp);
+        user=(Utilisateur)req.getSingleResult();
+        return user;
+    }
+
+    
+    
 }
