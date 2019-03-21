@@ -47,7 +47,10 @@ public class Service implements Serializable {
     @ManyToOne
     private Offre lOffre;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> exilessmath
     public String getNom_Service() {
         return nom_Service;
     }
@@ -55,8 +58,12 @@ public class Service implements Serializable {
     public void setNom_Service(String nom_Service) {
         this.nom_Service = nom_Service;
     }
+<<<<<<< HEAD
 
    
+=======
+    
+>>>>>>> exilessmath
 
     public String getDescription_Service() {
         return description_Service;

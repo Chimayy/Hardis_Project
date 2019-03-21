@@ -7,6 +7,7 @@ package facade;
 
 import entite.Historique_Question;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -48,6 +49,22 @@ public class Historique_QuestionFacade extends AbstractFacade<Historique_Questio
         req=req.setParameter("id", id);
         result=req.getResultList();
         return result;
+    }
+
+    @Override
+    public Historique_Question RechercheQuestion(long id) {
+        String txt = "SELECT q FROM Historique_Question AS q WHERE q.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("id", id);
+        Historique_Question result  = (Historique_Question)req.getSingleResult();
+        return result;
+    }
+
+    @Override
+    public void setReponse(long id,String reponse) {
+      Historique_Question q =  RechercheQuestion(id);
+      q.setReponse(reponse);
+      em.merge(q);
     }
     
     

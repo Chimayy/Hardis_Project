@@ -48,6 +48,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         result=(Utilisateur)req.getSingleResult();
         return result;
     }
+<<<<<<< HEAD
       @Override
     public Utilisateur authentification(String mail, String mdp) {
         Utilisateur user;
@@ -59,6 +60,10 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         return user;
     }
     
+=======
+
+   
+>>>>>>> exilessmath
     
 
 }

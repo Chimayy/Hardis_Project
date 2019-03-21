@@ -9,6 +9,10 @@ import entite.Agence;
 import entite.Client;
 import entite.Devis;
 import entite.Service;
+<<<<<<< HEAD
+=======
+import java.util.Date;
+>>>>>>> exilessmath
 import java.util.List;
 import javax.ejb.Local;
 
@@ -40,5 +44,16 @@ public interface DevisFacadeLocal {
     void affecterDevisAuReferentLocal(Devis devis);
 
     Devis rechercheDevis(long id);
+<<<<<<< HEAD
+=======
+
+    List ListeQuestions(Devis d);
+
+    void ModifDevisA_traiter(long id, int montant);
+
+    void ModifDevisEn_negociation(long id, int montant, Date dateinter);
+
+  
+>>>>>>> exilessmath
     
 }

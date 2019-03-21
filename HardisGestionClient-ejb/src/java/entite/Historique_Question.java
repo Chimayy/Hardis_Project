@@ -26,6 +26,7 @@ public class Historique_Question implements Serializable {
     @ManyToOne
     private Devis leDevis;
     private String Reponse;
+<<<<<<< HEAD
 
     public Devis getLeDevis() {
         return leDevis;
@@ -43,9 +44,28 @@ public class Historique_Question implements Serializable {
         this.Reponse = Reponse;
     }
     
+=======
+>>>>>>> exilessmath
 
     public String getContenu_Question() {
         return Contenu_Question;
+    }
+
+    public Devis getLeDevis() {
+        return leDevis;
+    }
+
+    public void setLeDevis(Devis leDevis) {
+        this.leDevis = leDevis;
+    }
+
+    public String getReponse() {
+        return Reponse;
+    }
+
+    public void setReponse(String Reponse) {
+        this.Reponse = Reponse;
+        
     }
 
     public void setContenu_Question(String Contenu_Question) {
