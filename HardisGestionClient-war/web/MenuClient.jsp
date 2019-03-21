@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%-- 
     Document   : MenuClient
     Created on : 15 mars 2019, 11:46:59
@@ -42,10 +42,3 @@
         
     </body>
 </html>
-
-<%-- 
-    Document   : MenuClient
-    Created on : 15 mars 2019, 11:46:59
-    Author     : thoma
---%>
-

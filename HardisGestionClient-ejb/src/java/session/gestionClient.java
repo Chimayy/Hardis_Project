@@ -98,15 +98,11 @@ public class gestionClient implements gestionClientLocal {
       return c;
     }
 
-    @Override
-    public void objectPersist(Object object) {
-        clientFacade.clientPersist(object);
-    }
+    
 
     @Override
     public List<Devis> listeDevis() {
-       List<Devis> list = new ArrayList<Devis>();
-        return list = devisFacade.listeDevis();
+        return devisFacade.listeDevis();
     }
 
     @Override
@@ -124,8 +120,28 @@ public class gestionClient implements gestionClientLocal {
     public void ModifDevisEn_negociation(long id, int montant, Date dateinter) {
         devisFacade.ModifDevisEn_negociation(id, montant, dateinter);
     }
-    
 
+    @Override
+    public void modifierDevis(String zoneLibre, double montant, Devis Devis) {
+        devisFacade.modifierDevis(montant, Devis, zoneLibre);
+    }
+
+    @Override
+    public void accepterDevisClient(long idDevis) {
+        Devis devisAccepte = devisFacade.rechercheDevis(idDevis);
+        devisFacade.accepterDevis(devisAccepte);
+    }
+
+    @Override
+    public void refuserDevis(long idDevis, String motif) {
+        Devis devisRefuse = devisFacade.rechercheDevis(idDevis);
+        devisFacade.refuserDevis(devisRefuse, motif);
+    }
+
+    @Override
+    public List<Devis> devisAtraiter(long id) {
+        return devisFacade.listDevisAtraiter(id);
+    }
     
 }
 

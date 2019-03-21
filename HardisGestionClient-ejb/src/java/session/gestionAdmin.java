@@ -129,6 +129,9 @@ public class gestionAdmin implements gestionAdminLocal {
     
 
 
+    // Add business logic below. (Right-click in editor and choose
+    // "Insert Code > Add Business Method")
+
     @Override
     public List<Entreprise> affichageEntreprises(){
         return entrepriseFacade.listeEntreprise();
@@ -164,13 +167,6 @@ public class gestionAdmin implements gestionAdminLocal {
     public List<Utilisateur_Hardis> recherchercherUtilisateurHardisId(long id){
         return utilisateur_HardisFacade.rechercherUtilisateurHardisId(id);
     }
-
-
-    
-//    public Utilisateur rechercherUtilisateurHardisParId(long id){
-//        return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
-//    }
-
 
     
     @Override
@@ -237,5 +233,5 @@ public class gestionAdmin implements gestionAdminLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-
+}
 

@@ -34,7 +34,5 @@ public interface UtilisateurFacadeLocal {
 
     Utilisateur rechercheUtilisateur(long id);
 
-    public Utilisateur authentification(String mail, String mdp);
-
-    
+    Utilisateur authentification(String log, String mdp);
 }

@@ -10,10 +10,12 @@ package entite;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -53,6 +55,7 @@ public class Utilisateur_Hardis extends Utilisateur implements Serializable {
     private boolean statut_Actif;
     private profil_Technique profil_Technique;
     @ManyToOne
+    @JoinColumn(name="LAGENCE_ID")
     private Agence lAgence;
 
     public List<Historique_Consultant> getHistorique_Consultants() {

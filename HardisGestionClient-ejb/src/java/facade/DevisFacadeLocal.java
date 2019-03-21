@@ -10,6 +10,7 @@ import entite.Client;
 import entite.Devis;
 import entite.Service;
 
+
 import java.util.Date;
 
 import java.util.List;
@@ -44,14 +45,20 @@ public interface DevisFacadeLocal {
 
     Devis rechercheDevis(long id);
 
-
     List ListeQuestions(Devis d);
 
     void ModifDevisA_traiter(long id, int montant);
 
     void ModifDevisEn_negociation(long id, int montant, Date dateinter);
 
-  
+    void modifierDevis(double montant, Devis d, String zoneLibre);
 
+    void accepterDevis(Devis Devis);
+
+    List<Devis> listDevisAtraiter(long id);
+
+    void refuserDevis(Devis Devis, String motif);
+
+    void proposerDateetConsultants(Devis devis, Date DateIntervention, List listeConsultants);
     
 }

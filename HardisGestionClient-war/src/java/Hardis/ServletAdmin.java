@@ -25,6 +25,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import session.gestionAdminLocal;
 
 /**
@@ -291,15 +292,22 @@ public class ServletAdmin extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+       
+         HttpSession sess= request.getSession(true);
         String message="";
         String jspClient = null;
                
         String act = request.getParameter("action");
-        System.out.println("Action : "+ act);
-   
-        if(act.equals("AfficherUtilisateursHardis")) 
+      
+        
+        // récupération de l'utilisateur qui s'est loggué
+        Utilisateur_Hardis user =(Utilisateur_Hardis)sess.getAttribute("UserARecup");
+         
+        if(act==null||act==""){
+             jspClient = "/MenuAdmin.jsp";
+             
+         }
+        else if(act.equals("AfficherUtilisateursHardis")) 
         {
             List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
             request.setAttribute("listeUser", listeUser);
@@ -329,8 +337,7 @@ public class ServletAdmin extends HttpServlet {
             request.setAttribute("listeOffre", listeOffre);
             jspClient="/GestionOffre.jsp";
         }
-        
-        
+
         else if(act.equals("RechercherUtilisateurHardis"))
         {        
            String nom = request.getParameter("nom");
@@ -402,8 +409,8 @@ public class ServletAdmin extends HttpServlet {
             }
         }
         
-        else if(act.equals("SupprimerUtilisateurHardis"))
-        {
+        else if(act.equals("RechercherUtilisateurHardisModif"))
+        {   
             String idUser = request.getParameter("idUser");
             long id = Long.parseLong(idUser);
             Utilisateur_Hardis User = gestionAdmin.recherchercherUtilisateurHardisId(id).get(0);
@@ -577,7 +584,7 @@ public class ServletAdmin extends HttpServlet {
             request.setAttribute("listeEnt", listeEnt);
             jspClient="/ModificationEntreprise.jsp";
         }
-        
+
          else if (act.equals("ModifierAgence"))
         {   
             String idAgence = request.getParameter("idAgence");
@@ -615,7 +622,7 @@ public class ServletAdmin extends HttpServlet {
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
         Rd.forward(request, response);
-        
+         response.setContentType("text/html;charset=UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

@@ -36,16 +36,20 @@ public interface gestionClientLocal {
 
     Client rechercheClient(long id);
 
-    void objectPersist(Object object);
-
     List<Devis> listeDevis();
 
     Devis rechercheDevis(long idDevis);
-
 
     void ModifDevisA_traiter(long id, int montant);
 
     void ModifDevisEn_negociation(long id, int montant, Date dateinter);
 
+    void modifierDevis(String zoneLibre, double montant, Devis Devis);
 
+    void accepterDevisClient(long idDevis);
+
+    void refuserDevis(long idDevis, String motif);
+
+    List<Devis> devisAtraiter(long id);
+    
 }

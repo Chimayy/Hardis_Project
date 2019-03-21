@@ -25,31 +25,22 @@ public class gestionVisiteur implements gestionVisiteurLocal {
     @EJB
     private UtilisateurFacadeLocal utilisateurFacade;
     // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 
-
-    public Utilisateur authentification(String mail, String mdp) {
-        Utilisateur user;
-        if(!mail.equals("") && !mdp.equals(""))
-        {
-         user = utilisateurFacade.authentification(mail,mdp);
-        }
-        else user = null;
-        return user;
-    
-    }
 
     @Override
     public List<Service> AffichageService() {
         List<Service> liste = serviceFacade.listeService(); 
         return liste;
     }      
-      
-
-   
-
-    
-
+    @Override
+    public Utilisateur authentification(String log, String mdp) {
+       Utilisateur user = null;
+        if( !log.equals("")&&!mdp.equals(""))
+       {
+          user = utilisateurFacade.authentification(log, mdp);
+       }
+        return user;
+    }
 
    
 }

@@ -12,14 +12,12 @@ import entite.Historique_Consultant;
 import entite.Historique_Question;
 
 import entite.Prestation;
-import entite.Prestation_Non_Standard;
-import entite.Prestation_Standard;
+import entite.statut_Devis;
 import entite.Service;
 import entite.Utilisateur_Hardis;
 import entite.statut_Devis;
 
 import java.util.Date;
-
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -60,7 +58,6 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         Devis brouillonDevisClient = new Devis();
         brouillonDevisClient.setLeClient(Client);
         brouillonDevisClient.setFormulaire_Client(zoneLibre);
-
         brouillonDevisClient.setStatut(statut_Devis.a_affecter);
 
         em.persist(brouillonDevisClient);
@@ -91,7 +88,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         devis.getLaPrestation().setNom_Responsable(referentLocal.getNom_Utilisateur());
         devis.getLaPrestation().setMail_Responsable(referentLocal.getMail_Connexion());
         em.persist(referent);
-        em.persist(devis);
+        em.merge(devis);
     }
 
     @Override
@@ -130,7 +127,45 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         d.setDate_Intervention(dateinter);
         d.setStatut(statut_Devis.valide);
         em.merge(d);
-        
+    
+    
+    @Override
+    public void modifierDevis(double montant, Devis d, String zoneLibre) {
+        if(d.getMontant_Devis() != montant || d.getFormulaire_Client() != zoneLibre)
+        {
+            d.setMontant_Devis(montant);
+            d.setFormulaire_Client(zoneLibre);
+            d.setMotif_Refus(zoneLibre);
+            d.setStatut(statut_Devis.en_negociation);
+            em.merge(d);
+        }
+    }
+
+    @Override
+    public void accepterDevis(Devis Devis) {
+        Devis.setStatut(statut_Devis.valide);
+        em.merge(Devis);
+    }
+
+    @Override
+    public List<Devis> listDevisAtraiter(long id) {
+        String txt = "SELECT h FROM Historique_Consultant h JOIN h.leDevis d JOIN d.leClient c WHERE d.statut =:statut AND c.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);
+        req = req.setParameter("statut", statut_Devis.envoye);
+        List<Devis> liste = req.getResultList();
+        return liste;
+    }
+ 
+    @Override
+    public void refuserDevis(Devis Devis, String motif) {
+        Devis.setMotif_Refus(motif);
+        Devis.setStatut(statut_Devis.refuse);
+        em.merge(Devis);    
+    }
+
+    @Override
+    public void proposerDateetConsultants(Devis devis, Date DateIntervention, List listeConsultants) {
     }
     
     }
