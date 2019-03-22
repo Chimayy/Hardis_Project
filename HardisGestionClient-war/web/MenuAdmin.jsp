@@ -13,7 +13,6 @@
         <title>Menu Administrateur</title>
     </head>
     <body>
-<<<<<<< HEAD
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
