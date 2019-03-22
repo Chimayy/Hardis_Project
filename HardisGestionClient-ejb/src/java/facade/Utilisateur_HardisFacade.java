@@ -126,4 +126,13 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         return user;
     }
 
+    @Override
+    public List<Utilisateur_Hardis> ListeConsultantDuneOffre(long idOffre) {
+        List<Utilisateur_Hardis> result;
+        String txt = "SELECT consultant FROM Profil_Metier pm JOIN pm.lUtilisateur consultant JOIN pm.lOffre offre WHERE offre.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("id", idOffre);
+        result = req.getResultList();
+        return result;
+    }
 }

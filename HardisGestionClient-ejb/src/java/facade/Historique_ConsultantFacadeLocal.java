@@ -5,7 +5,9 @@
  */
 package facade;
 
+import entite.Devis;
 import entite.Historique_Consultant;
+import entite.Utilisateur_Hardis;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +31,6 @@ public interface Historique_ConsultantFacadeLocal {
     List<Historique_Consultant> findRange(int[] range);
 
     int count();
+    public void proposerConsultants(Devis devis, List<Utilisateur_Hardis> ListeConsultants);
     
 }

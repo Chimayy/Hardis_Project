@@ -65,6 +65,6 @@ public interface DevisFacadeLocal {
   
 
 
-    void proposerDateetConsultants(Devis devis, Date DateIntervention, List listeConsultants);
+    void  proposerDateIntervention(Devis devis, Date DateIntervention);
     
 }

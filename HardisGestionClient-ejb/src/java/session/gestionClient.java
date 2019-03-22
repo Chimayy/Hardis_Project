@@ -150,6 +150,12 @@ public class gestionClient implements gestionClientLocal {
     public List<Devis> devisAtraiter(long id) {
         return devisFacade.listDevisAtraiter(id);
     }
+
+    @Override
+    public void propositionDateetConsultant() {
+    }
+    
+    
     
 }
 

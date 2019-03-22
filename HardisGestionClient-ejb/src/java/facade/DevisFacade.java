@@ -165,8 +165,10 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         em.merge(Devis);    
     }
 
-    @Override
-    public void proposerDateetConsultants(Devis devis, Date DateIntervention, List listeConsultants) {
+   @Override
+    public void proposerDateIntervention(Devis devis, Date DateIntervention) {
+        devis.setDate_Intervention(DateIntervention);
+        em.merge(devis);
     }
 
     @Override
