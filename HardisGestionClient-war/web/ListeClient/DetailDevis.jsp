@@ -16,40 +16,81 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="Devis" scope="request" class="Devis"></jsp:useBean>
+        <%@include file="../jsp_reused/style.jsp" %>
         <% DateFormat f = new SimpleDateFormat("dd/MM/yyyy");%>
-
         <title>Edition du devis</title>
     </head>
+
     <body>
-        <form method="get" action="AcceuilGestionnaire">
-            <%Devis d = Devis;
-            int x = 0;%>
-            <h1>Edition du devis  <%=d.getStatut()%></h1
-            <table border width=50%>
+        <div class="flex-wrapper">
+            <div class="container-fluid nopad">
+                <header>
+                    <%@include file="../jsp_reused/header.jsp" %>
+                </header>
 
+                <div class="container">
+                    <div class="mx-auto" style="width: 600px ; text-align: center; margin-top:5%;margin-bottom: 5%">
+                        <%Devis d = Devis;
+                           int x = 0;%>
+                        <h1>Edition du devis  "<%=d.getStatut()%>"</h1>
+                        <hr class="my-6">
+                    </div>
 
-                <p>id devis :<td width=15%><input type="text" readonly name="ID" value ="<%=d.getId()%>" required minlength="0" maxlength="100" size="10"></td></p>
-                <p>Client <td width=15%><input type="text" readonly name="NomCli" value ="<%=d.getLeClient().getNom_Utilisateur()%>" required minlength="0" maxlength="100" size="10"></td></p>              
-                <p>Date intervention :<td width=15%><input type="text" readonly  name="DateInter" value ="<%=f.format(d.getDate_Intervention())%>" required minlength="0" maxlength="100" size="10">
-                    <% if (d.getStatut() == statut_Devis.en_negociation) {%>
-                </td><td>Modifier la date d'intervention :</td><td width=15%><input type="date"  name="DateModif"     required minlength="0" maxlength="100" size="10"></td>
-                <%}%></p>
-                <p>Formulaire client :<td width=15%><input type="text" readonly name="FClient" value ="<%=d.getFormulaire_Client()%>" required minlength="0" maxlength="100" size="10"></td></p>
-                <p>Type de prestation :<td width=15%><input type="text" readonly name="Prestation" value ="<%=d.getlOffre().getNom_Offre()%>" required minlength="0" maxlength="100" size="10"></td></p>
-                    <% DecimalFormat format = new DecimalFormat();
-                    String SM = String.valueOf(d.getMontant_Devis());
-                    int m = format.parse(SM).intValue() ;%>
-                <p>Montant : <td width=15%><input type="text"  name="Montant" value ="<%=m%>" required minlength="0" maxlength="100" size="10"></td></p>
-                <input type="hidden" name="x" value="<%=d.getId()%>">
-                <% if (d.getStatut() == statut_Devis.en_negociation) {%>    
-                <input type="hidden" name="action" value="ValiderDevis">
-                <td width=15%><input type="submit"  value="Valider le devis"></td> <%}%>
-                    <% if (d.getStatut() == statut_Devis.a_traiter) {
-                       x = 1;%>                      
-                <input type="hidden" name="action" value="EnvoyerDevis">
-                <td width=15%><input type="submit" value="Envoyer le devis"></td> <%}%>               
+                    <form  method="get" action="AcceuilGestionnaire">
+                        <fieldset>
+                            
+                            <div class='form-group'>
+                                <label for="idDevis"> Id du Devis </label>
+                                <input class='form-control' type="text" readonly name="ID" value ="<%=d.getId()%>" ></td>
+                            </div>
+                            <div class='form-group'>
+                                <label for="Client"> Client </label>
+                                <input class="form-control"type="text" readonly name="NomCli" value ="<%=d.getLeClient().getNom_Utilisateur()%>" >
+                            </div>
+                            <div class='form-group'>
+                                <label for="Date-Intervention"> Date d'intervetion </label>
+                                <input class="form-control" type="text" readonly  name="DateInter" value ="<%=f.format(d.getDate_Intervention())%>" >   
+                            </div>
+                            <% if (d.getStatut() == statut_Devis.en_negociation) {%>
+                            <div class='form-group'>
+                                <label for="Modifier-Intervetion">Modifier la date d'intervetion </label>
+                                <input class="form-control" type="date"  name="DateModif">
+                            </div>
+                            <%}%>
+                            <div class='form-group'>
+                                <label for="Formulaire-Client"> Formulaire Client </label>
+                                <input class='form-control'type="text" readonly name="FClient" value ="<%=d.getFormulaire_Client()%>" required minlength="0" maxlength="100" size="10">
+                            </div>
+                            <div class='form-group'>
+                                <label for="Type_presentation"> Type de presentation </label>
+                                <input class='form-control' type="text" readonly name="Prestation" value ="<%=d.getlOffre().getNom_Offre()%>">
+                            </div>
+                               
+                             <% DecimalFormat format = new DecimalFormat();
+                                    String SM = String.valueOf(d.getMontant_Devis());
+                                    int m = format.parse(SM).intValue();%>
+                            <div class='form-group'>
+                                <label for="Montant"> Montant <span class="requis">*</span></label>
+                                <input class='form-control' type="text"  name="Montant" value ="<%=m%>">
+                            </div>
+                           <input type="hidden" name="x" value="<%=d.getId()%>">
+                            <% if (d.getStatut() == statut_Devis.en_negociation) {%>    
+                            <input type="hidden" name="action" value="ValiderDevis">
+                            <input class='btn btn-blue' type="submit"  value="Valider le devis"> <%}%>
+                                <% if (d.getStatut() == statut_Devis.a_traiter) {
+                                        x = 1;%>                       
+                            <input  type="hidden" name="action" value="EnvoyerDevis">
+                            <input class='btn btn-blue' type="submit" value="Envoyer le devis"> <%}%>               
 
-            </table>
-        </form>
+                        </fieldset>
+                    </form>
+                            <hr class="my-6">
+                            <a class="btn btn-outline-teal right" href="AcceuilGestionnaire?action=VisuClients" value="retour"> Retour </a>
+                            
+                </div>
+            </div>
+                            <%@include file="../jsp_reused/footer.jsp" %>
+        </div>
+        <%@include file="../jsp_reused/javascript.jsp" %>
     </body>
 </html>

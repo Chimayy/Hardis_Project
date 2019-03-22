@@ -28,53 +28,53 @@
                     <hr class="my-6">
                     <h1>Liste des entreprises</h1>
                     <hr class="my-6">
-                    <p><form method ="get" action="ServletAdmin"class="form-inline">
-                        
+                    <p><form method ="get" action="ServletAdmin" class="form-inline">
+
                         <label style="margin-right:10px" > Nom </label>
                         <input type ="text"  name="nom" class='form-control'/>
                         <input class='btn btn-indigo' type="submit" value="Valider"/></br>
                         <input type ="hidden" name="action" value="RechercherEntreprise">
                     </form>
-                        <table class="table table-bordered">
-                   
-                    
-                            </p>
-                            <p>
-                                <a class="btn btn-outline-light-green right" style="margin-bottom: 20px" href = "ServletAdmin?action=CreationEntreprise"> Créer une nouvelle entreprise </a>
-                            </p>
-                            <tr> <td>Id</td>
-                                <td>Nom</td>
-                                <td>N° SIRET</td>
-                                <td>Adresse</td>
-                                <td>Code postal</td>
-                                <td>Ville</td>
-                                <td>Agence Hardis</td>
-                            </tr>
-                            <% List<Entreprise> lesEnt = listeEnt;
-                                    for (Entreprise ent : lesEnt) {%>
-                            <tr> <td Width=15%><%=ent.getId()%></td>
-                                <td Width=15%><%=ent.getNom_Entreprise()%></td>
-                                <td Width=15%><%=ent.getNumero_SIRET()%></td>
-                                <td Width=15%><%=ent.getRue_Entreprise()%></td>
-                                <td Width=15%><%=ent.getCP_Entreprise()%></td>
-                                <td Width=15%><%=ent.getVille_Entreprise()%></td>
-                                <td Wifth=15%><%=ent.getlAgence().getVille_Agence()%></td>
-                                <td Width=15%><a style="color:grey" href="ServletAdmin?action=ModifierEntreprise&idEnt=<%=ent.getId()%>">Modifier</a>
-                                <td Width=15%><a style="color:grey"href="ServletAdmin?action=SupprimerEntreprise&idEnt=<%=ent.getId()%>">Supprimer</a>
-                                    <%}%>
-                        </table></hr>
-                         <hr class="my-6">
+                    <table class="table table-bordered">
+
+
+
+                        <p>
+                            <a class="btn btn-outline-light-green right" style="margin-bottom: 20px" href = "ServletAdmin?action=CreationEntreprise"> Créer une nouvelle entreprise </a>
+                        </p>
+                        <tr> <td>Id</td>
+                            <td>Nom</td>
+                            <td>N° SIRET</td>
+                            <td>Adresse</td>
+                            <td>Code postal</td>
+                            <td>Ville</td>
+                            <td>Agence Hardis</td>
+                        </tr>
+                        <% List<Entreprise> lesEnt = listeEnt;
+                                for (Entreprise ent : lesEnt) {%>
+                        <tr> <td Width=15%><%=ent.getId()%></td>
+                            <td Width=15%><%=ent.getNom_Entreprise()%></td>
+                            <td Width=15%><%=ent.getNumero_SIRET()%></td>
+                            <td Width=15%><%=ent.getRue_Entreprise()%></td>
+                            <td Width=15%><%=ent.getCP_Entreprise()%></td>
+                            <td Width=15%><%=ent.getVille_Entreprise()%></td>
+                            <td Wifth=15%><%=ent.getlAgence().getVille_Agence()%></td>
+                            <td Width=15%><a style="color:grey" href="ServletAdmin?action=ModifierEntreprise&idEnt=<%=ent.getId()%>">Modifier</a>
+                            <td Width=15%><a style="color:grey"href="ServletAdmin?action=SupprimerEntreprise&idEnt=<%=ent.getId()%>">Supprimer</a>
+                                <%}%>
+                    </table>
+                    <hr class="my-6">
                     <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a>
-                        <div class="message"><% String attribut = (String) request.getAttribute("message");
+                    <div class="message"><% String attribut = (String) request.getAttribute("message");
                             out.println(attribut);
-                            %></div>
-                    
+                        %></div>
+
                 </div>
             </div>
-                         <%@include file="jsp_reused/footer.jsp" %>
+            <%@include file="jsp_reused/footer.jsp" %>
         </div>
-         <%@include file="jsp_reused/javascript.jsp" %>
+        <%@include file="jsp_reused/javascript.jsp" %>
 
-       
-</body>
+
+    </body>
 </html>
