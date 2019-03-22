@@ -150,7 +150,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
 
     @Override
     public List<Devis> listDevisAtraiter(long id) {
-        String txt = "SELECT h FROM Historique_Consultant h JOIN h.leDevis d JOIN d.leClient c WHERE d.statut =:statut AND c.id=:id";
+        String txt = "SELECT d FROM Historique_Consultant h JOIN h.leDevis d JOIN d.leClient c WHERE d.statut =:statut AND c.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("id", id);
         req = req.setParameter("statut", statut_Devis.envoye);

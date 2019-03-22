@@ -20,33 +20,7 @@
         <title>Répondre aux questions</title>
     </head>
     <body>
-        <h1>Répondre aux question concernant les devis</h1>
-        <table border width=50%>
-            <tr> 
-                
-                <td>Devis</td>
-                <td>Client</td>
-                <td>Nb questions</td>
-                <td>Action</td>                
-               
-            </tr>
-            <% List<Devis> lesDevis = Devis ;
-                for(Devis d : lesDevis){%><%Client c = d.getLeClient();int i =0;
-                if (!d.getHistorique_Questions().isEmpty()){ %>
-                <tr>
-                    
-                    <td width=15%><%=d.getId()%></td>
-                    
-                    <td width=15%><%=c.getNom_Utilisateur() %></td>
-                    <%List<Historique_Question> Questions= d.getHistorique_Questions();
-                    for (Historique_Question Q : Questions){i = i+1;}%>
-                    <td width=15%><%=i%></td>
-                                                          
-                      
-                    <td width=15%><a href="AcceuilGestionnaire?action=DetailQuestions&x=<%=d.getId()%>">Voir +</a></td>
-                                                            </tr>
-                </tr><%}%>   <%}%>  
-        </table>
+      
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>

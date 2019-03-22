@@ -29,11 +29,11 @@
                     <%out.println("n° :" + devis.getId());%>
                 <td>  
                     <label for="zoneLibre"> zone libre</label>
-                    <input type="text" value="<%=devis.getFormulaire_Client()%>" name="zoneLibre">
+                    <input type="text" value="<%=devis.getFormulaire_Client()%>" name="zoneLibre"/>
                 </td>
                 <td>  
                     <label for="montant"> montant</label>
-                    <input type="number" value="<%=devis.getMontant_Devis()%>" name="montant">
+                    <input type="number" value="<%=devis.getMontant_Devis()%>" name="montant"/>
                 </td>
             </tr>
         </table>

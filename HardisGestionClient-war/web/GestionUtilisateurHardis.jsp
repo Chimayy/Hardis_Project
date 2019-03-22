@@ -46,7 +46,7 @@
                     </form>
 
                     <p>
-                        <a href = "CreationUtilisateurHardis.jsp"style="margin-bottom: 20px" class='btn btn-outline-light-green right'> Créer un nouvel utilisateur </a>
+                        <a href = "CreationUtilisateurHardis.jsp " style="margin-bottom: 20px" class='btn btn-outline-light-green right'> Créer un nouvel utilisateur </a>
                     </p>
                     <table class='table table-bordered'>
                         <thead >
@@ -69,8 +69,8 @@
                             <td Width=15%><%=user.getMot_De_Passe()%></td>
                             <td Width=15%><%=user.getPlafond_Delegation()%></td>
                             <td Width=15%><%=user.getProfil_Technique()%></td>
-                            <td Width=15%><a style="color:grey"href="ServletAdmin?action=ModifierUtilisateurHardis&idUser=<%=user.getId()%>" >Modifier</a>
-                            <td Width=15%><a style="color:grey"href="ServletAdmin?action=SupprimerUtilisateurHardis&idUser=<%=user.getId()%>">Supprimer</a>
+                            <td Width=15%><a style="color:grey"  href="ServletAdmin?action=ModifierUtilisateurHardis&idUser=<%=user.getId()%>" >Modifier</a>
+                            <td Width=15%><a style="color:grey" href="ServletAdmin?action=SupprimerUtilisateurHardis&idUser=<%=user.getId()%>">Supprimer</a>
                                 <%}%>
                     </table>
                     <hr class="my-6">

@@ -13,29 +13,48 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeDevis" scope="request" class="java.util.List"></jsp:useBean>
-        <jsp:useBean id="clientTest" scope="request" class="entite.Client"></jsp:useBean>
+        <%@include file="jsp_reused/style.jsp" %>
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        
-        <table border width=50%>
-            <tr> 
-                <td>Numero</td>
-                <td>Statut</td>
-            </tr>
-            <% List<Devis> lesDevis=listeDevis;
-                for(Devis devisEnCours : lesDevis){%>
-                <tr>
-                    <td width=15%><%=devisEnCours.getId()%></td>
-                    <td width=15%><%=devisEnCours.getStatut() %></td>
-                <td><a href="ServletClient?action=modifDevis&idDevis=<%=devisEnCours.getId()%>">voir + </a></td>
-                
-                </tr><%}%>     
-        </table>
-        <%=out.println(clientTest.getMail_Connexion())%>
-        <hr>
-    <td width=25%><a href="MenuClient.jsp"> Retour Menu </a></td>
-    <hr>
+
+
+        <div class="flex-wrapper">
+            <div class="container-fluid nopad">
+                <header>
+                    <%@include file="jsp_reused/header.jsp" %>
+                </header>
+
+                <div class="container">
+                    <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
+                        <h1>Devis</h1>
+                    </div> 
+                    <hr class="my-6">
+
+
+                    <table class="table table-border">
+                        <thead>
+                            <tr> 
+                                <th>Numero</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>      
+                        <% List<Devis> lesDevis = listeDevis;
+                            for (Devis devisEnCours : lesDevis) {%>
+                        <tr>
+                            <td width=15%><%=devisEnCours.getId()%></td>
+                            <td width=15%><%=devisEnCours.getStatut()%></td>
+                            <td><a href="ServletClient?action=modifDevis&idDevis=<%=devisEnCours.getId()%>">voir + </a></td>
+
+                        </tr><%}%>     
+                    </table>
+                    <hr class="my-6">
+                    <a class="btn btn-outline-teal right" href="MenuClient.jsp"> Retour Menu </a>
+
+                </div>
+            </div>
+            <%@include file="jsp_reused/footer.jsp" %>
+        </div>
+        <%@include file="jsp_reused/javascript.jsp" %>
     </body>
 </html>

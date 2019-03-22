@@ -50,8 +50,8 @@
                      <td width=15%><input type="submit" name="Valider la réponse"></td></tr>
      
                    </table>                                       
-               </body>
-                    
-           </form>                                                 
-                
+             
+                  </form>   
+                                                           
+          </body>        
 </html>

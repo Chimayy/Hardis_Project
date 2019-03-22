@@ -35,15 +35,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Chargment ...</h1>
         <form method ="get" action="ServletClient">
         <% if (UserARecup instanceof Client) {
         Client client =(Client)UserARecup;%>
-        <input type="text" name="user" value="<%=client%>">
+        <input type="hidden" name="user" value="<%=client%>">
         <%}
                 if (UserARecup instanceof Utilisateur_Hardis) {
         Utilisateur_Hardis user_H =(Utilisateur_Hardis) UserARecup;%>
-        <input type="texte" name="user" value="<%=user_H%>">
+        <input type="hidden" name="user" value="<%=user_H%>">
         <%}%>
         <input type="hidden" name="action" value="">
     </form>

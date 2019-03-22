@@ -13,12 +13,8 @@
         <title>Acceuil Gestionnaire</title>
     </head>
     <body>
-        <h1>Acceuil Gestionaire</h1>
-                <td width="25%"><a href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions des devis</a></td>
-                <td width="25%"><a href="AcceuilGestionnaire?action=AffectationDevis">Affectation devis</a></td>                
-                <td width="25%"><a href="AcceuilGestionnaire?action=VisuClients">Gestion des devis clients</a></td>
-                <td width="25%"><a href="AcceuilGestionnaire?action=QuestionsForum">Répondre aux questions du Forum</a></td>
-        <div class="flex-wrapper">
+        
+                <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
                     <%@include file="jsp_reused/header.jsp" %>
@@ -31,9 +27,11 @@
 
                     <hr class="my-6">
                     <div class="row">
-                        <div class="col-4"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions</a></td></div>
-                        <div class="col-4"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=AffectationDevis">Affectation devis</a></td>              </div>  
-                        <div class="col-4"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=VisuClients">Gestion des devis clients</a></td></div>
+                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions</a></div>
+                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=AffectationDevis">Affectation devis</a></div>  
+                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=VisuClients">Gestion des devis clients</a></div>
+                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=QuestionsForum">Répondre aux questions du Forum</a></div>
+                        
                     </div>
                 </div>
             </div>
