@@ -172,6 +172,8 @@ public class AcceuilGestionnaire extends HttpServlet {
          
             else if (act.equals("QuestionsForum")){
                 
+//                recup id du gestionnaire plus liste des question qui lui sont affectées
+                jspClient="/QuestionsForum/QuestionsForum.jsp";
          
      }
     
