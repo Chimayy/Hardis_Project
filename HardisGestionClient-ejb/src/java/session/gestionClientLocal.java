@@ -44,16 +44,15 @@ public interface gestionClientLocal {
 
     void ModifDevisEn_negociation(long id, int montant, Date dateinter);
 
-<<<<<<< HEAD
+
     void modifierDevis(String zoneLibre, double montant, Devis Devis);
 
     void accepterDevisClient(long idDevis);
 
     void refuserDevis(long idDevis, String motif);
-=======
+
     List ListeDevisNonAttribue();
 
->>>>>>> Exilessv2
 
     List<Devis> devisAtraiter(long id);
     

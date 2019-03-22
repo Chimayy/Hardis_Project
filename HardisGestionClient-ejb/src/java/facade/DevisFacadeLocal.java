@@ -51,7 +51,7 @@ public interface DevisFacadeLocal {
 
     void ModifDevisEn_negociation(long id, int montant, Date dateinter);
 
-<<<<<<< HEAD
+
     void modifierDevis(double montant, Devis d, String zoneLibre);
 
     void accepterDevis(Devis Devis);
@@ -59,11 +59,11 @@ public interface DevisFacadeLocal {
     List<Devis> listDevisAtraiter(long id);
 
     void refuserDevis(Devis Devis, String motif);
-=======
+
     List ListeDevisNonAttribue();
 
   
->>>>>>> Exilessv2
+
 
     void proposerDateetConsultants(Devis devis, Date DateIntervention, List listeConsultants);
     

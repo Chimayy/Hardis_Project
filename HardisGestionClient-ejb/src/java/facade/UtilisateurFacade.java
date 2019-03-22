@@ -59,8 +59,6 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         user=(Utilisateur)req.getSingleResult();
         return user;
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public List GetUtilisateurParOffre(long idOffre) {
@@ -76,7 +74,5 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
 
    
 
-    
->>>>>>> Exilessv2
 
 }
