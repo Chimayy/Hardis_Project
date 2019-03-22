@@ -9,6 +9,17 @@
                 <library dirs="100">
                     <file>${reference.HardisGestionClient-ejb.dist}</file>
                 </library>
+<<<<<<< HEAD
+=======
+                <library dirs="200">
+                    <file>${libs.CopyLibs.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${libs.javaee-api-7.0.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+>>>>>>> Exilessv2
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>
