@@ -20,16 +20,17 @@
                                     connexion
                                 </button>                               
                                 <div class="dropdown-menu dropdown-menu-right ">
-                                    <form method="get" action="authentification" class="container">
+                                    <form method="get" action="Accueil" class="container">
                                         <fieldset >
                                             <h1>Connexion</h1>
                                             <div class="form-group">
                                                 <label for="login"> Login <span class="requis">*</span></label>
-                                                <input type="text" class="form-control" name="login" value="" size="20" maxlength="20"/>
+                                                <input type="text" class="form-control" name="mail" value="" size="20" maxlength="20"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pass"> Pass <span class="requis">*</span></label>
-                                                <input type="text" class="form-control" name="pass" value="" size="20" maxlength="20"/>
+                                                <input type="text" class="form-control" name="mdp" value="" size="20" maxlength="20"/>
+                                                <input type ="hidden" name="action" value="authentif">
                                             </div>
                                             <br/>           
                                         </fieldset>

@@ -37,7 +37,7 @@ public class Accueil extends HttpServlet {
     private gestionVisiteurLocal gestionVisiteur;
 
 
-    String jspClient = "/Connexion.jsp";
+    String jspClient = "/Menu_principal.jsp";
     String act = null;
 
     /**
@@ -57,7 +57,7 @@ public class Accueil extends HttpServlet {
         act = request.getParameter("action");
 
         if ((act == null) || (act.equals("vide"))) {
-            jspClient = "/Connexion.jsp";
+            jspClient = "/Menu_principal.jsp";
             request.setAttribute("message", "pas d'information");
         } else if ((act.equals("authentif"))) {
             String login = request.getParameter("mail");
