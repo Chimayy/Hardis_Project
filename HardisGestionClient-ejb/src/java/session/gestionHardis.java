@@ -123,6 +123,12 @@ public class gestionHardis implements gestionHardisLocal {
         historique_QuestionFacade.setReponse(id, reponse);
     }
 
+    @Override
+    public List GetUtilisateurParOffre(long idOffre) {
+        List <Utilisateur> ListeUtilisateurParOffre = utilisateurFacade.GetUtilisateurParOffre(idOffre);
+        return ListeUtilisateurParOffre;
+    }
+
     
     
 }

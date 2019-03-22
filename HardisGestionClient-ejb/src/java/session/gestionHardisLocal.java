@@ -33,5 +33,7 @@ public interface gestionHardisLocal {
 
     void setReponse(long id, String reponse);
 
+    List GetUtilisateurParOffre(long idOffre);
+
     
 }

@@ -19,7 +19,7 @@
         <title>Répondre aux questions</title>
     </head>
     <body>
-        <h1>Réondre aux question</h1>
+        <h1>Répondre aux question concernant les devis</h1>
         <table border width=50%>
             <tr> 
                 

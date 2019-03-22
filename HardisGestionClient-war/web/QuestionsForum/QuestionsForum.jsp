@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AffectationDevis
-    Created on : 14 mars 2019, 14:49:15
+    Document   : QuestionsForum
+    Created on : 22 mars 2019, 09:45:21
     Author     : Mathieu Harmand
 --%>
 
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Affectation devis</title>
+        <title>Gestion des question publique</title>
     </head>
     <body>
-        <h1>Affectation des devis</h1>
+        <h1>Gestion des question publique</h1>
     </body>
 </html>

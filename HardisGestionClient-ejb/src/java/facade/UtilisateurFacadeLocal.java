@@ -34,5 +34,13 @@ public interface UtilisateurFacadeLocal {
 
     Utilisateur rechercheUtilisateur(long id);
 
+<<<<<<< HEAD
     Utilisateur authentification(String log, String mdp);
+=======
+    public Utilisateur authentification(String mail, String mdp);
+
+    List GetUtilisateurParOffre(long idOffre);
+
+    
+>>>>>>> Exilessv2
 }
