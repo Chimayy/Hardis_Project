@@ -59,7 +59,18 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         user=(Utilisateur)req.getSingleResult();
         return user;
     }
+
+    @Override
+    public List GetUtilisateurParOffre(long idOffre) {
+        List <Utilisateur> ListeUtilisateurParOffre;
+        String txt ="SELECT u FROM Utilisateur AS u JOIN u.profil_metier profil_metier  JOIN profil_metier.lOffre Offre WHERE offre.id=:idOffre";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("idOffre",idOffre);
+        ListeUtilisateurParOffre= req.getResultList();
+        return ListeUtilisateurParOffre;
+    }
     
+   
 
    
 

@@ -47,5 +47,7 @@ public interface gestionClientLocal {
 
     void ModifDevisEn_negociation(long id, int montant, Date dateinter);
 
+    List ListeDevisNonAttribue();
+
 
 }

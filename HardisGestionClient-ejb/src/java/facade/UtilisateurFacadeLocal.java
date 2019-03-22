@@ -36,5 +36,7 @@ public interface UtilisateurFacadeLocal {
 
     public Utilisateur authentification(String mail, String mdp);
 
+    List GetUtilisateurParOffre(long idOffre);
+
     
 }

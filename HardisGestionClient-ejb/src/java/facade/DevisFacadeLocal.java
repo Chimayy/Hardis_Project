@@ -51,6 +51,8 @@ public interface DevisFacadeLocal {
 
     void ModifDevisEn_negociation(long id, int montant, Date dateinter);
 
+    List ListeDevisNonAttribue();
+
   
 
     

@@ -69,7 +69,10 @@ public class AcceuilGestionnaire extends HttpServlet {
             }
            
            else if (act.equals("AffectationDevis")){
-               jspClient="/AffectationDevis.jsp";
+               List<Devis> DevisNonAttribue = gestionClient.ListeDevisNonAttribue();
+               request.setAttribute("ListeDevisNonAttribue", DevisNonAttribue);
+               
+               jspClient="/AffectationDevis/AffectationDevis.jsp";
            }
            
            else if (act.equals("GestionDevis")){
@@ -157,16 +160,28 @@ public class AcceuilGestionnaire extends HttpServlet {
              Devis d = gestionClient.rechercheDevis(idDevis);
              Client c = d.getLeClient();
              request.setAttribute("Client", c);
-             jspClient="/ListeClient/DetailClient.jsp";
+             jspClient="/ListeClient/DetailClient.jsp";             
              
+         }           
+           
+         else if (act.equals("DevisAffecte")){
+             String Did = request.getParameter("Did");
+             String Gid = request.getParameter("Gid");
              
          }
+         
+            else if (act.equals("QuestionsForum")){
+                
+         
+     }
+    
 
        RequestDispatcher Rd;
        Rd = getServletContext().getRequestDispatcher(jspClient);
        Rd.forward(request, response);
        response.setContentType("text/html;charset=UTF-8");
         }
+     
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

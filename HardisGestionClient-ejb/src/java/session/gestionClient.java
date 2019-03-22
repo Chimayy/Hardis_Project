@@ -124,6 +124,12 @@ public class gestionClient implements gestionClientLocal {
     public void ModifDevisEn_negociation(long id, int montant, Date dateinter) {
         devisFacade.ModifDevisEn_negociation(id, montant, dateinter);
     }
+
+    @Override
+    public List ListeDevisNonAttribue() {
+        List<Devis> ListeDevisNonAttribue =devisFacade.ListeDevisNonAttribue();
+        return ListeDevisNonAttribue;
+    }
     
 
     

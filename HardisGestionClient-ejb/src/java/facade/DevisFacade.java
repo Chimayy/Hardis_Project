@@ -132,6 +132,17 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         em.merge(d);
         
     }
+
+    @Override
+    public List ListeDevisNonAttribue() {
+        List<Devis> ListeDevisNonAttribue;
+        statut_Devis sd = statut_Devis.a_affecter;
+        String txt="SELECT d FROM Devis AS d WHERE d.statut =:sd ";
+        Query req =getEntityManager().createQuery(txt);
+        req=req.setParameter("sd", sd);
+        ListeDevisNonAttribue = req.getResultList();
+        return ListeDevisNonAttribue;
+    }
     
     }
 

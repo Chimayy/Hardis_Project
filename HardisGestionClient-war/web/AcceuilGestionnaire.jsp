@@ -13,8 +13,9 @@
     </head>
     <body>
         <h1>Acceuil Gestionaire</h1>
-                <td width="25%"><a href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions</a></td>
+                <td width="25%"><a href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions des devis</a></td>
                 <td width="25%"><a href="AcceuilGestionnaire?action=AffectationDevis">Affectation devis</a></td>                
                 <td width="25%"><a href="AcceuilGestionnaire?action=VisuClients">Gestion des devis clients</a></td>
+                <td width="25%"><a href="AcceuilGestionnaire?action=QuestionsForum">Répondre aux questions du Forum</a></td>
     </body>
 </html>
