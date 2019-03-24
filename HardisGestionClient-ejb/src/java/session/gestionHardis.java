@@ -10,7 +10,6 @@ import entite.Historique_Question;
 import entite.Utilisateur_Hardis;
 import facade.AgenceFacadeLocal;
 import facade.Bon_De_CommandeFacadeLocal;
-import facade.CVFacadeLocal;
 import facade.Condition_ContractuelleFacadeLocal;
 import facade.DevisFacadeLocal;
 import facade.Historique_EchangeFacadeLocal;
@@ -85,9 +84,6 @@ public class gestionHardis implements gestionHardisLocal {
 
     @EJB
     private Condition_ContractuelleFacadeLocal condition_ContractuelleFacade;
-
-    @EJB
-    private CVFacadeLocal cVFacade;
 
     @EJB
     private Bon_De_CommandeFacadeLocal bon_De_CommandeFacade;

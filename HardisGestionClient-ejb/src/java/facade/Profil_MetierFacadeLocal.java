@@ -37,5 +37,7 @@ public interface Profil_MetierFacadeLocal {
     Profil_Metier rechercheProfilMetier(long idUser, long idOffre);
 
     void creerProfilMetier(int niveau_habilitation, Offre offre, Utilisateur_Hardis user);
+
+    List<Profil_Metier>  listCVOffre(long idOffre);
     
 }

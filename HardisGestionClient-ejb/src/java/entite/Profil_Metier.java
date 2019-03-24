@@ -24,6 +24,17 @@ public class Profil_Metier implements Serializable {
     private Offre lOffre;
     @ManyToOne
     private Utilisateur_Hardis lUtilisateur;
+    private String pathCV;
+
+    public String getPathCV() {
+        return pathCV;
+    }
+
+    public void setPathCV(String pathCV) {
+        this.pathCV = pathCV;
+    }
+    
+    
 
     public Offre getlOffre() {
         return lOffre;

@@ -61,6 +61,16 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         profilACreer.setlUtilisateur(user);
         em.persist(profilACreer);
     }
+
+    @Override
+    public List<Profil_Metier>  listCVOffre(long idOffre) {
+        List<Profil_Metier> result;
+        String txt = "SELECT pm.pathCV FROM Profil_Metier pm WHERE pm.lOffre=:idOffre";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("idOffre", idOffre);
+        result = req.getResultList();
+        return result;
+    }
     
     
     

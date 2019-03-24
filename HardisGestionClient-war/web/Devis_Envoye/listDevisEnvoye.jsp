@@ -1,18 +1,17 @@
-
 <%-- 
-    Document   : listDevisClient
-    Created on : 18 mars 2019, 10:10:14
+    Document   : listDevisEnvoye
+    Created on : 22 mars 2019, 16:08:07
     Author     : thoma
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="entite.Devis"%>
 <%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <jsp:useBean id="listeDevis" scope="request" class="java.util.List"></jsp:useBean>
+        <jsp:useBean id="listDevis" scope="request" class="java.util.List"></jsp:useBean>
         <title>JSP Page</title>
     </head>
     <body>
@@ -23,12 +22,12 @@
                 <td>Numero</td>
                 <td>Statut</td>
             </tr>
-            <% List<Devis> lesDevis=listeDevis;
+            <% List<Devis> lesDevis=listDevis;
                 for(Devis devisEnCours : lesDevis){%>
                 <tr>
                     <td width=15%><%=devisEnCours.getId()%></td>
                     <td width=15%><%=devisEnCours.getStatut() %></td>
-                <td><a href="ServletClient?action=modifDevis&idDevis=<%=devisEnCours.getId()%>">voir + </a></td>
+                <td><a href="ServletClient?action=choixDateDevis&idDevis=<%=devisEnCours.getId()%>">voir + </a></td>
                 
                 </tr><%}%>     
         </table>

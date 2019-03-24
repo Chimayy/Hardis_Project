@@ -26,6 +26,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Utilisateur_Hardis extends Utilisateur implements Serializable {
 
+
     @OneToMany(mappedBy = "leConsultant")
     private List<Historique_Consultant> historique_Consultants = new ArrayList<Historique_Consultant>();
 

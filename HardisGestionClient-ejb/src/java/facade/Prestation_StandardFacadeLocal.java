@@ -34,6 +34,6 @@ public interface Prestation_StandardFacadeLocal {
 
     void creerPrestationStandard( String description, String nomresp, String telresp, String mailresp, double cout, boolean facturation, int delai, Service service, lieu_Intervention lieu, String Expertise, double montantJour, double nbJour );
 
-    void creerPrestaS(Service service);
+    Prestation_Standard creerPrestaS(Service service);
     
 }

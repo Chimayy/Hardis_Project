@@ -11,6 +11,8 @@ package Client;
 import entite.Client;
 import entite.Devis;
 import entite.Entreprise;
+import entite.Profil_Metier;
+import entite.Utilisateur_Hardis;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -61,14 +63,15 @@ public class ServletClient extends HttpServlet {
                 sess.setAttribute("user", user);
                 jspClient="/MenuClient.jsp";
             }
-            else if(act.equals("changerDevis"))
+            else if(act.equals("demandeDevis"))
             {
              
                 String zoneLibre = request.getParameter("zoneLibre");
               String idServiceString = request.getParameter("idService");
                 Long idServiceLong = Long.valueOf(idServiceString);              
-               gestionClient.demandeDevis(zoneLibre, user, idServiceLong);
-//             gestionClient.affecterDevisReferentLocal(d.getId());
+               Devis demandeDevisClient = gestionClient.demandeDevis(zoneLibre, user, idServiceLong);
+               // recuperation de l'id du devis qui vient d'être enregistré pour l'affecter au referent local
+               gestionClient.affecterDevisReferentLocal(demandeDevisClient.getId());
                 jspClient="/MenuClient.jsp";
                 request.setAttribute("message", "devis bien envoyé au référent local");
             }
@@ -118,6 +121,24 @@ public class ServletClient extends HttpServlet {
                 Long idDevisLong = Long.valueOf(idDevisString);
                 gestionClient.refuserDevis(idDevisLong, motifRefus);
                 request.setAttribute("message", "ceban refus c'est OK");
+            }
+            else if(act.equals("consultantsEtDate"))
+            {
+                jspClient="/Devis_Envoye/ListDevisEnvoye.jsp";
+                List<Devis> devisEnvoye = gestionClient.listDevisEnvoye(user);
+                request.setAttribute("listDevis", devisEnvoye);
+            }
+            else if(act.equals("choixDateDevis"))
+            {
+                jspClient="/Devis_Envoye/ChoixConsultant.jsp";
+                String idDevisRecu = request.getParameter("idDevis");
+                Long idDevis= Long.valueOf(idDevisRecu);
+                Devis d = gestionClient.rechercheDevis(idDevis);
+                request.setAttribute("devis", d);
+                List<Profil_Metier>list =gestionClient.listeConsultantOffre(idDevis);
+                request.setAttribute("listConsultant", list);
+                
+                
             }
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);

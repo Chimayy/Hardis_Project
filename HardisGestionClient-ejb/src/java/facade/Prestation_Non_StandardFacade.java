@@ -49,10 +49,11 @@ public class Prestation_Non_StandardFacade extends AbstractFacade<Prestation_Non
 
     //méthode à appeler lors de la demande de devis client
     @Override
-    public void creerPrestaNS(Service service) {
+    public Prestation_Non_Standard creerPrestaNS(Service service) {
         Prestation_Non_Standard presta = new Prestation_Non_Standard();
         presta.setLeService(service);
         em.persist(presta);
+        return presta;
     }
     
     

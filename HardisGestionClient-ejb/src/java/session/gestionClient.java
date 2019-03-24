@@ -8,12 +8,21 @@ package session;
 import entite.Client;
 import facade.ClientFacadeLocal;
 import entite.Devis;
+import entite.Offre;
+import entite.Prestation;
+import entite.Prestation_Non_Standard;
+import entite.Prestation_Standard;
+import entite.Profil_Metier;
 import entite.Service;
+import entite.Utilisateur_Hardis;
 import facade.ClientFacadeLocal;
 import facade.DevisFacadeLocal;
+import facade.OffreFacadeLocal;
 import facade.Prestation_Non_StandardFacadeLocal;
 import facade.Prestation_StandardFacadeLocal;
+import facade.Profil_MetierFacadeLocal;
 import facade.ServiceFacadeLocal;
+import facade.Utilisateur_HardisFacadeLocal;
 import java.util.ArrayList;
 
 import java.util.Date;
@@ -28,6 +37,15 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionClient implements gestionClientLocal {
+
+    @EJB
+    private Profil_MetierFacadeLocal profil_MetierFacade;
+
+    @EJB
+    private Utilisateur_HardisFacadeLocal utilisateur_HardisFacade;
+
+    @EJB
+    private OffreFacadeLocal offreFacade;
     
     @EJB
     private ClientFacadeLocal ClientFacade;
@@ -70,20 +88,21 @@ public class gestionClient implements gestionClientLocal {
     
 
 
-    public void demandeDevis(String zoneLibre, Client client, long idService) {
+    public Devis demandeDevis(String zoneLibre, Client client, long idService) {
         Service service = serviceFacade.rechercheService(idService).get(0);
-
+        Prestation presta = null;
         
         //si le service fait partie de la liste des services standards, on lie le brouillon de devis à une nouvelle prestation standard
         if(service.getNom_Service().equals("prestation standard")||service.getNom_Service().equals("prestation standard 2"))
         {
-            prestation_StandardFacade.creerPrestaS(service);
+            presta = prestation_StandardFacade.creerPrestaS(service);
         }
         if(service.getNom_Service().equals("prestation non standard")||service.getNom_Service().equals("prestation non standard 2"))
         {
-            prestation_Non_StandardFacade.creerPrestaNS(service);
+           presta =  prestation_Non_StandardFacade.creerPrestaNS(service);
         }
-        devisFacade.demandeDevisClient(zoneLibre, client, service);
+       Devis demandeDevisClient = devisFacade.demandeDevisClient(zoneLibre, client, presta);
+       return demandeDevisClient;
         }
 
     @Override
@@ -152,8 +171,27 @@ public class gestionClient implements gestionClientLocal {
     }
 
     @Override
-    public void propositionDateetConsultant() {
+    public void propositionDateetConsultant(Client client, List<Utilisateur_Hardis> ListeConsultants, long idDevis, Date DateIntervention) {
+        Devis devisConcerne = devisFacade.rechercheDevis(idDevis);
+        Long idOffre = devisConcerne.getlOffre().getId();
+        Offre offreConcerne = offreFacade.rechercheOffre(idOffre).get(0);
+        
     }
+
+    @Override
+    public List<Devis> listDevisEnvoye(Client client) {
+        return devisFacade.listeDevisEnvoye(client);
+    }
+
+    @Override
+    public List<Profil_Metier> listeConsultantOffre(long idDevis) {
+        Devis devis = devisFacade.rechercheDevis(idDevis);
+        Offre offre = devis.getlOffre();
+        Long idOffre = offre.getId();
+        List<Profil_Metier> CVOffre = profil_MetierFacade.listCVOffre(idOffre);
+        return CVOffre;
+    }
+
     
     
     

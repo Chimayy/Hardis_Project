@@ -8,6 +8,7 @@ package facade;
 import entite.Agence;
 import entite.Client;
 import entite.Devis;
+import entite.Prestation;
 import entite.Service;
 
 
@@ -39,7 +40,7 @@ public interface DevisFacadeLocal {
 
     List<Devis> listeDevis();
 
-    void demandeDevisClient(String zoneLibre, Client Client, Service service);
+    Devis demandeDevisClient(String zoneLibre, Client Client, Prestation presta);
 
     void affecterDevisAuReferentLocal(Devis devis);
 
@@ -66,5 +67,7 @@ public interface DevisFacadeLocal {
 
 
     void  proposerDateIntervention(Devis devis, Date DateIntervention);
+
+    List<Devis> listeDevisEnvoye(Client Client);
     
 }

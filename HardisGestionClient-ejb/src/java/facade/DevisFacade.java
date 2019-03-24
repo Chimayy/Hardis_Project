@@ -54,13 +54,14 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
     
 
     @Override
-    public void demandeDevisClient(String zoneLibre, Client Client, Service service) {
-        Devis brouillonDevisClient = new Devis();
-        brouillonDevisClient.setLeClient(Client);
-        brouillonDevisClient.setFormulaire_Client(zoneLibre);
-        brouillonDevisClient.setStatut(statut_Devis.a_affecter);
-
-        em.persist(brouillonDevisClient);
+    public Devis demandeDevisClient(String zoneLibre, Client Client, Prestation presta) {
+        Devis demandeDevisClient = new Devis();
+        demandeDevisClient.setLeClient(Client);
+        demandeDevisClient.setFormulaire_Client(zoneLibre);
+        demandeDevisClient.setStatut(statut_Devis.a_affecter);
+        demandeDevisClient.setLaPrestation(presta);
+        em.persist(demandeDevisClient);
+        return demandeDevisClient;
     }
 
     @Override
@@ -85,8 +86,13 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         referent.setLeDevis(devis);
         referent.setLeConsultant(referentLocal);
         referent.setFonctionConsultant("chef de projet");
-        devis.getLaPrestation().setNom_Responsable(referentLocal.getNom_Utilisateur());
+    devis.getLaPrestation().setNom_Responsable(referentLocal.getNom_Utilisateur());
         devis.getLaPrestation().setMail_Responsable(referentLocal.getMail_Connexion());
+       
+        
+        // TEMPORAIRE à changer en "a_affecter"
+        
+        devis.setStatut(statut_Devis.envoye);
         em.persist(referent);
         em.merge(devis);
     }
@@ -180,6 +186,18 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         req=req.setParameter("sd", sd);
         ListeDevisNonAttribue = req.getResultList();
         return ListeDevisNonAttribue;
+    }
+
+    @Override
+    public List<Devis> listeDevisEnvoye(Client Client) {
+        List<Devis> ListeDevisEnvoye;
+        statut_Devis sd = statut_Devis.envoye;
+        String txt="SELECT d FROM Devis AS d WHERE d.statut =:sd AND d.leClient =:client ";
+        Query req =getEntityManager().createQuery(txt);
+        req=req.setParameter("sd", sd);
+        req=req.setParameter("client", Client);
+        ListeDevisEnvoye = req.getResultList();
+        return ListeDevisEnvoye;
     }
     
     }

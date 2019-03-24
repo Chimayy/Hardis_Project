@@ -8,7 +8,9 @@ package session;
 import entite.Client;
 
 import entite.Devis;
+import entite.Profil_Metier;
 import entite.Service;
+import entite.Utilisateur_Hardis;
 
 
 import java.util.Date;
@@ -30,7 +32,7 @@ public interface gestionClientLocal {
     Client RechercheClient(Long id);
 
 
-    void demandeDevis(String zoneLibre, Client client, long idService);
+    Devis demandeDevis(String zoneLibre, Client client, long idService);
 
     void affecterDevisReferentLocal(long idDevis);
 
@@ -56,6 +58,10 @@ public interface gestionClientLocal {
 
     List<Devis> devisAtraiter(long id);
 
-    void propositionDateetConsultant();
-    
+    void propositionDateetConsultant(Client client, List<Utilisateur_Hardis> ListeConsultants, long idDevis, Date DateIntervention);
+
+    List<Devis> listDevisEnvoye(Client client);
+
+    List<Profil_Metier> listeConsultantOffre(long idDevis);
+
 }
