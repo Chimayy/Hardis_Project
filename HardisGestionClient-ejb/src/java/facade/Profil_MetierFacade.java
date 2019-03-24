@@ -71,8 +71,16 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         result = req.getResultList();
         return result;
     }
-    
-    
-    
-    
+
+    @Override
+    public List<Profil_Metier> listPMOffre(Offre offre) {
+         List<Profil_Metier> result;
+        String txt = "SELECT pm FROM Profil_Metier pm WHERE pm.lOffre=:idOffre";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("idOffre", offre);
+        result = req.getResultList();
+        return result;
+        // 
+    }
+  
 }

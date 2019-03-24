@@ -42,6 +42,7 @@ public class Historique_ConsultantFacade extends AbstractFacade<Historique_Consu
             Historique_Consultant HistoEnCours = new Historique_Consultant();
             HistoEnCours.setLeConsultant(userEnCours);
             HistoEnCours.setLeDevis(devis);
+            HistoEnCours.setFonctionConsultant("proposition client");
             em.persist(HistoEnCours);
         }
     }

@@ -15,6 +15,8 @@ import entite.Profil_Metier;
 import entite.Utilisateur_Hardis;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -93,7 +95,7 @@ public class ServletClient extends HttpServlet {
                 request.setAttribute("devis", devis);
                 request.setAttribute("message", "et mais yo ça marche pas");
             }
-            else if(act.equals("Accepter"))
+            else if(act.equals("Valider"))
             {
                 jspClient="/MenuClient.jsp";
                 String idDevisString = request.getParameter("devis");
@@ -110,7 +112,8 @@ public class ServletClient extends HttpServlet {
                 String montantString = request.getParameter("montant");
                 Double montantDouble = Double.valueOf(montantString);
                 Devis devisAModifier = gestionClient.rechercheDevis(idDevisLong);
-                gestionClient.modifierDevis(remarques,montantDouble, devisAModifier );
+                String motifRefus = request.getParameter("refus");
+                gestionClient.modifierDevis(remarques,montantDouble, devisAModifier, motifRefus );
                 request.setAttribute("message", "ceban modification du devis transmise au gestionnaire");
             }
             else if(act.equals("Refuser"))
@@ -124,20 +127,42 @@ public class ServletClient extends HttpServlet {
             }
             else if(act.equals("consultantsEtDate"))
             {
-                jspClient="/Devis_Envoye/ListDevisEnvoye.jsp";
-                List<Devis> devisEnvoye = gestionClient.listDevisEnvoye(user);
+                jspClient="/Devis_Envoye/listDevisEnvoye.jsp";
+                List<Devis> devisEnvoye = gestionClient.listDevisAccepte(user);
                 request.setAttribute("listDevis", devisEnvoye);
             }
             else if(act.equals("choixDateDevis"))
             {
-                jspClient="/Devis_Envoye/ChoixConsultant.jsp";
+                jspClient="/Devis_Envoye/choixConsultant.jsp";
                 String idDevisRecu = request.getParameter("idDevis");
                 Long idDevis= Long.valueOf(idDevisRecu);
                 Devis d = gestionClient.rechercheDevis(idDevis);
                 request.setAttribute("devis", d);
-                List<Profil_Metier>list =gestionClient.listeConsultantOffre(idDevis);
-                request.setAttribute("listConsultant", list);
-                
+                List<Profil_Metier> list = gestionClient.listPMOffre(d.getlOffre());
+                request.setAttribute("listPM", list);
+            }
+            else if(act.equals("propositionConsultant"))
+            {
+                jspClient="/MenuClient.jsp";
+                String[] checkbox = request.getParameterValues("checkbox");
+                List<Utilisateur_Hardis> propositionClient = new ArrayList();
+                String[] ArrayidConsultants = request.getParameterValues("consultant");
+                for(int i =0; i<checkbox.length;i++)
+                {
+                    String checkboxEnCours = checkbox[i];
+                    if(checkboxEnCours != null)
+                    {
+                        String idConsultantSelectionneString = ArrayidConsultants[i];
+                        long idConsultantSelectionneLong = Long.valueOf(idConsultantSelectionneString);
+                        Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantSelectionneLong);
+                        propositionClient.add(consultantSelectionne);
+                    }
+                }
+                String idDevisString = request.getParameter("devis");
+                Long idDevisLong = Long.valueOf(idDevisString);
+                String dateString = request.getParameter("dateIntervention");
+                Date dateIntervention = Date.valueOf(dateString);
+                gestionClient.propositionDateetConsultant(user, propositionClient, idDevisLong, dateIntervention);
                 
             }
             RequestDispatcher Rd;

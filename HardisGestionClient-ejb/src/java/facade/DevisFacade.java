@@ -60,6 +60,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         demandeDevisClient.setFormulaire_Client(zoneLibre);
         demandeDevisClient.setStatut(statut_Devis.a_affecter);
         demandeDevisClient.setLaPrestation(presta);
+        demandeDevisClient.setlOffre(demandeDevisClient.getLaPrestation().getLeService().getlOffre());
         em.persist(demandeDevisClient);
         return demandeDevisClient;
     }
@@ -137,13 +138,13 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
     }
    
     @Override
-    public void modifierDevis(double montant, Devis d, String zoneLibre) {
+    public void modifierDevis(double montant, Devis d, String zoneLibre, String motifRefus) {
         if(d.getMontant_Devis() != montant || d.getFormulaire_Client() != zoneLibre)
         {
             d.setMontant_Devis(montant);
             d.setFormulaire_Client(zoneLibre);
-            d.setMotif_Refus(zoneLibre);
-            d.setStatut(statut_Devis.en_negociation);
+            d.setMotif_Refus(motifRefus);
+            d.setStatut(statut_Devis.incomplet);
             em.merge(d);
         }
     }
@@ -156,9 +157,12 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
 
     @Override
     public List<Devis> listDevisAtraiter(long id) {
-        String txt = "SELECT h FROM Historique_Consultant h JOIN h.leDevis d JOIN d.leClient c WHERE d.statut =:statut AND c.id=:id";
+        String txt = "SELECT d FROM Historique_Consultant h JOIN h.leDevis d JOIN d.leClient c WHERE d.statut =:statut AND c.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("id", id);
+        
+        
+        // A CHANGER PEUT ETRE
         req = req.setParameter("statut", statut_Devis.envoye);
         List<Devis> liste = req.getResultList();
         return liste;
@@ -174,6 +178,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
    @Override
     public void proposerDateIntervention(Devis devis, Date DateIntervention) {
         devis.setDate_Intervention(DateIntervention);
+        devis.setStatut(statut_Devis.en_negociation);
         em.merge(devis);
     }
 
@@ -199,6 +204,32 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         ListeDevisEnvoye = req.getResultList();
         return ListeDevisEnvoye;
     }
+
+    @Override
+    public List<Devis> listDevisEnNegociation(Client Client) {
+       List<Devis> listDevisEnNegociation;
+        statut_Devis sd = statut_Devis.en_negociation;
+        String txt="SELECT d FROM Devis AS d WHERE d.statut =:sd AND d.leClient =:client ";
+        Query req =getEntityManager().createQuery(txt);
+        req=req.setParameter("sd", sd);
+        req=req.setParameter("client", Client);
+        listDevisEnNegociation = req.getResultList();
+        return listDevisEnNegociation;
+    }
+
+    @Override
+    public List<Devis> listDevisAccepte(Client Client) {
+        List<Devis> listDevisAccepte;
+        statut_Devis sd = statut_Devis.valide;
+        String txt="SELECT d FROM Devis AS d WHERE d.statut =:sd AND d.leClient =:client ";
+        Query req =getEntityManager().createQuery(txt);
+        req=req.setParameter("sd", sd);
+        req=req.setParameter("client", Client);
+        listDevisAccepte = req.getResultList();
+        return listDevisAccepte;
+    }
+    
+    
     
     }
 

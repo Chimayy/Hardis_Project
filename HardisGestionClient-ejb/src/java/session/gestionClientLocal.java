@@ -8,6 +8,7 @@ package session;
 import entite.Client;
 
 import entite.Devis;
+import entite.Offre;
 import entite.Profil_Metier;
 import entite.Service;
 import entite.Utilisateur_Hardis;
@@ -47,7 +48,7 @@ public interface gestionClientLocal {
     void ModifDevisEn_negociation(long id, int montant, Date dateinter);
 
 
-    void modifierDevis(String zoneLibre, double montant, Devis Devis);
+    void modifierDevis(String zoneLibre, double montant, Devis Devis, String motifRefus);
 
     void accepterDevisClient(long idDevis);
 
@@ -62,6 +63,16 @@ public interface gestionClientLocal {
 
     List<Devis> listDevisEnvoye(Client client);
 
-    List<Profil_Metier> listeConsultantOffre(long idDevis);
+    List<Profil_Metier> listeCVOffre(long idDevis);
+
+    List<Devis> listDevisEnNegociation(Client Client);
+
+    List<Utilisateur_Hardis> listConsultantOffre(long idOffre);
+
+    List<Profil_Metier> listPMOffre( Offre Offre);
+
+    List<Devis> listDevisAccepte(Client Client);
+
+    Utilisateur_Hardis rechercherUtilisateurHardisId(long id);
 
 }

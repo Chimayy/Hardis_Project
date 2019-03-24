@@ -17,6 +17,7 @@ import entite.Service;
 import entite.Utilisateur_Hardis;
 import facade.ClientFacadeLocal;
 import facade.DevisFacadeLocal;
+import facade.Historique_ConsultantFacadeLocal;
 import facade.OffreFacadeLocal;
 import facade.Prestation_Non_StandardFacadeLocal;
 import facade.Prestation_StandardFacadeLocal;
@@ -37,6 +38,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class gestionClient implements gestionClientLocal {
+
+    @EJB
+    private Historique_ConsultantFacadeLocal historique_ConsultantFacade;
 
     @EJB
     private Profil_MetierFacadeLocal profil_MetierFacade;
@@ -149,8 +153,8 @@ public class gestionClient implements gestionClientLocal {
 
 
     @Override
-    public void modifierDevis(String zoneLibre, double montant, Devis Devis) {
-        devisFacade.modifierDevis(montant, Devis, zoneLibre);
+    public void modifierDevis(String zoneLibre, double montant, Devis Devis, String motifRefus) {
+        devisFacade.modifierDevis(montant, Devis, zoneLibre, motifRefus);
     }
 
     @Override
@@ -173,8 +177,8 @@ public class gestionClient implements gestionClientLocal {
     @Override
     public void propositionDateetConsultant(Client client, List<Utilisateur_Hardis> ListeConsultants, long idDevis, Date DateIntervention) {
         Devis devisConcerne = devisFacade.rechercheDevis(idDevis);
-        Long idOffre = devisConcerne.getlOffre().getId();
-        Offre offreConcerne = offreFacade.rechercheOffre(idOffre).get(0);
+        devisFacade.proposerDateIntervention(devisConcerne, DateIntervention);
+        historique_ConsultantFacade.proposerConsultants(devisConcerne, ListeConsultants);
         
     }
 
@@ -184,12 +188,39 @@ public class gestionClient implements gestionClientLocal {
     }
 
     @Override
-    public List<Profil_Metier> listeConsultantOffre(long idDevis) {
+    public List<Profil_Metier> listeCVOffre(long idDevis) {
         Devis devis = devisFacade.rechercheDevis(idDevis);
         Offre offre = devis.getlOffre();
         Long idOffre = offre.getId();
         List<Profil_Metier> CVOffre = profil_MetierFacade.listCVOffre(idOffre);
         return CVOffre;
+    }
+
+    
+    
+    @Override
+    public List<Devis> listDevisEnNegociation(Client Client) {
+        return devisFacade.listDevisEnNegociation(Client);
+    }
+
+    @Override
+    public List<Utilisateur_Hardis> listConsultantOffre(long idOffre) {
+        return utilisateur_HardisFacade.ListeConsultantDuneOffre(idOffre);
+    }
+
+    @Override
+    public List<Profil_Metier> listPMOffre(Offre Offre) {
+        return profil_MetierFacade.listPMOffre(Offre);
+    }
+
+    @Override
+    public List<Devis> listDevisAccepte(Client Client) {
+        return devisFacade.listDevisAccepte(Client);
+    }
+
+    @Override
+    public Utilisateur_Hardis rechercherUtilisateurHardisId(long id) {
+        return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
     }
 
     

@@ -38,7 +38,7 @@
             </tr>
         </table>
                 <label for="refus"> motif de refus</label>
-                    <input type="number" name="refus">
+                    <input type="text" name="refus">
                 
     <p><% out.println(devis.getStatut());%></p>
     <p><% out.println(devis.getFormulaire_Client());%></p>
