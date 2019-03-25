@@ -55,5 +55,7 @@ public interface gestionClientLocal {
 
 
     List<Devis> devisAtraiter(long id);
+
+    void AffecterDevis(Devis Devis);
     
 }

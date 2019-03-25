@@ -109,7 +109,7 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
     
     @Override
     public List<Utilisateur_Hardis> rechercherUtilisateurHardisNom(String nom){
-        Utilisateur_Hardis user;
+        
         String txt = "SELECT user FROM Utilisateur AS user where user.nom_Utilisateur =:nom";
         Query req = getEntityManager().createQuery(txt);
         req.setParameter("nom",nom);
