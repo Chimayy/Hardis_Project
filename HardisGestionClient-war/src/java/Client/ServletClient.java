@@ -61,7 +61,7 @@ public class ServletClient extends HttpServlet {
                 sess.setAttribute("user", user);
                 jspClient="/MenuClient.jsp";
             }
-            else if(act.equals("changerDevis"))
+            else if(act.equals("demandeDevis"))
             {
              
                 String zoneLibre = request.getParameter("zoneLibre");

@@ -9,6 +9,7 @@ import entite.Client;
 import facade.ClientFacadeLocal;
 import entite.Devis;
 import entite.Service;
+import entite.Utilisateur_Hardis;
 import facade.ClientFacadeLocal;
 import facade.DevisFacadeLocal;
 import facade.Prestation_Non_StandardFacadeLocal;
@@ -154,6 +155,11 @@ public class gestionClient implements gestionClientLocal {
     @Override
     public void AffecterDevis(Devis Devis) {
         devisFacade.AffecterDevis(Devis);
+    }
+
+    @Override
+    public List ListeClientGest(Utilisateur_Hardis user) {
+        return clientFacade.ListeClientGest(user);
     }
     
 }

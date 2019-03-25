@@ -73,4 +73,22 @@ public class Historique_QuestionPubliqueFacade extends AbstractFacade<Historique
          question.setGestionnaire(gestionnaire);
          em.merge(question);
      }
+
+    @Override
+    public List QuestionPubliqueGestionnaire(Utilisateur_Hardis gest) {
+        
+        String txt = "SELECT h FROM Historique_QuestionPublique AS h where h.gestionnaire=:gest AND h.reponse IS NULL";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("gest", gest);
+        List<Historique_QuestionPublique> liste = req.getResultList();
+        return liste;
+    }
+
+    @Override
+    public void SetReponseQuestionPublique(long id, String reponse) {
+        Historique_QuestionPublique q = rechercheQuestionPubliqueId(id).get(0);
+        q.setReponse(reponse);
+        em.merge(q);
+    }
+     
 }

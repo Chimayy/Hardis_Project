@@ -41,5 +41,9 @@ public interface Historique_QuestionPubliqueFacadeLocal {
     public List<Historique_QuestionPublique> rechercheQuestionPubliqueId(long id);
 
     public void attribuerQuestionPublique(Historique_QuestionPublique question, Utilisateur_Hardis gestionnaire);
+
+    List QuestionPubliqueGestionnaire(Utilisateur_Hardis gest);
+
+    void SetReponseQuestionPublique(long id, String reponse);
     
 }

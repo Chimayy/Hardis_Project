@@ -8,6 +8,7 @@ package facade;
 import entite.Client;
 import entite.Consentement_RGPD;
 import entite.Entreprise;
+import entite.Utilisateur_Hardis;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -76,6 +77,15 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
     @Override
     public void clientPersist(Object o) {
         em.persist(o);
+    }
+
+    @Override
+    public List ListeClientGest(Utilisateur_Hardis user) {
+       String txt = "SELECT c FROM Client AS c JOIN Devis.c AS d JOIN Historique_Consultant.d AS hc WHERE hc.leConsultant";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("user", user);
+        List <Client> result=req.getResultList();
+        return result;
     }
        
     

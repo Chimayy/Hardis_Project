@@ -43,5 +43,9 @@ public interface gestionHardisLocal {
 
     List rechercherUtilisateurHardisNom(String Nom);
 
+    List QuestionPubliqueGestionnaire(Utilisateur_Hardis gest);
+
+    void SetReponseQuestionPublique(long id, String reponse);
+
     
 }

@@ -39,7 +39,7 @@
            %></div>
             </br>
             <div class='retour'>
-            <a href ="MenuAdmin.jsp"> Retour Menu </a>
+            <a href ="Menu_principal.jsp"> Retour Menu </a>
             </div>
     </body>
 </html>

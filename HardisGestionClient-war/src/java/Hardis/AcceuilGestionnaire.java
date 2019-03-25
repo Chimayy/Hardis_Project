@@ -8,6 +8,7 @@ package Hardis;
 import entite.Client;
 import entite.Devis;
 import entite.Historique_Question;
+import entite.Historique_QuestionPublique;
 import entite.Profil_Metier;
 import entite.Utilisateur;
 
@@ -99,7 +100,7 @@ public class AcceuilGestionnaire extends HttpServlet {
            }
            
            else if(act.equals("VisuClients")){
-               List<Client> ListeCli = gestionClient.ListeClient();
+               List<Client> ListeCli = gestionClient.ListeClientGest(user);
               jspClient="/ListeClient/VisuClients.jsp";
               request.setAttribute("ListeClient", ListeCli);
                 
@@ -189,9 +190,12 @@ public class AcceuilGestionnaire extends HttpServlet {
          
             else if (act.equals("QuestionsForum")){
                 
-                
-//              des question qui lui sont affectées
+                Utilisateur_Hardis gest = user;
+                List <Historique_QuestionPublique> QuestionGest = gestionHardis.QuestionPubliqueGestionnaire(gest);
+                request.setAttribute("ListeQuestion", QuestionGest);
                 sess.setAttribute("User", user);
+                String i = "pas ok" ;
+                request.setAttribute("test", i);
                 jspClient="/QuestionsForum/QuestionsForum.jsp";
          
      }
@@ -209,6 +213,20 @@ public class AcceuilGestionnaire extends HttpServlet {
                 gestionClient.AffecterDevis(devis);
                 jspClient="/AcceuilGestionnaire.jsp";
                 
+            }
+           
+            else if (act.equals("EnregistrerReponsePublique")){
+                String id = request.getParameter("x");
+                Long id1 =Long.valueOf(id);
+                String rep = request.getParameter("reponse");
+                gestionHardis.SetReponseQuestionPublique(id1, rep);
+                String i = "ok" ;
+                request.setAttribute("test", i);
+                Utilisateur_Hardis gest = user;
+                List <Historique_QuestionPublique> QuestionGest = gestionHardis.QuestionPubliqueGestionnaire(gest);
+                request.setAttribute("ListeQuestion", QuestionGest);
+                sess.setAttribute("User", user);
+                jspClient ="/QuestionsForum/QuestionsForum.jsp";
             }
     
 

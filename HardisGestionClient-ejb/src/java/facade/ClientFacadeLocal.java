@@ -8,6 +8,7 @@ package facade;
 import entite.Client;
 import entite.Consentement_RGPD;
 import entite.Entreprise;
+import entite.Utilisateur_Hardis;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -41,5 +42,7 @@ public interface ClientFacadeLocal {
     Client authentif(String mail, String mdp);
 
     void clientPersist(Object o);
+
+    List ListeClientGest(Utilisateur_Hardis user);
     
 }

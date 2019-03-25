@@ -9,6 +9,7 @@ import entite.Client;
 
 import entite.Devis;
 import entite.Service;
+import entite.Utilisateur_Hardis;
 
 
 import java.util.Date;
@@ -57,5 +58,7 @@ public interface gestionClientLocal {
     List<Devis> devisAtraiter(long id);
 
     void AffecterDevis(Devis Devis);
+
+    List ListeClientGest(Utilisateur_Hardis user);
     
 }

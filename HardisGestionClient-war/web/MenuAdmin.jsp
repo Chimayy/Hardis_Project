@@ -33,7 +33,7 @@
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=AfficherAgences">  Gestion des agences   </a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=AfficherServices"> Gestion des services </a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=AfficherOffres"> Gestion des offres </a></div>
-                        <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=CreationQuestionPublique"> Rédiger question publique</a></div>
+                        
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=GestionQuestionPublique"> Attribuer les questions publiques</a></div>
                     </div>
                      <hr class="my-6">                           

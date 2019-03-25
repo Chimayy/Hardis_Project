@@ -30,6 +30,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import entite.Utilisateur;
 import facade.Historique_ConsultantFacadeLocal;
+import facade.Historique_QuestionPubliqueFacadeLocal;
 
 /**
  *
@@ -37,6 +38,9 @@ import facade.Historique_ConsultantFacadeLocal;
  */
 @Stateless
 public class gestionHardis implements gestionHardisLocal {
+
+    @EJB
+    private Historique_QuestionPubliqueFacadeLocal historique_QuestionPubliqueFacade;
 
     @EJB
     private Historique_ConsultantFacadeLocal historique_ConsultantFacade;
@@ -151,6 +155,16 @@ public class gestionHardis implements gestionHardisLocal {
     @Override
     public List rechercherUtilisateurHardisNom(String Nom) {
        return utilisateur_HardisFacade.rechercherUtilisateurHardisNom(Nom);
+    }
+
+    @Override
+    public List QuestionPubliqueGestionnaire(Utilisateur_Hardis gest) {
+        return historique_QuestionPubliqueFacade.QuestionPubliqueGestionnaire(gest) ;
+    }
+
+    @Override
+    public void SetReponseQuestionPublique(long id, String reponse) {
+        historique_QuestionPubliqueFacade.SetReponseQuestionPublique(id, reponse);
     }
 
     
