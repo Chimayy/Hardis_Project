@@ -8,8 +8,11 @@ package Hardis;
 import entite.Client;
 import entite.Devis;
 import entite.Historique_Question;
+import entite.Profil_Metier;
+import entite.Utilisateur;
 
 import entite.Utilisateur_Hardis;
+import entite.profil_Technique;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -79,8 +82,14 @@ public class AcceuilGestionnaire extends HttpServlet {
             }
            
            else if (act.equals("AffectationDevis")){
+               Utilisateur user1 = (Utilisateur)user;
+               List<Profil_Metier> ProfilUser = gestionHardis.ListeMetier(user1);
+               List<Profil_Metier> ToutLesMetiers = gestionHardis.ListeToutLesMetier();
                List<Devis> DevisNonAttribue = gestionClient.ListeDevisNonAttribue();
+               request.setAttribute("ListeProfil", ToutLesMetiers);
                request.setAttribute("ListeDevisNonAttribue", DevisNonAttribue);
+               request.setAttribute("profil", ProfilUser);
+               sess.setAttribute("User", user);
                
                jspClient="/AffectationDevis/AffectationDevis.jsp";
            }
@@ -174,18 +183,33 @@ public class AcceuilGestionnaire extends HttpServlet {
              
          }           
            
-         else if (act.equals("DevisAffecte")){
-             String Did = request.getParameter("Did");
-             String Gid = request.getParameter("Gid");
+        
              
-         }
+         
          
             else if (act.equals("QuestionsForum")){
                 
-//                recup id du gestionnaire plus liste des question qui lui sont affectées
+                
+//              des question qui lui sont affectées
+                sess.setAttribute("User", user);
                 jspClient="/QuestionsForum/QuestionsForum.jsp";
          
      }
+           
+            else if(act.equals("DevisAffecte")){
+                String NomGest = request.getParameter("NomAaffecter");                
+                List<Utilisateur_Hardis> ListGest=gestionHardis.rechercherUtilisateurHardisNom(NomGest);
+                Utilisateur_Hardis gest = ListGest.get(0);
+                String d1= request.getParameter("devis");
+                Long d= Long.valueOf(d1);
+                Devis devis = gestionClient.rechercheDevis(d);
+                String fct="gestionnaire Devis";
+                request.getAttribute("NomAaffecter");
+                gestionHardis.CreerHistoriqueConsultant(gest, devis, fct);
+                gestionClient.AffecterDevis(devis);
+                jspClient="/AcceuilGestionnaire.jsp";
+                
+            }
     
 
        RequestDispatcher Rd;

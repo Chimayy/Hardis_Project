@@ -7,6 +7,7 @@ package facade;
 
 import entite.Offre;
 import entite.Profil_Metier;
+import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
 import java.util.List;
 import javax.ejb.Local;
@@ -37,5 +38,7 @@ public interface Profil_MetierFacadeLocal {
     Profil_Metier rechercheProfilMetier(long idUser, long idOffre);
 
     void creerProfilMetier(int niveau_habilitation, Offre offre, Utilisateur_Hardis user);
+
+    List <Profil_Metier> ListeMetier(Utilisateur User);
     
 }
