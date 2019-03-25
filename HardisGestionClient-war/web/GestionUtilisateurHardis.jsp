@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeUser" scope="request" class="java.util.List"></jsp:useBean>
+       
         <%@include file="jsp_reused/style.jsp" %>
         <title>Utilisateurs Hardis</title>
     </head>
@@ -79,11 +80,19 @@
                                 <%}%>
                     </table>
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 
-
-                    <div class="message"><% String attribut = (String) request.getAttribute("message");
-                        out.println(attribut);
-                        %></div>
+                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a>    
+                    <% String attribut = (String) request.getAttribute("message");
+                    if (!attribut.equals("")){
+                    
+                    %>
+                    <div class="alert alert-info">
+              
+                      <% out.println(attribut);
+                       %>
+                       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                       </div>
+                       <%}%>
+                    
                 </div>              
             </div>
             <%@include file="jsp_reused/footer.jsp"%>

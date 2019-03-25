@@ -45,11 +45,7 @@
                             <input type ="text" class="form-control"  name="motdepasse" class='input'/>
                         </div>
                         <div class="form-group">
-<<<<<<< HEAD
                             <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
-=======
-                            <label for="nom"> Plafond <span class="requis">*</span></label>
->>>>>>> schellen2
                             <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
                         </div> 
                         <div class="form-group">
@@ -76,7 +72,7 @@
                         <div class='bouton1'>
                             </br>
                             <input  class='btn btn-indigo' type="submit" value="Valider"/>
-                            <input  class='btn btn-indigo'type="reset" value="Remise à 0"/>       
+                            <input  class='btn btn-indigo'type="reset" value="Reset"/>       
                         </div>
                             </br>
                             <hr class="my-6">

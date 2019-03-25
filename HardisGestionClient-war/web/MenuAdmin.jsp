@@ -19,12 +19,12 @@
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
-                     <%@include file="jsp_reused/header.jsp" %>
+                    <%@include file="jsp_reused/header.jsp" %>
                 </header>
-        
+
                 <div class="container">
                     <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
-                            <h1>Menu Administrateur</h1>
+                        <h1>Menu Administrateur</h1>
                     </div> 
                     <hr class="my-6">
                     <div class="row">  
@@ -36,6 +36,13 @@
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=CreationQuestionPublique"> Rédiger question publique</a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=GestionQuestionPublique"> Attribuer les questions publiques</a></div>
                     </div>
-                     <hr class="my-6">                           
+                    <hr class="my-6">  
                 </div>
+            </div>
+            <%@include file="jsp_reused/footer.jsp"%>
+        </div>
+        <!--pages de script-->
+        <%@include file="jsp_reused/javascript.jsp"%>
+
+    </body>
 </html>

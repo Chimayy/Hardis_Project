@@ -13,11 +13,10 @@
       <div class="row">
 
         <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3">
+        <div class="col-md-5 mt-md-0 mt-3">
 
           <!-- Content -->
           <h5 class="text-uppercase">Footer Content</h5>
-          <p>Here you can use rows and columns here to organize your footer content.</p>
 
         </div>
         <!-- Grid column -->
@@ -28,12 +27,9 @@
         <div class="col-md-3 mb-md-0 mb-3">
 
             <!-- Links -->
-            <h5 class="text-uppercase">Links</h5>
+            <a href="https://www.cnil.fr/professionnel"<h5 class="text-uppercase">CNIL </h5>
 
-            <ul class="list-unstyled">
-            
-             
-            </ul>
+           
 
           </div>
           <!-- Grid column -->
