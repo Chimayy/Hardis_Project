@@ -176,14 +176,7 @@ public class ServletClient extends HttpServlet {
                        jspClient="/MenuClient.jsp";
                        break;
                     }
-                    if(periodeOccupe.get(j).getDate_Fin() == dateIntervention)
-                    {
-                        testPasOK = true;
-                        String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur()+ " " + consultantEnCours.getPrenom_Utilisateur();
-                        request.setAttribute("message", "Le consultant "+ nomConsultantOccupe +"est occupé à cette période");
-                        jspClient="/MenuClient.jsp";
-                        break;
-                    }
+                 
                 }
                 if(testPasOK == false)
                 {
