@@ -79,5 +79,16 @@ public class OffreFacade extends AbstractFacade<Offre> implements OffreFacadeLoc
         offreACreer.setNom_Offre(nom);
         em.persist(offreACreer);
     }
-       
+    
+    @Override
+    public void modifierOffre(Offre offre, String nom, String description){
+        offre.setNom_Offre(nom);
+        offre.setDescription_Offre(description);
+        em.merge(offre);
+    }
+    
+    @Override
+    public void supprimerOffre(Offre offre){
+        em.remove(offre);
+    }       
 }

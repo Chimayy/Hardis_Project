@@ -5,7 +5,9 @@
  */
 package facade;
 
+import entite.Agence;
 import entite.Consentement_RGPD;
+import entite.Profil_Metier;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
 import entite.profil_Technique;
@@ -36,7 +38,7 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
     }
 
     @Override
-    public void creerUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif) {
+    public void creerUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif, Agence agence) {
         Utilisateur_Hardis userACreer = new Utilisateur_Hardis();
         userACreer.setPlafond_Delegation(plafond);
         userACreer.setMail_Connexion(mail);
@@ -45,6 +47,7 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         userACreer.setProfil_Technique(profiltechnique);
         userACreer.setPrenom_Utilisateur(prenom);
         userACreer.setStatut_Actif(false);
+        userACreer.setlAgence(agence);
         em.persist(userACreer);
     }
     
@@ -114,16 +117,30 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         return liste;
     }
 
-  
-    
     @Override
     public List<Utilisateur_Hardis> afficherUtilisateurs_Hardis(){
-        List<Utilisateur_Hardis> user = new ArrayList<Utilisateur_Hardis>();
         String text ="SELECT user FROM Utilisateur AS user WHERE user.DType =:cat";     
         Query req = getEntityManager().createQuery(text);
         req.setParameter("cat","Utilisateur_Hardis");
-        user = (List<Utilisateur_Hardis>)req.getResultList();
+        List<Utilisateur_Hardis> user = (List<Utilisateur_Hardis>)req.getResultList();
         return user;
     }
-
+    
+    @Override
+    public List<Utilisateur_Hardis> rechercherUtilisateurHardisOffre(long id){
+        String txt = "SELECT profil FROM Profil_Metier AS profil JOIN profil.lUtilisateur user JOIN profil.lOffre offre WHERE profil.lOffre.id=:id ";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("id", id);
+        List<Profil_Metier> listPM = req.getResultList();
+        
+        List<Utilisateur_Hardis> listU = new ArrayList<>();        
+        if (listPM.size()>0)
+        {
+            for (Profil_Metier p : listPM )
+            {
+                listU.add(p.getlUtilisateur());
+            }
+        }
+        return listU;
+    }
 }

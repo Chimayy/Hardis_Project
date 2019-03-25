@@ -5,6 +5,7 @@
  */
 package facade;
 
+import entite.Agence;
 import entite.Consentement_RGPD;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
@@ -43,7 +44,7 @@ public interface Utilisateur_HardisFacadeLocal {
 
     public List<Utilisateur_Hardis> afficherUtilisateurs_Hardis();
 
-    public void creerUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
+    public void creerUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif, Agence agence);
 
     public void modifierUtilisateurHardis(Utilisateur_Hardis user, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
 
@@ -52,5 +53,7 @@ public interface Utilisateur_HardisFacadeLocal {
     public List<Utilisateur_Hardis> rechercherUtilisateurHardisNom(String nom);
 
     public Utilisateur_Hardis rechercherUtilisateurHaridsParId(long id);
+
+    public List<Utilisateur_Hardis> rechercherUtilisateurHardisOffre(long id);
     
 }

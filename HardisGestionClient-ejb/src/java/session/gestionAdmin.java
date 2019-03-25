@@ -12,14 +12,18 @@ import entite.Agence;
 
 import entite.Consentement_RGPD;
 import entite.Entreprise;
+import entite.Historique_QuestionPublique;
 import entite.Offre;
+import entite.Profil_Metier;
 import entite.Service;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
 import entite.profil_Technique;
 import facade.AgenceFacadeLocal;
 import facade.EntrepriseFacadeLocal;
+import facade.Historique_QuestionPubliqueFacadeLocal;
 import facade.OffreFacadeLocal;
+import facade.Profil_MetierFacadeLocal;
 import facade.ServiceFacadeLocal;
 import facade.UtilisateurFacadeLocal;
 import facade.Utilisateur_HardisFacadeLocal;
@@ -36,6 +40,12 @@ import javax.ejb.Stateless;
 public class gestionAdmin implements gestionAdminLocal {
 
     @EJB
+    private Profil_MetierFacadeLocal profil_MetierFacade;
+
+    @EJB
+    private Historique_QuestionPubliqueFacadeLocal historique_QuestionPubliqueFacade;
+
+    @EJB
     private OffreFacadeLocal offreFacade;
 
     @EJB
@@ -50,10 +60,9 @@ public class gestionAdmin implements gestionAdminLocal {
     @EJB
     private Utilisateur_HardisFacadeLocal utilisateur_HardisFacade;
 
-     
     @Override
-    public void creationUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif){
-        utilisateur_HardisFacade.creerUtilisateurHardis(mail, mdp, nom, prenom, plafond, profiltechnique, statut_actif);   
+    public void creationUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif, Agence agence){
+        utilisateur_HardisFacade.creerUtilisateurHardis(mail, mdp, nom, prenom, plafond, profiltechnique, statut_actif, agence);   
     }
     
     @Override
@@ -72,8 +81,17 @@ public class gestionAdmin implements gestionAdminLocal {
     }
     
     @Override
+    public void creationQuestionPublique(String question, String pseudo, Offre offre){
+        historique_QuestionPubliqueFacade.creerHistorique_QuestionPublique(question, pseudo, offre);
+    }
+    @Override
     public void creationOffre(String description, String nom){
         offreFacade.creerOffre(description, nom);
+    }
+    
+    @Override
+    public void creationProfilMetier(int niveau_habilitation, Offre offre, Utilisateur_Hardis user){
+        profil_MetierFacade.creerProfilMetier(niveau_habilitation, offre, user);
     }
             
     @Override
@@ -101,6 +119,22 @@ public class gestionAdmin implements gestionAdminLocal {
     }
     
     @Override
+    public void modificationOffre(long id, String nom, String description){
+        Offre offre = offreFacade.rechercheOffre(id).get(0);
+        offreFacade.modifierOffre(offre, nom, description);
+    }
+    
+    @Override
+    public void modificationProfilMetier(long id, int niveau){
+        Profil_Metier profil = profil_MetierFacade.rechercherProfilMetierId(id).get(0);
+        profil_MetierFacade.modifierProfilMetier(profil, niveau);
+    }
+    
+    @Override
+    public void attributionQuestionPublique(Historique_QuestionPublique question, Utilisateur_Hardis gestionnaire){
+        historique_QuestionPubliqueFacade.attribuerQuestionPublique(question, gestionnaire);
+    }
+    @Override
     public void suppressionUtilisateurHardis(long id){
         Utilisateur_Hardis user = utilisateur_HardisFacade.rechercherUtilisateurHardisId(id).get(0);
         utilisateur_HardisFacade.supprimerUtilisateurHardis(user);
@@ -118,8 +152,22 @@ public class gestionAdmin implements gestionAdminLocal {
         agenceFacade.supprimerAgence(agence);
     }
     
+    @Override
     public void suppressionService(long id){
-        
+        Service service = serviceFacade.rechercheService(id).get(0);
+        serviceFacade.supprimerService(service);
+    }
+    
+    @Override
+    public void suppressionOffre(long id){
+        Offre offre = offreFacade.rechercheOffre(id).get(0);
+        offreFacade.supprimerOffre(offre);
+    }
+    
+    @Override
+    public void suppressionProfilMetier(long id){
+        Profil_Metier profil = profil_MetierFacade.rechercherProfilMetierId(id).get(0);
+        profil_MetierFacade.supprimerProfilMetier(profil);
     }
     
     @Override
@@ -127,11 +175,14 @@ public class gestionAdmin implements gestionAdminLocal {
         return utilisateur_HardisFacade.afficherUtilisateurs_Hardis();
     }
     
+<<<<<<< HEAD
 
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+=======
+>>>>>>> schellen2
     @Override
     public List<Entreprise> affichageEntreprises(){
         return entrepriseFacade.listeEntreprise();
@@ -153,6 +204,16 @@ public class gestionAdmin implements gestionAdminLocal {
     }
     
     @Override
+    public List<Profil_Metier> affichageProfilsMetier(){
+        return profil_MetierFacade.listeProfilMetier();
+    }
+    
+    @Override
+    public List<Historique_QuestionPublique> affichageQuestionsPubliques(){
+        return historique_QuestionPubliqueFacade.listeQuestionPublique();
+    }
+    
+    @Override
     public Utilisateur_Hardis rechercherUtilisateurHardisMail(String mail){
         Utilisateur_Hardis user = utilisateur_HardisFacade.rechercherUtilisateurHardisMail(mail);
         return user;
@@ -170,12 +231,14 @@ public class gestionAdmin implements gestionAdminLocal {
 
     
     @Override
-    public Utilisateur rechercherUtilisateurHardisParId(long id){
+    public Utilisateur_Hardis rechercherUtilisateurHardisParId(long id){
         return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
     }
-
-
-
+    
+    @Override
+    public List<Utilisateur_Hardis> rechercherUtilisateurHardisParOffre(long id){
+        return utilisateur_HardisFacade.rechercherUtilisateurHardisOffre(id);
+    }
     
     @Override
     public Entreprise rechercherEntrepriseParSiret(String siret){
@@ -226,11 +289,39 @@ public class gestionAdmin implements gestionAdminLocal {
     public List<Offre> rechercherListeOffreParNom(String nom){
         return offreFacade.rechercherListeOffreNom(nom);
     }
+    
+    @Override
+    public Historique_QuestionPublique rechercherQuestionPubliqueParPseudo(String pseudo){
+        return historique_QuestionPubliqueFacade.rechercheQuestionPubliquePseudo(pseudo);
+    }
+    
+    @Override
+    public List <Historique_QuestionPublique> rechercherQuestionPubliqueParId(long id){
+        return historique_QuestionPubliqueFacade.rechercheQuestionPubliqueId(id);
+    }
+    
+    @Override
+    public List<Profil_Metier> rechercherProfilMetierParIdUser(long idUser){
+        return profil_MetierFacade.rechercheProfilMetierUser(idUser);
+    }
+    @Override
+    public List<Profil_Metier> rechercherProfilMetierParId(long id){
+        return profil_MetierFacade.rechercherProfilMetierId(id);
+    }
+    
+    @Override
+    public Profil_Metier rechercherProfilMetier(long idUser, long idOffre){
+        return profil_MetierFacade.rechercheProfilMetier(idUser, idOffre);
+    }
+   
 }  
 
 
+<<<<<<< HEAD
     
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+=======
+>>>>>>> schellen2

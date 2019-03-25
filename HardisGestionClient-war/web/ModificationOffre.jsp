@@ -20,8 +20,8 @@
                 <% for (Offre offre : lesOffres) {%>
                 <form method ="get" action="ServletAdmin">
                 <input type="hidden" name="id" value="<%=offre.getId()%>" class='input'/>
-                <p> Nom : <input type ="text" name="cp" value="<%=offre.getNom_Offre()%>" readonly class='input'/></p> 
-                <p> Description : <input type="text" name="pays" value="<%=offre.getDescription_Offre()%>" readonly class ="input"/></p>
+                <p> Nom : <input type ="text" name="nom" value="<%=offre.getNom_Offre()%>" readonly class='input'/></p> 
+                <p> Description : <input type="text" name="description" value="<%=offre.getDescription_Offre()%>" readonly class ="input"/></p>
             </div>
             <div class='bouton1'>
             </br>

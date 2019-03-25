@@ -21,6 +21,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Offre implements Serializable {
 
+    @OneToMany(mappedBy = "lOffre")
+    private List<Historique_QuestionPublique> historique_QuestionPubliques;
+
     public List<Profil_Metier> getProfil_Metiers() {
         return profil_Metiers;
     }

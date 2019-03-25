@@ -39,4 +39,8 @@ public interface OffreFacadeLocal {
     public Offre rechercheOffreNom(String nom);
 
     public List<Offre> rechercherListeOffreNom(String nom);
+
+    public void modifierOffre(Offre offre, String nom, String description);
+
+    public void supprimerOffre(Offre offre);
 }
