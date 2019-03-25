@@ -64,6 +64,7 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         profilACreer.setlUtilisateur(user);
         em.persist(profilACreer);
     }
+<<<<<<< HEAD
     
     @Override
     public void modifierProfilMetier(Profil_Metier profil, int niveau_habilitation){
@@ -104,4 +105,28 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         List<Profil_Metier> liste = req.getResultList();
         return liste;
     }
+=======
+
+    @Override
+    public List<Profil_Metier>  listCVOffre(long idOffre) {
+        List<Profil_Metier> result;
+        String txt = "SELECT pm.pathCV FROM Profil_Metier pm WHERE pm.lOffre=:idOffre";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("idOffre", idOffre);
+        result = req.getResultList();
+        return result;
+    }
+
+    @Override
+    public List<Profil_Metier> listPMOffre(Offre offre) {
+         List<Profil_Metier> result;
+        String txt = "SELECT pm FROM Profil_Metier pm WHERE pm.lOffre=:idOffre";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("idOffre", offre);
+        result = req.getResultList();
+        return result;
+        // 
+    }
+  
+>>>>>>> LabranchedAlleau
 }

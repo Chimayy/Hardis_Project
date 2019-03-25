@@ -7,7 +7,10 @@ package facade;
 
 import entite.Devis;
 import entite.Historique_Consultant;
+<<<<<<< HEAD
 import entite.Utilisateur;
+=======
+>>>>>>> LabranchedAlleau
 import entite.Utilisateur_Hardis;
 import java.util.List;
 import javax.ejb.Local;
@@ -32,7 +35,11 @@ public interface Historique_ConsultantFacadeLocal {
     List<Historique_Consultant> findRange(int[] range);
 
     int count();
+<<<<<<< HEAD
 
     void CreerHistoriqueConsultant(Utilisateur_Hardis Gest, Devis Devis, String Fct);
+=======
+    public void proposerConsultants(Devis devis, List<Utilisateur_Hardis> ListeConsultants);
+>>>>>>> LabranchedAlleau
     
 }

@@ -11,8 +11,13 @@ package Client;
 import entite.Client;
 import entite.Devis;
 import entite.Entreprise;
+import entite.Periode_Disponible;
+import entite.Profil_Metier;
+import entite.Utilisateur_Hardis;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -61,14 +66,15 @@ public class ServletClient extends HttpServlet {
                 sess.setAttribute("user", user);
                 jspClient="/MenuClient.jsp";
             }
-            else if(act.equals("changerDevis"))
+            else if(act.equals("demandeDevis"))
             {
              
                 String zoneLibre = request.getParameter("zoneLibre");
               String idServiceString = request.getParameter("idService");
                 Long idServiceLong = Long.valueOf(idServiceString);              
-               gestionClient.demandeDevis(zoneLibre, user, idServiceLong);
-//             gestionClient.affecterDevisReferentLocal(d.getId());
+               Devis demandeDevisClient = gestionClient.demandeDevis(zoneLibre, user, idServiceLong);
+               // recuperation de l'id du devis qui vient d'être enregistré pour l'affecter au referent local
+               gestionClient.affecterDevisReferentLocal(demandeDevisClient.getId());
                 jspClient="/MenuClient.jsp";
                 request.setAttribute("message", "devis bien envoyé au référent local");
             }
@@ -90,7 +96,7 @@ public class ServletClient extends HttpServlet {
                 request.setAttribute("devis", devis);
                 request.setAttribute("message", "et mais yo ça marche pas");
             }
-            else if(act.equals("Accepter"))
+            else if(act.equals("Valider"))
             {
                 jspClient="/MenuClient.jsp";
                 String idDevisString = request.getParameter("devis");
@@ -107,7 +113,8 @@ public class ServletClient extends HttpServlet {
                 String montantString = request.getParameter("montant");
                 Double montantDouble = Double.valueOf(montantString);
                 Devis devisAModifier = gestionClient.rechercheDevis(idDevisLong);
-                gestionClient.modifierDevis(remarques,montantDouble, devisAModifier );
+                String motifRefus = request.getParameter("refus");
+                gestionClient.modifierDevis(remarques,montantDouble, devisAModifier, motifRefus );
                 request.setAttribute("message", "ceban modification du devis transmise au gestionnaire");
             }
             else if(act.equals("Refuser"))
@@ -119,6 +126,64 @@ public class ServletClient extends HttpServlet {
                 gestionClient.refuserDevis(idDevisLong, motifRefus);
                 request.setAttribute("message", "ceban refus c'est OK");
             }
+            else if(act.equals("consultantsEtDate"))
+            {
+                jspClient="/Devis_Envoye/listDevisEnvoye.jsp";
+                List<Devis> devisEnvoye = gestionClient.listDevisAccepte(user);
+                request.setAttribute("listDevis", devisEnvoye);
+            }
+            else if(act.equals("choixDateDevis"))
+            {
+                jspClient="/Devis_Envoye/choixConsultant.jsp";
+                String idDevisRecu = request.getParameter("idDevis");
+                Long idDevis= Long.valueOf(idDevisRecu);
+                Devis d = gestionClient.rechercheDevis(idDevis);
+                request.setAttribute("devis", d);
+                List<Profil_Metier> list = gestionClient.listPMOffre(d.getlOffre());
+                request.setAttribute("listPM", list);
+            }
+            else if(act.equals("propositionConsultant"))
+            {
+                jspClient="/MenuClient.jsp";
+                String[] checkbox = request.getParameterValues("checkbox");
+                List<Utilisateur_Hardis> propositionClient = new ArrayList();
+                String[] ArrayidConsultants = request.getParameterValues("consultant");
+                for(int i =0; i<checkbox.length;i++)
+                {
+                    String checkboxEnCours = checkbox[i];
+                    if(checkboxEnCours != null)
+                    {
+                        String idConsultantSelectionneString = ArrayidConsultants[i];
+                        long idConsultantSelectionneLong = Long.valueOf(idConsultantSelectionneString);
+                        Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantSelectionneLong);
+                        propositionClient.add(consultantSelectionne);
+                    }
+                }
+                String idDevisString = request.getParameter("devis");
+                Long idDevisLong = Long.valueOf(idDevisString);
+                String dateString = request.getParameter("dateIntervention");
+                Date dateIntervention = Date.valueOf(dateString);
+                boolean testPasOK = false;
+                for(int j=0;j<propositionClient.size();j++)
+                {
+                    Utilisateur_Hardis consultantEnCours = propositionClient.get(j);
+                    List<Periode_Disponible> periodeOccupe =consultantEnCours.getPeriode_Disponibles();                    
+                    if(dateIntervention.after(periodeOccupe.get(j).getDate_Debut())&&dateIntervention.before(periodeOccupe.get(j).getDate_Fin()))
+                    {
+                        testPasOK = true;
+                        String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur() +" " + consultantEnCours.getPrenom_Utilisateur();
+                       request.setAttribute("message", "Le consultant " + nomConsultantOccupe + " est occupé à cette période");
+                       jspClient="/MenuClient.jsp";
+                       break;
+                    }
+                 
+                }
+                if(testPasOK == false)
+                {
+                gestionClient.propositionDateetConsultant(user, propositionClient, idDevisLong, dateIntervention);
+                }
+                
+            }
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
             Rd.forward(request, response);
@@ -127,7 +192,7 @@ public class ServletClient extends HttpServlet {
 
         
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            /* TODO output your page here. You may use following sample code.
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -136,7 +201,7 @@ public class ServletClient extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet ServletClient at " + request.getContextPath() + "</h1>");
             out.println("</body>");
-            out.println("</html>");
+            out.println("</html>"); */
         }
     }
 

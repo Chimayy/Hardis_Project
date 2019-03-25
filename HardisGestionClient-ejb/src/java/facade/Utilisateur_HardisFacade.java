@@ -125,6 +125,7 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         List<Utilisateur_Hardis> user = (List<Utilisateur_Hardis>)req.getResultList();
         return user;
     }
+<<<<<<< HEAD
     
     @Override
     public List<Utilisateur_Hardis> rechercherUtilisateurHardisOffre(long id){
@@ -142,5 +143,16 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
             }
         }
         return listU;
+=======
+
+    @Override
+    public List<Utilisateur_Hardis> ListeConsultantDuneOffre(long idOffre) {
+        List<Utilisateur_Hardis> result;
+        String txt = "SELECT consultant FROM Profil_Metier pm JOIN pm.lUtilisateur consultant JOIN pm.lOffre offre WHERE offre.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("id", idOffre);
+        result = req.getResultList();
+        return result;
+>>>>>>> LabranchedAlleau
     }
 }

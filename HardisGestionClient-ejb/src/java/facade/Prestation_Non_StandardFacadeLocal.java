@@ -34,6 +34,6 @@ public interface Prestation_Non_StandardFacadeLocal {
 
     void creerPrestationNonStandard(String description, String nomresp, String telresp, String mailresp, double cout, boolean facturation, int delai, Service service, lieu_Intervention lieu);
 
-    void creerPrestaNS(Service service);
+    Prestation_Non_Standard creerPrestaNS(Service service);
     
 }

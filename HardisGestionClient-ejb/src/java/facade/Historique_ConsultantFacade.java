@@ -9,9 +9,17 @@ import entite.Devis;
 import entite.Historique_Consultant;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
+
+
+import entite.Devis;
+import entite.Historique_Consultant;
+import entite.Utilisateur_Hardis;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 
 /**
  *
@@ -40,5 +48,19 @@ public class Historique_ConsultantFacade extends AbstractFacade<Historique_Consu
         h.setFonctionConsultant(Fct);
         em.persist(h);
     }
+    
+    @Override
+    public void proposerConsultants(Devis devis, List<Utilisateur_Hardis> ListeConsultants) {
+        for(int i=0; i<ListeConsultants.size(); i++ )
+        {
+            Utilisateur_Hardis userEnCours = ListeConsultants.get(i);
+            Historique_Consultant HistoEnCours = new Historique_Consultant();
+            HistoEnCours.setLeConsultant(userEnCours);
+            HistoEnCours.setLeDevis(devis);
+            HistoEnCours.setFonctionConsultant("proposition client");
+            em.persist(HistoEnCours);
+        }
+    }
+
     
 }

@@ -54,13 +54,15 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
     
 
     @Override
-    public void demandeDevisClient(String zoneLibre, Client Client, Service service) {
-        Devis brouillonDevisClient = new Devis();
-        brouillonDevisClient.setLeClient(Client);
-        brouillonDevisClient.setFormulaire_Client(zoneLibre);
-        brouillonDevisClient.setStatut(statut_Devis.a_affecter);
-
-        em.persist(brouillonDevisClient);
+    public Devis demandeDevisClient(String zoneLibre, Client Client, Prestation presta) {
+        Devis demandeDevisClient = new Devis();
+        demandeDevisClient.setLeClient(Client);
+        demandeDevisClient.setFormulaire_Client(zoneLibre);
+        demandeDevisClient.setStatut(statut_Devis.a_affecter);
+        demandeDevisClient.setLaPrestation(presta);
+        demandeDevisClient.setlOffre(demandeDevisClient.getLaPrestation().getLeService().getlOffre());
+        em.persist(demandeDevisClient);
+        return demandeDevisClient;
     }
 
     @Override
@@ -85,8 +87,13 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         referent.setLeDevis(devis);
         referent.setLeConsultant(referentLocal);
         referent.setFonctionConsultant("chef de projet");
-        devis.getLaPrestation().setNom_Responsable(referentLocal.getNom_Utilisateur());
+    devis.getLaPrestation().setNom_Responsable(referentLocal.getNom_Utilisateur());
         devis.getLaPrestation().setMail_Responsable(referentLocal.getMail_Connexion());
+       
+        
+        // TEMPORAIRE à changer en "a_affecter"
+        
+        devis.setStatut(statut_Devis.envoye);
         em.persist(referent);
         em.merge(devis);
     }
@@ -131,13 +138,13 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
     }
    
     @Override
-    public void modifierDevis(double montant, Devis d, String zoneLibre) {
+    public void modifierDevis(double montant, Devis d, String zoneLibre, String motifRefus) {
         if(d.getMontant_Devis() != montant || d.getFormulaire_Client() != zoneLibre)
         {
             d.setMontant_Devis(montant);
             d.setFormulaire_Client(zoneLibre);
-            d.setMotif_Refus(zoneLibre);
-            d.setStatut(statut_Devis.en_negociation);
+            d.setMotif_Refus(motifRefus);
+            d.setStatut(statut_Devis.incomplet);
             em.merge(d);
         }
     }
@@ -153,6 +160,9 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         String txt = "SELECT d FROM Historique_Consultant h JOIN h.leDevis d JOIN d.leClient c WHERE d.statut =:statut AND c.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("id", id);
+        
+        
+        // A CHANGER PEUT ETRE
         req = req.setParameter("statut", statut_Devis.envoye);
         List<Devis> liste = req.getResultList();
         return liste;
@@ -165,8 +175,11 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         em.merge(Devis);    
     }
 
-    @Override
-    public void proposerDateetConsultants(Devis devis, Date DateIntervention, List listeConsultants) {
+   @Override
+    public void proposerDateIntervention(Devis devis, Date DateIntervention) {
+        devis.setDate_Intervention(DateIntervention);
+        devis.setStatut(statut_Devis.en_negociation);
+        em.merge(devis);
     }
 
     @Override
@@ -181,10 +194,48 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
     }
 
     @Override
+
     public void AffecterDevis(Devis Devis) {
         Devis.setStatut(statut_Devis.a_traiter);
         em.merge(Devis);
     }
+
+    public List<Devis> listeDevisEnvoye(Client Client) {
+        List<Devis> ListeDevisEnvoye;
+        statut_Devis sd = statut_Devis.envoye;
+        String txt="SELECT d FROM Devis AS d WHERE d.statut =:sd AND d.leClient =:client ";
+        Query req =getEntityManager().createQuery(txt);
+        req=req.setParameter("sd", sd);
+        req=req.setParameter("client", Client);
+        ListeDevisEnvoye = req.getResultList();
+        return ListeDevisEnvoye;
+    }
+
+    @Override
+    public List<Devis> listDevisEnNegociation(Client Client) {
+       List<Devis> listDevisEnNegociation;
+        statut_Devis sd = statut_Devis.en_negociation;
+        String txt="SELECT d FROM Devis AS d WHERE d.statut =:sd AND d.leClient =:client ";
+        Query req =getEntityManager().createQuery(txt);
+        req=req.setParameter("sd", sd);
+        req=req.setParameter("client", Client);
+        listDevisEnNegociation = req.getResultList();
+        return listDevisEnNegociation;
+    }
+
+    @Override
+    public List<Devis> listDevisAccepte(Client Client) {
+        List<Devis> listDevisAccepte;
+        statut_Devis sd = statut_Devis.valide;
+        String txt="SELECT d FROM Devis AS d WHERE d.statut =:sd AND d.leClient =:client ";
+        Query req =getEntityManager().createQuery(txt);
+        req=req.setParameter("sd", sd);
+        req=req.setParameter("client", Client);
+        listDevisAccepte = req.getResultList();
+        return listDevisAccepte;
+    }
+    
+
     
     }
 

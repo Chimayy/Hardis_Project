@@ -11,6 +11,7 @@ import entite.Utilisateur;
 import entite.Devis;
 import entite.Historique_Question;
 import entite.Utilisateur_Hardis;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -35,6 +36,7 @@ public interface gestionHardisLocal {
 
     List GetUtilisateurParOffre(long idOffre);
 
+<<<<<<< HEAD
     List ListeMetier(Utilisateur User);
 
     List ListeToutLesMetier();
@@ -42,6 +44,9 @@ public interface gestionHardisLocal {
     void CreerHistoriqueConsultant(Utilisateur_Hardis gest, Devis devis, String fct);
 
     List rechercherUtilisateurHardisNom(String Nom);
+=======
+    void creerDateDispo(Utilisateur_Hardis user, Date Datedebut, Date Daefin);
+>>>>>>> LabranchedAlleau
 
     
 }

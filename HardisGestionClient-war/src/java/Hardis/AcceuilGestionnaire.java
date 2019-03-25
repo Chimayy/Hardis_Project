@@ -196,6 +196,7 @@ public class AcceuilGestionnaire extends HttpServlet {
          
      }
            
+<<<<<<< HEAD
             else if(act.equals("DevisAffecte")){
                 String NomGest = request.getParameter("NomAaffecter");                
                 List<Utilisateur_Hardis> ListGest=gestionHardis.rechercherUtilisateurHardisNom(NomGest);
@@ -209,6 +210,20 @@ public class AcceuilGestionnaire extends HttpServlet {
                 gestionClient.AffecterDevis(devis);
                 jspClient="/AcceuilGestionnaire.jsp";
                 
+=======
+            else if (act.equals("creerPeriode"))
+            {
+                jspClient="/Periode/creerPeriode.jsp";
+            }
+            else if(act.equals("creationDispo"))
+            {
+                String dateDebutString = request.getParameter("dateDebut");
+                String dateFinString = request.getParameter("dateFin");
+                Date dateDebut = Date.valueOf(dateDebutString);
+                Date dateFin = Date.valueOf(dateFinString);
+                gestionHardis.creerDateDispo(user, dateDebut, dateFin);
+                jspClient="/AcceuilGestionnaire.jsp";
+>>>>>>> LabranchedAlleau
             }
     
 

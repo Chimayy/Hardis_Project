@@ -56,4 +56,6 @@ public interface Utilisateur_HardisFacadeLocal {
 
     public List<Utilisateur_Hardis> rechercherUtilisateurHardisOffre(long id);
     
+    public List<Utilisateur_Hardis> ListeConsultantDuneOffre(long idOffre);
+    
 }

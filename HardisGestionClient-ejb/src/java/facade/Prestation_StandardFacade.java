@@ -49,10 +49,11 @@ public class Prestation_StandardFacade extends AbstractFacade<Prestation_Standar
     }
 
     @Override
-    public void creerPrestaS(Service service) {
+    public Prestation_Standard creerPrestaS(Service service) {
         Prestation_Standard presta = new Prestation_Standard();
         presta.setLeService(service);
         em.persist(presta);
+        return presta;
     }
         
     

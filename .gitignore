@@ -32,6 +32,7 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+
 HardisGestionClient-ejb/build/classes/entite/Historique_Question.class
 HardisGestionClient-ejb/build/classes/entite/Interlocuteur.class
 HardisGestionClient-ejb/build/classes/entite/Interlocuteur_.class
@@ -113,3 +114,8 @@ HardisGestionClient-ejb/build/classes/facade/Historique_EchangeFacade.class
 HardisGestionClient-ejb/build/classes/facade/Historique_DocumentFacadeLocal.class
 HardisGestionClient-ejb/build/classes/facade/Historique_DocumentFacade.class
 HardisGestionClient-ejb/build/classes/facade/Historique_ConsultantFacadeLocal.class
+
+HardisGestionClient-ejb/nbproject/build-impl.xml
+HardisGestionClient-war/nbproject/build-impl.xml
+*.xml
+

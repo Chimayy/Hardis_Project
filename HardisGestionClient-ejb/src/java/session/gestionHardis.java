@@ -10,7 +10,6 @@ import entite.Historique_Question;
 import entite.Utilisateur_Hardis;
 import facade.AgenceFacadeLocal;
 import facade.Bon_De_CommandeFacadeLocal;
-import facade.CVFacadeLocal;
 import facade.Condition_ContractuelleFacadeLocal;
 import facade.DevisFacadeLocal;
 import facade.Historique_EchangeFacadeLocal;
@@ -29,7 +28,11 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import entite.Utilisateur;
+<<<<<<< HEAD
 import facade.Historique_ConsultantFacadeLocal;
+=======
+import java.util.Date;
+>>>>>>> LabranchedAlleau
 
 /**
  *
@@ -91,9 +94,6 @@ public class gestionHardis implements gestionHardisLocal {
     private Condition_ContractuelleFacadeLocal condition_ContractuelleFacade;
 
     @EJB
-    private CVFacadeLocal cVFacade;
-
-    @EJB
     private Bon_De_CommandeFacadeLocal bon_De_CommandeFacade;
 
     @EJB
@@ -134,6 +134,7 @@ public class gestionHardis implements gestionHardisLocal {
     }
 
     @Override
+<<<<<<< HEAD
     public List ListeMetier(Utilisateur User) {
         return profil_MetierFacade.ListeMetier(User);
     }
@@ -151,6 +152,10 @@ public class gestionHardis implements gestionHardisLocal {
     @Override
     public List rechercherUtilisateurHardisNom(String Nom) {
        return utilisateur_HardisFacade.rechercherUtilisateurHardisNom(Nom);
+=======
+    public void creerDateDispo(Utilisateur_Hardis user, Date Datedebut, Date Daefin) {
+        periode_DisponibleFacade.creerPeriode(Datedebut, Daefin, user);
+>>>>>>> LabranchedAlleau
     }
 
     
