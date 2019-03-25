@@ -29,6 +29,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import entite.Utilisateur;
+import facade.Historique_ConsultantFacadeLocal;
 
 /**
  *
@@ -36,6 +37,9 @@ import entite.Utilisateur;
  */
 @Stateless
 public class gestionHardis implements gestionHardisLocal {
+
+    @EJB
+    private Historique_ConsultantFacadeLocal historique_ConsultantFacade;
 
     @EJB
 
@@ -127,6 +131,26 @@ public class gestionHardis implements gestionHardisLocal {
     public List GetUtilisateurParOffre(long idOffre) {
         List <Utilisateur> ListeUtilisateurParOffre = utilisateurFacade.GetUtilisateurParOffre(idOffre);
         return ListeUtilisateurParOffre;
+    }
+
+    @Override
+    public List ListeMetier(Utilisateur User) {
+        return profil_MetierFacade.ListeMetier(User);
+    }
+
+    @Override
+    public List ListeToutLesMetier() {
+        return profil_MetierFacade.listeProfilMetier();
+    }
+
+    @Override
+    public void CreerHistoriqueConsultant(Utilisateur_Hardis gest, Devis devis, String fct) {
+        historique_ConsultantFacade.CreerHistoriqueConsultant(gest, devis, fct);
+    }
+
+    @Override
+    public List rechercherUtilisateurHardisNom(String Nom) {
+       return utilisateur_HardisFacade.rechercherUtilisateurHardisNom(Nom);
     }
 
     

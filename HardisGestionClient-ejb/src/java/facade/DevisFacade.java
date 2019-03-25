@@ -179,6 +179,12 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         ListeDevisNonAttribue = req.getResultList();
         return ListeDevisNonAttribue;
     }
+
+    @Override
+    public void AffecterDevis(Devis Devis) {
+        Devis.setStatut(statut_Devis.a_traiter);
+        em.merge(Devis);
+    }
     
     }
 

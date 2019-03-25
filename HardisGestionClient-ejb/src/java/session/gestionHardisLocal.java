@@ -35,5 +35,13 @@ public interface gestionHardisLocal {
 
     List GetUtilisateurParOffre(long idOffre);
 
+    List ListeMetier(Utilisateur User);
+
+    List ListeToutLesMetier();
+
+    void CreerHistoriqueConsultant(Utilisateur_Hardis gest, Devis devis, String fct);
+
+    List rechercherUtilisateurHardisNom(String Nom);
+
     
 }

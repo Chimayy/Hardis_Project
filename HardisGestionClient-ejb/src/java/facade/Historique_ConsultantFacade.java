@@ -5,7 +5,10 @@
  */
 package facade;
 
+import entite.Devis;
 import entite.Historique_Consultant;
+import entite.Utilisateur;
+import entite.Utilisateur_Hardis;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +30,15 @@ public class Historique_ConsultantFacade extends AbstractFacade<Historique_Consu
 
     public Historique_ConsultantFacade() {
         super(Historique_Consultant.class);
+    }
+
+    @Override
+    public void CreerHistoriqueConsultant(Utilisateur_Hardis Gest, Devis Devis, String Fct) {
+        Historique_Consultant h = new Historique_Consultant();
+        h.setLeConsultant(Gest);
+        h.setLeDevis(Devis);
+        h.setFonctionConsultant(Fct);
+        em.persist(h);
     }
     
 }
