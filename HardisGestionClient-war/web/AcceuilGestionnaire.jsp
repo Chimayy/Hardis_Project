@@ -17,5 +17,6 @@
                 <td width="25%"><a href="AcceuilGestionnaire?action=AffectationDevis">Affectation devis</a></td>                
                 <td width="25%"><a href="AcceuilGestionnaire?action=VisuClients">Gestion des devis clients</a></td>
                 <td width="25%"><a href="AcceuilGestionnaire?action=QuestionsForum">Répondre aux questions du Forum</a></td>
+                <td width="25%"><a href="AcceuilGestionnaire?action=creerPeriode">Renseigner une date de disponibilité</a></td>
     </body>
 </html>

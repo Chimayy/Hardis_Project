@@ -49,8 +49,6 @@ public class Periode_DisponibleFacade extends AbstractFacade<Periode_Disponible>
         periodeACreer.setUser(user);
         em.persist(periodeACreer);
         
-    }
-    
-    
+    }   
     
 }

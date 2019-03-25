@@ -28,6 +28,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import entite.Utilisateur;
+import java.util.Date;
 
 /**
  *
@@ -123,6 +124,11 @@ public class gestionHardis implements gestionHardisLocal {
     public List GetUtilisateurParOffre(long idOffre) {
         List <Utilisateur> ListeUtilisateurParOffre = utilisateurFacade.GetUtilisateurParOffre(idOffre);
         return ListeUtilisateurParOffre;
+    }
+
+    @Override
+    public void creerDateDispo(Utilisateur_Hardis user, Date Datedebut, Date Daefin) {
+        periode_DisponibleFacade.creerPeriode(Datedebut, Daefin, user);
     }
 
     

@@ -11,6 +11,7 @@ package Client;
 import entite.Client;
 import entite.Devis;
 import entite.Entreprise;
+import entite.Periode_Disponible;
 import entite.Profil_Metier;
 import entite.Utilisateur_Hardis;
 import java.io.IOException;
@@ -162,7 +163,32 @@ public class ServletClient extends HttpServlet {
                 Long idDevisLong = Long.valueOf(idDevisString);
                 String dateString = request.getParameter("dateIntervention");
                 Date dateIntervention = Date.valueOf(dateString);
+                boolean testPasOK = false;
+                for(int j=0;j<propositionClient.size();j++)
+                {
+                    Utilisateur_Hardis consultantEnCours = propositionClient.get(j);
+                    List<Periode_Disponible> periodeOccupe =consultantEnCours.getPeriode_Disponibles();                    
+                    if(dateIntervention.after(periodeOccupe.get(j).getDate_Debut())&&dateIntervention.before(periodeOccupe.get(j).getDate_Fin()))
+                    {
+                        testPasOK = true;
+                        String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur() +" " + consultantEnCours.getPrenom_Utilisateur();
+                       request.setAttribute("message", "Le consultant " + nomConsultantOccupe + " est occupé à cette période");
+                       jspClient="/MenuClient.jsp";
+                       break;
+                    }
+                    if(periodeOccupe.get(j).getDate_Fin() == dateIntervention)
+                    {
+                        testPasOK = true;
+                        String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur()+ " " + consultantEnCours.getPrenom_Utilisateur();
+                        request.setAttribute("message", "Le consultant "+ nomConsultantOccupe +"est occupé à cette période");
+                        jspClient="/MenuClient.jsp";
+                        break;
+                    }
+                }
+                if(testPasOK == false)
+                {
                 gestionClient.propositionDateetConsultant(user, propositionClient, idDevisLong, dateIntervention);
+                }
                 
             }
             RequestDispatcher Rd;
@@ -173,7 +199,7 @@ public class ServletClient extends HttpServlet {
 
         
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            /* TODO output your page here. You may use following sample code.
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -182,7 +208,7 @@ public class ServletClient extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet ServletClient at " + request.getContextPath() + "</h1>");
             out.println("</body>");
-            out.println("</html>");
+            out.println("</html>"); */
         }
     }
 

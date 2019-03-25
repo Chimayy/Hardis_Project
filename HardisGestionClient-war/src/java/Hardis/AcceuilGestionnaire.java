@@ -186,6 +186,20 @@ public class AcceuilGestionnaire extends HttpServlet {
                 jspClient="/QuestionsForum/QuestionsForum.jsp";
          
      }
+           
+            else if (act.equals("creerPeriode"))
+            {
+                jspClient="/Periode/creerPeriode.jsp";
+            }
+            else if(act.equals("creationDispo"))
+            {
+                String dateDebutString = request.getParameter("dateDebut");
+                String dateFinString = request.getParameter("dateFin");
+                Date dateDebut = Date.valueOf(dateDebutString);
+                Date dateFin = Date.valueOf(dateFinString);
+                gestionHardis.creerDateDispo(user, dateDebut, dateFin);
+                jspClient="/AcceuilGestionnaire.jsp";
+            }
     
 
        RequestDispatcher Rd;

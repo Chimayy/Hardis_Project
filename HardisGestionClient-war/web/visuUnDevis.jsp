@@ -26,7 +26,7 @@
             
             <tr>
                 <td> 
-                    <%out.println("n° :" + devis.getId());%>
+                    <%out.println("Devis n° :" + devis.getId());%>
                 <td>  
                     <label for="zoneLibre"> zone libre</label>
                     <input type="text" value="<%=devis.getFormulaire_Client()%>" name="zoneLibre">
@@ -40,8 +40,6 @@
                 <label for="refus"> motif de refus</label>
                     <input type="text" name="refus">
                 
-    <p><% out.println(devis.getStatut());%></p>
-    <p><% out.println(devis.getFormulaire_Client());%></p>
     <input type="hidden" name="devis" value="<%=devis.getId()%>">
             </fieldset>
            <button type="submit" name="action" value="Valider"> Valider</button>

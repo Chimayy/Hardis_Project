@@ -11,6 +11,7 @@ import entite.Utilisateur;
 import entite.Devis;
 import entite.Historique_Question;
 import entite.Utilisateur_Hardis;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -34,6 +35,8 @@ public interface gestionHardisLocal {
     void setReponse(long id, String reponse);
 
     List GetUtilisateurParOffre(long idOffre);
+
+    void creerDateDispo(Utilisateur_Hardis user, Date Datedebut, Date Daefin);
 
     
 }
