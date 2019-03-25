@@ -45,13 +45,15 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
 
     @Override
     public Profil_Metier rechercheProfilMetier(long idUser, long idOffre) {
-        Profil_Metier result;
-        String txt = "SELECT pm FROM Profil_Metier pm  WHERE pm.lUtilisateur=:idUser AND pm.lOffre=:idOffre";
+        String txt = "SELECT pm FROM Profil_Metier AS pm WHERE pm.lUtilisateur.id=:idUser AND pm.lOffre.id=:idOffre";
         Query req = getEntityManager().createQuery(txt);
         req=req.setParameter("idUser", idUser);
         req=req.setParameter("idOffre", idOffre);
-        result=(Profil_Metier)req.getSingleResult();
-        return result;
+        List<Profil_Metier> liste = req.getResultList();
+        if(!liste.isEmpty()){
+            return liste.get(0);
+        }
+        else {return null;} 
     }
 
     @Override
@@ -63,6 +65,17 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         em.persist(profilACreer);
     }
     
+<<<<<<< HEAD
+    @Override
+    public void modifierProfilMetier(Profil_Metier profil, int niveau_habilitation){
+        profil.setNiveau_Habilitation(niveau_habilitation);
+        em.merge(profil);
+    }
+    
+    @Override
+    public void supprimerProfilMetier(Profil_Metier profil){
+        em.remove(profil);
+=======
 
 
     @Override
@@ -74,7 +87,24 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         ListeMetier=req.getResultList();
         return ListeMetier;
        
+>>>>>>> eb4d79321b4d6aa8f214fb7d836e4455ca80836d
     }
     
+    @Override
+    public List<Profil_Metier> rechercheProfilMetierUser(long idUser){
+        String txt = "SELECT pm FROM Profil_Metier AS pm WHERE pm.lUtilisateur.id=:idUser";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("idUser", idUser);
+        List<Profil_Metier> liste = req.getResultList();
+        return liste;
+    }
     
+    @Override
+    public List<Profil_Metier> rechercherProfilMetierId(long id){
+        String txt = "SELECT pm FROM Profil_Metier AS pm WHERE pm.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id",id);
+        List<Profil_Metier> liste = req.getResultList();
+        return liste;
+    }
 }

@@ -3,12 +3,16 @@
     Created on : 14 mars 2019, 13:49:48
     Author     : Utilisateur
 --%>
+<%@page import="entite.Agence"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="listeAgence" scope="request" class = "java.util.List"> </jsp:useBean>
 <!DOCTYPE html>
 <html>
      <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
         <%@include file="jsp_reused/style.jsp" %>
+     
         <title>Créer un utilisateur</title>
     </head>
     <body>
@@ -41,16 +45,32 @@
                             <input type ="text" class="form-control"  name="motdepasse" class='input'/>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
+=======
+                            <label for="nom"> Plafond <span class="requis">*</span></label>
+>>>>>>> schellen2
                             <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
                         </div> 
-                            <a> Profil Technique </a>
+                        <div class="form-group">
+                        <a> Profil Technique </a>
                             <select class="custom-select mr-sm-2"name="profil" size="1">
                                 <option> administrateur
                                 <option> gestionnaire
                                 <option> visualisation        
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <% List<Agence> lesAgences = listeAgence;%>
+                            <label for="Agence" class='textinput'> Agence : </label>
+                            <select name="idAgence" class='form-control'>
+                                <% for (Agence agence : lesAgences ){%>
+                                <option value="<%=agence.getId()%>"><%=agence.getVille_Agence()%></option>                     
+                                <%}%>
+                            </select>
+                            <a href="ServletAdmin?action=AfficherAgences" >L'agence n'est pas dans la liste ? </a>
                             <input  type ="hidden" name="action" value="CreerUtilisateur">
+                        </div>
 
                        
                         <div class='bouton1'>

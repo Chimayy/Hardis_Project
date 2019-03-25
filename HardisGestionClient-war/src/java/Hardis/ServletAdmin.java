@@ -8,7 +8,9 @@ package Hardis;
 
 import entite.Agence;
 import entite.Entreprise;
+import entite.Historique_QuestionPublique;
 import entite.Offre;
+import entite.Profil_Metier;
 import entite.Service;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
@@ -48,11 +50,12 @@ public class ServletAdmin extends HttpServlet {
         String plafond = request.getParameter("plafond");
         String profil_t = request.getParameter("profil");
         String statut = request.getParameter("statut");
+        String idAgence = request.getParameter("idAgence");
         Utilisateur_Hardis user = gestionAdmin.rechercherUtilisateurHardisMail(mail);
       
         String message;
         if (nom.trim().trim().isEmpty()||prenom.trim().isEmpty()||mail.trim().isEmpty()||motdepasse.trim().isEmpty()||plafond.trim().isEmpty()
-                ||profil_t.trim().isEmpty())
+                ||profil_t.trim().isEmpty()||idAgence.trim().isEmpty())
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour créer un utilisateur";
         }
@@ -65,7 +68,9 @@ public class ServletAdmin extends HttpServlet {
             double pla = Double.parseDouble(plafond);
             profil_Technique profil = profil_Technique.valueOf(profil_t);
             boolean stat = Boolean.parseBoolean(statut);
-            gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat);
+            long id = Long.parseLong(idAgence);
+            Agence agence = gestionAdmin.rechercherAgenceParId(id).get(0);
+            gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat, agence);
             message = "Utilisateur crée avec succès !";          
         }
         request.setAttribute("message", message);
@@ -179,6 +184,59 @@ public class ServletAdmin extends HttpServlet {
         request.setAttribute("message", message);
     }
     
+    protected void creerQuestionPublique(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String question = request.getParameter("question");
+        String pseudo = request.getParameter("pseudo");
+        String idOffre = request.getParameter("idOffre");
+
+        String message;
+       
+        if (question.trim().trim().isEmpty()||pseudo.trim().isEmpty()||idOffre.trim().isEmpty())            
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs pour enregistrer une question";
+        }
+
+        else {
+            long id = Long.parseLong(idOffre);
+            Offre offre = gestionAdmin.rechercherOffreParId(id).get(0);
+            gestionAdmin.creationQuestionPublique(question, pseudo, offre);
+            message = "Question enregistrée !";          
+        }
+        request.setAttribute("message", message);
+    }
+    protected void creerProfilMetier(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String niveau = request.getParameter("niveau");
+        String idUser = request.getParameter("idUser");
+        String idOffre = request.getParameter("idOffre");
+        long idU = Long.parseLong(idUser);
+        long idO = Long.parseLong(idOffre);
+        Profil_Metier profil = gestionAdmin.rechercherProfilMetier(idU,idO);               
+        String message;
+       
+        if (niveau.trim().trim().isEmpty()||idUser.trim().isEmpty()||idOffre.trim().isEmpty())            
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs pour créer un profil";
+        }
+        
+        else if(profil!=null){
+            message = "Un profil métier existe déjà pour cet utilisateur et cette offre";
+        }
+
+        else {
+            Offre offre = gestionAdmin.rechercherOffreParId(idO).get(0);
+            int niv = Integer.parseInt(niveau);
+            Utilisateur_Hardis user = gestionAdmin.recherchercherUtilisateurHardisId(idU).get(0);
+            gestionAdmin.creationProfilMetier(niv, offre, user);
+            message = "Profil métier créé avec succès !";          
+        }
+        
+        request.setAttribute("message", message);
+    }
+    
     protected void modifierUtilisateurHardis(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
     {
@@ -281,6 +339,46 @@ public class ServletAdmin extends HttpServlet {
         }
         request.setAttribute("message", message);
     }    
+    
+    protected void modifierOffre(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String idOffre = request.getParameter("id");
+        String nom = request.getParameter("nom");
+        String description = request.getParameter("description");
+        String message ;
+       if (idOffre.trim().isEmpty()||nom.trim().isEmpty()||description.trim().isEmpty())
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs pour modifier l'offre";
+        }
+        
+       else {
+            long id = Long.parseLong(idOffre);
+            gestionAdmin.modificationOffre(id, nom, description);
+            message = "Offre modifiée avec succès !";          
+        }
+        request.setAttribute("message", message);
+    }    
+    
+    protected void modifierProfilMetier(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String idProfil = request.getParameter("id");
+        String niveau = request.getParameter("niveau");
+        String message ;
+       if (idProfil.trim().isEmpty()||niveau.trim().isEmpty())
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs pour modifier le profil métier";
+        }
+        
+       else {
+            long id = Long.parseLong(idProfil);
+            int niv = Integer.parseInt(niveau);
+            gestionAdmin.modificationProfilMetier(id, niv);
+            message = "Profil métier modifié avec succès !";          
+        }
+        request.setAttribute("message", message);
+    }    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -337,7 +435,19 @@ public class ServletAdmin extends HttpServlet {
             request.setAttribute("listeOffre", listeOffre);
             jspClient="/GestionOffre.jsp";
         }
+<<<<<<< HEAD
 
+=======
+        
+        else if(act.equals("AfficherProfilsMetier")){
+            String idUser = request.getParameter("idUser");
+            long id = Long.parseLong(idUser);
+            List<Profil_Metier> listeProfil = gestionAdmin.rechercherProfilMetierParIdUser(id);
+            request.setAttribute("listeProfil", listeProfil);
+            jspClient="/GestionProfilMetier.jsp";
+        }
+        
+>>>>>>> schellen2
         else if(act.equals("RechercherUtilisateurHardis"))
         {        
            String nom = request.getParameter("nom");
@@ -482,6 +592,71 @@ public class ServletAdmin extends HttpServlet {
                 jspClient="/GestionAgence.jsp";
                 }
             }
+        
+         else if(act.equals("SupprimerProfilMetier"))
+        {
+            String idProfil = request.getParameter("idProfilMetier");
+            long id = Long.parseLong(idProfil);
+            Profil_Metier profil = gestionAdmin.rechercherProfilMetierParId(id).get(0);
+            
+            if(profil != null){   
+            gestionAdmin.suppressionProfilMetier(id);
+            List <Profil_Metier> listeProfil  = gestionAdmin.affichageProfilsMetier();
+            request.setAttribute("listeProfil", listeProfil);
+            jspClient="/GestionProfilMetier.jsp";
+            message = "Profil métier supprimé avec succès";
+            request.setAttribute("message", message); 
+            }
+            
+            else 
+            {
+                message = "Ce profil métier n'existe pas";
+                request.setAttribute("message", message); 
+            }
+        }
+         
+         else if(act.equals("SupprimerOffre")){
+             String idOffre = request.getParameter("idOffre");
+             long id = Long.parseLong(idOffre);
+             Offre offre = gestionAdmin.rechercherOffreParId(id).get(0);
+             
+             if(offre!=null){
+                gestionAdmin.suppressionOffre(id);
+                List<Offre> listeOffre = gestionAdmin.affichageOffres();
+                request.setAttribute("listeOffre", listeOffre);
+                jspClient = "/GestionOffre.jsp";
+                message = "Offre supprimée avec succès";
+                request.setAttribute("message", message); 
+             }
+             
+             else{
+                message = "Cette offre n'existe pas";
+                request.setAttribute("message", message); 
+                 
+             }
+             
+         }
+         
+        else if(act.equals("SupprimerService")){
+            String idServ = request.getParameter("idServ");
+            long id = Long.parseLong(idServ);
+            Service Serv = gestionAdmin.rechercherServiceParId(id).get(0);
+            
+            if(Serv != null){   
+            gestionAdmin.suppressionService(id);
+            List <Service> listeServ  = gestionAdmin.affichageServices();
+            request.setAttribute("listeServ", listeServ);
+            jspClient="/GestionService.jsp";
+            message = "Service supprimé avec succès !";
+            request.setAttribute("message", message); 
+            }
+            
+            else 
+            {
+                message = "Ce service n'existe pas";
+                request.setAttribute("message", message); 
+            }
+        }
        
         else if (act.equals("CreerUtilisateur"))
         {      
@@ -523,6 +698,25 @@ public class ServletAdmin extends HttpServlet {
             request.setAttribute("listeOffre", listeOffre);
         }
         
+        else if (act.equals("CreerProfilMetier")){
+            jspClient = "/GestionProfilMetier.jsp";
+            creerProfilMetier(request,response);
+            List<Profil_Metier> listeProfil = gestionAdmin.affichageProfilsMetier();
+            String idUser = request.getParameter("idUser");
+            long idU = Long.parseLong(idUser);
+            List<Utilisateur_Hardis> listeUser = gestionAdmin.recherchercherUtilisateurHardisId(idU);
+            request.setAttribute("listeProfil",listeProfil);
+            request.setAttribute("listeUser", listeUser);
+        }
+        
+         else if (act.equals("CreerQuestionPublique"))
+        {      
+            jspClient = "/RedactionQuestionPublique.jsp";
+            creerQuestionPublique(request,response);
+            List <Offre> listeOffre = gestionAdmin.affichageOffres();
+            request.setAttribute("listeOffre", listeOffre);
+        }
+        
          else if (act.equals("CreationEntreprise"))
         {      
             List<Agence> ListeAgence= gestionAdmin.affichageAgences();
@@ -535,6 +729,39 @@ public class ServletAdmin extends HttpServlet {
             List<Offre> ListeOffre= gestionAdmin.affichageOffres();
             request.setAttribute("listeOffre",ListeOffre);
             jspClient="/CreationService.jsp";
+        }
+        
+        else if (act.equals("CreationQuestionPublique"))
+        {      
+            List<Offre> ListeOffre= gestionAdmin.affichageOffres();
+            request.setAttribute("listeOffre",ListeOffre);
+            jspClient="/RedactionQuestionPublique.jsp";
+        }
+        
+        else if(act.equals("CreationProfilMetier")){
+            List<Offre> listeOffre = gestionAdmin.affichageOffres();
+            List<Utilisateur_Hardis> listeUser = gestionAdmin.affichageUtilisateursHardis();
+            request.setAttribute("listeUser", listeUser);
+            request.setAttribute("listeOffre", listeOffre);
+            jspClient = "/CreationProfilMetier.jsp";
+        }
+        
+        else if (act.equals("GestionQuestionPublique"))
+        {    
+            List<Historique_QuestionPublique> listeQuestion = gestionAdmin.affichageQuestionsPubliques();
+            List<Profil_Metier> listeProfil = gestionAdmin.affichageProfilsMetier();
+            List<Utilisateur_Hardis> listeUser = gestionAdmin.affichageUtilisateursHardis();
+            request.setAttribute("listeProfil", listeProfil);  
+            request.setAttribute("listeUser", listeUser);  
+            request.setAttribute("listeQuestion", listeQuestion);  
+            jspClient="/GestionQuestionPublique.jsp";
+        }
+              
+         else if (act.equals("CreationUtilisateurHardis"))
+        {      
+            List<Agence> ListeAgence= gestionAdmin.affichageAgences();
+            request.setAttribute("listeAgence",ListeAgence);
+            jspClient="/CreationUtilisateurHardis.jsp";
         }
         
         else if (act.equals("ActionModifierUtilisateur")){
@@ -563,6 +790,20 @@ public class ServletAdmin extends HttpServlet {
             modifierService(request,response);
             List <Service> listeServ  = gestionAdmin.affichageServices();
             request.setAttribute("listeServ", listeServ);
+        }
+        
+        else if(act.equals("ActionModifierOffre")){
+            jspClient = "/GestionOffre.jsp";
+            modifierOffre(request,response);
+            List <Offre> listeOffre = gestionAdmin.affichageOffres();
+            request.setAttribute("listeOffre", listeOffre);
+        }
+        
+        else if (act.equals("ActionModifierProfilMetier")){
+            jspClient ="/GestionProfilMetier.jsp";
+            modifierProfilMetier(request,response);
+            List <Profil_Metier> listeProfil = gestionAdmin.affichageProfilsMetier();
+            request.setAttribute("listeProfil", listeProfil);
         }
         
         else if (act.equals("ModifierUtilisateurHardis"))
@@ -614,8 +855,31 @@ public class ServletAdmin extends HttpServlet {
             jspClient="/ModificationOffre.jsp";
         }
          
-         else if(act.isEmpty()){
+         else if (act.equals("ModifierProfilMetier")){
+            String idProfilMetier = request.getParameter("idProfilMetier");
+            long id = Long.parseLong(idProfilMetier);         
+            List <Profil_Metier> listeProfil = gestionAdmin.rechercherProfilMetierParId(id);
+            request.setAttribute("listeProfil", listeProfil);  
+            jspClient = "/ModificationProfilMetier.jsp";         
+         }
+         
+         else if(act.equals("AttribuerQuestionPublique")){
+            String idQuestion = request.getParameter("idQuestion");
+            long idQ = Long.parseLong(idQuestion);
+            Historique_QuestionPublique question = gestionAdmin.rechercherQuestionPubliqueParId(idQ).get(0);
+            String idUser = request.getParameter("idUser");
+            long idU = Long.parseLong(idUser);
+            Utilisateur_Hardis user = gestionAdmin.rechercherUtilisateurHardisParId(idU);
+            gestionAdmin.attributionQuestionPublique(question, user);
+            jspClient = "/MenuAdmin.jsp";
+            message = "Question attribuée !";
+            request.setAttribute("message", message);  
+          
+         }
+         
+         else if(act.equals("Menu")){
              jspClient = "/MenuAdmin.jsp";
+             
              
          }
      
