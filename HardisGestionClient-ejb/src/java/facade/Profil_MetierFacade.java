@@ -65,7 +65,6 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         em.persist(profilACreer);
     }
     
-<<<<<<< HEAD
     @Override
     public void modifierProfilMetier(Profil_Metier profil, int niveau_habilitation){
         profil.setNiveau_Habilitation(niveau_habilitation);
@@ -75,9 +74,8 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
     @Override
     public void supprimerProfilMetier(Profil_Metier profil){
         em.remove(profil);
-=======
-
-
+    }
+    
     @Override
     public List<Profil_Metier> ListeMetier(Utilisateur User) {
          List<Profil_Metier> ListeMetier;
@@ -87,7 +85,6 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         ListeMetier=req.getResultList();
         return ListeMetier;
        
->>>>>>> eb4d79321b4d6aa8f214fb7d836e4455ca80836d
     }
     
     @Override

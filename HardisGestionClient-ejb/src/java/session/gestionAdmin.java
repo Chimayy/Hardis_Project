@@ -174,15 +174,7 @@ public class gestionAdmin implements gestionAdminLocal {
     public List<Utilisateur_Hardis> affichageUtilisateursHardis(){
         return utilisateur_HardisFacade.afficherUtilisateurs_Hardis();
     }
-    
-<<<<<<< HEAD
 
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-
-=======
->>>>>>> schellen2
     @Override
     public List<Entreprise> affichageEntreprises(){
         return entrepriseFacade.listeEntreprise();
@@ -316,12 +308,3 @@ public class gestionAdmin implements gestionAdminLocal {
    
 }  
 
-
-<<<<<<< HEAD
-    
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-
-=======
->>>>>>> schellen2

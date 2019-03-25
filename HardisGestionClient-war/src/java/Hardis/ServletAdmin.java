@@ -435,10 +435,7 @@ public class ServletAdmin extends HttpServlet {
             request.setAttribute("listeOffre", listeOffre);
             jspClient="/GestionOffre.jsp";
         }
-<<<<<<< HEAD
 
-=======
-        
         else if(act.equals("AfficherProfilsMetier")){
             String idUser = request.getParameter("idUser");
             long id = Long.parseLong(idUser);
@@ -447,7 +444,6 @@ public class ServletAdmin extends HttpServlet {
             jspClient="/GestionProfilMetier.jsp";
         }
         
->>>>>>> schellen2
         else if(act.equals("RechercherUtilisateurHardis"))
         {        
            String nom = request.getParameter("nom");
@@ -869,8 +865,8 @@ public class ServletAdmin extends HttpServlet {
             Historique_QuestionPublique question = gestionAdmin.rechercherQuestionPubliqueParId(idQ).get(0);
             String idUser = request.getParameter("idUser");
             long idU = Long.parseLong(idUser);
-            Utilisateur_Hardis user = gestionAdmin.rechercherUtilisateurHardisParId(idU);
-            gestionAdmin.attributionQuestionPublique(question, user);
+            Utilisateur_Hardis gestionnaire = gestionAdmin.rechercherUtilisateurHardisParId(idU);
+            gestionAdmin.attributionQuestionPublique(question, gestionnaire);
             jspClient = "/MenuAdmin.jsp";
             message = "Question attribuée !";
             request.setAttribute("message", message);  
