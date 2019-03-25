@@ -3,41 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionVisiteur.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionClient.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionHardis.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionClientLocal.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/DevisFacadeLocal.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/DevisFacade.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Utilisateur_Hardis.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Utilisateur_HardisFacade.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/DevisFacade.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Utilisateur_Hardis.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Utilisateur_HardisFacade.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/DevisFacade.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Utilisateur_Hardis.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Utilisateur_HardisFacade.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-ejb/src/java/facade/DevisFacade.java</file>
-=======
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Utilisateur.java</file>
+            <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Utilisateur_HardisFacadeLocal.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/UtilisateurFacade.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/statut_Devis.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/lieu_Intervention.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/ServiceFacade.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/ClientFacadeLocal.java</file>
+            <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Profil_MetierFacadeLocal.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionHardisLocal.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/conf/persistence.xml</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/EntrepriseFacade.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/DevisFacadeLocal.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Service.java</file>
+            <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Historique_ConsultantFacade.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Client.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionClient.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Historique_Question.java</file>
@@ -63,12 +42,12 @@
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionVisiteur.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Devis.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionAdmin.java</file>
+            <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Historique_ConsultantFacadeLocal.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Historique_QuestionFacadeLocal.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/session/gestionAdminLocal.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/Consentement_RGPDFacadeLocal.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/entite/Offre.java</file>
             <file>file:/C:/Users/Mathieu%20Harmand/Desktop/JAVA%20PFE/Hardis_Project/Hardis_Project/HardisGestionClient-ejb/src/java/facade/EntrepriseFacadeLocal.java</file>
->>>>>>> Exilessv2
         </group>
     </open-files>
 </project-private>
