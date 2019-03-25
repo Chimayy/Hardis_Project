@@ -28,9 +28,9 @@
                     <hr class="my-6">
                     <div class="row">
                         <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions</a></div>
-                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=AffectationDevis">Affectation devis</a></div>  
+                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=AffectationDevis">Affectation des devis</a></div>  
                         <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=VisuClients">Gestion des devis clients</a></div>
-                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=QuestionsForum">Répondre aux questions du Forum</a></div>
+                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=QuestionsForum"> questions du Forum </a></div>
                         
                     </div>
                 </div>

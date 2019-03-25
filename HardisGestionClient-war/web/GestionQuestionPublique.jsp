@@ -47,7 +47,7 @@
                         <% List<Historique_QuestionPublique> lesQuestions = listeQuestion;%>
                         <% List<Utilisateur_Hardis> lesUser = listeUser;%>
                         <% List<Profil_Metier> lesProfils = listeProfil;%>
-                                <%for (Historique_QuestionPublique historique : lesQuestions) {%>
+                        <%for (Historique_QuestionPublique historique : lesQuestions) {%>
                         <tr><form method="get" action="ServletAdmin">
                             <input type="hidden" name="idQuestion" value="<%=historique.getId()%>"</td>
                             <td Width=15%><%=historique.getlOffre().getNom_Offre()%></td>
@@ -55,25 +55,29 @@
                             <td Width=15%> </td>
                             <td Width=15%><%=historique.getPseudo()%></td>
                             <td Width=15%><select name="idUser">
-                            <%for(Profil_Metier profil : lesProfils){
-                                for (Utilisateur_Hardis user: lesUser){  
-                                if(user.getId() == profil.getlUtilisateur().getId() && profil.getlOffre().getId() == historique.getlOffre().getId()){%>
-                                 <option value="<%=user.getId()%>"><%=user.getPrenom_Utilisateur()%> <%=user.getNom_Utilisateur()%></option>     
-                                <%}}}%>
-                                    </select></td> 
+                                    <%for (Profil_Metier profil : lesProfils) {
+                                            for (Utilisateur_Hardis user : lesUser) {
+                                                if (user.getId() == profil.getlUtilisateur().getId() && profil.getlOffre().getId() == historique.getlOffre().getId()) {%>
+                                    <option value="<%=user.getId()%>"><%=user.getPrenom_Utilisateur()%> <%=user.getNom_Utilisateur()%></option>     
+                                    <%}
+                                            }
+                                        }%>
+                                </select></td> 
                             <td Width=15%><a style="color:grey"href="ServletAdmin?action=SupprimerQuestionPublique&idQuestion=<%=historique.getId()%>">Supprimer</a> 
-                            <input type ="hidden" name="action" value="AttribuerQuestionPublique">
+                                <input type ="hidden" name="action" value="AttribuerQuestionPublique">
                             <td Width=15%><input class='bouton' type="submit" value="Attribuer"/>    
-                              </form>
-                           <%--<td Width=15%><a style="color:grey"href="ServletAdmin?action=AttribuerQuestionPublique&idQuestion=<%=historique.getId()%>">Attribuer</a>--%>                                     
-                                <%}%>
+                        </form> 
+                        <div class="alert alert-info col-4"><% String attribut = (String) request.getAttribute("message");
+                            out.println(attribut);
+                            %><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        </div>
+                        <%--<td Width=15%><a style="color:grey"href="ServletAdmin?action=AttribuerQuestionPublique&idQuestion=<%=historique.getId()%>">Attribuer</a>--%>                                     
+                        <%}%>
                     </table>
                     <hr class="my-6">
                     <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 
 
-                    <div class="message"><% String attribut = (String) request.getAttribute("message");
-                        out.println(attribut);
-                        %></div>
+
                 </div>              
             </div>
             <%@include file="jsp_reused/footer.jsp"%>

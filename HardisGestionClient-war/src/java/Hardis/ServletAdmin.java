@@ -456,6 +456,7 @@ public class ServletAdmin extends HttpServlet {
         
         else if(act.equals("RechercherUtilisateurHardis"))
         {        
+            request.setAttribute("message","");
            String nom = request.getParameter("nom");
             if(!nom.trim().isEmpty()){
             List <Utilisateur_Hardis> listeUser  = gestionAdmin.rechercherUtilisateurHardisNom(nom);
