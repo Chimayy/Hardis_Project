@@ -174,12 +174,11 @@ public class gestionClient implements gestionClientLocal {
         return devisFacade.listDevisAtraiter(id);
     }
 
-    @Override
-<<<<<<< HEAD
+
     public void AffecterDevis(Devis Devis) {
         devisFacade.AffecterDevis(Devis);
     }
-=======
+
     public void propositionDateetConsultant(Client client, List<Utilisateur_Hardis> ListeConsultants, long idDevis, Date DateIntervention) {
         Devis devisConcerne = devisFacade.rechercheDevis(idDevis);
         devisFacade.proposerDateIntervention(devisConcerne, DateIntervention);
@@ -230,7 +229,7 @@ public class gestionClient implements gestionClientLocal {
 
     
     
->>>>>>> LabranchedAlleau
+
     
 }
 

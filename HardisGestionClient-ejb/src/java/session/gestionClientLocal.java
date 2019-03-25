@@ -59,10 +59,10 @@ public interface gestionClientLocal {
 
     List<Devis> devisAtraiter(long id);
 
-<<<<<<< HEAD
+
     void AffecterDevis(Devis Devis);
     
-=======
+
     void propositionDateetConsultant(Client client, List<Utilisateur_Hardis> ListeConsultants, long idDevis, Date DateIntervention);
 
     List<Devis> listDevisEnvoye(Client client);
@@ -79,5 +79,5 @@ public interface gestionClientLocal {
 
     Utilisateur_Hardis rechercherUtilisateurHardisId(long id);
 
->>>>>>> LabranchedAlleau
+
 }

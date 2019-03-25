@@ -125,8 +125,7 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         List<Utilisateur_Hardis> user = (List<Utilisateur_Hardis>)req.getResultList();
         return user;
     }
-<<<<<<< HEAD
-    
+
     @Override
     public List<Utilisateur_Hardis> rechercherUtilisateurHardisOffre(long id){
         String txt = "SELECT profil FROM Profil_Metier AS profil JOIN profil.lUtilisateur user JOIN profil.lOffre offre WHERE profil.lOffre.id=:id ";
@@ -142,8 +141,8 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
                 listU.add(p.getlUtilisateur());
             }
         }
-        return listU;
-=======
+        return listU;}
+
 
     @Override
     public List<Utilisateur_Hardis> ListeConsultantDuneOffre(long idOffre) {
@@ -153,6 +152,6 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         req=req.setParameter("id", idOffre);
         result = req.getResultList();
         return result;
->>>>>>> LabranchedAlleau
+
     }
 }

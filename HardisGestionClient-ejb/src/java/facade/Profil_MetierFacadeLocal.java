@@ -39,7 +39,6 @@ public interface Profil_MetierFacadeLocal {
 
     void creerProfilMetier(int niveau_habilitation, Offre offre, Utilisateur_Hardis user);
 
-<<<<<<< HEAD
     public List<Profil_Metier> rechercheProfilMetierUser(long idUser);
 
     public void modifierProfilMetier(Profil_Metier profil, int niveau_habilitation);
@@ -49,10 +48,9 @@ public interface Profil_MetierFacadeLocal {
     public void supprimerProfilMetier(Profil_Metier profil);
 
     List <Profil_Metier> ListeMetier(Utilisateur User);
-=======
+
     List<Profil_Metier>  listCVOffre(long idOffre);
 
     List<Profil_Metier> listPMOffre(Offre offre);
->>>>>>> LabranchedAlleau
-    
+
 }

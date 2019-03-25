@@ -64,7 +64,6 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         profilACreer.setlUtilisateur(user);
         em.persist(profilACreer);
     }
-<<<<<<< HEAD
     
     @Override
     public void modifierProfilMetier(Profil_Metier profil, int niveau_habilitation){
@@ -105,7 +104,6 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         List<Profil_Metier> liste = req.getResultList();
         return liste;
     }
-=======
 
     @Override
     public List<Profil_Metier>  listCVOffre(long idOffre) {
@@ -127,6 +125,5 @@ public class Profil_MetierFacade extends AbstractFacade<Profil_Metier> implement
         return result;
         // 
     }
-  
->>>>>>> LabranchedAlleau
+
 }

@@ -83,7 +83,7 @@ public class AcceuilGestionnaire extends HttpServlet {
            
            else if (act.equals("AffectationDevis")){
                Utilisateur user1 = (Utilisateur)user;
-               List<Profil_Metier> ProfilUser = gestionHardis.ListeMetier(user1);
+               List<Profil_Metier> ProfilUser= gestionHardis.ListeMetier(user1);
                List<Profil_Metier> ToutLesMetiers = gestionHardis.ListeToutLesMetier();
                List<Devis> DevisNonAttribue = gestionClient.ListeDevisNonAttribue();
                request.setAttribute("ListeProfil", ToutLesMetiers);
@@ -195,9 +195,7 @@ public class AcceuilGestionnaire extends HttpServlet {
                 jspClient="/QuestionsForum/QuestionsForum.jsp";
          
      }
-           
-<<<<<<< HEAD
-            else if(act.equals("DevisAffecte")){
+                     else if(act.equals("DevisAffecte")){
                 String NomGest = request.getParameter("NomAaffecter");                
                 List<Utilisateur_Hardis> ListGest=gestionHardis.rechercherUtilisateurHardisNom(NomGest);
                 Utilisateur_Hardis gest = ListGest.get(0);
@@ -208,9 +206,9 @@ public class AcceuilGestionnaire extends HttpServlet {
                 request.getAttribute("NomAaffecter");
                 gestionHardis.CreerHistoriqueConsultant(gest, devis, fct);
                 gestionClient.AffecterDevis(devis);
-                jspClient="/AcceuilGestionnaire.jsp";
+                jspClient="/AcceuilGestionnaire.jsp";}
                 
-=======
+
             else if (act.equals("creerPeriode"))
             {
                 jspClient="/Periode/creerPeriode.jsp";
@@ -223,7 +221,7 @@ public class AcceuilGestionnaire extends HttpServlet {
                 Date dateFin = Date.valueOf(dateFinString);
                 gestionHardis.creerDateDispo(user, dateDebut, dateFin);
                 jspClient="/AcceuilGestionnaire.jsp";
->>>>>>> LabranchedAlleau
+
             }
     
 

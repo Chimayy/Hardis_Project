@@ -63,11 +63,6 @@ public interface DevisFacadeLocal {
 
     List ListeDevisNonAttribue();
 
-  
-
-
-    void proposerDateetConsultants(Devis devis, Date DateIntervention, List listeConsultants);
-
     void AffecterDevis(Devis Devis);
 
     void  proposerDateIntervention(Devis devis, Date DateIntervention);

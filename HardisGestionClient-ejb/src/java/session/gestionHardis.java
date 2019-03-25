@@ -28,11 +28,11 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import entite.Utilisateur;
-<<<<<<< HEAD
+
 import facade.Historique_ConsultantFacadeLocal;
-=======
+
 import java.util.Date;
->>>>>>> LabranchedAlleau
+
 
 /**
  *
@@ -134,7 +134,7 @@ public class gestionHardis implements gestionHardisLocal {
     }
 
     @Override
-<<<<<<< HEAD
+
     public List ListeMetier(Utilisateur User) {
         return profil_MetierFacade.ListeMetier(User);
     }
@@ -151,11 +151,12 @@ public class gestionHardis implements gestionHardisLocal {
 
     @Override
     public List rechercherUtilisateurHardisNom(String Nom) {
-       return utilisateur_HardisFacade.rechercherUtilisateurHardisNom(Nom);
-=======
+       return utilisateur_HardisFacade.rechercherUtilisateurHardisNom(Nom);}
+
+    @Override
     public void creerDateDispo(Utilisateur_Hardis user, Date Datedebut, Date Daefin) {
         periode_DisponibleFacade.creerPeriode(Datedebut, Daefin, user);
->>>>>>> LabranchedAlleau
+
     }
 
     
