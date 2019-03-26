@@ -119,12 +119,12 @@ public interface gestionAdminLocal {
 
     public void attributionQuestionPublique(Historique_QuestionPublique question, Utilisateur_Hardis gestionnaire);
 
-<<<<<<< HEAD
+
     public List<Service> rechercherServiceParOffre(Offre offre);
 
     public List<Service> rechercherServiceParNom(String nom);
-=======
+
     List ListeQPPseudo(String pseudo);
->>>>>>> exiless6
+
 
 }

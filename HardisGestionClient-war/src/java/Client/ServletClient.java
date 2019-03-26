@@ -11,19 +11,19 @@ package Client;
 import entite.Client;
 import entite.Devis;
 import entite.Entreprise;
-<<<<<<< HEAD
+
 import entite.Periode_Disponible;
 import entite.Profil_Metier;
 import entite.Service;
 import entite.Utilisateur_Hardis;
-=======
+
 import entite.Historique_QuestionPublique;
 import entite.Offre;
 import entite.Periode_Disponible;
 import entite.Profil_Metier;
 import entite.Utilisateur_Hardis;
 import facade.Historique_QuestionPubliqueFacadeLocal;
->>>>>>> exiless6
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -37,14 +37,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-<<<<<<< HEAD
+
 import session.gestionClientLocal;
-=======
+
 import session.gestionAdminLocal;
 import session.gestionClientLocal;
 import session.gestionHardisLocal;
 import session.gestionVisiteurLocal;
->>>>>>> exiless6
+
 
 /**
  *
@@ -54,8 +54,7 @@ import session.gestionVisiteurLocal;
 public class ServletClient extends HttpServlet {
 
     @EJB
-<<<<<<< HEAD
-=======
+
     private gestionAdminLocal gestionAdmin;
 
     @EJB
@@ -67,7 +66,7 @@ public class ServletClient extends HttpServlet {
    
 
     @EJB
->>>>>>> exiless6
+
     private gestionClientLocal gestionClient;
 
     /**
@@ -97,15 +96,14 @@ public class ServletClient extends HttpServlet {
                 sess.setAttribute("user", user);
                 jspClient="/MenuClient.jsp";
             }
-<<<<<<< HEAD
+
             else if(act.equals("listDevis"))
             {
                 jspClient = ("/DemandeDevis.jsp");
                 List<Service> list = gestionClient.listService();
                 request.setAttribute("listService", list);
             }
-=======
->>>>>>> exiless6
+
             else if(act.equals("demandeDevis"))
             {
              
@@ -172,12 +170,11 @@ public class ServletClient extends HttpServlet {
                 List<Devis> devisEnvoye = gestionClient.listDevisAccepte(user);
                 request.setAttribute("listDevis", devisEnvoye);
             }
-<<<<<<< HEAD
-=======
+
             
              
              
->>>>>>> exiless6
+
             else if(act.equals("choixDateDevis"))
             {
                 jspClient="/Devis_Envoye/choixConsultant.jsp";
@@ -188,7 +185,7 @@ public class ServletClient extends HttpServlet {
                 List<Profil_Metier> list = gestionClient.listPMOffre(d.getlOffre());
                 request.setAttribute("listPM", list);
             }
-<<<<<<< HEAD
+
             else if(act.equals("propositionConsultant"))
             {
                 jspClient="/MenuClient.jsp";
@@ -199,8 +196,8 @@ public class ServletClient extends HttpServlet {
                         String idConsultantSelectionne = checkbox[i];
                         Long idConsultantLong = Long.valueOf(idConsultantSelectionne);
                         Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantLong);
-                        propositionClient.add(consultantSelectionne);
-=======
+                        propositionClient.add(consultantSelectionne);}}
+
             else if(act.equals("propositionconsultant"))
             {
                 jspClient="/MenuClient.jsp";
@@ -217,7 +214,7 @@ public class ServletClient extends HttpServlet {
                         Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantSelectionneLong);
                         propositionClient.add(consultantSelectionne);
                     }
->>>>>>> exiless6
+
                 }
                 String idDevisString = request.getParameter("devis");
                 Long idDevisLong = Long.valueOf(idDevisString);
@@ -227,7 +224,7 @@ public class ServletClient extends HttpServlet {
                 for(int j=0;j<propositionClient.size();j++)
                 {
                     Utilisateur_Hardis consultantEnCours = propositionClient.get(j);
-<<<<<<< HEAD
+
                     List<Periode_Disponible> periodeOccupe =consultantEnCours.getPeriode_Disponibles();
                     for(int k=0;k<periodeOccupe.size();k++)
                     {
@@ -239,8 +236,8 @@ public class ServletClient extends HttpServlet {
                            jspClient="/MenuClient.jsp";
                            break;
                         }
-=======
-                    List<Periode_Disponible> periodeOccupe =consultantEnCours.getPeriode_Disponibles();                    
+
+                    periodeOccupe =consultantEnCours.getPeriode_Disponibles();                    
                     if(dateIntervention.after(periodeOccupe.get(j).getDate_Debut())&&dateIntervention.before(periodeOccupe.get(j).getDate_Fin()))
                     {
                         testPasOK = true;
@@ -248,7 +245,7 @@ public class ServletClient extends HttpServlet {
                        request.setAttribute("message", "Le consultant " + nomConsultantOccupe + " est occupé à cette période");
                        jspClient="/MenuClient.jsp";
                        break;
->>>>>>> exiless6
+
                     }
                  
                 }
@@ -277,7 +274,7 @@ public class ServletClient extends HttpServlet {
             out.println("</body>");
             out.println("</html>"); */
         }
-    }
+    }}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

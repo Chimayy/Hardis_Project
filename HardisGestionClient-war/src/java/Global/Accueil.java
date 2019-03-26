@@ -8,15 +8,15 @@ package Global;
 
 
 import entite.Client;
-<<<<<<< HEAD
+
 import entite.Service;
 import entite.Entreprise;
-=======
+
 import entite.Historique_QuestionPublique;
 import entite.Offre;
 
 
->>>>>>> exiless6
+
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -43,15 +43,13 @@ public class Accueil extends HttpServlet {
 
     @EJB
     private gestionAdminLocal gestionAdmin;
-<<<<<<< HEAD
-=======
+
 
     @EJB
     private gestionVisiteurLocal gestionVisiteur;
->>>>>>> exiless6
 
-    @EJB
-    private gestionVisiteurLocal gestionVisiteur;
+
+   
 
     String jspClient = "/Menu_principal.jsp";
     String act = null;
@@ -76,17 +74,17 @@ public class Accueil extends HttpServlet {
         if ((act == null) || (act.equals("vide"))) {
             jspClient = "/Menu_principal.jsp";
             request.setAttribute("message", "pas d'information");
-<<<<<<< HEAD
+
         } 
         else if(act.equals("Catalogue")){
             List<Service> listeServ = gestionAdmin.affichageServices();
             request.setAttribute("listeServ", listeServ);
             jspClient = "/Catalogue_service.jsp";
 		}       
-=======
+
             
             
-        } 
+        
         else if(act.equals("VoirLeForum")){
                     List<Historique_QuestionPublique> ListeQP = gestionVisiteur.ListeQuestionPubliqueRep();
                     List<Offre> ListeOffre = gestionAdmin.affichageOffres();
@@ -118,7 +116,7 @@ public class Accueil extends HttpServlet {
                   
              }
         
->>>>>>> exiless6
+
         else if ((act.equals("authentif"))) {
             String login = request.getParameter("mail");
             String pass = request.getParameter("mdp");

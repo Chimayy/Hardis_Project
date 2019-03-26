@@ -153,11 +153,9 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
 
     @Override
     public void accepterDevis(Devis Devis) {
-<<<<<<< HEAD
-        Devis.setStatut(statut_Devis.en_negociation);
-=======
+
         Devis.setStatut(statut_Devis.a_negocier);
->>>>>>> exiless6
+
         em.merge(Devis);
     }
 
