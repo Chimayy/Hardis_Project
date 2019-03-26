@@ -25,7 +25,7 @@
                                             <h1>Connexion</h1>
                                             <div class="form-group">
                                                 <label for="login"> Login <span class="requis">*</span></label>
-                                                <input type="text" class="form-control" name="mail" value="" size="20" maxlength="20"/>
+                                                <input type="text" class="form-control" name="mail" value="" size="100" maxlength="100"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pass"> Pass <span class="requis">*</span></label>

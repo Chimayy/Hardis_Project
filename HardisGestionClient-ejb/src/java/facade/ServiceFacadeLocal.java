@@ -40,5 +40,9 @@ public interface ServiceFacadeLocal {
     public void modifierService(Service service, String description, String nom, double cout, Offre offre);
 
     public void supprimerService(Service service);
+
+    public List<Service> rechercherServiceOffre(Offre offre);
+
+    public List<Service> rechercherServiceNom(String nom);
     
 }

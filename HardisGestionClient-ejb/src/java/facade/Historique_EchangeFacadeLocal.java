@@ -34,7 +34,7 @@ public interface Historique_EchangeFacadeLocal {
 
     List<Historique_Echange> listeEchange();
 
-    Historique_Echange rechercheEchange(String id);
+    Historique_Echange rechercheEchange(long id);
 
     void creerEchange(String contenu, Date date, String path, Devis devis);
     

@@ -61,8 +61,8 @@ public class gestionAdmin implements gestionAdminLocal {
     private Utilisateur_HardisFacadeLocal utilisateur_HardisFacade;
 
     @Override
-    public void creationUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif, Agence agence){
-        utilisateur_HardisFacade.creerUtilisateurHardis(mail, mdp, nom, prenom, plafond, profiltechnique, statut_actif, agence);   
+    public Utilisateur_Hardis creationUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif, Agence agence){
+        return utilisateur_HardisFacade.creerUtilisateurHardis(mail, mdp, nom, prenom, plafond, profiltechnique, statut_actif, agence);   
     }
     
     @Override
@@ -95,9 +95,10 @@ public class gestionAdmin implements gestionAdminLocal {
     }
             
     @Override
-    public void modificationUtilisateurHardis(long id, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif){
+    public Utilisateur_Hardis modificationUtilisateurHardis(long id, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif){
         Utilisateur_Hardis user = utilisateur_HardisFacade.rechercherUtilisateurHardisId(id).get(0);
-        utilisateur_HardisFacade.modifierUtilisateurHardis(user, mail, mdp, nom, prenom, plafond, profiltechnique, statut_actif);
+        return utilisateur_HardisFacade.modifierUtilisateurHardis(user, mail, mdp, nom, prenom, plafond, profiltechnique, statut_actif);
+        
     }
     
     @Override
@@ -270,6 +271,16 @@ public class gestionAdmin implements gestionAdminLocal {
     @Override
     public List<Service> rechercherServiceParId(long id){
         return serviceFacade.rechercheService(id);
+    }
+    
+    @Override
+    public List<Service> rechercherServiceParOffre(Offre offre){
+        return serviceFacade.rechercherServiceOffre(offre);
+    }
+    
+    @Override
+    public List<Service> rechercherServiceParNom(String nom){
+        return serviceFacade.rechercherServiceNom(nom);
     }
     
     @Override

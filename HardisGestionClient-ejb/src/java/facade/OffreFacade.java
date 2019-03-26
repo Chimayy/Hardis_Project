@@ -50,7 +50,7 @@ public class OffreFacade extends AbstractFacade<Offre> implements OffreFacadeLoc
     
     @Override
     public List<Offre> rechercherListeOffreNom(String nom){
-        String txt = "SELECT o FROM Offre AS o WHERE o.nom_Ofre =:nom";
+        String txt = "SELECT o FROM Offre AS o WHERE o.nom_Offre=:nom";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("nom", nom);
         List<Offre> liste = req.getResultList();

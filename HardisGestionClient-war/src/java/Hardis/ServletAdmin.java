@@ -70,10 +70,16 @@ public class ServletAdmin extends HttpServlet {
             boolean stat = Boolean.parseBoolean(statut);
             long id = Long.parseLong(idAgence);
             Agence agence = gestionAdmin.rechercherAgenceParId(id).get(0);
-            gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat, agence);
-            message = "Utilisateur crée avec succès !";          
-        }
+            Utilisateur_Hardis admin = gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat, agence);
+            List<Offre> listeOffre = gestionAdmin.affichageOffres();
+            if(!listeOffre.isEmpty() && profil.equals(profil_Technique.administrateur)){        
+            for(Offre offre : listeOffre){
+                         gestionAdmin.creationProfilMetier(6, offre, admin);
+                    }    
+            }
+        message = "Utilisateur crée avec succès !";   
         request.setAttribute("message", message);
+        }
     }
     
     protected void creerEntreprise(HttpServletRequest request, HttpServletResponse response)
@@ -259,7 +265,17 @@ public class ServletAdmin extends HttpServlet {
             double pla = Double.parseDouble(plafond);
             profil_Technique profil = profil_Technique.valueOf(profil_t);
             boolean stat = Boolean.parseBoolean(statut);
-            gestionAdmin.modificationUtilisateurHardis(id ,mail, motdepasse, nom, prenom, pla, profil, stat);
+            Utilisateur_Hardis admin = gestionAdmin.modificationUtilisateurHardis(id ,mail, motdepasse, nom, prenom, pla, profil, stat);
+            List<Offre> listeOffre = gestionAdmin.affichageOffres();
+            if(!listeOffre.isEmpty() && admin.getProfil_Technique().equals(profil_Technique.administrateur) ){        
+            for(Offre offre : listeOffre){
+                        Profil_Metier pm = gestionAdmin.rechercherProfilMetier(admin.getId(), offre.getId());
+                        if(pm != null){
+                        gestionAdmin.suppressionProfilMetier(pm.getId());}
+                        gestionAdmin.creationProfilMetier(6, offre, admin);
+                    }    
+            }
+            
             message = "Utilisateur modifié avec succès !";          
         }
         request.setAttribute("message", message);   
@@ -495,21 +511,45 @@ public class ServletAdmin extends HttpServlet {
         {        
             String nom = request.getParameter("nom");
             if(!nom.trim().isEmpty()){
-            List <Offre> listeEnt  = gestionAdmin.rechercherListeOffreParNom(nom);
-                if(listeEnt.size()>0){
-            request.setAttribute("listeEnt", listeEnt);
-            jspClient="/GestionEntreprise.jsp";
+            List <Offre> listeOffre  = gestionAdmin.rechercherListeOffreParNom(nom);
+                if(listeOffre.size()>0){
+            request.setAttribute("listeOffre", listeOffre);
+            jspClient="/GestionOffre.jsp";
                 }
                 else{
-                List <Entreprise> listeEnt2  = gestionAdmin.affichageEntreprises();
-                request.setAttribute("listeEnt", listeEnt2);
-                jspClient="/GestionEntreprise.jsp";
+                List <Offre> listeOffre2 = gestionAdmin.affichageOffres();
+                request.setAttribute("listeOffre", listeOffre2);
+                jspClient="/GestionOffre.jsp";
                 }                    
             }
             else{
-            List <Entreprise> listeEnt2  = gestionAdmin.affichageEntreprises();
-            request.setAttribute("listeEnt", listeEnt2);
-            jspClient="/GestionEntreprise.jsp";
+            List <Offre> listeOffre  = gestionAdmin.affichageOffres();
+            request.setAttribute("listeOffre", listeOffre);
+            jspClient="/GestionOffre.jsp";
+            message = "Veuillez rentrer une valeur";
+            request.setAttribute("message", message);  
+            }
+        }
+          
+        else if(act.equals("RechercherService"))
+        {        
+            String nom = request.getParameter("nom");
+            if(!nom.trim().isEmpty()){
+            List <Service> listeService  = gestionAdmin.rechercherServiceParNom(nom);
+                if(listeService.size()>0){
+            request.setAttribute("listeServ", listeService);
+            jspClient="/GestionService.jsp";
+                }
+                else{
+                List <Service> listeService2 = gestionAdmin.affichageServices();
+                request.setAttribute("listeServ", listeService2);
+                jspClient="/GestionService.jsp";
+                }                    
+            }
+            else{
+            List <Service> listeService = gestionAdmin.affichageServices();
+            request.setAttribute("listeServ", listeService);
+            jspClient="/GestionService.jsp";
             message = "Veuillez rentrer une valeur";
             request.setAttribute("message", message);  
             }
@@ -534,6 +574,32 @@ public class ServletAdmin extends HttpServlet {
                 request.setAttribute("message", message); 
             }
         }
+        
+        else if(act.equals("SupprimerUtilisateurHardis"))
+        {
+            String idUser = request.getParameter("idUser");
+            long id = Long.parseLong(idUser);
+            Utilisateur_Hardis User = gestionAdmin.rechercherUtilisateurHardisParId(id);
+            
+            if(User != null){   
+            List<Profil_Metier> listeprofil = gestionAdmin.rechercherProfilMetierParIdUser(id);
+            for(Profil_Metier profil : listeprofil){
+                gestionAdmin.suppressionProfilMetier(profil.getId());
+            }
+            gestionAdmin.suppressionUtilisateurHardis(id);
+           
+            List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
+            request.setAttribute("listeUser", listeUser);
+            jspClient="/GestionUtilisateurHardis.jsp";
+            }
+            
+            else 
+            {
+                message = "Cet utilisateur n'existe pas";
+                request.setAttribute("message", message); 
+            }
+        }
+         
         
         else if(act.equals("SupprimerEntreprise"))
         {
@@ -613,17 +679,29 @@ public class ServletAdmin extends HttpServlet {
          
          else if(act.equals("SupprimerOffre")){
              String idOffre = request.getParameter("idOffre");
-             long id = Long.parseLong(idOffre);
-             Offre offre = gestionAdmin.rechercherOffreParId(id).get(0);
+             long idO = Long.parseLong(idOffre);
+             Offre offre = gestionAdmin.rechercherOffreParId(idO).get(0);
+             List<Service> listeservice = gestionAdmin.rechercherServiceParOffre(offre);
              
-             if(offre!=null){
-                gestionAdmin.suppressionOffre(id);
+            if(offre!=null){
+                 
+                if(listeservice.isEmpty()){
+                gestionAdmin.suppressionOffre(idO);
                 List<Offre> listeOffre = gestionAdmin.affichageOffres();
                 request.setAttribute("listeOffre", listeOffre);
                 jspClient = "/GestionOffre.jsp";
                 message = "Offre supprimée avec succès";
                 request.setAttribute("message", message); 
-             }
+            }
+                else{
+                     message = "Impossible, il existe des services liés à cette offre";
+                     request.setAttribute("message", message);
+                     List <Offre> listeOffre  = gestionAdmin.affichageOffres();
+                     request.setAttribute("listeOffre", listeOffre);
+                     jspClient="/GestionOffre.jsp";
+                }
+                    
+            }
              
              else{
                 message = "Cette offre n'existe pas";
@@ -871,6 +949,10 @@ public class ServletAdmin extends HttpServlet {
             message = "Question attribuée !";
             request.setAttribute("message", message);  
           
+         }
+         
+         else if(act.equals("MenuGestionnaire")){
+             jspClient = "/AcceuilGestionnaire.jsp";
          }
          
          else if(act.equals("Menu")){

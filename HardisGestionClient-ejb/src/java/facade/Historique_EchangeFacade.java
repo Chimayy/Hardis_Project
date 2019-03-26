@@ -42,7 +42,7 @@ public class Historique_EchangeFacade extends AbstractFacade<Historique_Echange>
     }
 
     @Override
-    public Historique_Echange rechercheEchange(String id) {
+    public Historique_Echange rechercheEchange(long id) {
         Historique_Echange result;
         String txt = "SELECT he FROM Historique_Echange AS  WHERE he.id=:id";
         Query req = getEntityManager().createQuery(txt);

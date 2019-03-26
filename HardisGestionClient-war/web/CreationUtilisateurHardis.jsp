@@ -21,7 +21,6 @@
                 <header>
                     <%@include file="jsp_reused/header.jsp" %>
                 </header>
-
                 <div class="container">
                     <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
                         <h1>Créer utilisateur</h1>
@@ -45,15 +44,11 @@
                             <input type ="text" class="form-control"  name="motdepasse" class='input'/>
                         </div>
                         <div class="form-group">
-<<<<<<< HEAD
-                            <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
-=======
-                            <label for="nom"> Plafond <span class="requis">*</span></label>
->>>>>>> schellen2
-                            <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
+                        <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
+                        <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
                         </div> 
                         <div class="form-group">
-                        <a> Profil Technique </a>
+                        <a> Profil Technique * </a>
                             <select class="custom-select mr-sm-2"name="profil" size="1">
                                 <option> administrateur
                                 <option> gestionnaire
@@ -62,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <% List<Agence> lesAgences = listeAgence;%>
-                            <label for="Agence" class='textinput'> Agence : </label>
+                            <label for="Agence" class='textinput'> Agence * </label>
                             <select name="idAgence" class='form-control'>
                                 <% for (Agence agence : lesAgences ){%>
                                 <option value="<%=agence.getId()%>"><%=agence.getVille_Agence()%></option>                     
@@ -71,8 +66,6 @@
                             <a href="ServletAdmin?action=AfficherAgences" >L'agence n'est pas dans la liste ? </a>
                             <input  type ="hidden" name="action" value="CreerUtilisateur">
                         </div>
-
-                       
                         <div class='bouton1'>
                             </br>
                             <input  class='btn btn-indigo' type="submit" value="Valider"/>

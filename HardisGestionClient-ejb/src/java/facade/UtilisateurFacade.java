@@ -48,6 +48,16 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
         result=(Utilisateur)req.getSingleResult();
         return result;
     }
+    
+     @Override
+    public Utilisateur rechercheUtilisateurNom(String nom) {
+        Utilisateur result;
+        String txt = "SELECT u FROM Utilisateur AS u WHERE u.nom_Utilisateur=:nom";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("nom", nom);
+        result=(Utilisateur)req.getSingleResult();
+        return result;
+    }
 
     @Override
     public Utilisateur authentification(String log, String mdp) {

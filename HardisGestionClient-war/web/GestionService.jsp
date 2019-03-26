@@ -29,14 +29,11 @@
                     <h1>Liste des services</h1>
                     <hr class="my-6">
 
-
-
-
                     <form method ="get" action="ServletAdmin" class='form-inline'>
                         <label for='nom' style='padding-right:5px   '> Nom </label>
                         <input type ="text" placeholder='Nom' name="nom" class='form-control'/>
                         <input class='btn btn-indigo' type="submit" value="Valider"/>
-                        <input type ="hidden" name="action" value="">
+                        <input type ="hidden" name="action" value="RechercherService">
                     </form>
 
                     <table class="table table-bordered">

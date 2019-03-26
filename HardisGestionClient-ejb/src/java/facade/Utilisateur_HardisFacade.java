@@ -38,7 +38,7 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
     }
 
     @Override
-    public void creerUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif, Agence agence) {
+    public Utilisateur_Hardis creerUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif, Agence agence) {
         Utilisateur_Hardis userACreer = new Utilisateur_Hardis();
         userACreer.setPlafond_Delegation(plafond);
         userACreer.setMail_Connexion(mail);
@@ -49,10 +49,11 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         userACreer.setStatut_Actif(false);
         userACreer.setlAgence(agence);
         em.persist(userACreer);
+        return userACreer;
     }
     
     @Override
-    public void modifierUtilisateurHardis(Utilisateur_Hardis user,String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif){
+    public Utilisateur_Hardis modifierUtilisateurHardis(Utilisateur_Hardis user,String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif){
         user.setPlafond_Delegation(plafond);
         user.setMail_Connexion(mail);
         user.setMot_De_Passe(mdp);
@@ -61,6 +62,7 @@ public class Utilisateur_HardisFacade extends AbstractFacade<Utilisateur_Hardis>
         user.setPrenom_Utilisateur(prenom);
         user.setStatut_Actif(false);
         em.merge(user);        
+        return user;
     }
     
     @Override
