@@ -7,12 +7,11 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="listeAgence" scope="request" class = "java.util.List"> </jsp:useBean>
-<!DOCTYPE html>
-<html>
-     <head>
+    <!DOCTYPE html>
+    <html>
+        <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
         <%@include file="jsp_reused/style.jsp" %>
-     
         <title>Créer un utilisateur</title>
     </head>
     <body>
@@ -44,11 +43,19 @@
                             <input type ="text" class="form-control"  name="motdepasse" class='input'/>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                         <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
                         <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
                         </div> 
                         <div class="form-group">
                         <a> Profil Technique * </a>
+=======
+                            <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
+                            <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
+                        </div> 
+                        <div class="form-group">
+                            <a> Profil Technique </a>
+>>>>>>> origin/backup2mastercopy2beforthomasMerge123
                             <select class="custom-select mr-sm-2"name="profil" size="1">
                                 <option> administrateur
                                 <option> gestionnaire
@@ -59,27 +66,30 @@
                             <% List<Agence> lesAgences = listeAgence;%>
                             <label for="Agence" class='textinput'> Agence * </label>
                             <select name="idAgence" class='form-control'>
-                                <% for (Agence agence : lesAgences ){%>
+                                <% for (Agence agence : lesAgences) {%>
                                 <option value="<%=agence.getId()%>"><%=agence.getVille_Agence()%></option>                     
                                 <%}%>
                             </select>
                             <a href="ServletAdmin?action=AfficherAgences" >L'agence n'est pas dans la liste ? </a>
                             <input  type ="hidden" name="action" value="CreerUtilisateur">
                         </div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/backup2mastercopy2beforthomasMerge123
                         <div class='bouton1'>
                             </br>
                             <input  class='btn btn-indigo' type="submit" value="Valider"/>
-                            <input  class='btn btn-indigo'type="reset" value="Remise à 0"/>       
+                            <input  class='btn btn-indigo'type="reset" value="Reset"/>       
                         </div>
-                            </br>
-                            <hr class="my-6">
-                            <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 
-
-
+                        </br>
+                        <hr class="my-6">
+                        <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 
                     </form>
                 </div>
             </div>
-                <%@include file="jsp_reused/footer.jsp" %>
+            <%@include file="jsp_reused/footer.jsp" %>
         </div>
         <%@include file="jsp_reused/javascript.jsp" %>
     </body>

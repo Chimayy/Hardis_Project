@@ -18,6 +18,7 @@ import entite.profil_Technique;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
@@ -54,22 +55,27 @@ public class ServletAdmin extends HttpServlet {
         Utilisateur_Hardis user = gestionAdmin.rechercherUtilisateurHardisMail(mail);
       
         String message;
+        String couleurErreur = "";
         if (nom.trim().trim().isEmpty()||prenom.trim().isEmpty()||mail.trim().isEmpty()||motdepasse.trim().isEmpty()||plafond.trim().isEmpty()
                 ||profil_t.trim().isEmpty()||idAgence.trim().isEmpty())
         {
+            couleurErreur ="rouge";
             message = "Erreur, vous n'avez pas rempli tous les champs pour créer un utilisateur";
         }
         
         else if (user != null){
+            couleurErreur ="jaune";
             message = "Erreur, un compte utilisateur existe déjà pour ce mail";
             
         }
         else {
+            couleurErreur ="vert";
             double pla = Double.parseDouble(plafond);
             profil_Technique profil = profil_Technique.valueOf(profil_t);
             boolean stat = Boolean.parseBoolean(statut);
             long id = Long.parseLong(idAgence);
             Agence agence = gestionAdmin.rechercherAgenceParId(id).get(0);
+<<<<<<< HEAD
             Utilisateur_Hardis admin = gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat, agence);
             List<Offre> listeOffre = gestionAdmin.affichageOffres();
             if(!listeOffre.isEmpty() && profil.equals(profil_Technique.administrateur)){        
@@ -78,6 +84,12 @@ public class ServletAdmin extends HttpServlet {
                     }    
             }
         message = "Utilisateur crée avec succès !";   
+=======
+            gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat, agence);
+            message = "Utilisateur crée avec succès !";          
+        }
+        request.setAttribute("color", couleurErreur);
+>>>>>>> origin/backup2mastercopy2beforthomasMerge123
         request.setAttribute("message", message);
         }
     }
@@ -424,7 +436,11 @@ public class ServletAdmin extends HttpServlet {
         else if(act.equals("AfficherUtilisateursHardis")) 
         {
             List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
+            if(listeUser.isEmpty()){
+                listeUser = new ArrayList<>();
+            }
             request.setAttribute("listeUser", listeUser);
+            request.setAttribute("message",message);
             jspClient="/GestionUtilisateurHardis.jsp";
         }
         
@@ -462,6 +478,7 @@ public class ServletAdmin extends HttpServlet {
         
         else if(act.equals("RechercherUtilisateurHardis"))
         {        
+            request.setAttribute("message","");
            String nom = request.getParameter("nom");
             if(!nom.trim().isEmpty()){
             List <Utilisateur_Hardis> listeUser  = gestionAdmin.rechercherUtilisateurHardisNom(nom);

@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeUser" scope="request" class="java.util.List"></jsp:useBean>
+       
         <%@include file="jsp_reused/style.jsp" %>
         <title>Utilisateurs Hardis</title>
     </head>
@@ -45,6 +46,17 @@
                         <button type="submit" class="btn btn-indigo mb-2">Valider</button>
                         <input type ="hidden" name="action" value="RechercherUtilisateurHardis"/>  
                     </form>
+                     <% String attribut = (String) request.getAttribute("message");
+                    if (!attribut.equals("")){
+                    
+                    %>
+                    <div class="alert alert-info">
+              
+                      <% out.println(attribut);
+                       %>
+                       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                       </div>
+                       <%}%>
 
                     <p>
                         <a href = "ServletAdmin?action=CreationUtilisateurHardis"style="margin-bottom: 20px" class='btn btn-outline-light-green right'> Créer un nouvel utilisateur </a>
@@ -79,11 +91,9 @@
                                 <%}%>
                     </table>
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 
-
-                    <div class="message"><% String attribut = (String) request.getAttribute("message");
-                        out.println(attribut);
-                        %></div>
+                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a>    
+                   
+                    
                 </div>              
             </div>
             <%@include file="jsp_reused/footer.jsp"%>
