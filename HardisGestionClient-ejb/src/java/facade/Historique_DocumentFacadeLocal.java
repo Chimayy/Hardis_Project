@@ -33,4 +33,6 @@ public interface Historique_DocumentFacadeLocal {
 
     void creerDocument(String path, Devis leDevis);
     
+    Historique_Document rechercheDocument(long id);
+    
 }

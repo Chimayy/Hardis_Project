@@ -48,6 +48,24 @@ public class ServiceFacade extends AbstractFacade<Service> implements ServiceFac
         List<Service> liste = req.getResultList();
         return liste;
     }
+    
+    @Override
+    public List<Service> rechercherServiceOffre(Offre offre){
+        String txt = "SELECT s FROM Service AS s WHERE s.lOffre=:offre";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("offre", offre);
+        List<Service> liste = req.getResultList();
+        return liste;
+    }
+    
+    @Override
+    public List<Service> rechercherServiceNom(String nom){
+        String txt = "SELECT s FROM Service AS s WHERE s.nom_Service=:nom";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("nom", nom);
+        List<Service> liste = req.getResultList();
+        return liste;
+    }
 
     @Override
     public void creerService(String description_Service, String nom, double cout_Service, Offre offre) {

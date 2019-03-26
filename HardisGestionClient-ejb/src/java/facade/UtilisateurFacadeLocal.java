@@ -41,6 +41,8 @@ public interface UtilisateurFacadeLocal {
 
     List GetUtilisateurParOffre(long idOffre);
 
+    public Utilisateur rechercheUtilisateurNom(String nom);
+
     
 
 }

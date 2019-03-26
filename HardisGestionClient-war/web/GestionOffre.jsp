@@ -62,8 +62,6 @@
                     <div class="message"><% String attribut = (String) request.getAttribute("message");
                                 out.println(attribut);
                         %></div>
-
-
                 </div>
             </div>
 

@@ -8,6 +8,7 @@ package Global;
 
 
 import entite.Client;
+import entite.Service;
 
 
 import java.io.IOException;
@@ -22,8 +23,10 @@ import javax.servlet.http.HttpServletResponse;
 import session.gestionVisiteurLocal;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import session.gestionAdminLocal;
 
 
 /**
@@ -34,8 +37,10 @@ import javax.servlet.http.HttpSession;
 public class Accueil extends HttpServlet {
 
     @EJB
-    private gestionVisiteurLocal gestionVisiteur;
+    private gestionAdminLocal gestionAdmin;
 
+    @EJB
+    private gestionVisiteurLocal gestionVisiteur;
 
     String jspClient = "/Menu_principal.jsp";
     String act = null;
@@ -54,12 +59,21 @@ public class Accueil extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sess = request.getSession(true);
         String message = "";
-        act = request.getParameter("action");
+        String act = request.getParameter("action");
+        String jspClient="";
 
         if ((act == null) || (act.equals("vide"))) {
             jspClient = "/Menu_principal.jsp";
             request.setAttribute("message", "pas d'information");
-        } else if ((act.equals("authentif"))) {
+        } 
+        else if(act.equals("Catalogue")){
+            List<Service> listeServ = gestionAdmin.affichageServices();
+            request.setAttribute("listeServ", listeServ);
+            jspClient = "/Catalogue_service.jsp";
+        }
+        
+        
+        else if ((act.equals("authentif"))) {
             String login = request.getParameter("mail");
             String pass = request.getParameter("mdp");
             Utilisateur utilisateur = gestionVisiteur.authentification(login, pass);

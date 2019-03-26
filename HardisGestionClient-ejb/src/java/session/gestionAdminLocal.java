@@ -25,9 +25,9 @@ import javax.ejb.Local;
 @Local
 public interface gestionAdminLocal {
 
-    public void creationUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif, Agence agence);
+    public Utilisateur_Hardis creationUtilisateurHardis(String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif, Agence agence);
 
-    public void modificationUtilisateurHardis(long id, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
+    public Utilisateur_Hardis modificationUtilisateurHardis(long id, String mail, String mdp, String nom, String prenom, double plafond, profil_Technique profiltechnique, boolean statut_actif);
 
     public List<Utilisateur_Hardis> affichageUtilisateursHardis();
 
@@ -118,5 +118,9 @@ public interface gestionAdminLocal {
     public Profil_Metier rechercherProfilMetier(long idUser, long idOffre);
 
     public void attributionQuestionPublique(Historique_QuestionPublique question, Utilisateur_Hardis gestionnaire);
+
+    public List<Service> rechercherServiceParOffre(Offre offre);
+
+    public List<Service> rechercherServiceParNom(String nom);
 
 }

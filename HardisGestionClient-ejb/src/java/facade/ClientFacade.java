@@ -50,6 +50,17 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
         result=(Client)req.getSingleResult();
         return result;
     }
+    
+      @Override
+    public Client rechercheClientNom(String nom) {
+        Client result;
+        String txt = "SELECT c FROM Client AS c WHERE c.nom_Client=:nom";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("nom", nom);
+        result=(Client)req.getSingleResult();
+        return result;
+    }
+
 
     @Override
     public void creerClient(String nom_Client, String mdp, String mail, Entreprise etp, Consentement_RGPD consentement) {
