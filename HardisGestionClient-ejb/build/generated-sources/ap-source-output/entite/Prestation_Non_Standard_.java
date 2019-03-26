@@ -3,7 +3,7 @@ package entite;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-26T14:44:32")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-26T15:00:21")
 @StaticMetamodel(Prestation_Non_Standard.class)
 public class Prestation_Non_Standard_ extends Prestation_ {
 

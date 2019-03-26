@@ -10,41 +10,60 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="listeServ" scope="request" class = "java.util.List"> </jsp:useBean>
 <jsp:useBean id="listeOffre" scope="request" class = "java.util.List"> </jsp:useBean>
+<%@include file="jsp_reused/style.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Modifier un service</title>
+        <title>Modifier un service</title>
     </head>
     <body>
-        <h1>Modifier un service</h1>
-        <% List<Service> lesServices = listeServ;%>
-        <% List<Offre> lesOffres = listeOffre;%>
-            <div class="input1">
-                <% for (Service serv : lesServices) {%>
-                <form method ="get" action="ServletAdmin">
-                <input type="hidden" name="id" value="<%=serv.getId()%>" class='input'/>
-                <p> Nom : <input type ="text" name="nom" value="<%=serv.getNom_Service()%>" class='input'/></p>
-                <p> Description : <input type ="text" name="description" value="<%=serv.getDescription_Service()%>" class='input'/></p>
-                <p> Coût du service : <input type ="text" name=cout value="<%=serv.getCout_Service()%>" class='input'/></p>
-                <label for="Offre" class='textinput'> Offre : </label>
-                    <select name="idOffre" class='custom-dropdown__select custom-dropdown__select--white'>
-                    <% for (Offre offre : lesOffres){%>
-                    <option value="<%=offre.getId()%>"><%=offre.getNom_Offre()%>
-                    </option>
-                    <%}%>
-                    </select> 
+        <div class="flex-wrapper">
+            <div class="container-fluid nopad">
+                <header>
+                    <%@include file="jsp_reused/header.jsp" %>
+                </header>
+
+                <div class="container">
+                    <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
+                        <h1>Modifier un service</h1>
+                    </div>
+
+                    <% List<Service> lesServices = listeServ;%>
+                    <% List<Offre> lesOffres = listeOffre;%>
+                    <% for (Service serv : lesServices) {%>
+                    <form method ="get" action="ServletAdmin">
+                        <input type="hidden" name="id" value="<%=serv.getId()%>" class='input'/>
+                        <div class="form-group">
+                            <label for="nom"> Nom </label>
+                            <input type ="text" name="nom" value="<%=serv.getNom_Service()%>" class='form-control'/>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type ="text" name="description" value="<%=serv.getDescription_Service()%>" class='form-control'/>
+                        </div>
+                        <div class="form-group">
+                            <label for="cout"> Coût du service </label>
+                            <input type ="text" name=cout value="<%=serv.getCout_Service()%>" class='form-control'/>
+                        </div>
+                        <label for="Offre" > Offre : </label>
+                        <select name="idOffre" class='form-control'>
+                            <% for (Offre offre : lesOffres) {%>
+                            <option value="<%=offre.getId()%>"><%=offre.getNom_Offre()%>
+                            </option>
+                            <%}%>
+                        </select> 
+
+                        <input type ="hidden" name="action" value="ActionModifierService"/>     
+                        <%}%>
+                        <input  class='btn btn-indigo' type="submit" value="Valider"/>
+                        <input  class='btn btn-indigo' type="reset" value="Effacer"/>       
+                        <hr class="my-6">                      
+                        <a class="btn btn-outline-teal right" href ="MenuAdmin.jsp"> Retour Menu </a>
+                    </form>
+                </div>
             </div>
-            <div class='bouton1'>
-            </br>
-            <input type ="hidden" name="action" value="ActionModifierService"/>     
-            <%}%>
-            <input  class='bouton' type="submit" value="Valider"/>
-            <input  class='bouton'type="reset" value="Effacer"/>       
-            </div>
-            </br>
-            <div class='retour'>
-            <a href ="MenuAdmin.jsp"> Retour Menu </a>
-            </div>
-        </form>
+            <%@include file="jsp_reused/footer.jsp" %>
+        </div>
+        <%@include file="jsp_reused/javascript.jsp" %>
     </body>
 </html>
