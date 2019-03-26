@@ -19,7 +19,7 @@
                     <%@include file="jsp_reused/header.jsp" %>
                 </header>
                 <div class="container">
-                    <form method="get" action="demandeContact">
+                    <form method="get" action="ServletVisiteur">
                         <fieldset>
                             <div  style=" margin-top:1%;margin-bottom: 1%">
                                 <h1>Formulaire de demande de contact</h1>
@@ -53,6 +53,7 @@
                         </fieldset>
                         <input class="btn btn-secondary" type="submit" value="Valider"/>
                         <input class="btn btn-secondary" ype="reset" value="Remettre à zéro"/><br/>
+                        <input class=""
                     </form>
                     <hr class="my-6">
                     <a class="btn btn-outline-teal right" href="Menu_principal.jsp" value="retour"> Retour </a> 

@@ -79,5 +79,7 @@ public interface gestionClientLocal {
 
     Utilisateur_Hardis rechercherUtilisateurHardisId(long id);
 
+    List<Service> listService();
+
 
 }

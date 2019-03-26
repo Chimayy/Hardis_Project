@@ -6,9 +6,9 @@
 package facade;
 
 import entite.Client;
-import entite.Consentement_RGPD;
 import entite.Entreprise;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +20,9 @@ import javax.persistence.Query;
  */
 @Stateless
 public class ClientFacade extends AbstractFacade<Client> implements ClientFacadeLocal {
+
+    @EJB
+    private EntrepriseFacadeLocal entrepriseFacade;
 
     @PersistenceContext(unitName = "HardisGestionClient-ejbPU")
     private EntityManager em;
@@ -63,13 +66,13 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
 
 
     @Override
-    public void creerClient(String nom_Client, String mdp, String mail, Entreprise etp, Consentement_RGPD consentement) {
+    public void creerClient(String nom_Client, String prenom_Client, String mdp, String mail, Entreprise etp) {
         Client clientACreer = new Client();
         clientACreer.setMail_Connexion(mail);
         clientACreer.setMot_De_Passe(mdp);
         clientACreer.setNom_Utilisateur(nom_Client);
         clientACreer.setPrenom_Utilisateur(nom_Client);
-        clientACreer.setLeConsentement(consentement);        
+        clientACreer.setlEntreprise(etp);
         em.persist(clientACreer);
     }
 
@@ -85,9 +88,23 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
     }
 
     @Override
-    public void clientPersist(Object o) {
-        em.persist(o);
+    public List<Entreprise> listeEntreprise() {
+        return entrepriseFacade.listeEntreprise();
     }
+
+    @Override
+    public Client rechercheClientMail(String mail) {
+         Client user;
+        String txt = "SELECT a FROM Utilisateur AS a WHERE a.mail_Connexion=:lo";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("lo", mail);
+         List<Client> liste = req.getResultList();
+        if(!liste.isEmpty()){
+            return liste.get(0);
+        }
+        else {return null;}
+    }
+
        
     
     

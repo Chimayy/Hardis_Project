@@ -9,10 +9,8 @@ package Global;
 
 import entite.Client;
 import entite.Service;
-
-
+import entite.Entreprise;
 import java.io.IOException;
-
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -70,9 +68,7 @@ public class Accueil extends HttpServlet {
             List<Service> listeServ = gestionAdmin.affichageServices();
             request.setAttribute("listeServ", listeServ);
             jspClient = "/Catalogue_service.jsp";
-        }
-        
-        
+		}       
         else if ((act.equals("authentif"))) {
             String login = request.getParameter("mail");
             String pass = request.getParameter("mdp");
@@ -83,7 +79,7 @@ public class Accueil extends HttpServlet {
                 request.setAttribute("problème de connexion, merci de réessayer", message);;
             }
 
-// on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
+            // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
             if (utilisateur instanceof entite.Client) {
                 Client cli = (Client)utilisateur;
                 sess.setAttribute("UserARecup", cli);
@@ -106,6 +102,40 @@ public class Accueil extends HttpServlet {
                 jspClient = "Connexion.jsp";
                 request.setAttribute("oupsi", message);
             }
+        }
+        else if(act.equals("demandeClient"))
+        {
+            List<Entreprise> list = gestionVisiteur.listEntreprise();
+            request.setAttribute("listeEntreprise", list);
+            jspClient="/CreationClient.jsp";
+        }
+        
+        else if(act.equals("CreerUtilisateur"))
+        {
+          
+            String nom= request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String mail = request.getParameter("mail");
+        String motdepasse = request.getParameter("motdepasse");
+        String idEntreprise = request.getParameter("idEntreprise");
+        Client user = gestionVisiteur.rechercheClientMail(mail);
+        if (nom.trim().trim().isEmpty()||prenom.trim().isEmpty()||mail.trim().isEmpty()||motdepasse.trim().isEmpty()||idEntreprise.trim().isEmpty())
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs pour créer un utilisateur";
+        }
+        
+        else if (user != null){
+            message = "Erreur, un compte utilisateur existe déjà pour ce mail";
+            
+        }
+        else {
+            Long idEntrepriseLong = Long.valueOf(idEntreprise);
+            Entreprise entreprise = gestionVisiteur.rechercheEntreprise(idEntrepriseLong);
+            gestionVisiteur.creerClient(nom, prenom, mail, mail, entreprise);
+            message = "Client crée avec succès !";          
+        }
+        request.setAttribute("message", message);
+        jspClient="/Menu_principal.jsp";
         }
 
         RequestDispatcher Rd;

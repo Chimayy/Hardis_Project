@@ -13,6 +13,7 @@ import entite.Devis;
 import entite.Entreprise;
 import entite.Periode_Disponible;
 import entite.Profil_Metier;
+import entite.Service;
 import entite.Utilisateur_Hardis;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -65,6 +66,12 @@ public class ServletClient extends HttpServlet {
             {
                 sess.setAttribute("user", user);
                 jspClient="/MenuClient.jsp";
+            }
+            else if(act.equals("listDevis"))
+            {
+                jspClient = ("/DemandeDevis.jsp");
+                List<Service> list = gestionClient.listService();
+                request.setAttribute("listService", list);
             }
             else if(act.equals("demandeDevis"))
             {
@@ -145,19 +152,14 @@ public class ServletClient extends HttpServlet {
             else if(act.equals("propositionConsultant"))
             {
                 jspClient="/MenuClient.jsp";
-                String[] checkbox = request.getParameterValues("checkbox");
+                String[] checkbox = request.getParameterValues("consultantsSelectionne");
                 List<Utilisateur_Hardis> propositionClient = new ArrayList();
-                String[] ArrayidConsultants = request.getParameterValues("consultant");
                 for(int i =0; i<checkbox.length;i++)
                 {
-                    String checkboxEnCours = checkbox[i];
-                    if(checkboxEnCours != null)
-                    {
-                        String idConsultantSelectionneString = ArrayidConsultants[i];
-                        long idConsultantSelectionneLong = Long.valueOf(idConsultantSelectionneString);
-                        Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantSelectionneLong);
+                        String idConsultantSelectionne = checkbox[i];
+                        Long idConsultantLong = Long.valueOf(idConsultantSelectionne);
+                        Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantLong);
                         propositionClient.add(consultantSelectionne);
-                    }
                 }
                 String idDevisString = request.getParameter("devis");
                 Long idDevisLong = Long.valueOf(idDevisString);
@@ -167,14 +169,17 @@ public class ServletClient extends HttpServlet {
                 for(int j=0;j<propositionClient.size();j++)
                 {
                     Utilisateur_Hardis consultantEnCours = propositionClient.get(j);
-                    List<Periode_Disponible> periodeOccupe =consultantEnCours.getPeriode_Disponibles();                    
-                    if(dateIntervention.after(periodeOccupe.get(j).getDate_Debut())&&dateIntervention.before(periodeOccupe.get(j).getDate_Fin()))
+                    List<Periode_Disponible> periodeOccupe =consultantEnCours.getPeriode_Disponibles();
+                    for(int k=0;k<periodeOccupe.size();k++)
                     {
-                        testPasOK = true;
-                        String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur() +" " + consultantEnCours.getPrenom_Utilisateur();
-                       request.setAttribute("message", "Le consultant " + nomConsultantOccupe + " est occupé à cette période");
-                       jspClient="/MenuClient.jsp";
-                       break;
+                        if(dateIntervention.after(periodeOccupe.get(k).getDate_Debut())&&dateIntervention.before(periodeOccupe.get(k).getDate_Fin()))
+                        {
+                            testPasOK = true;
+                            String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur() +" " + consultantEnCours.getPrenom_Utilisateur();
+                           request.setAttribute("message", "Le consultant " + nomConsultantOccupe + " est occupé à cette période");
+                           jspClient="/MenuClient.jsp";
+                           break;
+                        }
                     }
                  
                 }
