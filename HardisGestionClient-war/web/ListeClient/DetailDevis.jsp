@@ -55,6 +55,7 @@
                             <div class='form-group'>
                                 <label for="Modifier-Intervetion">Date d'intervetion </label>
                                 <input class="form-control" type="text" readonly name="Date" value ="<%=f.format(d.getDate_Intervention())%>">
+                                
                             </div>
                             <div class='form-group'>
                                 <label for="Modifier-Intervetion">Modifier la date d'intervetion </label>

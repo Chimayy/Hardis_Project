@@ -171,18 +171,24 @@ public class AcceuilGestionnaire extends HttpServlet {
              
          }
            
-         else if(act.equals("Validerdevis")){
+         else if(act.equals("ValiderDevis")){
              String id = request.getParameter("x");
              long idDevis = Long.valueOf(id);
-             String montant = request.getParameter("Montant");
+             String montant = request.getParameter("Montantfixe");
              int m= Integer.valueOf(montant);
              String da = request.getParameter("DateModif");
-             Date date= Date.valueOf(da);
-             gestionClient.ModifDevisEn_negociation(idDevis, m, date);
+             Date date ;
+             if(da!=""){
+             date= Date.valueOf(da);
+             gestionClient.ModifDevisEn_negociation(idDevis, m, date);}
+             else{Devis dde = gestionClient.rechercheDevis(idDevis);
+                 gestionClient.ModifDevisEn_negociation(idDevis, m,dde.getDate_Intervention() );
+             }
              Devis d = gestionClient.rechercheDevis(idDevis);
              Client c = d.getLeClient();
              request.setAttribute("Client", c);
-             jspClient="/ListeClient/DetailClient.jsp";             
+             jspClient="/ListeClient/DetailClient.jsp";   
+             
              
          }           
            

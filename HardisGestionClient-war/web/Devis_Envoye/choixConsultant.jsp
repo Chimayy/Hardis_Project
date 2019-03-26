@@ -89,16 +89,7 @@
                 <td>CV</td>
                 <td>checkbox</td>
             </tr>
-<<<<<<< HEAD
-            <% List<Profil_Metier> PM = listPM;
 
-            for(Profil_Metier PMenCours : PM) {%>
-                <tr>
-                    <td width=15%><%= PMenCours.getlUtilisateur().getNom_Utilisateur()%></td>
-                    <td width=15%><%= PMenCours.getlUtilisateur().getPrenom_Utilisateur()%></td>
-                    <td width=15%><a href="<%=PMenCours.getPathCV()%>">Accéder au CV</td>
-                    <td width=15%> <input type="checkbox" name="consultantsSelectionne" value="<%=PMenCours.getlUtilisateur().getId()%>"/> choisir ce consultant</td>
-=======
             <% List PM = listPM;
             List<Profil_Metier> list = new ArrayList();
             for(Object o : listPM){
@@ -110,21 +101,18 @@
                     <td width=15%><%= PMenCours.getlUtilisateur().getNom_Utilisateur()%></td>
                     <td width=15%><%= PMenCours.getlUtilisateur().getPrenom_Utilisateur()%></td>
                    <td width=15%><a href="METRRE LE PATH CV">Accéder au CV</td>
-                    <td width=15%> <input type="checkbox" name="checkbox"/> choisir ce consultant</td>
-                    <input type="hidden" name="consultant" value="<%=PMenCours.getlUtilisateur().getId()%>">
->>>>>>> exiless6
+                    <td width=15%> <input type="checkbox" value="<%=PMenCours.getlUtilisateur().getId()%>" name="checkbox"/> choisir ce consultant</td>
+                     
+
                     
    
                 
                 </tr><%}%>     
         </table>
-<<<<<<< HEAD
+
                 <input type="date" name="dateIntervention">
                 <input type="hidden" name="action" value="propositionConsultant">
-=======
-                <input type="date" name="dateIntervention" placeholder="ptipote">
-                <input type="hidden" name="action" value="propositionconsultant">
->>>>>>> exiless6
+
                 <input type="hidden" name="devis" value="<%=devis.getId()%>">
                 <input  class='bouton' type="submit" value="Valider"/>
         </form>

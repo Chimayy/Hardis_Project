@@ -29,7 +29,11 @@
             {%>
                 <META HTTP-EQUIV="Refresh" CONTENT="0.1; URL=/HardisGestionClient-war/AcceuilGestionnaire">
             <%}
-        }%>
+     if (user_H.getProfil_Technique().toString().equals("visualisation")) 
+            {%>
+                <META HTTP-EQUIV="Refresh" CONTENT="0.1; URL=/HardisGestionClient-war/MenuVisualisation.jsp">
+            <%}    
+    }%>
 
    
         <title>JSP Page</title>

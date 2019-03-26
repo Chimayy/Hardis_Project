@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeUser" scope="request" class="java.util.List"></jsp:useBean>
+        <jsp:useBean id="message" scope="request" class="String"></jsp:useBean>
        
         <%@include file="jsp_reused/style.jsp" %>
         <title>Utilisateurs Hardis</title>

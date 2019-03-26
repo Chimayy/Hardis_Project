@@ -175,10 +175,12 @@ public class gestionClient implements gestionClientLocal {
     }
 
 
+    @Override
     public void AffecterDevis(Devis Devis) {
         devisFacade.AffecterDevis(Devis);
     }
 
+    @Override
     public void propositionDateetConsultant(Client client, List<Utilisateur_Hardis> ListeConsultants, long idDevis, Date DateIntervention) {
         Devis devisConcerne = devisFacade.rechercheDevis(idDevis);
         devisFacade.proposerDateIntervention(devisConcerne, DateIntervention);
