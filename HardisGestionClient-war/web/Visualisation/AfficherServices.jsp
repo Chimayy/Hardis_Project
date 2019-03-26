@@ -43,10 +43,9 @@
                 </tr><%}%> 
                 <input type="hidden" value="afficherServices" name="action">
         </table>
-        <hr>
-    <td width=25%><a href="AccessVisualisation?action=afficherServices"> Retour Menu </a></td>
-    <hr>
-    </br>
-    <a href="/MenuVisualisation.jsp">Retour</a>
+         <form method="get" action="AccessVisualisation">
+        <input type="hidden" value="RetourMenuVisu" name="action">
+        <input class="btn btn-outline-light-green" style="margin-bottom: 20px" type="submit" value="Retour">
+        </form>
 </body>
 </html>

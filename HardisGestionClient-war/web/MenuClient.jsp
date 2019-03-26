@@ -28,10 +28,17 @@
 
                         <hr class="my-6">
                         <div class="row">
+<<<<<<< HEAD
                             <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="DemandeDevis.jsp">Demander un devis</a><br></div>
                             <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=visuDevis">Visualiser un formulaire</a><br></div>
                             <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=consultantsEtDate">choisir des consultants et une date d'intervention</a></div>
                             
+=======
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=listDevis">Demander un devis</a><br></div>
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=visuDevis">Visualiser un formulaire</a><br></div>
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=consultantsEtDate">choisir des consultants et une date d'intervention</a></div>
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href=""> faire d'autres trucs</a></div>
+>>>>>>> 175cd39839dcb7efed3ba667e78c9528dfdafc39
                         </div>
                 </div>
             </div>    

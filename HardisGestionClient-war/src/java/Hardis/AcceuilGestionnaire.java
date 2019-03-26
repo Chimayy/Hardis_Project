@@ -7,7 +7,9 @@ package Hardis;
 
 import entite.Client;
 import entite.Devis;
+import entite.Historique_Consultant;
 import entite.Historique_Question;
+import entite.Historique_QuestionPublique;
 import entite.Profil_Metier;
 import entite.Utilisateur;
 
@@ -65,10 +67,9 @@ public class AcceuilGestionnaire extends HttpServlet {
        // récupération de l'utilisateur qui s'est loggué
         Utilisateur_Hardis user =(Utilisateur_Hardis) sess.getAttribute("UserARecup");
       
-      
-      
            if((act==null)||(act.equals("vide")))
            {
+               request.setAttribute("User",user);
                jspClient="/AcceuilGestionnaire.jsp";
                request.setAttribute("message","pas d'information");
            }
@@ -99,9 +100,11 @@ public class AcceuilGestionnaire extends HttpServlet {
            }
            
            else if(act.equals("VisuClients")){
-               List<Client> ListeCli = gestionClient.ListeClient();
+               Utilisateur_Hardis u = user;
+               List<Historique_Consultant> HistoGest= gestionHardis.ListeHistGest(u);
+//               List<Client> ListeCli = gestionClient.ListeClient();
               jspClient="/ListeClient/VisuClients.jsp";
-              request.setAttribute("ListeClient", ListeCli);
+              request.setAttribute("ListeClient", HistoGest);
                 
            }
            else if (act.equals("DetailClient")){             
@@ -168,7 +171,7 @@ public class AcceuilGestionnaire extends HttpServlet {
              
          }
            
-         else if(act.equals("ValiderDevis")){
+         else if(act.equals("Validerdevis")){
              String id = request.getParameter("x");
              long idDevis = Long.valueOf(id);
              String montant = request.getParameter("Montant");
@@ -183,12 +186,15 @@ public class AcceuilGestionnaire extends HttpServlet {
              
          }           
            
-        
-             
-         
-         
+         else if(act.equals("RetourAdmin")){
+             jspClient="/MenuAdmin.jsp";
+         }
+ 
             else if (act.equals("QuestionsForum")){
                 
+                
+                List<Historique_QuestionPublique> ListeQuestionGest = gestionHardis.ListeQuestionGest(user);
+                request.setAttribute("ListQG", ListeQuestionGest);
                 
 //              des question qui lui sont affectées
                 sess.setAttribute("User", user);
@@ -222,6 +228,15 @@ public class AcceuilGestionnaire extends HttpServlet {
                 gestionHardis.creerDateDispo(user, dateDebut, dateFin);
                 jspClient="/AcceuilGestionnaire.jsp";
 
+            }
+           
+            else if (act.equals("EnregistrerReponsePublique")){
+                String id =request.getParameter("x");
+                Long id1 = Long.valueOf(id);
+                String rep = request.getParameter("reponsep");
+                Historique_QuestionPublique h = (Historique_QuestionPublique) gestionHardis.RechercheQP(id1).get(0);
+                gestionHardis.RepQP(h, rep);
+                jspClient ="/AcceuilGestionnaire.jsp";
             }
     
 

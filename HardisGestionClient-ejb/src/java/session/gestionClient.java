@@ -227,6 +227,11 @@ public class gestionClient implements gestionClientLocal {
         return utilisateur_HardisFacade.rechercherUtilisateurHaridsParId(id);
     }
 
+    @Override
+    public List<Service> listService() {
+        return serviceFacade.listeService();
+    }
+
     
     
 

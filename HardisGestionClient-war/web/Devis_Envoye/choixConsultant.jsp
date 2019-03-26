@@ -17,6 +17,7 @@
         <jsp:useBean id="listPM" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="devis" scope="request" class="entite.Devis"></jsp:useBean>
         <%--<jsp:useBean id="listConsultant" scope="request" class="java.util.List"></jsp:useBean>--%>
+<<<<<<< HEAD
         <%@include file="../jsp_reused/style.jsp" %>
         <title>JSP Page</title>
     </head>
@@ -74,5 +75,62 @@
             <%@include file="../jsp_reused/footer.jsp" %>
         </div> 
         <%@include file="../jsp_reused/javascript.jsp" %>
+=======
+        <title>JSP Page</title>
+    </head>
+    <body>
+       <h1>Devis sélectionné : Devis n°<%=devis.getId()%> pour une prestation : <%=devis.getLaPrestation().getLeService().getNom_Service()%></h1>
+        Liste des consultants disponibles sur ce service :
+        <form method="get" action="ServletClient">
+        <table border width=50%>
+            <tr> 
+                <td>Nom</td>
+                <td>Prenom</td>
+                <td>CV</td>
+                <td>checkbox</td>
+            </tr>
+<<<<<<< HEAD
+            <% List<Profil_Metier> PM = listPM;
+
+            for(Profil_Metier PMenCours : PM) {%>
+                <tr>
+                    <td width=15%><%= PMenCours.getlUtilisateur().getNom_Utilisateur()%></td>
+                    <td width=15%><%= PMenCours.getlUtilisateur().getPrenom_Utilisateur()%></td>
+                    <td width=15%><a href="<%=PMenCours.getPathCV()%>">Accéder au CV</td>
+                    <td width=15%> <input type="checkbox" name="consultantsSelectionne" value="<%=PMenCours.getlUtilisateur().getId()%>"/> choisir ce consultant</td>
+=======
+            <% List PM = listPM;
+            List<Profil_Metier> list = new ArrayList();
+            for(Object o : listPM){
+                Profil_Metier pm = (Profil_Metier)o;
+                list.add(pm);
+            }
+            for(Profil_Metier PMenCours : list) {%>
+                <tr>
+                    <td width=15%><%= PMenCours.getlUtilisateur().getNom_Utilisateur()%></td>
+                    <td width=15%><%= PMenCours.getlUtilisateur().getPrenom_Utilisateur()%></td>
+                   <td width=15%><a href="METRRE LE PATH CV">Accéder au CV</td>
+                    <td width=15%> <input type="checkbox" name="checkbox"/> choisir ce consultant</td>
+                    <input type="hidden" name="consultant" value="<%=PMenCours.getlUtilisateur().getId()%>">
+>>>>>>> exiless6
+                    
+   
+                
+                </tr><%}%>     
+        </table>
+<<<<<<< HEAD
+                <input type="date" name="dateIntervention">
+                <input type="hidden" name="action" value="propositionConsultant">
+=======
+                <input type="date" name="dateIntervention" placeholder="ptipote">
+                <input type="hidden" name="action" value="propositionconsultant">
+>>>>>>> exiless6
+                <input type="hidden" name="devis" value="<%=devis.getId()%>">
+                <input  class='bouton' type="submit" value="Valider"/>
+        </form>
+
+        <hr>
+    <td width=25%><a href="MenuClient.jsp"> Retour Menu </a></td>
+>>>>>>> 175cd39839dcb7efed3ba667e78c9528dfdafc39
     </body>
 </html>

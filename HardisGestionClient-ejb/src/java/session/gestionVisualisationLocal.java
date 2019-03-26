@@ -38,7 +38,7 @@ public interface gestionVisualisationLocal {
 
     List<Devis> afficherDevis();
 
-    List<Utilisateur> afficherUtilisateur();
+    List<Utilisateur_Hardis> afficherUtilisateur();
 
     List<Service> afficherService();
 

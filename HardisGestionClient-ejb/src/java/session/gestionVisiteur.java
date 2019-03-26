@@ -4,8 +4,19 @@
  * and open the template in the editor.
  */
 package session;
+
+import entite.Client;
+import entite.Entreprise;
 import entite.Service;
 import entite.Utilisateur;
+import facade.ClientFacadeLocal;
+import facade.EntrepriseFacadeLocal;
+
+import entite.Offre;
+import entite.Service;
+import entite.Utilisateur;
+import facade.Historique_QuestionPubliqueFacadeLocal;
+
 import facade.UtilisateurFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
@@ -18,6 +29,16 @@ import facade.ServiceFacadeLocal;
  */
 @Stateless
 public class gestionVisiteur implements gestionVisiteurLocal {
+
+    @EJB
+
+    private EntrepriseFacadeLocal entrepriseFacade;
+
+    @EJB
+    private ClientFacadeLocal clientFacade;
+
+    private Historique_QuestionPubliqueFacadeLocal historique_QuestionPubliqueFacade;
+
 
     @EJB
     private ServiceFacadeLocal serviceFacade;
@@ -41,6 +62,40 @@ public class gestionVisiteur implements gestionVisiteurLocal {
        }
         return user;
     }
+
+    @Override
+
+    public void creerClient(String nom_Client, String prenom_Client, String mdp, String mail, Entreprise etp) {
+        clientFacade.creerClient(nom_Client, prenom_Client, mdp, mail, etp);
+    }
+
+    @Override
+    public List<Entreprise> listEntreprise() {
+        return clientFacade.listeEntreprise();
+    }
+
+    @Override
+    public Client rechercheClientMail(String mail) {
+        return clientFacade.rechercheClientMail(mail);
+    }
+
+    @Override
+    public Entreprise rechercheEntreprise(long id) {
+        return entrepriseFacade.rechercherEntrepriseParId(id).get(0);
+    }
+
+    
+
+    public List ListeQuestionPubliqueRep() {
+       return historique_QuestionPubliqueFacade.ListeQuestionPublicRep();
+        
+    }
+
+    @Override
+    public List ListeQPOffre(Offre Offre) {
+        return historique_QuestionPubliqueFacade.ListeQPOfrre(Offre);
+    }
+
 
    
 }

@@ -41,5 +41,15 @@ public interface Historique_QuestionPubliqueFacadeLocal {
     public List<Historique_QuestionPublique> rechercheQuestionPubliqueId(long id);
 
     public void attribuerQuestionPublique(Historique_QuestionPublique question, Utilisateur_Hardis gestionnaire);
+
+    List QuestionPubliqueGestionnaire(Utilisateur_Hardis Gest);
+
+    void AffecterRep(Historique_QuestionPublique h, String rep);
+
+    List ListeQuestionPublicRep();
+
+    List ListeQPOfrre(Offre Offre);
+
+    List ListeQPPseudo(String pseudo);
     
 }

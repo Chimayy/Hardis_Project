@@ -36,12 +36,15 @@ public interface ClientFacadeLocal {
 
     Client rechercheClient(long id);
 
-    void creerClient(String nom_Client, String mdp, String mail, Entreprise etp, Consentement_RGPD consentement);
+    void creerClient(String nom_Client, String prenom_Client, String mdp, String mail, Entreprise etp);
 
     Client authentif(String mail, String mdp);
 
-    void clientPersist(Object o);
 
     public Client rechercheClientNom(String nom);
-    
+
+    List<Entreprise> listeEntreprise();
+
+    Client rechercheClientMail(String mail);
+
 }

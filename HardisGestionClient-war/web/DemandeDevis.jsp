@@ -1,4 +1,6 @@
 
+<%@page import="java.util.List"%>
+<%@page import="entite.Service"%>
 <%-- 
     Document   : DemandeDevis
     Created on : 15 mars 2019, 14:47:08
@@ -20,7 +22,7 @@
             <div class="container-fluid nopad">
                 <header>
                      <%@include file="jsp_reused/header.jsp" %>
-                     
+                     <jsp:useBean id="listService" scope="request" class="java.util.List"></jsp:useBean>
                 </header>
         
             <div class="container">
@@ -32,11 +34,17 @@
                             </div>
                          <div class="form-group">                          
                             <label for="zoneLibre"> zone libre</label>
-                            <input type="text"class="form-control" name="zoneLibre" value="" size="20" maxlength="20"/>
+                            <input type="text"class="form-control" name="zoneLibre" value="" rows ="5"/>
                          </div>
                          <div class="form-group">
-                            <label for="idService"> idService</label>
-                            <input type="text"class="form-control" name="idService" value="" size="80" maxlength="80"/>
+                            
+                           <label for="idService"> idService</label>
+                            <select name="idService">
+                                <% List<Service> lesServices = listService;
+                                    for (Service s : lesServices){%>
+                                <option value="<%=s.getId()%>"><%=s.getNom_Service()%></option>
+                                <%}%>
+                            </select>
                          </div>
                          <input type="hidden" name="action" value="demandeDevis">
                      </fieldset>

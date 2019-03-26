@@ -70,7 +70,7 @@
                             <%if (d.getStatut() == statut_Devis.a_traiter) {%>
                             <td width=15%><a style='color:orange' href="AcceuilGestionnaire?action=DetailDevis&x=<%=d.getId()%>">Editer/Envoyer</a></td><%}%>
                             <%if (d.getStatut() == statut_Devis.en_negociation) {%>
-                            <td width=15%><a style='color:green' href="AcceuilGestionnaire?action=Validerdevis&x=<%=d.getId()%>">Validation devis</a></td><%}%>
+                            <td width=15%><a style='color:green' href="AcceuilGestionnaire?action=DetailDevis&x=<%=d.getId()%>">Validation devis</a></td><%}%>
                             <%if (d.getStatut() == statut_Devis.incomplet) {%>
                             <td width=15%><a style='color:red' href="AcceuilGestionnaire?action=DetailDevis&x=<%=d.getId()%>">Reviser le devis</a></td><%}%>
                             <%if (d.getStatut() == statut_Devis.refuse || d.getStatut() == statut_Devis.envoye) {%>
