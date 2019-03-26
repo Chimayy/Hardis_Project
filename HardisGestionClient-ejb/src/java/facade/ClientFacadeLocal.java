@@ -40,7 +40,6 @@ public interface ClientFacadeLocal {
 
     Client authentif(String mail, String mdp);
 
-    void clientPersist(Object o);
 
     public Client rechercheClientNom(String nom);
 

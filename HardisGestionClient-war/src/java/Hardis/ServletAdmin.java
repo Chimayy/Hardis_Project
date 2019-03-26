@@ -54,28 +54,23 @@ public class ServletAdmin extends HttpServlet {
         String idAgence = request.getParameter("idAgence");
         Utilisateur_Hardis user = gestionAdmin.rechercherUtilisateurHardisMail(mail);
       
-        String message;
-        String couleurErreur = "";
+        String message="";
         if (nom.trim().trim().isEmpty()||prenom.trim().isEmpty()||mail.trim().isEmpty()||motdepasse.trim().isEmpty()||plafond.trim().isEmpty()
                 ||profil_t.trim().isEmpty()||idAgence.trim().isEmpty())
         {
-            couleurErreur ="rouge";
             message = "Erreur, vous n'avez pas rempli tous les champs pour créer un utilisateur";
         }
         
         else if (user != null){
-            couleurErreur ="jaune";
             message = "Erreur, un compte utilisateur existe déjà pour ce mail";
             
         }
         else {
-            couleurErreur ="vert";
             double pla = Double.parseDouble(plafond);
             profil_Technique profil = profil_Technique.valueOf(profil_t);
             boolean stat = Boolean.parseBoolean(statut);
             long id = Long.parseLong(idAgence);
             Agence agence = gestionAdmin.rechercherAgenceParId(id).get(0);
-<<<<<<< HEAD
             Utilisateur_Hardis admin = gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat, agence);
             List<Offre> listeOffre = gestionAdmin.affichageOffres();
             if(!listeOffre.isEmpty() && profil.equals(profil_Technique.administrateur)){        
@@ -84,15 +79,11 @@ public class ServletAdmin extends HttpServlet {
                     }    
             }
         message = "Utilisateur crée avec succès !";   
-=======
             gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat, agence);
             message = "Utilisateur crée avec succès !";          
         }
-        request.setAttribute("color", couleurErreur);
->>>>>>> origin/backup2mastercopy2beforthomasMerge123
         request.setAttribute("message", message);
         }
-    }
     
     protected void creerEntreprise(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
