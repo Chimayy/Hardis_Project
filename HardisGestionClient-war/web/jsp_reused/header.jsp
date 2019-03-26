@@ -25,11 +25,11 @@
                                             <h1>Connexion</h1>
                                             <div class="form-group">
                                                 <label for="login"> Login <span class="requis">*</span></label>
-<<<<<<< HEAD
+
                                                 <input type="text" class="form-control" name="mail" value="" size="100" maxlength="100"/>
-=======
-                                                <input type="text" class="form-control" name="mail" value="" size="20" maxlength="200"/>
->>>>>>> exiless6
+
+                                                
+
                                             </div>
                                             <div class="form-group">
                                                 <label for="pass"> Pass <span class="requis">*</span></label>

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
->>>>>>> exiless6
 <%-- 
     Document   : listDevisClient
     Created on : 18 mars 2019, 10:10:14

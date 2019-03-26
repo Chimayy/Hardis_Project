@@ -61,12 +61,9 @@ public class ServletClient extends HttpServlet {
     private gestionVisiteurLocal gestionVisiteur;
 
     @EJB
-    private gestionHardisLocal gestionHardis;
-
-   
+    private gestionHardisLocal gestionHardis;   
 
     @EJB
-
     private gestionClientLocal gestionClient;
 
     /**
@@ -91,7 +88,7 @@ public class ServletClient extends HttpServlet {
 //récupération de l'id Client envoyé par la servlet d'authentification         
            Client user = (Client)sess.getAttribute("UserARecup");
                
-            if((act==null)||(act.equals("vide")))
+            if((act==null)||(act==""))
             {
                 sess.setAttribute("user", user);
                 jspClient="/MenuClient.jsp";
@@ -186,32 +183,24 @@ public class ServletClient extends HttpServlet {
                 request.setAttribute("listPM", list);
             }
 
-            else if(act.equals("propositionConsultant"))
-            {
-                jspClient="/MenuClient.jsp";
-                String[] checkbox = request.getParameterValues("consultantsSelectionne");
-                List<Utilisateur_Hardis> propositionClient = new ArrayList();
-                for(int i =0; i<checkbox.length;i++)
-                {
-                        String idConsultantSelectionne = checkbox[i];
-                        Long idConsultantLong = Long.valueOf(idConsultantSelectionne);
-                        Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantLong);
-                        propositionClient.add(consultantSelectionne);}}
+           
+            
+                
 
-            else if(act.equals("propositionconsultant"))
+            else if(act.equals("propositionConsultant"))
             {
                 jspClient="/MenuClient.jsp";
                 String[] checkbox = request.getParameterValues("checkbox");
                 List<Utilisateur_Hardis> propositionClient = new ArrayList();
-                String[] ArrayidConsultants = request.getParameterValues("consultant");
+                
                 for(int i =0; i<checkbox.length;i++)
                 {
                     String checkboxEnCours = checkbox[i];
                     if(checkboxEnCours != null)
                     {
-                        String idConsultantSelectionneString = ArrayidConsultants[i];
-                        long idConsultantSelectionneLong = Long.valueOf(idConsultantSelectionneString);
-                        Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantSelectionneLong);
+                        
+                        Long id = Long.valueOf(checkboxEnCours);
+                        Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(id);
                         propositionClient.add(consultantSelectionne);
                     }
 
@@ -225,26 +214,17 @@ public class ServletClient extends HttpServlet {
                 {
                     Utilisateur_Hardis consultantEnCours = propositionClient.get(j);
 
-                    List<Periode_Disponible> periodeOccupe =consultantEnCours.getPeriode_Disponibles();
-                    for(int k=0;k<periodeOccupe.size();k++)
+                    List<Periode_Disponible> periodeDispo =consultantEnCours.getPeriode_Disponibles();
+                    for(int k=0;k<periodeDispo.size();k++)
                     {
-                        if(dateIntervention.after(periodeOccupe.get(k).getDate_Debut())&&dateIntervention.before(periodeOccupe.get(k).getDate_Fin()))
+                        if(dateIntervention.before(periodeDispo.get(k).getDate_Debut())||dateIntervention.after(periodeDispo.get(k).getDate_Fin()))
                         {
                             testPasOK = true;
                             String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur() +" " + consultantEnCours.getPrenom_Utilisateur();
                            request.setAttribute("message", "Le consultant " + nomConsultantOccupe + " est occupé à cette période");
                            jspClient="/MenuClient.jsp";
                            break;
-                        }
-
-                    periodeOccupe =consultantEnCours.getPeriode_Disponibles();                    
-                    if(dateIntervention.after(periodeOccupe.get(j).getDate_Debut())&&dateIntervention.before(periodeOccupe.get(j).getDate_Fin()))
-                    {
-                        testPasOK = true;
-                        String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur() +" " + consultantEnCours.getPrenom_Utilisateur();
-                       request.setAttribute("message", "Le consultant " + nomConsultantOccupe + " est occupé à cette période");
-                       jspClient="/MenuClient.jsp";
-                       break;
+                        }                
 
                     }
                  
@@ -274,7 +254,7 @@ public class ServletClient extends HttpServlet {
             out.println("</body>");
             out.println("</html>"); */
         }
-    }}
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

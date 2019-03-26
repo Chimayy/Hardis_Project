@@ -230,7 +230,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
     @Override
     public List<Devis> listDevisAccepte(Client Client) {
         List<Devis> listDevisAccepte;
-        statut_Devis sd = statut_Devis.valide;
+        statut_Devis sd = statut_Devis.a_negocier;
         String txt="SELECT d FROM Devis AS d WHERE d.statut =:sd AND d.leClient =:client ";
         Query req =getEntityManager().createQuery(txt);
         req=req.setParameter("sd", sd);

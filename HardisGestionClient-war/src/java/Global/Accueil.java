@@ -125,7 +125,7 @@ public class Accueil extends HttpServlet {
 
             //fail de message d'erreur en cas de champs vides ==> à coriger
             if (utilisateur.toString().equalsIgnoreCase("")) {
-                request.setAttribute("problème de connexion, merci de réessayer", message);;
+                request.setAttribute("problème de connexion, merci de réessayer", message);
             }
 
             // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
@@ -184,7 +184,7 @@ public class Accueil extends HttpServlet {
         else {
             Long idEntrepriseLong = Long.valueOf(idEntreprise);
             Entreprise entreprise = gestionVisiteur.rechercheEntreprise(idEntrepriseLong);
-            gestionVisiteur.creerClient(nom, prenom, mail, mail, entreprise);
+            gestionVisiteur.creerClient(nom, prenom, motdepasse,mail, entreprise);
             message = "Client crée avec succès !";          
         }
         request.setAttribute("message", message);

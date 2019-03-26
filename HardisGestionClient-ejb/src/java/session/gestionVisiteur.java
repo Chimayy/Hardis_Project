@@ -37,6 +37,7 @@ public class gestionVisiteur implements gestionVisiteurLocal {
     @EJB
     private ClientFacadeLocal clientFacade;
 
+    @EJB
     private Historique_QuestionPubliqueFacadeLocal historique_QuestionPubliqueFacade;
 
 
@@ -86,6 +87,7 @@ public class gestionVisiteur implements gestionVisiteurLocal {
 
     
 
+    @Override
     public List ListeQuestionPubliqueRep() {
        return historique_QuestionPubliqueFacade.ListeQuestionPublicRep();
         

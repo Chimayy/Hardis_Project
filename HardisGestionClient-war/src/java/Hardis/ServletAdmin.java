@@ -79,8 +79,7 @@ public class ServletAdmin extends HttpServlet {
                     }    
             }
         message = "Utilisateur crée avec succès !";   
-            gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat, agence);
-            message = "Utilisateur crée avec succès !";          
+                     
         }
         request.setAttribute("message", message);
         }
@@ -250,6 +249,7 @@ public class ServletAdmin extends HttpServlet {
       throws ServletException, IOException           
     {
         String idUser = request.getParameter("id");
+        
         String nom= request.getParameter("nom");
         String prenom = request.getParameter("prenom");
         String mail = request.getParameter("mail");
@@ -268,6 +268,8 @@ public class ServletAdmin extends HttpServlet {
             double pla = Double.parseDouble(plafond);
             profil_Technique profil = profil_Technique.valueOf(profil_t);
             boolean stat = Boolean.parseBoolean(statut);
+            Utilisateur_Hardis user = gestionAdmin.rechercherUtilisateurHardisParId(id);
+            String ancienPT = user.getProfil_Technique().toString();
             Utilisateur_Hardis admin = gestionAdmin.modificationUtilisateurHardis(id ,mail, motdepasse, nom, prenom, pla, profil, stat);
             List<Offre> listeOffre = gestionAdmin.affichageOffres();
             if(!listeOffre.isEmpty() && admin.getProfil_Technique().equals(profil_Technique.administrateur) ){        
@@ -276,7 +278,13 @@ public class ServletAdmin extends HttpServlet {
                         if(pm != null){
                         gestionAdmin.suppressionProfilMetier(pm.getId());}
                         gestionAdmin.creationProfilMetier(6, offre, admin);
-                    }    
+                    }  }  
+            if(!listeOffre.isEmpty() && ancienPT.equals("administrateur") && !admin.getProfil_Technique().equals(profil_Technique.administrateur)){        
+            for(Offre offre : listeOffre){
+                        Profil_Metier pm = gestionAdmin.rechercherProfilMetier(admin.getId(), offre.getId());
+                        if(pm != null){
+                        gestionAdmin.suppressionProfilMetier(pm.getId());}
+                    } 
             }
             
             message = "Utilisateur modifié avec succès !";          
@@ -591,13 +599,16 @@ public class ServletAdmin extends HttpServlet {
             
             if(User != null){   
             List<Profil_Metier> listeprofil = gestionAdmin.rechercherProfilMetierParIdUser(id);
+            if(!listeprofil.isEmpty()){
             for(Profil_Metier profil : listeprofil){
                 gestionAdmin.suppressionProfilMetier(profil.getId());
-            }
+            }}
             gestionAdmin.suppressionUtilisateurHardis(id);
            
             List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
             request.setAttribute("listeUser", listeUser);
+            message = "Utilisateur supprimé avec succès";
+            request.setAttribute("message", message);
             jspClient="/GestionUtilisateurHardis.jsp";
             }
             
