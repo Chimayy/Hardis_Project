@@ -4,12 +4,19 @@
  * and open the template in the editor.
  */
 package session;
+<<<<<<< HEAD
 import entite.Client;
 import entite.Entreprise;
 import entite.Service;
 import entite.Utilisateur;
 import facade.ClientFacadeLocal;
 import facade.EntrepriseFacadeLocal;
+=======
+import entite.Offre;
+import entite.Service;
+import entite.Utilisateur;
+import facade.Historique_QuestionPubliqueFacadeLocal;
+>>>>>>> exiless6
 import facade.UtilisateurFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
@@ -24,10 +31,14 @@ import facade.ServiceFacadeLocal;
 public class gestionVisiteur implements gestionVisiteurLocal {
 
     @EJB
+<<<<<<< HEAD
     private EntrepriseFacadeLocal entrepriseFacade;
 
     @EJB
     private ClientFacadeLocal clientFacade;
+=======
+    private Historique_QuestionPubliqueFacadeLocal historique_QuestionPubliqueFacade;
+>>>>>>> exiless6
 
     @EJB
     private ServiceFacadeLocal serviceFacade;
@@ -53,6 +64,7 @@ public class gestionVisiteur implements gestionVisiteurLocal {
     }
 
     @Override
+<<<<<<< HEAD
     public void creerClient(String nom_Client, String prenom_Client, String mdp, String mail, Entreprise etp) {
         clientFacade.creerClient(nom_Client, prenom_Client, mdp, mail, etp);
     }
@@ -73,5 +85,17 @@ public class gestionVisiteur implements gestionVisiteurLocal {
     }
 
     
+=======
+    public List ListeQuestionPubliqueRep() {
+       return historique_QuestionPubliqueFacade.ListeQuestionPublicRep();
+        
+    }
+
+    @Override
+    public List ListeQPOffre(Offre Offre) {
+        return historique_QuestionPubliqueFacade.ListeQPOfrre(Offre);
+    }
+
+>>>>>>> exiless6
    
 }

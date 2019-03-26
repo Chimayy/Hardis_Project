@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> exiless6
 <%-- 
     Document   : AcceuilGestionnaire
     Created on : 14 mars 2019, 10:55:51
@@ -30,7 +34,11 @@
                         <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions</a></div>
                         <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=AffectationDevis">Affectation des devis</a></div>  
                         <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=VisuClients">Gestion des devis clients</a></div>
+<<<<<<< HEAD
                         <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=QuestionsForum"> questions du Forum </a></div>
+=======
+                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=QuestionsForum">Répondre aux questions du Forum</a></div>
+>>>>>>> exiless6
                         <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%" href="AcceuilGestionnaire?action=creerPeriode">Renseigner une date de disponibilité</a></div>
                     </div>
                 </div>
@@ -39,4 +47,9 @@
         </div>
         <%@include file="jsp_reused/javascript.jsp" %>
     </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+
+>>>>>>> exiless6

@@ -38,4 +38,7 @@ public interface Historique_ConsultantFacadeLocal {
     
     public void proposerConsultants(Devis devis, List<Utilisateur_Hardis> ListeConsultants);
 
+    List HistoGest(Utilisateur_Hardis u);
+    
+
 }

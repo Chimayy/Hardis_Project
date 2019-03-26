@@ -5,8 +5,12 @@
  */
 package session;
 
+<<<<<<< HEAD
 import entite.Client;
 import entite.Entreprise;
+=======
+import entite.Offre;
+>>>>>>> exiless6
 import entite.Service;
 import entite.Utilisateur;
 import java.util.List;
@@ -22,6 +26,7 @@ public interface gestionVisiteurLocal {
     Utilisateur authentification(String mail, String mdp);
     List<Service> AffichageService();
 
+<<<<<<< HEAD
     void creerClient(String nom_Client, String prenom_Client, String mdp, String mail, Entreprise etp);
 
     List<Entreprise> listEntreprise();
@@ -29,6 +34,11 @@ public interface gestionVisiteurLocal {
     Client rechercheClientMail(String mail);
 
     Entreprise rechercheEntreprise(long id);
+=======
+   List ListeQuestionPubliqueRep();
+
+    List ListeQPOffre(Offre Offre);
+>>>>>>> exiless6
 
 
     

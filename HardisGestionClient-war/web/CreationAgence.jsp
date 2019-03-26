@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,6 +32,8 @@
     </body>
 =======
 
+=======
+>>>>>>> exiless6
 <%-- 
     Document   : CreationAgence
     Created on : 19 mars 2019, 10:21:27
@@ -60,7 +63,15 @@
                     <h1>Créer une entreprise</h1>
                     <hr class="my-6">
 
+<<<<<<< HEAD
                     <form method ="get" action="ServletAdmin">                       
+=======
+                    <form method ="get" action="ServletAdmin">
+                        <div class="form-group">
+                            <label for="cp"> Code Postal </label>
+                            <input type ="text"  name="cp" class='form-control'/>
+                        </div>
+>>>>>>> exiless6
                         <div class="form-group">
                             <label for="Pays"> Pays </label>
                             <input type ="text"  name="pays" class='form-control'/>
@@ -70,10 +81,13 @@
                             <input type ="text"  name="adresse" class='form-control'/>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <label for="cp"> Code Postal </label>
                             <input type ="text"  name="cp" class='form-control'/>
                         </div>
                         <div class="form-group">
+=======
+>>>>>>> exiless6
                             <label for="Ville"> Ville </label>
                             <input type ="text"  name="ville" class='form-control'/>
                         </div>
@@ -86,6 +100,11 @@
                         <hr class="my-6">
                        
                             <a class="btn btn-outline-teal right" href ="MenuAdmin.jsp"> Retour Menu </a>
+<<<<<<< HEAD
+=======
+                       
+
+>>>>>>> exiless6
                     </form>
                 </div>
             </div>
@@ -93,5 +112,15 @@
         </div>
         <%@include file="jsp_reused/javascript.jsp"%>
     </body>
+<<<<<<< HEAD
 >>>>>>> origin/backup2mastercopy2beforthomasMerge123
 </html>
+=======
+=======
+<%-- 
+    Document   : CreationAgence
+    Created on : 19 mars 2019, 10:21:27
+    Author     : Utilisateur
+--%>
+
+>>>>>>> exiless6

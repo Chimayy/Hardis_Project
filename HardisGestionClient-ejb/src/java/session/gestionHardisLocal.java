@@ -10,6 +10,7 @@ import entite.Utilisateur;
 
 import entite.Devis;
 import entite.Historique_Question;
+import entite.Historique_QuestionPublique;
 import entite.Utilisateur_Hardis;
 import java.util.Date;
 import java.util.List;
@@ -46,6 +47,14 @@ public interface gestionHardisLocal {
     List rechercherUtilisateurHardisNom(String Nom);
 
     void creerDateDispo(Utilisateur_Hardis user, Date Datedebut, Date Daefin);
+
+    List ListeHistGest(Utilisateur_Hardis Gest);
+
+    List ListeQuestionGest(Utilisateur_Hardis Gest);
+
+    void RepQP(Historique_QuestionPublique h, String rep);
+
+    List RechercheQP(long id);
 
 
     

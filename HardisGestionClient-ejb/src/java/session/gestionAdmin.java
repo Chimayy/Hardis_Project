@@ -316,6 +316,11 @@ public class gestionAdmin implements gestionAdminLocal {
     public Profil_Metier rechercherProfilMetier(long idUser, long idOffre){
         return profil_MetierFacade.rechercheProfilMetier(idUser, idOffre);
     }
+
+    @Override
+    public List ListeQPPseudo(String pseudo) {
+        return historique_QuestionPubliqueFacade.ListeQPPseudo(pseudo);
+    }
    
 }  
 

@@ -73,4 +73,48 @@ public class Historique_QuestionPubliqueFacade extends AbstractFacade<Historique
          question.setGestionnaire(gestionnaire);
          em.merge(question);
      }
+
+    @Override
+    public List QuestionPubliqueGestionnaire(Utilisateur_Hardis Gest) {
+       String txt = "SELECT q FROM Historique_QuestionPublique AS q where q.gestionnaire=:Gest";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("Gest", Gest);
+        List<Historique_QuestionPublique> ListeQuestionGest = req.getResultList();
+        return ListeQuestionGest;
+    }
+
+    @Override
+    public void AffecterRep(Historique_QuestionPublique h, String rep) {
+        h.setReponse(rep);
+        em.merge(h);
+        
+    }
+
+    @Override
+    public List ListeQuestionPublicRep() {
+        String txt = "SELECT h FROM Historique_QuestionPublique AS h WHERE h.reponse IS NOT NULL";
+        Query req = getEntityManager().createQuery(txt);
+        List<Historique_QuestionPublique> liste = req.getResultList();
+        return liste;
+    }
+
+    @Override
+    public List ListeQPOfrre(Offre Offre) {
+        String txt = "SELECT h FROM Historique_QuestionPublique AS h where h.lOffre=:Offre";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("Offre", Offre);
+        List<Historique_QuestionPublique> ListeQuestionOffre = req.getResultList();
+        return ListeQuestionOffre;
+    }
+
+    @Override
+    public List ListeQPPseudo(String pseudo) {
+        String txt = "SELECT h FROM Historique_QuestionPublique AS h where h.pseudo=:pseudo";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("pseudo", pseudo);
+        List<Historique_QuestionPublique> ListeQuestionOffre = req.getResultList();
+        return ListeQuestionOffre;
+    }
+     
+     
 }
