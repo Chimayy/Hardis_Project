@@ -5,6 +5,8 @@
  */
 package session;
 
+import entite.Client;
+import entite.Entreprise;
 import entite.Service;
 import entite.Utilisateur;
 import java.util.List;
@@ -19,6 +21,14 @@ import javax.ejb.Local;
 public interface gestionVisiteurLocal {
     Utilisateur authentification(String mail, String mdp);
     List<Service> AffichageService();
+
+    void creerClient(String nom_Client, String prenom_Client, String mdp, String mail, Entreprise etp);
+
+    List<Entreprise> listEntreprise();
+
+    Client rechercheClientMail(String mail);
+
+    Entreprise rechercheEntreprise(long id);
 
 
     

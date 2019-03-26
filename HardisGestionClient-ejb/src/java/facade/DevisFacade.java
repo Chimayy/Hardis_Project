@@ -93,7 +93,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         
         // TEMPORAIRE à changer en "a_affecter"
         
-        devis.setStatut(statut_Devis.envoye);
+        devis.setStatut(statut_Devis.a_affecter);
         em.persist(referent);
         em.merge(devis);
     }
@@ -151,7 +151,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
 
     @Override
     public void accepterDevis(Devis Devis) {
-        Devis.setStatut(statut_Devis.valide);
+        Devis.setStatut(statut_Devis.en_negociation);
         em.merge(Devis);
     }
 
