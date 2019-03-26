@@ -104,8 +104,8 @@ public class gestionVisualisation implements gestionVisualisationLocal {
     }
 
     @Override
-    public List<Utilisateur> afficherUtilisateur() {
-         List<Utilisateur> liste = utilisateurFacade.listeUtilisateur();
+    public List<Utilisateur_Hardis> afficherUtilisateur() {
+         List<Utilisateur_Hardis> liste = utilisateur_HardisFacade.afficherUtilisateurs_Hardis();
         return liste;
     }
 

@@ -407,12 +407,11 @@ public class ServletAdmin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
-         HttpSession sess= request.getSession(true);
+        HttpSession sess= request.getSession(true);
         String message="";
         String jspClient = null;
-               
-        String act = request.getParameter("action");
-      
+              
+        String act = request.getParameter("action");   
         
         // récupération de l'utilisateur qui s'est loggué
         Utilisateur_Hardis user =(Utilisateur_Hardis)sess.getAttribute("UserARecup");
@@ -952,6 +951,7 @@ public class ServletAdmin extends HttpServlet {
          }
          
          else if(act.equals("MenuGestionnaire")){
+             sess.setAttribute("User", user);
              jspClient = "/AcceuilGestionnaire.jsp";
          }
          

@@ -4,7 +4,6 @@
     Created on : 14 mars 2019, 11:34:31
     Author     : Utilisateur
 --%>
-
 <%@page import="entite.Utilisateur_Hardis"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <%@include file="jsp_reused/style.jsp" %>
         <title>Menu Administrateur</title>
     </head>

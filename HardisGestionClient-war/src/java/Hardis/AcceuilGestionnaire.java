@@ -65,10 +65,9 @@ public class AcceuilGestionnaire extends HttpServlet {
        // récupération de l'utilisateur qui s'est loggué
         Utilisateur_Hardis user =(Utilisateur_Hardis) sess.getAttribute("UserARecup");
       
-      
-      
            if((act==null)||(act.equals("vide")))
            {
+               request.setAttribute("User",user);
                jspClient="/AcceuilGestionnaire.jsp";
                request.setAttribute("message","pas d'information");
            }
@@ -183,10 +182,10 @@ public class AcceuilGestionnaire extends HttpServlet {
              
          }           
            
-        
-             
-         
-         
+         else if(act.equals("RetourAdmin")){
+             jspClient="/MenuAdmin.jsp";
+         }
+ 
             else if (act.equals("QuestionsForum")){
                 
                 
