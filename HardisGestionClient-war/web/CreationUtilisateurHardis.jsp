@@ -3,6 +3,7 @@
     Created on : 14 mars 2019, 13:49:48
     Author     : Utilisateur
 --%>
+<%@page import="entite.Entreprise"%>
 <%@page import="entite.Agence"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -43,23 +44,7 @@
                         <div class="form-group">
                             <label for="nom"> Mot de passe <span class="requis">*</span></label>
                             <input type ="text" class="form-control"  name="motdepasse" class='input'/>
-                        </div>
-                        <div class="form-group">
-<<<<<<< HEAD
-                            <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
-=======
-                            <label for="nom"> Plafond <span class="requis">*</span></label>
->>>>>>> schellen2
-                            <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
-                        </div> 
-                        <div class="form-group">
-                        <a> Profil Technique </a>
-                            <select class="custom-select mr-sm-2"name="profil" size="1">
-                                <option> administrateur
-                                <option> gestionnaire
-                                <option> visualisation        
-                            </select>
-                        </div>
+                        </div>                                               
                         <div class="form-group">
                             <% List<Agence> lesAgences = listeAgence;%>
                             <label for="Agence" class='textinput'> Agence : </label>
@@ -68,7 +53,6 @@
                                 <option value="<%=agence.getId()%>"><%=agence.getVille_Agence()%></option>                     
                                 <%}%>
                             </select>
-                            <a href="ServletAdmin?action=AfficherAgences" >L'agence n'est pas dans la liste ? </a>
                             <input  type ="hidden" name="action" value="CreerUtilisateur">
                         </div>
 
