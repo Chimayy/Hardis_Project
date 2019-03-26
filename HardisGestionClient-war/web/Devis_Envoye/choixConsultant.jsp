@@ -40,7 +40,7 @@
                 <tr>
                     <td width=15%><%= PMenCours.getlUtilisateur().getNom_Utilisateur()%></td>
                     <td width=15%><%= PMenCours.getlUtilisateur().getPrenom_Utilisateur()%></td>
-                    <td width=15%><a href="<%=PMenCours.getPathCV()%>">Accéder au CV</td>
+                   <td width=15%><a href="METRRE LE PATH CV">Accéder au CV</td>
                     <td width=15%> <input type="checkbox" name="checkbox"/> choisir ce consultant</td>
                     <input type="hidden" name="consultant" value="<%=PMenCours.getlUtilisateur().getId()%>">
                     
@@ -49,7 +49,7 @@
                 </tr><%}%>     
         </table>
                 <input type="date" name="dateIntervention" placeholder="ptipote">
-                <input type="hidden" name="action" value="propositionConsultant">
+                <input type="hidden" name="action" value="propositionconsultant">
                 <input type="hidden" name="devis" value="<%=devis.getId()%>">
                 <input  class='bouton' type="submit" value="Valider"/>
         </form>

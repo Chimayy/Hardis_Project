@@ -11,9 +11,12 @@ package Client;
 import entite.Client;
 import entite.Devis;
 import entite.Entreprise;
+import entite.Historique_QuestionPublique;
+import entite.Offre;
 import entite.Periode_Disponible;
 import entite.Profil_Metier;
 import entite.Utilisateur_Hardis;
+import facade.Historique_QuestionPubliqueFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -27,7 +30,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import session.gestionAdminLocal;
 import session.gestionClientLocal;
+import session.gestionHardisLocal;
+import session.gestionVisiteurLocal;
 
 /**
  *
@@ -35,6 +41,17 @@ import session.gestionClientLocal;
  */
 @WebServlet(name = "ServletClient", urlPatterns = {"/ServletClient"})
 public class ServletClient extends HttpServlet {
+
+    @EJB
+    private gestionAdminLocal gestionAdmin;
+
+    @EJB
+    private gestionVisiteurLocal gestionVisiteur;
+
+    @EJB
+    private gestionHardisLocal gestionHardis;
+
+   
 
     @EJB
     private gestionClientLocal gestionClient;
@@ -132,6 +149,9 @@ public class ServletClient extends HttpServlet {
                 List<Devis> devisEnvoye = gestionClient.listDevisAccepte(user);
                 request.setAttribute("listDevis", devisEnvoye);
             }
+            
+             
+             
             else if(act.equals("choixDateDevis"))
             {
                 jspClient="/Devis_Envoye/choixConsultant.jsp";
@@ -142,7 +162,7 @@ public class ServletClient extends HttpServlet {
                 List<Profil_Metier> list = gestionClient.listPMOffre(d.getlOffre());
                 request.setAttribute("listPM", list);
             }
-            else if(act.equals("propositionConsultant"))
+            else if(act.equals("propositionconsultant"))
             {
                 jspClient="/MenuClient.jsp";
                 String[] checkbox = request.getParameterValues("checkbox");

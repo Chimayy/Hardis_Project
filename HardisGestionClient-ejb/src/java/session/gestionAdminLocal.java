@@ -119,4 +119,6 @@ public interface gestionAdminLocal {
 
     public void attributionQuestionPublique(Historique_QuestionPublique question, Utilisateur_Hardis gestionnaire);
 
+    List ListeQPPseudo(String pseudo);
+
 }

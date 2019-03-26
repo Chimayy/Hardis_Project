@@ -5,6 +5,7 @@
  */
 package session;
 
+import entite.Offre;
 import entite.Service;
 import entite.Utilisateur;
 import java.util.List;
@@ -19,6 +20,10 @@ import javax.ejb.Local;
 public interface gestionVisiteurLocal {
     Utilisateur authentification(String mail, String mdp);
     List<Service> AffichageService();
+
+   List ListeQuestionPubliqueRep();
+
+    List ListeQPOffre(Offre Offre);
 
 
     

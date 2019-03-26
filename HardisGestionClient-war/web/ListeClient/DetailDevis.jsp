@@ -48,13 +48,17 @@
                                 <input class="form-control"type="text" readonly name="NomCli" value ="<%=d.getLeClient().getNom_Utilisateur()%>" >
                             </div>
                             <div class='form-group'>
-                                <label for="Date-Intervention"> Date d'intervetion </label>
-                                <input class="form-control" type="text" readonly  name="DateInter" value ="<%=f.format(d.getDate_Intervention())%>" >   
+                                <label for="Date-Intervention"> Date du devis </label>
+                                <input class="form-control" type="text" readonly  name="Datedevis" value ="<%=f.format(d.getDate_Devis())%>" >   
                             </div>
                             <% if (d.getStatut() == statut_Devis.en_negociation) {%>
                             <div class='form-group'>
+                                <label for="Modifier-Intervetion">Date d'intervetion </label>
+                                <input class="form-control" type="text" readonly name="Date" value ="<%=f.format(d.getDate_Intervention())%>">
+                            </div>
+                            <div class='form-group'>
                                 <label for="Modifier-Intervetion">Modifier la date d'intervetion </label>
-                                <input class="form-control" type="date"  name="DateModif">
+                                <input class="form-control" type="date"  name="DateModif" value ="<%=f.format(d.getDate_Intervention())%>">
                             </div>
                             <%}%>
                             <div class='form-group'>
@@ -69,10 +73,23 @@
                              <% DecimalFormat format = new DecimalFormat();
                                     String SM = String.valueOf(d.getMontant_Devis());
                                     int m = format.parse(SM).intValue();%>
+                                    
+                                    <% if (d.getStatut() == statut_Devis.en_negociation) {%> 
+                            <div class='form-group'>
+                                <label for="Montant"> Montant <span class="requis">*</span></label>
+                                <input class='form-control' readonly type="text"  name="Montantfixe" value ="<%=m%>">
+                            </div><%}%>
+                            <% if (d.getStatut() == statut_Devis.incomplet || d.getStatut()== statut_Devis.a_traiter) {%>
                             <div class='form-group'>
                                 <label for="Montant"> Montant <span class="requis">*</span></label>
                                 <input class='form-control' type="text"  name="Montant" value ="<%=m%>">
+                            </div><%}%>
+                            <% if (d.getStatut() == statut_Devis.incomplet){%>
+                            <div class='form-group'>
+                                <label for="MRefus"> Motif Refus <span class="requis">*</span></label>
+                                <input class='form-control' type="text" readonly name="Mrefus" value ="<%=d.getMotif_Refus() %>">
                             </div>
+                            <%}%>
                            <input type="hidden" name="x" value="<%=d.getId()%>">
                             <% if (d.getStatut() == statut_Devis.en_negociation) {%>    
                             <input type="hidden" name="action" value="ValiderDevis">

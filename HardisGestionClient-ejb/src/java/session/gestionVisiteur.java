@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package session;
+import entite.Offre;
 import entite.Service;
 import entite.Utilisateur;
+import facade.Historique_QuestionPubliqueFacadeLocal;
 import facade.UtilisateurFacadeLocal;
 import java.util.List;
 import javax.ejb.EJB;
@@ -18,6 +20,9 @@ import facade.ServiceFacadeLocal;
  */
 @Stateless
 public class gestionVisiteur implements gestionVisiteurLocal {
+
+    @EJB
+    private Historique_QuestionPubliqueFacadeLocal historique_QuestionPubliqueFacade;
 
     @EJB
     private ServiceFacadeLocal serviceFacade;
@@ -40,6 +45,17 @@ public class gestionVisiteur implements gestionVisiteurLocal {
           user = utilisateurFacade.authentification(log, mdp);
        }
         return user;
+    }
+
+    @Override
+    public List ListeQuestionPubliqueRep() {
+       return historique_QuestionPubliqueFacade.ListeQuestionPublicRep();
+        
+    }
+
+    @Override
+    public List ListeQPOffre(Offre Offre) {
+        return historique_QuestionPubliqueFacade.ListeQPOfrre(Offre);
     }
 
    

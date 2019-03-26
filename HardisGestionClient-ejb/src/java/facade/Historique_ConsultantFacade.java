@@ -19,6 +19,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
 /**
@@ -60,6 +61,17 @@ public class Historique_ConsultantFacade extends AbstractFacade<Historique_Consu
             HistoEnCours.setFonctionConsultant("proposition client");
             em.persist(HistoEnCours);
         }
+        
+    }
+
+    @Override
+    public List HistoGest(Utilisateur_Hardis u) {
+        List<Historique_Consultant> result;
+        String txt = "SELECT hc FROM Historique_Consultant AS hc WHERE hc.leConsultant=:u";
+        Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("u", u);
+        result = req.getResultList();
+        return result;
     }
 
     

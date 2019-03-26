@@ -8,6 +8,8 @@ package Global;
 
 
 import entite.Client;
+import entite.Historique_QuestionPublique;
+import entite.Offre;
 
 
 import java.io.IOException;
@@ -22,8 +24,10 @@ import javax.servlet.http.HttpServletResponse;
 import session.gestionVisiteurLocal;
 import entite.Utilisateur;
 import entite.Utilisateur_Hardis;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import session.gestionAdminLocal;
 
 
 /**
@@ -32,6 +36,9 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(urlPatterns = {"/Accueil"})
 public class Accueil extends HttpServlet {
+
+    @EJB
+    private gestionAdminLocal gestionAdmin;
 
     @EJB
     private gestionVisiteurLocal gestionVisiteur;
@@ -59,10 +66,45 @@ public class Accueil extends HttpServlet {
         if ((act == null) || (act.equals("vide"))) {
             jspClient = "/Menu_principal.jsp";
             request.setAttribute("message", "pas d'information");
-        } else if ((act.equals("authentif"))) {
+            
+            
+        } 
+        else if(act.equals("VoirLeForum")){
+                    List<Historique_QuestionPublique> ListeQP = gestionVisiteur.ListeQuestionPubliqueRep();
+                    List<Offre> ListeOffre = gestionAdmin.affichageOffres();
+                    request.setAttribute("ListeDesOffre",ListeOffre );
+                    request.setAttribute("ListeQPR", ListeQP);
+                    jspClient="/ForumQuestion.jsp";
+                }
+             
+             else if (act.equals("ForumChoixOffre")){
+                    String o =request.getParameter("Offre");
+                    Long Offre = Long.valueOf(o);
+                    Offre OF = (Offre) gestionAdmin.rechercherOffreParId(Offre).get(0);
+                    List<Historique_QuestionPublique> ListeQP = gestionVisiteur.ListeQPOffre(OF);
+                    List<Offre> ListeOffre = gestionAdmin.affichageOffres();
+                    request.setAttribute("ListeDesOffre",ListeOffre );
+                    request.setAttribute("ListeQPR", ListeQP);
+                    jspClient="/ForumQuestion.jsp";
+                  
+             }
+             
+             else if (act.equals("ForumChoixPseudo")){
+                    String p =request.getParameter("pseudo");                    
+                    
+                    List<Historique_QuestionPublique> ListeQP = gestionAdmin.ListeQPPseudo(p);
+                    List<Offre> ListeOffre = gestionAdmin.affichageOffres();
+                    request.setAttribute("ListeDesOffre",ListeOffre );
+                    request.setAttribute("ListeQPR", ListeQP);
+                    jspClient="/ForumQuestion.jsp";
+                  
+             }
+        
+        else if ((act.equals("authentif"))) {
             String login = request.getParameter("mail");
             String pass = request.getParameter("mdp");
             Utilisateur utilisateur = gestionVisiteur.authentification(login, pass);
+            
 
             //fail de message d'erreur en cas de champs vides ==> à coriger
             if (utilisateur.toString().equalsIgnoreCase("")) {
@@ -86,12 +128,16 @@ public class Accueil extends HttpServlet {
                 } else if (utilisateur_H.getProfil_Technique().toString().equals("visualisation")) {
                     sess.setAttribute("UserARecup",utilisateur_H);
                     jspClient = "/Temporaire.jsp";
+                    
                 }
+               
+                
                 request.setAttribute("connexion OK !", message);
             } else {
                 jspClient = "Connexion.jsp";
                 request.setAttribute("oupsi", message);
             }
+            
         }
 
         RequestDispatcher Rd;

@@ -47,7 +47,8 @@
                         <% List<Historique_QuestionPublique> lesQuestions = listeQuestion;%>
                         <% List<Utilisateur_Hardis> lesUser = listeUser;%>
                         <% List<Profil_Metier> lesProfils = listeProfil;%>
-                                <%for (Historique_QuestionPublique historique : lesQuestions) {%>
+                                <%for (Historique_QuestionPublique historique : lesQuestions) {
+                                 %>
                         <tr><form method="get" action="ServletAdmin">
                             <input type="hidden" name="idQuestion" value="<%=historique.getId()%>"</td>
                             <td Width=15%><%=historique.getlOffre().getNom_Offre()%></td>
@@ -66,7 +67,7 @@
                             <td Width=15%><input class='bouton' type="submit" value="Attribuer"/>    
                               </form>
                            <%--<td Width=15%><a style="color:grey"href="ServletAdmin?action=AttribuerQuestionPublique&idQuestion=<%=historique.getId()%>">Attribuer</a>--%>                                     
-                                <%}%>
+                                <%}%> 
                     </table>
                     <hr class="my-6">
                     <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 

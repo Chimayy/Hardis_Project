@@ -39,7 +39,8 @@
            %></div>
             </br>
             <div class='retour'>
-            <a href ="MenuAdmin.jsp"> Retour Menu </a>
+            <a href ="Menu_principal.jsp"> Retour Menu </a>
+            <a href ="Accueil?action=VoirLeForum"> Voir le Forum des questions </a>
             </div>
     </body>
 </html>

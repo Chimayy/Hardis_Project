@@ -7,6 +7,7 @@ package session;
 
 import entite.Devis;
 import entite.Historique_Question;
+import entite.Historique_QuestionPublique;
 import entite.Utilisateur_Hardis;
 import facade.AgenceFacadeLocal;
 import facade.Bon_De_CommandeFacadeLocal;
@@ -30,6 +31,7 @@ import javax.ejb.Stateless;
 import entite.Utilisateur;
 
 import facade.Historique_ConsultantFacadeLocal;
+import facade.Historique_QuestionPubliqueFacadeLocal;
 
 import java.util.Date;
 
@@ -40,6 +42,9 @@ import java.util.Date;
  */
 @Stateless
 public class gestionHardis implements gestionHardisLocal {
+
+    @EJB
+    private Historique_QuestionPubliqueFacadeLocal historique_QuestionPubliqueFacade;
 
     @EJB
     private Historique_ConsultantFacadeLocal historique_ConsultantFacade;
@@ -157,6 +162,26 @@ public class gestionHardis implements gestionHardisLocal {
     public void creerDateDispo(Utilisateur_Hardis user, Date Datedebut, Date Daefin) {
         periode_DisponibleFacade.creerPeriode(Datedebut, Daefin, user);
 
+    }
+
+    @Override
+    public List ListeHistGest(Utilisateur_Hardis Gest) {
+        return historique_ConsultantFacade.HistoGest(Gest);
+    }
+
+    @Override
+    public List ListeQuestionGest(Utilisateur_Hardis Gest) {
+        return historique_QuestionPubliqueFacade.QuestionPubliqueGestionnaire(Gest);
+    }
+
+    @Override
+    public void RepQP(Historique_QuestionPublique h, String rep) {
+        historique_QuestionPubliqueFacade.AffecterRep(h, rep);
+    }
+
+    @Override
+    public List RechercheQP(long id) {
+        return historique_QuestionPubliqueFacade.rechercheQuestionPubliqueId(id);
     }
 
     
