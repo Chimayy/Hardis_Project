@@ -28,24 +28,16 @@
                     </div> 
                     <hr class="my-6">
                     <div class="row">  
-<<<<<<< HEAD
+
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:12%" href ="ServletAdmin?action=AfficherUtilisateursHardis"> Gestion des utilisateurs Hardis </a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:12%" href ="ServletAdmin?action=AfficherEntreprises"> Gestion des entreprises </a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=AfficherAgences">  Gestion des agences   </a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=AfficherServices"> Gestion des services </a></div>
-                        <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=AfficherOffres"> Gestion des offres </a></div>
+                        <div class="col-3"><a class = "btn btn-indigo" style="padding:18%" href="ServletAdmin?action=AfficherOffres"> Gestion des offres </a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=CreationQuestionPublique"> Rédiger question publique</a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=GestionQuestionPublique"> Attribuer les questions publiques</a></div>
-                        <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=MenuGestionnaire"> Menu gestionnaire</a></div>
-=======
-                        <div class="col-3"><a class = "btn btn-indigo menuBox" style="padding:12%" href ="ServletAdmin?action=AfficherUtilisateursHardis"> Gestion des utilisateurs Hardis </a></div>
-                        <div class="col-3"><a class = "btn btn-indigo menuBox" style="padding:12%" href ="ServletAdmin?action=AfficherEntreprises"> Gestion des entreprises </a></div>
-                        <div class="col-3"><a class = "btn btn-indigo menuBox" style="padding:17%" href="ServletAdmin?action=AfficherAgences">  Gestion des agences   </a></div>
-                        <div class="col-3"><a class = "btn btn-indigo menuBox" style="padding:16.5%" href="ServletAdmin?action=AfficherServices"> Gestion des services </a></div>
-                        <div class="col-3"><a class = "btn btn-indigo menuBox" style="padding:18%" href="ServletAdmin?action=AfficherOffres"> Gestion des offres </a></div>
-                        <div class="col-3"><a class = "btn btn-indigo menuBox" style="padding:15%" href="ServletAdmin?action=CreationQuestionPublique"> Rédiger question publique</a></div>
-                        <div class="col-3"><a class = "btn btn-indigo menuBox" style="padding:14%" href="ServletAdmin?action=GestionQuestionPublique"> Attribuer les questions publiques</a></div>
->>>>>>> origin/backup2mastercopy2beforthomasMerge123
+                        <div class="col-3"><a class = "btn btn-indigo" style="padding:18%" href="ServletAdmin?action=MenuGestionnaire"> Menu gestionnaire</a></div>
+
                     </div>
                     <hr class="my-6">  
                 </div>

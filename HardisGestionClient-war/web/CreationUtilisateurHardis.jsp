@@ -10,7 +10,7 @@
     <!DOCTYPE html>
     <html>
         <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
         <%@include file="jsp_reused/style.jsp" %>
         <title>Créer un utilisateur</title>
     </head>
@@ -43,19 +43,13 @@
                             <input type ="text" class="form-control"  name="motdepasse" class='input'/>
                         </div>
                         <div class="form-group">
-<<<<<<< HEAD
-                        <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
-                        <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
-                        </div> 
-                        <div class="form-group">
-                        <a> Profil Technique * </a>
-=======
+
                             <label for="nom"> Plafond de délégation <span class="requis">*</span></label>
                             <input type ="text" class="form-control"  name='plafond' classe='input' class='input'/>
                         </div> 
                         <div class="form-group">
                             <a> Profil Technique </a>
->>>>>>> origin/backup2mastercopy2beforthomasMerge123
+
                             <select class="custom-select mr-sm-2"name="profil" size="1">
                                 <option> administrateur
                                 <option> gestionnaire
@@ -72,18 +66,9 @@
                             </select>
                             <a href="ServletAdmin?action=AfficherAgences" >L'agence n'est pas dans la liste ? </a>
                             <input  type ="hidden" name="action" value="CreerUtilisateur">
-                        </div>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/backup2mastercopy2beforthomasMerge123
-                        <div class='bouton1'>
-                            </br>
-                            <input  class='btn btn-indigo' type="submit" value="Valider"/>
-                            <input  class='btn btn-indigo'type="reset" value="Reset"/>       
-                        </div>
-                        </br>
+                        </div>                           
+                        <input  class='btn btn-indigo' type="submit" value="Valider"/>
+                        <input  class='btn btn-indigo'type="reset" value="Reset"/>                                                     
                         <hr class="my-6">
                         <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 
                     </form>

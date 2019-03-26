@@ -29,5 +29,11 @@ mybtn{
     min-height: 50px;
     min-width: 150px; 
 }
+.mybtn{
+    padding-bottom: 10px;
+    padding-right:50px;
+    padding-left:50px ;
+    padding-top: 10px
+}
 
 
