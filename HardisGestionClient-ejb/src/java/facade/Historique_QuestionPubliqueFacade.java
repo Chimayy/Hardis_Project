@@ -43,6 +43,11 @@ public class Historique_QuestionPubliqueFacade extends AbstractFacade<Historique
     }
     
     @Override
+    public void supprimerHistorique_QuestionPublique(Historique_QuestionPublique question){
+        em.remove(question);
+    }
+    
+    @Override
     public Historique_QuestionPublique rechercheQuestionPubliquePseudo(String pseudo){
         String txt = "SELECT h FROM Historique_QuestionPublique AS h WHERE h.pseudo=:pseudo";
         Query req = getEntityManager().createQuery(txt);

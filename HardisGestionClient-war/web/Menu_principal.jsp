@@ -11,9 +11,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
         <jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
                      <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
         <title>JSP Page</title>
+=======
+
+        <title>Menu principal</title>
+>>>>>>> schellen4
     </head>
     <%@include file="jsp_reused/style.jsp" %>
 
@@ -51,11 +56,11 @@ if(listUser.contains(user)){%>
                                     <div class="mask flex-center rgba-white-strong"> 
                                         <h2>Catalogue</h2>
                                     </div>
-                            </a>
+                            
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4 col-xl-4 ">
-                        <a href="Interface_question.jsp" style ="color:black">
+                        <a href="Accueil?action=CreationQuestionPublique" style ="color:black">
                             <div class="view overlay">
                                 <img src="Images/question.jpg"class="img-thumbnail " alt="" >
                                 <div class="mask flex-center rgba-white-strong"> 
@@ -80,7 +85,7 @@ if(listUser.contains(user)){%>
                     <div class="view overlay">
                         <img src="Images/compte.jpg"class="img-thumbnail" alt="">
                         <div class="mask flex-center rgba-white-strong "> 
-                            <h2> Creer un compte </h2>
+                            <h2> Créer un compte </h2>
                         </div>
                 </a>
             </div>

@@ -47,6 +47,7 @@
                             </option>
                             <%}%>
                         </select><br/>
+                        <a style="color:orange" class="right" href="ServletAdmin?action=AfficherOffres" >L'offre n'est pas dans la liste ? </a>
                         <div class="input1">
                             <input type ="hidden" name="action" value="CreerService">
                         </div>

@@ -35,12 +35,13 @@
                         <input class='btn btn-indigo' type="submit" value="Valider"/>
                         <input type ="hidden" name="action" value="RechercherService">
                     </form>
-                    
-                    <div class="alert alert-info col-4"><% String attribut = (String) request.getAttribute("message");
-                        out.println(attribut);
-                        %><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <div>
+                  <% String attribut = (String) request.getAttribute("message");
+                    if(attribut!=null){%>
+                        <div class="alert alert-info col-4"><%out.println(attribut);%></div>
+                        <%--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>--%>
+                    <%}%>                 
                     </div>
-
                     <table class="table table-bordered">
 
                         <a class="btn btn-outline-light-green right" href = "ServletAdmin?action=CreationService"> Créer un nouveau service </a>

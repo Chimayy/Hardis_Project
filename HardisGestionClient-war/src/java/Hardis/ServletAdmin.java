@@ -53,12 +53,23 @@ public class ServletAdmin extends HttpServlet {
         String statut = request.getParameter("statut");
         String idAgence = request.getParameter("idAgence");
         Utilisateur_Hardis user = gestionAdmin.rechercherUtilisateurHardisMail(mail);
-      
         String message="" ;
+        
         if (nom.trim().trim().isEmpty()||prenom.trim().isEmpty()||mail.trim().isEmpty()||motdepasse.trim().isEmpty()||plafond.trim().isEmpty()
                 ||profil_t.trim().isEmpty()||idAgence.trim().isEmpty())
         {
+            message = "Veuillez remplir les champs correctement !";
+            request.setAttribute("message", message);
+        }
             
+        else {
+            if(user !=null){
+                message = "Utilisateur déjà existant pour ce mail !";
+                request.setAttribute("message", message);
+            }
+            
+            else
+            {
             double pla = Double.parseDouble(plafond);
             profil_Technique profil = profil_Technique.valueOf(profil_t);
             boolean stat = Boolean.parseBoolean(statut);
@@ -69,15 +80,15 @@ public class ServletAdmin extends HttpServlet {
             List<Offre> listeOffre = gestionAdmin.affichageOffres();
             if(!listeOffre.isEmpty() && profil.equals(profil_Technique.administrateur)){        
             for(Offre offre : listeOffre){
-                         gestionAdmin.creationProfilMetier(6, offre, admin);
-                    }    
+                         gestionAdmin.creationProfilMetier(6, offre, admin);             
             }
-        message = "Utilisateur crée avec succès !";   
+            
+                    }    
 
-            gestionAdmin.creationUtilisateurHardis(mail, motdepasse, nom, prenom, pla, profil, stat, agence);
-            message = "Utilisateur crée avec succès !";          
+            message = "Utilisateur créé avec succès !";   
+         
         }
-      
+        }
         request.setAttribute("message", message);
         }
     
@@ -148,12 +159,17 @@ public class ServletAdmin extends HttpServlet {
         String description = request.getParameter("description");
         String idOffre = request.getParameter("idOffre");
         String message;
+        Service service = gestionAdmin.rechercherServiceParNom(nom).get(0);
         
         if (cout_offre.trim().trim().isEmpty()||nom.trim().isEmpty()||description.trim().isEmpty()||idOffre.trim().isEmpty())              
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour créer un service";
         }
-       
+        
+        else if(service!=null){
+            message = "Ce service existe déjà, veuillez choisir un autre nom";
+        }
+        
         else {
             double cout = Double.parseDouble(cout_offre);
             long id = Long.parseLong(idOffre);
@@ -190,28 +206,7 @@ public class ServletAdmin extends HttpServlet {
         request.setAttribute("message", message);
     }
     
-    protected void creerQuestionPublique(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException           
-    {
-        String question = request.getParameter("question");
-        String pseudo = request.getParameter("pseudo");
-        String idOffre = request.getParameter("idOffre");
-
-        String message;
-       
-        if (question.trim().trim().isEmpty()||pseudo.trim().isEmpty()||idOffre.trim().isEmpty())            
-        {
-            message = "Erreur, vous n'avez pas rempli tous les champs pour enregistrer une question";
-        }
-
-        else {
-            long id = Long.parseLong(idOffre);
-            Offre offre = gestionAdmin.rechercherOffreParId(id).get(0);
-            gestionAdmin.creationQuestionPublique(question, pseudo, offre);
-            message = "Question enregistrée !";          
-        }
-        request.setAttribute("message", message);
-    }
+  
     protected void creerProfilMetier(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException           
     {
@@ -591,14 +586,26 @@ public class ServletAdmin extends HttpServlet {
             for(Profil_Metier profil : listeprofil){
                 gestionAdmin.suppressionProfilMetier(profil.getId());
             }
-            gestionAdmin.suppressionUtilisateurHardis(id);
-           
-            List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
-            request.setAttribute("listeUser", listeUser);
-            jspClient="/GestionUtilisateurHardis.jsp";
+            
+                if(User.getHistorique_QuestionPubliques().isEmpty()){
+                    gestionAdmin.suppressionUtilisateurHardis(id);
+                   
+                }
+                
+                else
+                {
+                    message = "Impossible ! Des questions sont liées à cet utilisateur";
+                    request.setAttribute("message", message); 
+                }
+                    
+                    List <Utilisateur_Hardis> listeUser  = gestionAdmin.affichageUtilisateursHardis();
+                    request.setAttribute("listeUser", listeUser);
+                    message = "Utilisateur supprimé avec succès !";
+                    request.setAttribute("message", message); 
+                    jspClient="/GestionUtilisateurHardis.jsp";
             }
             
-            else 
+                else 
             {
                 message = "Cet utilisateur n'existe pas";
                 request.setAttribute("message", message); 
@@ -691,15 +698,24 @@ public class ServletAdmin extends HttpServlet {
             if(offre!=null){
                  
                 if(listeservice.isEmpty()){
-                gestionAdmin.suppressionOffre(idO);
-                List<Offre> listeOffre = gestionAdmin.affichageOffres();
-                request.setAttribute("listeOffre", listeOffre);
-                jspClient = "/GestionOffre.jsp";
-                message = "Offre supprimée avec succès";
-                request.setAttribute("message", message); 
+                    
+                    if(offre.getServices().isEmpty() && offre.getHistorique_QuestionPubliques().isEmpty()){
+                        gestionAdmin.suppressionOffre(idO);
+                        List<Offre> listeOffre = gestionAdmin.affichageOffres();
+                        request.setAttribute("listeOffre", listeOffre);
+                        jspClient = "/GestionOffre.jsp";
+                        message = "Offre supprimée avec succès";
+                        request.setAttribute("message", message); 
+                    }
+                    
+                    else{
+                        jspClient = "/GestionOffre.jsp";
+                        message = "Impossible ! Des services sont liés à cette offre";
+                        request.setAttribute("message", message); 
+                    }
             }
                 else{
-                     message = "Impossible, il existe des services liés à cette offre";
+                     message = "Impossible, il existe des services ou des questions liés à cette offre";
                      request.setAttribute("message", message);
                      List <Offre> listeOffre  = gestionAdmin.affichageOffres();
                      request.setAttribute("listeOffre", listeOffre);
@@ -714,20 +730,28 @@ public class ServletAdmin extends HttpServlet {
                  
              }
              
-         }
+        }
          
         else if(act.equals("SupprimerService")){
             String idServ = request.getParameter("idServ");
             long id = Long.parseLong(idServ);
             Service Serv = gestionAdmin.rechercherServiceParId(id).get(0);
             
-            if(Serv != null){   
-            gestionAdmin.suppressionService(id);
-            List <Service> listeServ  = gestionAdmin.affichageServices();
-            request.setAttribute("listeServ", listeServ);
-            jspClient="/GestionService.jsp";
-            message = "Service supprimé avec succès !";
-            request.setAttribute("message", message); 
+            if(Serv != null){
+                
+                if(Serv.getPrestations().isEmpty()){
+                    gestionAdmin.suppressionService(id);
+                    List <Service> listeServ  = gestionAdmin.affichageServices();
+                    request.setAttribute("listeServ", listeServ);
+                    jspClient="/GestionService.jsp";
+                    message = "Service supprimé avec succès !";
+                    request.setAttribute("message", message); 
+                }
+                else {
+                    jspClient="/GestionService.jsp";
+                    message = "Impossible, il existe de prestations liées à ce service !";
+                    request.setAttribute("message", message); 
+                }
             }
             
             else 
@@ -736,7 +760,32 @@ public class ServletAdmin extends HttpServlet {
                 request.setAttribute("message", message); 
             }
         }
-       
+        
+        else if(act.equals("SupprimerQuestionPublique")){
+            String idQuestion = request.getParameter("idQuestion");
+            long id = Long.parseLong(idQuestion);
+            Historique_QuestionPublique question = gestionAdmin.rechercherQuestionPubliqueParId(id).get(0);
+            
+            if(question != null){
+                gestionAdmin.suppressionHistoriqueQuestionPublique(id);
+                List <Historique_QuestionPublique> listeQuestion  = gestionAdmin.affichageQuestionsPubliques();
+                List <Utilisateur_Hardis> listeUser = gestionAdmin.affichageUtilisateursHardis();
+                List <Profil_Metier> listeProfil = gestionAdmin.affichageProfilsMetier();
+                request.setAttribute("listeQuestion", listeQuestion);
+                request.setAttribute("listeUser",listeUser);
+                request.setAttribute("listeProfil", listeProfil);
+                jspClient="/GestionQuestionPublique.jsp";
+                message = "Question supprimée avec succès !";
+                request.setAttribute("message", message); 
+            }
+              
+            else 
+            {
+                message = "Cette question n'existe pas";
+                request.setAttribute("message", message); 
+            }
+    }
+        
         else if (act.equals("CreerUtilisateur"))
         {      
             jspClient = "/GestionUtilisateurHardis.jsp";
@@ -787,15 +836,7 @@ public class ServletAdmin extends HttpServlet {
             request.setAttribute("listeProfil",listeProfil);
             request.setAttribute("listeUser", listeUser);
         }
-        
-         else if (act.equals("CreerQuestionPublique"))
-        {      
-            jspClient = "/RedactionQuestionPublique.jsp";
-            creerQuestionPublique(request,response);
-            List <Offre> listeOffre = gestionAdmin.affichageOffres();
-            request.setAttribute("listeOffre", listeOffre);
-        }
-        
+       
          else if (act.equals("CreationEntreprise"))
         {      
             List<Agence> ListeAgence= gestionAdmin.affichageAgences();
@@ -808,13 +849,6 @@ public class ServletAdmin extends HttpServlet {
             List<Offre> ListeOffre= gestionAdmin.affichageOffres();
             request.setAttribute("listeOffre",ListeOffre);
             jspClient="/CreationService.jsp";
-        }
-        
-        else if (act.equals("CreationQuestionPublique"))
-        {      
-            List<Offre> ListeOffre= gestionAdmin.affichageOffres();
-            request.setAttribute("listeOffre",ListeOffre);
-            jspClient="/RedactionQuestionPublique.jsp";
         }
         
         else if(act.equals("CreationProfilMetier")){
@@ -950,10 +984,15 @@ public class ServletAdmin extends HttpServlet {
             long idU = Long.parseLong(idUser);
             Utilisateur_Hardis gestionnaire = gestionAdmin.rechercherUtilisateurHardisParId(idU);
             gestionAdmin.attributionQuestionPublique(question, gestionnaire);
-            jspClient = "/MenuAdmin.jsp";
+            List<Historique_QuestionPublique> listeQuestion = gestionAdmin.affichageQuestionsPubliques();
+            List<Utilisateur_Hardis> listeUser = gestionAdmin.affichageUtilisateursHardis();
+            List<Profil_Metier> listeProfil = gestionAdmin.affichageProfilsMetier();
+            request.setAttribute("listeQuestion", listeQuestion);
+            request.setAttribute("listeUser", listeUser);
+            request.setAttribute("listeProfil", listeProfil);
+            jspClient = "/GestionQuestionPublique.jsp";
             message = "Question attribuée !";
             request.setAttribute("message", message);  
-          
          }
          
          else if(act.equals("MenuGestionnaire")){
@@ -969,7 +1008,7 @@ public class ServletAdmin extends HttpServlet {
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
         Rd.forward(request, response);
-         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

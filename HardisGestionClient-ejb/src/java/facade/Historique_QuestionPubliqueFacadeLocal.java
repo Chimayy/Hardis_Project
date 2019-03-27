@@ -51,5 +51,7 @@ public interface Historique_QuestionPubliqueFacadeLocal {
     List ListeQPOfrre(Offre Offre);
 
     List ListeQPPseudo(String pseudo);
+
+    public void supprimerHistorique_QuestionPublique(Historique_QuestionPublique question);
     
 }
