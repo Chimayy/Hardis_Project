@@ -255,6 +255,7 @@ public class ServletClient extends HttpServlet {
                 }
                 
             }
+            }
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
             Rd.forward(request, response);
@@ -274,7 +275,7 @@ public class ServletClient extends HttpServlet {
             out.println("</body>");
             out.println("</html>"); */
         }
-    }}
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

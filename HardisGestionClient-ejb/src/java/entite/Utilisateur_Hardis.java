@@ -101,6 +101,14 @@ public class Utilisateur_Hardis extends Utilisateur implements Serializable {
     public void setProfil_Technique(profil_Technique profil_Technique) {
         this.profil_Technique = profil_Technique;
     }
+
+    public List<Historique_QuestionPublique> getHistorique_QuestionPubliques() {
+        return historique_QuestionPubliques;
+    }
+
+    public void setHistorique_QuestionPubliques(List<Historique_QuestionPublique> historique_QuestionPubliques) {
+        this.historique_QuestionPubliques = historique_QuestionPubliques;
+    }
     
     
     

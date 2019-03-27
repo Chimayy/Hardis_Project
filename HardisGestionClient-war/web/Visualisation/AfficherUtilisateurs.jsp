@@ -47,7 +47,6 @@
                     <table class='table table-bordered'>
                         <thead >
                             <tr>
-                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Prénom</th>
                                 <th>Mail</th>
@@ -59,7 +58,7 @@
                         </thead>
                         <% List<Utilisateur_Hardis> lesUser = listeUser;
                             for (Utilisateur_Hardis user : lesUser) {%>
-                        <tr> <td Width=15%><%=user.getId()%></td>
+                        <tr>
                             <td Width=15%><%=user.getNom_Utilisateur()%></td>
                             <td Width=15%><%=user.getPrenom_Utilisateur()%></td>
                             <td Width=15%><%=user.getMail_Connexion()%></td>

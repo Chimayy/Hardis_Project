@@ -126,5 +126,7 @@ public interface gestionAdminLocal {
 
     List ListeQPPseudo(String pseudo);
 
+    public void suppressionHistoriqueQuestionPublique(long id);
+
 
 }

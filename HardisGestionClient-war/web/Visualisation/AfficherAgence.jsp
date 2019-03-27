@@ -13,15 +13,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <jsp:useBean id="listeAgence" scope="request" class="java.util.List"></jsp:useBean>
         <title>Agence</title>
     </head>
     <body>
         <h1>Afficher Les Agences</h1>
-        <p><% 
-            String attribut = (String) request.getAttribute("message");
-            out.println(attribut);
-            %></p>
         <table border width=50%>
             <tr> 
                 <td>L'entreprise</td>
@@ -32,13 +27,10 @@
             </tr>
             <% Agence cp = (Agence) request.getAttribute("Ville_Agence");
                 {%>
-                <tr>
-                     <% List<Utilisateur_Hardis> UtiHar=cp.getLesUtilisateur_Hardis();
-                for(Utilisateur_Hardis a : UtiHar){%>
-                    <td width=15%><ul><li><a href="AccessVisualisation?action=rechercheutilisateura&Nom_Utilisateur=<%=a.getNom_Utilisateur()%>"><%=a.getNom_Utilisateur()%></a></li></ul></td><%}%> 
+                <tr> 
                     <% List<Entreprise> ntr=cp.getEntreprises();
                 for(Entreprise e : ntr){%>
-                    <td width=15%><ul><li><a href="AccessVisualisation?action=rechercheentreprisea&Nom_Entreprise=<%=e.getNom_Entreprise()%>"><%=e.getNom_Entreprise()%></a></li></ul></td><%}%> 
+                    <td width=15%><%=e.getNom_Entreprise()%></a></td><%}%> 
                     <td width=15%><%=cp.getRue_Agence()%></td>
                     <td width=15%><%=cp.getVille_Agence()%></td>
                     <td width=15%><%=cp.getCP_Agence()%></td>
@@ -47,10 +39,6 @@
                 </tr><%}%> 
                 <input type="hidden" value="afficherAgence" name="action">
         </table>
-        <hr>
-    <td width=25%><a href="AccessVisualisation?action=afficherAgence"> Retour Menu </a></td>
-    <hr>
-     </br>
-    <a href="/MenuVisualisation">Retour</a>
+    <a href="AccessVisualisation?action=RetourMenuVisu">Retour</a>
 </body>
 </html>

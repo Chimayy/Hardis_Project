@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-war/web/ListeClient/VisuClients.jsp</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-war/src/java/Client/ServletClient.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-war/src/java/Hardis/AcceuilGestionnaire.java</file>
-            <file>file:/C:/Users/thoma/Desktop/Hadris/Hardis_Project/HardisGestionClient-war/web/ListeClient/DetailClient.jsp</file>
+            <file>file:/C:/Users/Utilisateur/Desktop/Hardis_Project/HardisGestionClient-war/src/java/Hardis/ServletAdmin.java</file>
+            <file>file:/C:/Users/Utilisateur/Desktop/Hardis_Project/HardisGestionClient-war/src/java/Global/Accueil.java</file>
+            <file>file:/C:/Users/Utilisateur/Desktop/Hardis_Project/HardisGestionClient-war/web/Contact.jsp</file>
+            <file>file:/C:/Users/Utilisateur/Desktop/Hardis_Project/HardisGestionClient-war/web/CreationUtilisateurHardis.jsp</file>
+            <file>file:/C:/Users/Utilisateur/Desktop/Hardis_Project/HardisGestionClient-war/web/Menu_principal.jsp</file>
         </group>
     </open-files>
->>>>>>> LabranchedAlleau
-=======
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/3133973/Documents/GitHub/Hardis_Project/HardisGestionClient-war/web/GestionUtilisateurHardis.jsp</file>
-            <file>file:/C:/Users/3133973/Documents/GitHub/Hardis_Project/HardisGestionClient-war/src/java/Hardis/ServletAdmin.java</file>
-            <file>file:/C:/Users/3133973/Documents/GitHub/Hardis_Project/HardisGestionClient-war/web/Style/MyStyle.css</file>
-        </group>
-    </open-files>
->>>>>>> origin/backup2mastercopy2beforthomasMerge123
 </project-private>

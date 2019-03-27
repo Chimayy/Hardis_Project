@@ -64,6 +64,28 @@ public class Accueil extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
 
+      protected void creerQuestionPublique(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException           
+    {
+        String question = request.getParameter("question");
+        String pseudo = request.getParameter("pseudo");
+        String idOffre = request.getParameter("idOffre");
+
+        String message;
+       
+        if (question.trim().trim().isEmpty()||pseudo.trim().isEmpty()||idOffre.trim().isEmpty())            
+        {
+            message = "Erreur, vous n'avez pas rempli tous les champs pour enregistrer une question";
+        }
+
+        else {
+            long id = Long.parseLong(idOffre);
+            Offre offre = gestionAdmin.rechercherOffreParId(id).get(0);
+            gestionAdmin.creationQuestionPublique(question, pseudo, offre);
+            message = "Question enregistrée !";          
+        }
+        request.setAttribute("message", message);
+    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sess = request.getSession(true);
@@ -166,7 +188,7 @@ public class Accueil extends HttpServlet {
         else if(act.equals("CreerUtilisateur"))
         {
           
-            String nom= request.getParameter("nom");
+        String nom= request.getParameter("nom");
         String prenom = request.getParameter("prenom");
         String mail = request.getParameter("mail");
         String motdepasse = request.getParameter("motdepasse");
@@ -189,6 +211,20 @@ public class Accueil extends HttpServlet {
         }
         request.setAttribute("message", message);
         jspClient="/Menu_principal.jsp";
+        }
+        
+         else if (act.equals("CreationQuestionPublique"))
+        {      
+            List<Offre> ListeOffre= gestionAdmin.affichageOffres();
+            request.setAttribute("listeOffre",ListeOffre);
+            jspClient="/RedactionQuestionPublique.jsp";
+        }
+        else if (act.equals("CreerQuestionPublique"))
+        {      
+            jspClient = "/RedactionQuestionPublique.jsp";
+            creerQuestionPublique(request,response);
+            List <Offre> listeOffre = gestionAdmin.affichageOffres();
+            request.setAttribute("listeOffre", listeOffre);
         }
 
         RequestDispatcher Rd;

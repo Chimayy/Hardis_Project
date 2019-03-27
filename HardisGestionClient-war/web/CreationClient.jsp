@@ -64,8 +64,6 @@
                             </br>
                             <hr class="my-6">
                             <a class="btn btn-outline-teal right" href="Menu_principal.jsp" value="retour"> Retour </a> 
-
-
                     </form>
                 </div>
             </div>

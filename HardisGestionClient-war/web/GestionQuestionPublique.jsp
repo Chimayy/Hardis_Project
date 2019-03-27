@@ -69,8 +69,11 @@
                     <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 
 
                     <div class="message"><% String attribut = (String) request.getAttribute("message");
-                        out.println(attribut);
-                        %></div>
+                    if(attribut!=null){%>
+                        <div class="alert alert-info col-4"><%out.println(attribut);%></div>
+                        <%--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>--%>
+                    <%}%>                       
+                    </div>
                 </div>              
             </div>
             <%@include file="jsp_reused/footer.jsp"%>

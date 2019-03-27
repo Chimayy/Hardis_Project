@@ -75,6 +75,14 @@ public class Offre implements Serializable {
     public void setDescription_Offre(String description_Offre) {
         this.description_Offre = description_Offre;
     }
+
+    public List<Historique_QuestionPublique> getHistorique_QuestionPubliques() {
+        return historique_QuestionPubliques;
+    }
+
+    public void setHistorique_QuestionPubliques(List<Historique_QuestionPublique> historique_QuestionPubliques) {
+        this.historique_QuestionPubliques = historique_QuestionPubliques;
+    }
     
     
     

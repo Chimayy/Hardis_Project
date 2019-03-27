@@ -172,6 +172,12 @@ public class gestionAdmin implements gestionAdminLocal {
     }
     
     @Override
+    public void suppressionHistoriqueQuestionPublique(long id){
+        Historique_QuestionPublique question = historique_QuestionPubliqueFacade.rechercheQuestionPubliqueId(id).get(0);
+        historique_QuestionPubliqueFacade.supprimerHistorique_QuestionPublique(question);
+    }
+    
+    @Override
     public List<Utilisateur_Hardis> affichageUtilisateursHardis(){
         return utilisateur_HardisFacade.afficherUtilisateurs_Hardis();
     }

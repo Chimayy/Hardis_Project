@@ -64,12 +64,15 @@ public class AccessVisualisation extends HttpServlet {
             request.setAttribute("message", "pas d'information");
             
         } else if (act.equals("AfficherClient")) {
-            jspClient = "/AfficherClient.jsp";
+            jspClient = "/Visualisation/AfficherClient.jsp";
             List<Client> list = gestionVisualisation.afficherClient2();
             request.setAttribute("listeClient", list);
             request.setAttribute("message", "Liste des clients existants");
         } 
         
+         else if (act.equals("RetourMenuVisu")){
+             jspClient = "/MenuVisualisation.jsp";
+         }
         else if (act.equals("AfficherDevis")) {
             jspClient = "/AfficherDevis.jsp";
             List<Devis> list = gestionVisualisation.afficherDevis();
@@ -77,16 +80,17 @@ public class AccessVisualisation extends HttpServlet {
             request.setAttribute("message", "Liste des devis existants");
             
         } else if (act.equals("AfficherServices")) {
-            jspClient = "/AfficherServices.jsp";
+            jspClient = "/Visualisation/AfficherServices.jsp";
             List<Service> list = gestionVisualisation.afficherService();
             request.setAttribute("listeService", list);
             request.setAttribute("message", "Liste des services existants");
             
         } else if (act.equals("AfficherUtilisateurs")) {
-            jspClient = "/AfficherUtilisateurs.jsp";
+            jspClient = "/Visualisation/AfficherUtilisateurs.jsp";
             List<Utilisateur_Hardis> list = gestionVisualisation.afficherUtilisateur();
-            request.setAttribute("listeEquipe", list);
+            request.setAttribute("listeUser", list);
             request.setAttribute("message", "Liste des utilisateurs existants");
+            
         }  /*else if (act.equals("rechercheService")) {
             String description_Service = request.getParameter("description_Service");
             Service service = gestionVisualisation.rechercheService(description_Service);
@@ -124,7 +128,7 @@ public class AccessVisualisation extends HttpServlet {
             String nom = request.getParameter("Nom_Entreprise");
             Entreprise entreprise = gestionVisualisation.rechercheEntreprisenom(nom);
             request.setAttribute("Nom_Entreprise", entreprise);
-            jspClient = "/AfficherlEntreprise.jsp";
+            jspClient = "/Visualisation/AfficherlEntreprise.jsp";
         } 
         
         /*else if (act.equals("rechercheconsentementlcl")) {
@@ -321,7 +325,7 @@ public class AccessVisualisation extends HttpServlet {
             String nom = request.getParameter("Ville_Agence");
             Agence agence = gestionVisualisation.rechercheragence(nom);
             request.setAttribute("Ville_Agence", agence);
-            jspClient = "/AfficherAgence.jsp";
+            jspClient = "/Visualisation/AfficherAgence.jsp";
         }
         /*else if (act.equals("rechercheinterlocuteuren")) {
             String nom = request.getParameter("Nom_Interlocuteur");
