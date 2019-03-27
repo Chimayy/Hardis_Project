@@ -54,7 +54,10 @@
                             </select>
                             <input  type ="hidden" name="action" value="CreerUtilisateur">
                         </div>
-
+                                <% String m =(String)request.getAttribute("message");
+                                if(m!=null){%>
+                                <div class="alert alert-info ">
+                                    <%out.println(m);%> </div><%}%>
                        
                         <div class='bouton1'>
                             </br>
@@ -63,7 +66,7 @@
                         </div>
                             </br>
                             <hr class="my-6">
-                            <a class="btn btn-outline-teal right" href="Menu_principal.jsp" value="retour"> Retour </a> 
+                            <a class="btn btn-outline-teal right" href="Accueil" value="retour"> Retour </a> 
                     </form>
                 </div>
             </div>

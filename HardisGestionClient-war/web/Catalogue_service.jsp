@@ -29,7 +29,7 @@
                     <h1>Catalogue des services</h1>
                     <hr class="my-6">
 
-                    <form method ="get" action="ServletAdmin" class='form-inline'>
+                    <form method ="get" action="Accueil" class='form-inline'>
                         <label for='nom' style='padding-right:5px   '> Recherche </label>
                         <input type ="text" placeholder='Nom' name="nom" class='form-control'/>
                         <input class='btn btn-secondary' type="submit" value="Valider"/>

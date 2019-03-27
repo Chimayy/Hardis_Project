@@ -1,3 +1,4 @@
+<%@page import="entite.Utilisateur"%>
 <%@page import="java.util.List"%>
 <%@page import="entite.Service"%>
 <%-- 
@@ -12,7 +13,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
+<jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
+<jsp:useBean id="listService" scope="request" class="java.util.List"></jsp:useBean>
         <%@include file="jsp_reused/style.jsp" %>
         <title>JSP Page</title>
     </head>
@@ -20,8 +23,16 @@
          <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
-                     <%@include file="jsp_reused/header.jsp" %>
-                     <jsp:useBean id="listService" scope="request" class="java.util.List"></jsp:useBean>
+                     <% 
+                        List<Utilisateur> listeUser = listUser;
+                        Utilisateur user = UserARecup;
+                    
+                    if (!listeUser.contains(user)){%>
+                    <%@include file="jsp_reused/header.jsp" %>
+                    <%}
+                if(listUser.contains(user)){%>
+                <%@include file="jsp_reused/header_deconnexion.jsp" %><%}%>
+                     
                 </header>
         
             <div class="container">
@@ -37,13 +48,12 @@
                          </div>
                          <div class="form-group">
                             
-<<<<<<< HEAD
-                           <label for="idService"> Service voulu :</label>
-                            <select name="idService">
-=======
-                           <label for="idService"> idService</label>
+
+                          
+
+                           <label for="idService">Service voulu :</label>
                             <select name="idService" class='form-control'>
->>>>>>> origin/LastCopyFromCheyrouMasterCopy2
+
                                 <% List<Service> lesServices = listService;
                                     for (Service s : lesServices){%>
                                 <option value="<%=s.getId()%>"><%=s.getNom_Service()%></option>
@@ -56,7 +66,7 @@
                      <input type="reset" class="btn btn-secondary" value="Remettre à zéro"/><br/>
                  </form>
                 <hr class="my-6">
-                <a class="btn btn-outline-teal right" href="MenuClient.jsp" > Retour </a> 
+                <a class="btn btn-outline-teal right" href="ServletClient" > Retour </a> 
             </div>
             </div>
                 <%@include file="jsp_reused/footer.jsp"%>

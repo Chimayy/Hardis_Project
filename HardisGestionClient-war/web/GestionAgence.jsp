@@ -36,10 +36,13 @@
                         <input class='btn btn-indigo' type="submit" value="Valider"/></br>
                         <input type ="hidden" name="action" value="RechercherAgence">
                     </form>
-                    <div class="alert alert-info col-4"><% String attribut = (String) request.getAttribute("message");
-                        out.println(attribut);
-                        %><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    </div>
+                    <% String attribut = (String) request.getAttribute("message");
+                    if(attribut!=null){%>
+                    <div class="alert alert-info col-4">
+                        <%out.println(attribut);%>
+                       
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div><%}%>
 
                     <a class="btn btn-outline-light-green right" style="margin-bottom: 20px" href = "CreationAgence.jsp"> Créer une nouvelle agence </a>
                     <table class='table table-bordered' >
@@ -68,20 +71,17 @@
                         </tr>   
                     </table>
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a>
-<<<<<<< HEAD
-                    <div class="message"><% String attribut = (String) request.getAttribute("message");
-                        if(attribut!=null){%>
-                           <div class="alert alert-info col-4"><%out.println(attribut);%></div>
-                        <%}%>                    
+                    <a class="btn btn-outline-teal right" href="ServletAdmin" value="retour"> Retour </a>
+
+                    
                     </div>
-=======
+
                     
 
 
->>>>>>> origin/LastCopyFromCheyrouMasterCopy2
+
                 </div>
-            </div>
+            
             <%@include file="jsp_reused/footer.jsp" %>
         </div>
         <%@include file="jsp_reused/javascript.jsp" %>

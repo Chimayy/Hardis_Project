@@ -11,14 +11,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD
+
         <jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
                      <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
         <title>JSP Page</title>
-=======
+
 
         <title>Menu principal</title>
->>>>>>> schellen4
+
     </head>
     <%@include file="jsp_reused/style.jsp" %>
 
@@ -56,19 +56,13 @@ if(listUser.contains(user)){%>
                                     <div class="mask flex-center rgba-white-strong"> 
                                         <h2>Catalogue</h2>
                                     </div>
-                            
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4 col-xl-4 ">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                         <a href="Accueil?action=CreationQuestionPublique" style ="color:black">
-=======
-                        <a href="ServletAdmin?action=CreationQuestionPublique" style ="color:black">
->>>>>>> origin/LastCopyFromCheyrouMasterCopy2
-=======
-                        <a href="ServletAdmin?action=CreationQuestionPublique" style ="color:black">
->>>>>>> exiless8
+
                             <div class="view overlay">
                                 <img src="Images/question.jpg"class="img-thumbnail " alt="" >
                                 <div class="mask flex-center rgba-white-strong"> 
@@ -79,7 +73,7 @@ if(listUser.contains(user)){%>
 
                 </div>   
                 <div class="col-sm-6 col-md-4 col-xl-4">
-                    <a href="Contact.jsp" style="color:black">
+                    <a href="Accueil?action=Contact" style="color:black">
                         <div class="view overlay">
                             <img src="Images/contact.jpg"class="img-thumbnail" alt="">
                             <div class="mask flex-center rgba-white-strong "> 
@@ -99,10 +93,7 @@ if(listUser.contains(user)){%>
             </div>
         </div> 
     </div>
-                      <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="/Menu_Principal.jsp" value="retour"> Retour </a>
-                    <div class="message">
-                        </div>
+                      
 </div>
 </div>
 

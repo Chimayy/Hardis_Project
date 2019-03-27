@@ -55,7 +55,7 @@
                         <input  class='btn btn-indigo' type="reset" value="Effacer"/>       
 
                         <hr class="my-6">
-                        <a class="btn btn-outline-teal right" href ="MenuAdmin.jsp"> Retour </a>
+                        <a class="btn btn-outline-teal right" href ="ServletAdmin"> Retour </a>
                     </form>
                 </div>
             </div>

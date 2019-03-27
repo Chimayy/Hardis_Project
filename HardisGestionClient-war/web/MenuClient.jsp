@@ -11,7 +11,7 @@
 <html>
     <head>
          <jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
-                     <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
+         <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
        <%@include file="jsp_reused/style.jsp" %>
         <title>JSP Page</title>
@@ -26,11 +26,11 @@
                         List<Utilisateur> listeUser = listUser;
                         entite.Utilisateur user = UserARecup;
                     
-    if (!listeUser.contains(user)){%>
+                    if (!listeUser.contains(user)){%>
                     <%@include file="jsp_reused/header.jsp" %>
                     <%}
-if(listUser.contains(user)){%>
-<%@include file="jsp_reused/header_deconnexion.jsp" %><%}%>
+                if(listUser.contains(user)){%>
+                <%@include file="jsp_reused/header_deconnexion.jsp" %><%}%>
             
                     
                 </header>
@@ -42,28 +42,15 @@ if(listUser.contains(user)){%>
 
                         <hr class="my-6">
                         <div class="row">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="DemandeDevis.jsp">Demander un devis</a><br></div>
-                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=visuDevis">Visualiser un formulaire</a><br></div>
-                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=consultantsEtDate">choisir des consultants et une date d'intervention</a></div>
-=======
-                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=listDevis">Demander un devis</a><br></div>
-                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=visuDevis">Visualiser un formulaire</a><br></div>
-                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=consultantsEtDate">choisir des consultants et une date d'intervention</a></div>     
->>>>>>> origin/LastCopyFromCheyrouMasterCopy2
-=======
 
-                            
-                            
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%;min-height: 160px; min-width: 320px;" href="ServletClient?action=listDevis">Demander un devis</a><br></div>
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%;min-height: 160px; min-width: 320px;" href="ServletClient?action=visuDevis">Visualiser un formulaire</a><br></div>
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%;min-height: 160px; min-width: 320px;" href="ServletClient?action=consultantsEtDate">choisir des consultants et une date d'intervention</a></div>     
+            
 
-                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=listDevis">Demander un devis</a><br></div>
-                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=visuDevis">Visualiser un formulaire</a><br></div>
-                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=consultantsEtDate">choisir des consultants et une date d'intervention</a></div>
-                            
-
->>>>>>> exiless8
                         </div>
+                         <hr class="my-6">
+                    <a class="btn btn-outline-teal right" href="Accueil" value="retour"> Retour Menu </a>
                 </div>
             </div>    
         <%@include file="jsp_reused/footer.jsp"%>

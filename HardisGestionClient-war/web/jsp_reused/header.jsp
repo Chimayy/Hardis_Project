@@ -2,7 +2,7 @@
 <nav class="navbar ">
     <div class="container-fluid">
         <div class="navbar-header"> 
-            <div class="navbar-brand" > <a href="Menu_principal.jsp"><h1> HARDIS</h1> </a> </div>                     
+            <div class="navbar-brand" > <a href="Accueil"><h1> HARDIS</h1> </a> </div>                     
         </div>
         <div>
                     <div class="dropdown">

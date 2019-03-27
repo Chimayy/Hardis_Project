@@ -27,9 +27,9 @@
                 </header>
 
                 <div class="container">
-                    <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
+                    <div class="mx-auto" style="width: 600px ; text-align: center; margin-top:5%;margin-bottom: 5%">
                         <%Utilisateur_Hardis u = User;%>
-                        <h1>Gestion des question publiquede M<%=u.getNom_Utilisateur()%></h1>
+                        <h1>Gestion des question publique de M <%=u.getNom_Utilisateur()%></h1>
                     </div>
 
 <form method="get" action="AcceuilGestionnaire">
@@ -59,7 +59,7 @@
                             <input type="hidden" name="action" value="EnregistrerReponsePublique">
                             <input type="hidden" name="x" value="<%=q.getId() %>">
                      
-                            <td width=15%><input type="submit" name = "reponse" value="Répondre à <%=q.getPseudo() %>"></td></tr><%}%><%}%>
+                            <td width=15%><input class="btn btn-blue"type="submit" name = "reponse" value="Répondre à <%=q.getPseudo() %>"></td></tr><%}%><%}%>
                         </tr>
                           
                     </table></form>

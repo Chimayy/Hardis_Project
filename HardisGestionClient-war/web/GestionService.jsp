@@ -29,12 +29,7 @@
                     <h1>Liste des services</h1>
                     <hr class="my-6">
 
-                    <form method ="get" action="ServletAdmin" class='form-inline'>
-                        <label for='nom' style='padding-right:5px   '> Nom </label>
-                        <input type ="text" placeholder='Nom' name="nom" class='form-control'/>
-                        <input class='btn btn-indigo' type="submit" value="Valider"/>
-                        <input type ="hidden" name="action" value="RechercherService">
-                    </form>
+                    
                     <div>
                   <% String attribut = (String) request.getAttribute("message");
                     if(attribut!=null){%>
@@ -69,7 +64,7 @@
                     </table>
 
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a>
+                    <a class="btn btn-outline-teal right" href="ServletAdmin" value="retour"> Retour </a>
 
                 </div>
             </div>

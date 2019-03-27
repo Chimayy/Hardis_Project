@@ -4,6 +4,7 @@
     Author     : Mathieu Harmand
 --%>
 
+<%@page import="entite.Client"%>
 <%@page import="entite.Historique_Question"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,10 +25,11 @@
 
                 <div class="container "> 
                     <div class="mx-auto" style="width: 600px ; text-align: center; margin-top:5%;margin-bottom: 5%">
-                        <h1>Question pour le Devis de <%=Client.getNom_Utilisateur()%></h1>
+                      
                     </div>
                     <hr class="my-6">
                     <h1>Répondre à la question concernant le devis</h1>
+                    </div>
                     <form method="get" action="AcceuilGestionnaire">
 
                         <% if (ok == "1") {%>
@@ -65,6 +67,8 @@
                         </table>                                       
 
                     </form>  
+                            <hr class="my-6">
+                    <a class="btn btn-outline-teal right" href="AcceuilGestionnaire" value="retour"> Retour </a>
                 </div>
             </div>
             <%@include file="../jsp_reused/footer.jsp" %>

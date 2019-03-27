@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
        <%@include file="jsp_reused/style.jsp"%>
+       
+       
         <title>JSP Page</title>
     </head>
     <body>
@@ -19,7 +21,7 @@
                     <%@include file="jsp_reused/header.jsp" %>
                 </header>
                 <div class="container">
-                    <form method="get" action="ServletVisiteur">
+                    <form method="get" action="Accueil">
                         <fieldset>
                             <div  style=" margin-top:1%;margin-bottom: 1%">
                                 <h1>Formulaire de demande de contact</h1>
@@ -49,17 +51,26 @@
                                 <label for="demande"> Demande <span class="requis">*</span></label>
                                 <textarea type="text"class="form-control" name="demande" value="" rows="4"/></textarea>
                             </div>
+                            <div class="form-group">
+                                *Champs obligatoires
+                                </div>
+                            
+                            <% String m =(String)request.getAttribute("test");
+                                if(m!=null){%>
+                                <div class="alert alert-info ">
+                                    Votre demande à bien été envoyée</div><%}%>
+                                
+                                
 
                         </fieldset>
-                        <input class="btn btn-secondary" type="submit" value="Valider"/>
-<<<<<<< HEAD
-                        <input class="btn btn-secondary" ype="reset" value="Remettre à zéro"/><br/>
-=======
-                        <input class="btn btn-secondary" ype="reset" value="Remettre à zéro"/><br/>                       
->>>>>>> origin/LastCopyFromCheyrouMasterCopy2
+                               
+                        <input type ="hidden" name="action" value="FContact">             
+                        <input class="btn btn-secondary" type="submit" value="Contact"/>
+
                     </form>
+                        
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="Menu_principal.jsp" value="retour"> Retour </a> 
+                    <a class="btn btn-outline-teal right" href="Accueil" value="retour"> Retour </a> 
                 </div>
             </div>
         </div>

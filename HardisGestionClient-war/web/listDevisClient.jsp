@@ -1,4 +1,5 @@
 
+<%@page import="entite.Utilisateur"%>
 <%-- 
     Document   : listDevisClient
     Created on : 18 mars 2019, 10:10:14
@@ -13,6 +14,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeDevis" scope="request" class="java.util.List"></jsp:useBean>
+        <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
+        <jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
+
         <%@include file="jsp_reused/style.jsp" %>
         <title>JSP Page</title>
     </head>
@@ -22,7 +26,15 @@
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
+                   <% 
+                        List<Utilisateur> listeUser = listUser;
+                        entite.Utilisateur user = UserARecup;
+                    
+                    if (!listeUser.contains(user)){%>
                     <%@include file="jsp_reused/header.jsp" %>
+                    <%}
+                if(listUser.contains(user)){%>
+                <%@include file="jsp_reused/header_deconnexion.jsp" %><%}%>
                 </header>
 
                 <div class="container">
@@ -49,7 +61,7 @@
                         </tr><%}%>     
                     </table>
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="MenuClient.jsp"> Retour Menu </a>
+                    <a class="btn btn-outline-teal right" href="ServletClient"> Retour Menu </a>
 
                 </div>
             </div>

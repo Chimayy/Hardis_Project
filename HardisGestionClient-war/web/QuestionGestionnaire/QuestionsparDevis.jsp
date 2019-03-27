@@ -55,6 +55,8 @@
 
                         </tr><%}%>   
                     </table>
+                    <hr class="my-6">
+                    <a class="btn btn-outline-teal right" href="AcceuilGestionnaire" value="retour"> Retour </a>
                 </div>
             </div>
             <%@include file="../jsp_reused/footer.jsp" %>

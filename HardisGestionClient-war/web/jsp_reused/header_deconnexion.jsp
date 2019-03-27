@@ -7,9 +7,10 @@
         <div>
                     <div class="dropdown">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <a href="/Menu_principal.jsp">Deconnexion</a>
-                            </button>                               
+                            <a  class="btn btn-secondary "href="Accueil">  Deconnexion     </a>                     
+                          
+
+                                                          
                                
                             </div>                               
                         </div>

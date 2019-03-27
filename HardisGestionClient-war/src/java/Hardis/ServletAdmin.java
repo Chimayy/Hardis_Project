@@ -159,14 +159,14 @@ public class ServletAdmin extends HttpServlet {
         String description = request.getParameter("description");
         String idOffre = request.getParameter("idOffre");
         String message;
-        Service service = gestionAdmin.rechercherServiceParNom(nom).get(0);
+        
         
         if (cout_offre.trim().trim().isEmpty()||nom.trim().isEmpty()||description.trim().isEmpty()||idOffre.trim().isEmpty())              
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour créer un service";
         }
         
-        else if(service!=null){
+        else if(!gestionAdmin.rechercherServiceParNom(nom).isEmpty()){
             message = "Ce service existe déjà, veuillez choisir un autre nom";
         }
         
@@ -531,29 +531,7 @@ public class ServletAdmin extends HttpServlet {
             }
         }
           
-        else if(act.equals("RechercherService"))
-        {        
-            String nom = request.getParameter("nom");
-            if(!nom.trim().isEmpty()){
-            List <Service> listeService  = gestionAdmin.rechercherServiceParNom(nom);
-                if(listeService.size()>0){
-            request.setAttribute("listeServ", listeService);
-            jspClient="/GestionService.jsp";
-                }
-                else{
-                List <Service> listeService2 = gestionAdmin.affichageServices();
-                request.setAttribute("listeServ", listeService2);
-                jspClient="/GestionService.jsp";
-                }                    
-            }
-            else{
-            List <Service> listeService = gestionAdmin.affichageServices();
-            request.setAttribute("listeServ", listeService);
-            jspClient="/GestionService.jsp";
-            message = "Veuillez rentrer une valeur";
-            request.setAttribute("message", message);  
-            }
-        }
+       
         
         else if(act.equals("RechercherUtilisateurHardisModif"))
         {   

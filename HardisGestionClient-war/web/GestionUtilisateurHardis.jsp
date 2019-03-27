@@ -92,7 +92,7 @@
                                 <%}%>
                     </table>
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a>    
+                    <a class="btn btn-outline-teal right" href="ServletAdmin" value="retour"> Retour </a>    
                    
                     
                 </div>              

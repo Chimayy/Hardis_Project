@@ -69,7 +69,7 @@ public class AcceuilGestionnaire extends HttpServlet {
         Utilisateur_Hardis user = (Utilisateur_Hardis) sess.getAttribute("UserARecup");
 
         if ((act == null) || (act.equals(""))) {
-            request.setAttribute("User", user);
+            sess.setAttribute("User", user);
             jspClient = "/AcceuilGestionnaire.jsp";
             request.setAttribute("message", "pas d'information");
         } else if (act.equals("ReponseQuestions")) {

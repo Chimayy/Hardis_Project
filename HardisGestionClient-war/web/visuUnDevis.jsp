@@ -45,6 +45,6 @@
            <button type="submit" name="action" value="Modifier"> Modifier</button>
            <button type="submit" name="action" value="Refuser"> Refuser le devis</button>
     </form>
-    <a href="MenuClient.jsp"> Retour Menu </a>
+    <a href="ServletClient"> Retour Menu </a>
     </body>
 </html>

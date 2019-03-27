@@ -20,7 +20,7 @@
                 <header>                    
                     <%@include file="jsp_reused/header.jsp" %>
                 </header>
-                
+
                 <div class="container">
                     <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
                         <h1>Menu Administrateur</h1>
@@ -30,16 +30,19 @@
                     <h1>Liste des offres</h1>
                     <hr class="my-6">
 
+                    <% String attribut = (String) request.getAttribute("message");
+                        if (attribut != null) {%>
+                    <div class="alert alert-info col-4">
+                        <%out.println(attribut);%></div><%}%>
+
                     <form method ="get" action="ServletAdmin" class="form-inline">
                         <label for="nom" style="margin-right: 5px"> Nom </label>
-                            <input type ="text"  name="nom" class='form-control'/>
-                            <input class='btn btn-indigo' type="submit" value="Valider"/>
-                            <input type ="hidden" name="action" value="RechercherOffre"/>
+                        <input type ="text"  name="nom" class='form-control'/>
+                        <input class='btn btn-indigo' type="submit" value="Valider"/>
+                        <input type ="hidden" name="action" value="RechercherOffre"/>
                     </form>
-                     <div class="alert alert-info col-4"><% String attribut = (String) request.getAttribute("message");
-                                out.println(attribut);
-                        %><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    </div>
+
+
                     <table class="table table-bordered">
 
                         <a class="btn btn-outline-light-green right" href = "CreationOffre.jsp"> Créer une nouvelle offre</a>
@@ -51,33 +54,30 @@
                             </tr>
                         </thead>
                         <% List<Offre> lesOffres = listeOffre;
-                                    for (Offre offre : lesOffres) {%>
+                            for (Offre offre : lesOffres) {%>
                         <tr>
                             <td Width=15%><%=offre.getId()%></td>
                             <td Width=15%><%=offre.getNom_Offre()%></td>
                             <td Width=15%><%=offre.getDescription_Offre()%></td>
-                            <td Width=15%><a href="ServletAdmin?action=ModifierOffre&idOffre=<%=offre.getId()%>">Modifier</a></td>
-                            <td Width=15%><a href="ServletAdmin?action=SupprimerOffre&idOffre=<%=offre.getId()%>">Supprimer</a></td>
-                                <%}%>
+                            <td Width=15%><a style="color:grey"href="ServletAdmin?action=ModifierOffre&idOffre=<%=offre.getId()%>">Modifier</a></td>
+                            <td Width=15%><a style="color:grey" href="ServletAdmin?action=SupprimerOffre&idOffre=<%=offre.getId()%>">Supprimer</a></td>
+                            <%}%>
                         </tr>
                     </table>
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a>
-<<<<<<< HEAD
-                    <div class="message"><% String attribut = (String) request.getAttribute("message");
-                            if(attribut!=null){%>
-                        <div class="alert alert-info col-4"><%out.println(attribut);%></div>
-                           <%}%>
-                       <%--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>--%>
-                       </div>
-=======
-                   
->>>>>>> origin/LastCopyFromCheyrouMasterCopy2
+                    <a class="btn btn-outline-teal right" href="ServletAdmin" value="retour"> Retour </a>
+
+
+                    <%--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>--%>
+
+
+
                 </div>
             </div>
-
-            <%@include file="jsp_reused/footer.jsp" %>
         </div>
-        <%@include file="jsp_reused/javascript.jsp" %>
-    </body>
+
+        <%@include file="jsp_reused/footer.jsp" %>
+    </div>
+    <%@include file="jsp_reused/javascript.jsp" %>
+</body>
 </html>

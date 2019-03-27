@@ -4,6 +4,7 @@
     Author     : thoma
 --%>
 
+<%@page import="entite.Utilisateur"%>
 <%@page import="entite.Devis"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +13,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listDevis" scope="request" class="java.util.List"></jsp:useBean>
+        <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
+<jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
         <%@include file="../jsp_reused/style.jsp" %>
             <title>JSP Page</title>
         </head>
@@ -19,7 +22,15 @@
             <div class="flex-wrapper">
                 <div class="container-fluid nopad">
                     <header>
+                    <% 
+                        List<Utilisateur> listeUser = listUser;
+                        entite.Utilisateur user = UserARecup;
+                    
+                    if (!listeUser.contains(user)){%>
                     <%@include file="../jsp_reused/header.jsp" %>
+                    <%}
+                if(listUser.contains(user)){%>
+                <%@include file="../jsp_reused/header_deconnexion.jsp" %><%}%>
                 </header>
 
                 <div class="container">

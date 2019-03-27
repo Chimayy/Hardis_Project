@@ -106,15 +106,52 @@ public class Accueil extends HttpServlet {
             List<Service> listeServ = gestionAdmin.affichageServices();
             request.setAttribute("listeServ", listeServ);
             jspClient = "/Catalogue_service.jsp";
-<<<<<<< HEAD
-                }       
+
+                }   
+        
+        
+        
+         else if(act.equals("RechercherService"))
+        {        
+            String nom = request.getParameter("nom");
+            if(!nom.trim().isEmpty()){
+            List <Service> listeService  = gestionAdmin.rechercherServiceParNom(nom);
+                if(listeService.size()>0){
+            request.setAttribute("listeServ", listeService);
+            jspClient="/Catalogue_service.jsp";
+                }
+                else{
+                List <Service> listeService2 = gestionAdmin.affichageServices();
+                request.setAttribute("listeServ", listeService2);
+                jspClient="/Catalogue_service.jsp";
+                }                    
+            }
+            else{
+            List <Service> listeService = gestionAdmin.affichageServices();
+            request.setAttribute("listeServ", listeService);
+            jspClient="/Catalogue_service.jsp";
+            message = "Veuillez rentrer une valeur";
+            request.setAttribute("message", message);  
+            }
+            
+            
+        }
+
+         else if (act.equals("Contact")){
+             jspClient="/Contact.jsp";
+             
+             
+         }
+                              
+         else if (act.equals("FContact")){
+             jspClient="/Contact.jsp";
+             String test = "1";
+             request.setAttribute("test",test);
+         }
 
 
+		          
 
-
-=======
-		}           
->>>>>>> origin/LastCopyFromCheyrouMasterCopy2
         else if(act.equals("VoirLeForum")){
                     List<Historique_QuestionPublique> ListeQP = gestionVisiteur.ListeQuestionPubliqueRep();
                     List<Offre> ListeOffre = gestionAdmin.affichageOffres();
@@ -204,14 +241,10 @@ public class Accueil extends HttpServlet {
         }
 
         else if(act.equals("CreerUtilisateur"))
-        {
-<<<<<<< HEAD
-
-            String nom= request.getParameter("nom");
-=======
+        {        
           
         String nom= request.getParameter("nom");
->>>>>>> schellen4
+
         String prenom = request.getParameter("prenom");
         String mail = request.getParameter("mail");
         String motdepasse = request.getParameter("motdepasse");
@@ -232,8 +265,10 @@ public class Accueil extends HttpServlet {
             gestionVisiteur.creerClient(nom, prenom, motdepasse,mail, entreprise);
             message = "Client crée avec succès !";          
         }
+        List<Entreprise> list = gestionVisiteur.listEntreprise();
+        request.setAttribute("listeEntreprise", list);
         request.setAttribute("message", message);
-        jspClient="/Menu_principal.jsp";
+        jspClient="/CreationClient.jsp";
         }
         
          else if (act.equals("CreationQuestionPublique"))

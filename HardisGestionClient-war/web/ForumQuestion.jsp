@@ -30,8 +30,8 @@
                         
                         <h1>Forum des question publique</h1>
                     </div>
-                     <form method="get" action="Accueil">
-                    <select name="Offre" class='custom-dropdown__select custom-dropdown__select--white'>
+                     <form method="get" action="Accueil"class="form-inline">
+                    <select class="form form-control" style="width:400px" name="Offre" class='custom-dropdown__select custom-dropdown__select--white'>
                    <%  List<Offre> List =  ListeDesOffre;
                        for (Offre o :  List){%>
                    <option value="<%=o.getId() %>"><%=o.getNom_Offre() %>
@@ -40,12 +40,13 @@
                    </select>
                    
                    <input type="hidden" name="action" value="ForumChoixOffre">
-                   <input type="submit" name = "reponse" ></form>
-                   <form method="get" action="Accueil">
-                   <input type="text" placeholder = "Veuillez renseigner votre pseudo "name="pseudo" value="">                   
+                   <input class=" btn btn-secondary" type="submit" name = "reponse" ></form>
+                   <form method="get" action="Accueil" class="form-inline">
+                   <input class= "form-control" style="width:400px"type="text" placeholder = "Veuillez renseigner votre pseudo "name="pseudo" value="">                   
                    <input type="hidden" name="action" value="ForumChoixPseudo">
-                   <input type="submit" name = "reponse" value ="Choisir" >
-                   </Form>
+                   <input class="btn btn-secondary"type="submit" name = "reponse" value ="Choisir" >
+                   
+                   </Form><hr class="my-6">
 
                     <table class='table table-bordered'>
                         <thead class='thead-light'>
@@ -79,7 +80,7 @@
                          
                     </table></form>
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="Menu_principal.jsp" value="retour"> Retour </a>
+                    <a class="btn btn-outline-teal right" href="Accueil" value="retour"> Retour </a>
                 </div>
             </div>
                     <%@include file="/jsp_reused/footer.jsp" %>
