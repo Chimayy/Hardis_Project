@@ -15,10 +15,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%--<jsp:useBean id="listeOffre" scope="request" class="java.util.List"></jsp:useBean>--%>
+                <%@include file="../jsp_reused/style.jsp" %>
         <title>Les Offres</title>
     </head>
     <body>
-        <h1>Afficher Les Offres</h1>
+        <div class="flex-wrapper">
+            <div class="container-fluid nopad">
+                <header>
+                    <%@include file="../jsp_reused/header.jsp" %>
+                </header>
+
+                <div class="container">
+                    <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
+                        <h1>Afficher Les Offres</h1>
+                    </div>
+        
         <p><% 
             String attribut = (String) request.getAttribute("message");
             out.println(attribut);
@@ -52,6 +63,11 @@
     <td width=25%><a href="AccessVisualisation?action=afficherOffre"> Retour Menu </a></td>
     <hr>
     </br>
-    <a href="/MenuVisualisation">Retour</a>
+    <a class="btn btn-outline-teal right" href="/MenuVisualisation">Retour</a>
+                </div>
+            </div>
+                <%@include file="../jsp_reused/footer.jsp" %>
+        </div>
+        <%@include file="../jsp_reused/javascript.jsp" %>
     </body>
 </html>

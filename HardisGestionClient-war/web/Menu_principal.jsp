@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4 col-xl-4 ">
-                        <a href="Interface_question.jsp" style ="color:black">
+                        <a href="ServletAdmin?action=CreationQuestionPublique" style ="color:black">
                             <div class="view overlay">
                                 <img src="Images/question.jpg"class="img-thumbnail " alt="" >
                                 <div class="mask flex-center rgba-white-strong"> 

@@ -80,11 +80,7 @@ public class Accueil extends HttpServlet {
             List<Service> listeServ = gestionAdmin.affichageServices();
             request.setAttribute("listeServ", listeServ);
             jspClient = "/Catalogue_service.jsp";
-		}       
-
-            
-            
-        
+		}           
         else if(act.equals("VoirLeForum")){
                     List<Historique_QuestionPublique> ListeQP = gestionVisiteur.ListeQuestionPubliqueRep();
                     List<Offre> ListeOffre = gestionAdmin.affichageOffres();

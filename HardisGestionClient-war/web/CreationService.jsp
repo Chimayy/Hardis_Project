@@ -33,12 +33,12 @@
                             <input type ="text"  name="cout" class='form-control'/>
                         </div>
                         <div class="form-group">
-                            <label for="Description">Description</label>
-                            <input type ="text"  name="description" class='form-control'/>
-                        </div>
-                        <div class="form-group">
                             <label for="NomService"> Nom du service </label>
                             <input type ="text"  name="nom" class='form-control'/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <input type ="text"  name="description" class='form-control'/>
                         </div>
                         <label for="Offre" > Offre  </label>
                         <select name="idOffre" class='form-control'>

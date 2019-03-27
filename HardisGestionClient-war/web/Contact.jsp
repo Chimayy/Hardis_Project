@@ -52,8 +52,7 @@
 
                         </fieldset>
                         <input class="btn btn-secondary" type="submit" value="Valider"/>
-                        <input class="btn btn-secondary" ype="reset" value="Remettre à zéro"/><br/>
-                        <input class=""
+                        <input class="btn btn-secondary" ype="reset" value="Remettre à zéro"/><br/>                       
                     </form>
                     <hr class="my-6">
                     <a class="btn btn-outline-teal right" href="Menu_principal.jsp" value="retour"> Retour </a> 

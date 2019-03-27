@@ -32,7 +32,7 @@
                     <form method ="get" action="ServletAdmin" class='form-inline'>
                         <label for='nom' style='padding-right:5px   '> Recherche </label>
                         <input type ="text" placeholder='Nom' name="nom" class='form-control'/>
-                        <input class='btn btn-indigo' type="submit" value="Valider"/>
+                        <input class='btn btn-secondary' type="submit" value="Valider"/>
                         <input type ="hidden" name="action" value="RechercherService">
                     </form>
                     <table class="table table-bordered">

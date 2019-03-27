@@ -58,8 +58,8 @@
                        
                         <div class='bouton1'>
                             </br>
-                            <input  class='btn btn-indigo' type="submit" value="Valider"/>
-                            <input  class='btn btn-indigo'type="reset" value="Remise à 0"/>       
+                            <input  class='btn btn-secondary' type="submit" value="Valider"/>
+                            <input  class='btn btn-secondary'type="reset" value="Effacer"/>       
                         </div>
                             </br>
                             <hr class="my-6">
