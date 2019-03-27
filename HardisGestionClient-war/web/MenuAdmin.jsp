@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%--
     Document   : MenuAdmin
     Created on : 14 mars 2019, 11:34:31
@@ -40,6 +41,15 @@
                 </div>
 </html>
 =======
+=======
+
+
+<%-- 
+    Document   : MenuAdmin
+    Created on : 14 mars 2019, 11:34:31
+    Author     : Utilisateur
+--%>
+>>>>>>> exiless8
 
 <%@page import="entite.Utilisateur_Hardis"%>
 <%@page import="java.util.List"%>
@@ -70,6 +80,10 @@
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=AfficherAgences">  Gestion des agences   </a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=AfficherServices"> Gestion des services </a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:18%" href="ServletAdmin?action=AfficherOffres"> Gestion des offres </a></div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> exiless8
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:15%" href="ServletAdmin?action=GestionQuestionPublique"> Attribuer les questions publiques</a></div>
                         <div class="col-3"><a class = "btn btn-indigo" style="padding:18%" href="ServletAdmin?action=MenuGestionnaire"> Menu gestionnaire</a></div>
 
@@ -83,5 +97,9 @@
         <%@include file="jsp_reused/javascript.jsp"%>
 
     </body>
+<<<<<<< HEAD
 
 >>>>>>> origin/LastCopyFromCheyrouMasterCopy2
+=======
+</html>
+>>>>>>> exiless8

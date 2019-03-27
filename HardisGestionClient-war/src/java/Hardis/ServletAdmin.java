@@ -996,6 +996,7 @@ public class ServletAdmin extends HttpServlet {
          }
          
          else if(act.equals("MenuGestionnaire")){
+             sess.setAttribute("User", user);
              jspClient = "/AcceuilGestionnaire.jsp";
          }
          

@@ -73,4 +73,6 @@ public interface DevisFacadeLocal {
 
     List<Devis> listDevisAccepte(Client Client);
 
+    void ModifDevisANegocier(long id, int motant, Date date);
+
 }
