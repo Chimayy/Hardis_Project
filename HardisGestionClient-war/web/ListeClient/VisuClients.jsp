@@ -41,17 +41,17 @@
                                 <%int y = 0;%>
                             </tr>
                         </thead>
-                        <% List<Historique_Consultant> lesCli = ListeClient;
-                                for (Historique_Consultant c : lesCli) {%>
+                        <% List<Client> lesCli = ListeClient;                        
+                                for (Client c : lesCli) {%>
                         <tr>
                             <%y = y + 1;%>
                             <td width=15%><%=y%></td>
 
-                            <td width=15%><%=c.getLeDevis().getLeClient().getId() %></td>
-                            <td width=15%><%=c.getLeDevis().getLeClient().getNom_Utilisateur() %></td>
-                            <td width=15%><%=c.getLeDevis().getLeClient().getPrenom_Utilisateur() %></td>                                       
+                            <td width=15%><%=c.getId() %></td>
+                            <td width=15%><%=c.getNom_Utilisateur() %></td>
+                            <td width=15%><%=c.getPrenom_Utilisateur() %></td>                                       
 
-                            <td width=15%><a style='color:orange' href="AcceuilGestionnaire?action=DetailClient&x=<%=c.getLeDevis().getLeClient().getId()%>">Voir plus</a></td>
+                            <td width=15%><a style='color:orange' href="AcceuilGestionnaire?action=DetailClient&x=<%=c.getId()%>">Voir plus</a></td>
                         </tr>
                         <%}%>     
                     </table>

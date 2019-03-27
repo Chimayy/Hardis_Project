@@ -61,12 +61,9 @@ public class ServletClient extends HttpServlet {
     private gestionVisiteurLocal gestionVisiteur;
 
     @EJB
-    private gestionHardisLocal gestionHardis;
-
-   
+    private gestionHardisLocal gestionHardis;   
 
     @EJB
-
     private gestionClientLocal gestionClient;
 
     /**
@@ -186,30 +183,20 @@ public class ServletClient extends HttpServlet {
                 request.setAttribute("listPM", list);
             }
 
-            else if(act.equals("propositionConsultant"))
-            {
-                jspClient="/MenuClient.jsp";
-                String[] checkbox = request.getParameterValues("consultantsSelectionne");
-                List<Utilisateur_Hardis> propositionClient = new ArrayList();
-                for(int i =0; i<checkbox.length;i++)
-                {
-                        String idConsultantSelectionne = checkbox[i];
-                        Long idConsultantLong = Long.valueOf(idConsultantSelectionne);
-                        Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantLong);
-                        propositionClient.add(consultantSelectionne);}}
+            
 
-            else if(act.equals("propositionconsultant"))
+            else if(act.equals("propositionConsultant"))
             {
                 jspClient="/MenuClient.jsp";
                 String[] checkbox = request.getParameterValues("checkbox");
                 List<Utilisateur_Hardis> propositionClient = new ArrayList();
-                String[] ArrayidConsultants = request.getParameterValues("consultant");
+                
                 for(int i =0; i<checkbox.length;i++)
                 {
                     String checkboxEnCours = checkbox[i];
                     if(checkboxEnCours != null)
                     {
-                        String idConsultantSelectionneString = ArrayidConsultants[i];
+                        String idConsultantSelectionneString = checkbox[i];
                         long idConsultantSelectionneLong = Long.valueOf(idConsultantSelectionneString);
                         Utilisateur_Hardis consultantSelectionne = gestionClient.rechercherUtilisateurHardisId(idConsultantSelectionneLong);
                         propositionClient.add(consultantSelectionne);
@@ -225,10 +212,10 @@ public class ServletClient extends HttpServlet {
                 {
                     Utilisateur_Hardis consultantEnCours = propositionClient.get(j);
 
-                    List<Periode_Disponible> periodeOccupe =consultantEnCours.getPeriode_Disponibles();
-                    for(int k=0;k<periodeOccupe.size();k++)
+                    List<Periode_Disponible> periodeDisp =consultantEnCours.getPeriode_Disponibles();
+                    for(int k=0;k<periodeDisp.size();k++)
                     {
-                        if(dateIntervention.after(periodeOccupe.get(k).getDate_Debut())&&dateIntervention.before(periodeOccupe.get(k).getDate_Fin()))
+                        if(dateIntervention.before(periodeDisp.get(k).getDate_Debut())||dateIntervention.after(periodeDisp.get(k).getDate_Fin()))
                         {
                             testPasOK = true;
                             String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur() +" " + consultantEnCours.getPrenom_Utilisateur();
@@ -237,24 +224,14 @@ public class ServletClient extends HttpServlet {
                            break;
                         }
 
-                    periodeOccupe =consultantEnCours.getPeriode_Disponibles();                    
-                    if(dateIntervention.after(periodeOccupe.get(j).getDate_Debut())&&dateIntervention.before(periodeOccupe.get(j).getDate_Fin()))
-                    {
-                        testPasOK = true;
-                        String nomConsultantOccupe = consultantEnCours.getNom_Utilisateur() +" " + consultantEnCours.getPrenom_Utilisateur();
-                       request.setAttribute("message", "Le consultant " + nomConsultantOccupe + " est occupé à cette période");
-                       jspClient="/MenuClient.jsp";
-                       break;
-
-                    }
-                 
+                                     
                 }
                 if(testPasOK == false)
                 {
                 gestionClient.propositionDateetConsultant(user, propositionClient, idDevisLong, dateIntervention);
                 }
                 
-            }
+                }}
             RequestDispatcher Rd;
             Rd = getServletContext().getRequestDispatcher(jspClient);
             Rd.forward(request, response);
@@ -274,7 +251,7 @@ public class ServletClient extends HttpServlet {
             out.println("</body>");
             out.println("</html>"); */
         }
-    }}
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

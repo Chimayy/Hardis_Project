@@ -17,7 +17,7 @@
     <body>
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
-                <header>
+                <header>                    
                     <%@include file="jsp_reused/header.jsp" %>
                 </header>
                 

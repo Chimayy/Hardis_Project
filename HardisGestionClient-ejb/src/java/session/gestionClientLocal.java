@@ -81,5 +81,7 @@ public interface gestionClientLocal {
 
     List<Service> listService();
 
+    void ModifDevisANegocier(long id, int montant, Date date);
+
 
 }

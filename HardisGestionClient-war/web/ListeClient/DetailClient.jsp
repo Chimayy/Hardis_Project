@@ -4,25 +4,31 @@
     Author     : Mathieu Harmand
 --%>
 
+<%@page import="entite.Utilisateur_Hardis"%>
+<%@page import="entite.Utilisateur"%>
 <%@page import="entite.statut_Devis"%>
 <%@page import="entite.Offre"%>
 <%@page import="java.util.List"%>
 <%@page import="entite.Devis"%>
 <%@page import="entite.Client"%>
 <%@page import="entite.Prestation"%>
+<%@page import="entite.Historique_Consultant"%>
+ 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <jsp:useBean id="Client" scope="request" class="entite.Client"></jsp:useBean>
+        <jsp:useBean id="User" scope="session" class="Utilisateur_Hardis"></jsp:useBean>
         <%@include file="../jsp_reused/style.jsp" %>         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <title>Detail du Client</title>
     </head>
     <body>
-        <% Client c = Client;%>
+        <% Client c = Client;
+        Utilisateur_Hardis u = User;%>
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
@@ -44,10 +50,16 @@
                             </tr>
                         </thead>
                         <tr>
+                            
                             <td width=15%><%=c.getNom_Utilisateur()%></td>
                             <td width=15%><%=c.getPrenom_Utilisateur()%></td> 
-                            <% List<Devis> ListeDevis = c.getLesDevis();
-                                for (Devis d : ListeDevis) {%>
+                            <% List<Devis> ListeDevis = c.getLesDevis(); 
+                                for (Devis d : ListeDevis) {
+                                    
+                                    List<Historique_Consultant> L1 = d.getHistorique_Consultants();
+                                 for(Historique_Consultant LHS : L1){
+                                     if(LHS.getLeConsultant().getId()== u.getId()){
+                                %>
                         </tr>
                     </table>
 
@@ -73,11 +85,11 @@
                             <td width=15%><a style='color:green' href="AcceuilGestionnaire?action=DetailDevis&x=<%=d.getId()%>">Validation devis</a></td><%}%>
                             <%if (d.getStatut() == statut_Devis.incomplet) {%>
                             <td width=15%><a style='color:red' href="AcceuilGestionnaire?action=DetailDevis&x=<%=d.getId()%>">Reviser le devis</a></td><%}%>
-                            <%if (d.getStatut() == statut_Devis.refuse || d.getStatut() == statut_Devis.envoye) {%>
+                            <%if (d.getStatut() == statut_Devis.refuse || d.getStatut() == statut_Devis.envoye||d.getStatut() == statut_Devis.a_negocier) {%>
                             <td width=15%>Aucune action disponible pour ce devis</td><%}%>
                             <%if (d.getStatut() == statut_Devis.valide) {%>
                             <td width=15%>Devis validé! Bientôt la promotion</td><%}%>
-                        </tr><%}%>     
+                        </tr><%}%> <%}%> <%}%>     
                     </table>
                      <hr class="my-6">
                     <a class="btn btn-outline-teal right" href="AcceuilGestionnaire?action=VisuClients" value="retour"> Retour </a>

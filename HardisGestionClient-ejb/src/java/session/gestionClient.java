@@ -234,6 +234,11 @@ public class gestionClient implements gestionClientLocal {
         return serviceFacade.listeService();
     }
 
+    @Override
+    public void ModifDevisANegocier(long id, int montant, Date date) {
+        devisFacade.ModifDevisANegocier(id, montant, date);
+    }
+
     
     
 

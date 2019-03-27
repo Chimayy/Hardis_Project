@@ -138,6 +138,7 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         em.merge(d);
     
     }
+    
    
     @Override
     public void modifierDevis(double montant, Devis d, String zoneLibre, String motifRefus) {
@@ -161,13 +162,13 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
 
     @Override
     public List<Devis> listDevisAtraiter(long id) {
-        String txt = "SELECT d FROM Historique_Consultant h JOIN h.leDevis d JOIN d.leClient c WHERE d.statut =:statut AND c.id=:id";
+        statut_Devis statut = statut_Devis.envoye;
+        String txt = "SELECT DISTINCT d FROM Historique_Consultant h JOIN h.leDevis d JOIN d.leClient c WHERE d.statut =:statut AND c.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("id", id);
         
-        
-        // A CHANGER PEUT ETRE
-        req = req.setParameter("statut", statut_Devis.envoye);
+        req = req.setParameter("id", id);
+        req = req.setParameter("statut", statut);
         List<Devis> liste = req.getResultList();
         return liste;
     }
@@ -237,6 +238,15 @@ public class DevisFacade extends AbstractFacade<Devis> implements DevisFacadeLoc
         req=req.setParameter("client", Client);
         listDevisAccepte = req.getResultList();
         return listDevisAccepte;
+    }
+
+    @Override
+    public void ModifDevisANegocier(long id, int motant, Date date) {
+        Devis d = rechercheDevis(id);
+        d.setMontant_Devis(motant);
+        d.setDate_Intervention(date);
+        d.setStatut(statut_Devis.a_negocier);
+        em.merge(d);
     }
     
 
