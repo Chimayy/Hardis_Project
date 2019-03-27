@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 175cd39839dcb7efed3ba667e78c9528dfdafc39
 
-
->>>>>>> exiless6
 <%-- 
     Document   : listDevisClient
     Created on : 18 mars 2019, 10:10:14

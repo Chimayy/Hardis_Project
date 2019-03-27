@@ -38,7 +38,7 @@
                          </div>
                          <div class="form-group">
                             
-                           <label for="idService"> idService</label>
+                           <label for="idService"> Service voulu :</label>
                             <select name="idService">
                                 <% List<Service> lesServices = listService;
                                     for (Service s : lesServices){%>

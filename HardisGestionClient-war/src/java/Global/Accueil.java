@@ -49,7 +49,7 @@ public class Accueil extends HttpServlet {
     private gestionVisiteurLocal gestionVisiteur;
 
 
-   
+
 
     String jspClient = "/Menu_principal.jsp";
     String act = null;
@@ -70,21 +70,25 @@ public class Accueil extends HttpServlet {
         String message = "";
         String act = request.getParameter("action");
         String jspClient="";
+        Utilisateur utilisateur = null;
+        List<Utilisateur> listUser = gestionVisiteur.listUtilisateur();
 
         if ((act == null) || (act.equals("vide"))) {
             jspClient = "/Menu_principal.jsp";
             request.setAttribute("message", "pas d'information");
+            sess.setAttribute("UserARecup", utilisateur);
+            sess.setAttribute("listUser", listUser);
 
         } 
         else if(act.equals("Catalogue")){
             List<Service> listeServ = gestionAdmin.affichageServices();
             request.setAttribute("listeServ", listeServ);
             jspClient = "/Catalogue_service.jsp";
-		}       
+                }       
 
-            
-            
-        
+
+
+
         else if(act.equals("VoirLeForum")){
                     List<Historique_QuestionPublique> ListeQP = gestionVisiteur.ListeQuestionPubliqueRep();
                     List<Offre> ListeOffre = gestionAdmin.affichageOffres();
@@ -92,7 +96,7 @@ public class Accueil extends HttpServlet {
                     request.setAttribute("ListeQPR", ListeQP);
                     jspClient="/ForumQuestion.jsp";
                 }
-             
+
              else if (act.equals("ForumChoixOffre")){
                     String o =request.getParameter("Offre");
                     Long Offre = Long.valueOf(o);
@@ -102,59 +106,69 @@ public class Accueil extends HttpServlet {
                     request.setAttribute("ListeDesOffre",ListeOffre );
                     request.setAttribute("ListeQPR", ListeQP);
                     jspClient="/ForumQuestion.jsp";
-                  
+
              }
-             
+
              else if (act.equals("ForumChoixPseudo")){
                     String p =request.getParameter("pseudo");                    
-                    
+
                     List<Historique_QuestionPublique> ListeQP = gestionAdmin.ListeQPPseudo(p);
                     List<Offre> ListeOffre = gestionAdmin.affichageOffres();
                     request.setAttribute("ListeDesOffre",ListeOffre );
                     request.setAttribute("ListeQPR", ListeQP);
                     jspClient="/ForumQuestion.jsp";
-                  
-             }
-        
 
-        else if ((act.equals("authentif"))) {
+             }
+
+
+        else if ((act.equals("authentif"))) 
+        {
             String login = request.getParameter("mail");
             String pass = request.getParameter("mdp");
-            Utilisateur utilisateur = gestionVisiteur.authentification(login, pass);
-            
+            if(!login.isEmpty()&&!pass.isEmpty())
+            {
+                utilisateur = gestionVisiteur.authentification(login, pass);
+                if(!utilisateur.equals(null)) 
+                {
+                    if (utilisateur instanceof entite.Client) 
+                    {
+                        Client cli = (Client)utilisateur;
+                        sess.setAttribute("UserARecup", cli);
+                        jspClient = "/Temporaire.jsp";
 
-            //fail de message d'erreur en cas de champs vides ==> à coriger
-            if (utilisateur.toString().equalsIgnoreCase("")) {
-                request.setAttribute("problème de connexion, merci de réessayer", message);
-            }
-
-            // on verifie le type de l'utilisateur pour le rediriger la page qui lui correspond
-            if (utilisateur instanceof entite.Client) {
-                Client cli = (Client)utilisateur;
-                sess.setAttribute("UserARecup", cli);
-                jspClient = "/Temporaire.jsp";
-
-            } else if (utilisateur instanceof Utilisateur_Hardis) {
-                Utilisateur_Hardis utilisateur_H = (Utilisateur_Hardis) utilisateur;
-                if (utilisateur_H.getProfil_Technique().toString().equals("administrateur")) {
-                    sess.setAttribute("UserARecup",utilisateur);
-                    jspClient = "/Temporaire.jsp";
-                } else if (utilisateur_H.getProfil_Technique().toString().equals("gestionnaire")) {
-                    sess.setAttribute("UserARecup",utilisateur_H);
-                    jspClient = "/Temporaire.jsp";
-                } else if (utilisateur_H.getProfil_Technique().toString().equals("visualisation")) {
-                    sess.setAttribute("UserARecup",utilisateur_H);
-                    jspClient = "/Temporaire.jsp";
+                    } 
+                    else if (utilisateur instanceof Utilisateur_Hardis) 
+                    {
+                        Utilisateur_Hardis utilisateur_H = (Utilisateur_Hardis) utilisateur;
+                        if (utilisateur_H.getProfil_Technique().toString().equals("administrateur"))
+                        {
+                            sess.setAttribute("UserARecup",utilisateur);
+                            jspClient = "/Temporaire.jsp";
+                        } 
+                        else if (utilisateur_H.getProfil_Technique().toString().equals("gestionnaire")) 
+                        {
+                            sess.setAttribute("UserARecup",utilisateur_H);
+                            jspClient = "/Temporaire.jsp";
+                        } 
+                        else if (utilisateur_H.getProfil_Technique().toString().equals("visualisation"))
+                        {
+                            sess.setAttribute("UserARecup",utilisateur_H);
+                            jspClient = "/Temporaire.jsp";
+                        }
+                    }
                     
                 }
-               
-                
-                request.setAttribute("connexion OK !", message);
-            } else {
-                jspClient = "Connexion.jsp";
-                request.setAttribute("oupsi", message);
+         else
+                {
+                    request.setAttribute("message","problème de connexion, merci de réessayer");
+                    jspClient="/Menu_principal.jsp";
+                }
             }
-            
+            else
+            {
+               request.setAttribute("message", "login ou mot de passe manquant, merci de réessayer");
+               jspClient="/Menu_principal.jsp";
+            }       
         }
         else if(act.equals("demandeClient"))
         {
@@ -162,10 +176,10 @@ public class Accueil extends HttpServlet {
             request.setAttribute("listeEntreprise", list);
             jspClient="/CreationClient.jsp";
         }
-        
+
         else if(act.equals("CreerUtilisateur"))
         {
-          
+
             String nom= request.getParameter("nom");
         String prenom = request.getParameter("prenom");
         String mail = request.getParameter("mail");
@@ -176,10 +190,10 @@ public class Accueil extends HttpServlet {
         {
             message = "Erreur, vous n'avez pas rempli tous les champs pour créer un utilisateur";
         }
-        
+
         else if (user != null){
             message = "Erreur, un compte utilisateur existe déjà pour ce mail";
-            
+
         }
         else {
             Long idEntrepriseLong = Long.valueOf(idEntreprise);

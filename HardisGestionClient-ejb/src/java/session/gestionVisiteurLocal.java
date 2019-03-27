@@ -39,6 +39,8 @@ public interface gestionVisiteurLocal {
 
     List ListeQPOffre(Offre Offre);
 
+    List<Utilisateur> listUtilisateur();
+
 
 
     

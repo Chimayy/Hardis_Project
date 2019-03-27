@@ -31,6 +31,9 @@ import facade.ServiceFacadeLocal;
 public class gestionVisiteur implements gestionVisiteurLocal {
 
     @EJB
+    private UtilisateurFacadeLocal utilisateurFacade1;
+
+    @EJB
 
     private EntrepriseFacadeLocal entrepriseFacade;
 
@@ -96,6 +99,11 @@ public class gestionVisiteur implements gestionVisiteurLocal {
     @Override
     public List ListeQPOffre(Offre Offre) {
         return historique_QuestionPubliqueFacade.ListeQPOfrre(Offre);
+    }
+
+    @Override
+    public List<Utilisateur> listUtilisateur() {
+        return utilisateurFacade.listeUtilisateur();
     }
 
 

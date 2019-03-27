@@ -1,10 +1,18 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="entite.Utilisateur"%>
+<%@page import="session.gestionVisiteur"%>
+<%@page import="session.gestionVisiteurLocal"%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+        <jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
+                     <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
         <title>JSP Page</title>
     </head>
     <%@include file="jsp_reused/style.jsp" %>
@@ -13,7 +21,18 @@
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
+                    
+                    <% 
+                        List<Utilisateur> listeUser = listUser;
+                        entite.Utilisateur user = UserARecup;
+                    
+    if (!listeUser.contains(user)){%>
                     <%@include file="jsp_reused/header.jsp" %>
+                    <%}
+if(listUser.contains(user)){%>
+<%@include file="jsp_reused/header_deconnexion.jsp" %><%}%>
+            
+                    
                 </header>
 
                 <div class="container "> 
@@ -67,13 +86,22 @@
             </div>
         </div> 
     </div>
+                      <hr class="my-6">
+                    <a class="btn btn-outline-teal right" href="/Menu_Principal.jsp" value="retour"> Retour </a>
+                    <div class="message">
+                        </div>
 </div>
 </div>
 
 <%@include file="jsp_reused/footer.jsp"%>
 </div>
 
-<!--pages de script-->
+<!--pages de script String attribut = (String) request.getAttribute("message");
+                    if(!attribut.equals(""))    
+                    {
+                        out.println(attribut);
+                    }
+                        %>-->
 <%@include file="jsp_reused/javascript.jsp"%>
 </body>
 </html>
