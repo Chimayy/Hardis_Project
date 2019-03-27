@@ -45,8 +45,9 @@
                         <% List<Profil_Metier> lesProfils = listeProfil;%>
                                 <%for (Historique_QuestionPublique historique : lesQuestions) {
                                  %>
-                        <tr><form method="get" action="ServletAdmin">
-                            <input type="hidden" name="idQuestion" value="<%=historique.getId()%>"</td>
+                        <tr>
+                        <form method="get" action="ServletAdmin">
+                            <input type="hidden" name="idQuestion" value="<%=historique.getId()%>"
                             <td Width=15%><%=historique.getlOffre().getNom_Offre()%></td>
                             <td Width=15%><%=historique.getQuestion()%></td>
                             <td Width=15%> </td>
@@ -58,15 +59,15 @@
                                  <option value="<%=user.getId()%>"><%=user.getPrenom_Utilisateur()%> <%=user.getNom_Utilisateur()%></option>     
                                 <%}}}%>
                                     </select></td> 
-                            <td Width=15%><a style="color:grey"href="ServletAdmin?action=SupprimerQuestionPublique&idQuestion=<%=historique.getId()%>">Supprimer</a> 
+                                    <td Width=15%><a style="color:grey" href="ServletAdmin?action=SupprimerQuestionPublique&idQuestion=<%=historique.getId()%>">Supprimer</a> </td> 
                             <input type ="hidden" name="action" value="AttribuerQuestionPublique">
-                            <td Width=15%><input class='bouton' type="submit" value="Attribuer"/>    
+                            <td Width=15%><input class='bouton' type="submit" value="Attribuer"/>  </td>  
                               </form>
                            <%--<td Width=15%><a style="color:grey"href="ServletAdmin?action=AttribuerQuestionPublique&idQuestion=<%=historique.getId()%>">Attribuer</a>--%>                                     
                                 <%}%> 
                     </table>
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" value="retour"> Retour </a> 
+                    <a class="btn btn-outline-teal right" href="MenuAdmin.jsp" > Retour </a> 
 
                     <div class="message"><% String attribut = (String) request.getAttribute("message");
                     if(attribut!=null){%>

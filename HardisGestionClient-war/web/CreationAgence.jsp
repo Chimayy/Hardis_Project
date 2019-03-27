@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+
+
+<%-- 
+    Document   : CreationAgence
+    Created on : 19 mars 2019, 10:21:27
+    Author     : Utilisateur
+--%>
+
+>>>>>>> origin/LastCopyFromCheyrouMasterCopy2
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,9 +32,17 @@
                     <hr class="my-6">
                     <h1>Créer une agence</h1>
                     <hr class="my-6">
+<<<<<<< HEAD
                     <form method ="get" action="ServletAdmin">                       
                     <form method ="get" action="ServletAdmin">
                       
+=======
+
+                       
+
+                    <form method ="post" action="ServletAdmin">
+                       
+>>>>>>> origin/LastCopyFromCheyrouMasterCopy2
                         <div class="form-group">
                             <label for="Pays"> Pays </label>
                             <input type ="text"  name="pays" class='form-control'/>
@@ -33,12 +52,18 @@
                             <input type ="text"  name="adresse" class='form-control'/>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/LastCopyFromCheyrouMasterCopy2
                             <label for="cp"> Code Postal </label>
                             <input type ="text"  name="cp" class='form-control'/>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/LastCopyFromCheyrouMasterCopy2
                             <label for="Ville"> Ville </label>
                             <input type ="text"  name="ville" class='form-control'/>
                         </div>
@@ -61,3 +86,14 @@
     </body>
 
 </html>
+<<<<<<< HEAD
+=======
+
+<%-- 
+    Document   : CreationAgence
+    Created on : 19 mars 2019, 10:21:27
+    Author     : Utilisateur
+--%>
+
+    
+>>>>>>> origin/LastCopyFromCheyrouMasterCopy2

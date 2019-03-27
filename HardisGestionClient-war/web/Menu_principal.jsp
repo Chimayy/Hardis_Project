@@ -60,7 +60,11 @@ if(listUser.contains(user)){%>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4 col-xl-4 ">
+<<<<<<< HEAD
                         <a href="Accueil?action=CreationQuestionPublique" style ="color:black">
+=======
+                        <a href="ServletAdmin?action=CreationQuestionPublique" style ="color:black">
+>>>>>>> origin/LastCopyFromCheyrouMasterCopy2
                             <div class="view overlay">
                                 <img src="Images/question.jpg"class="img-thumbnail " alt="" >
                                 <div class="mask flex-center rgba-white-strong"> 

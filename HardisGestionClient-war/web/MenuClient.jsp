@@ -42,9 +42,15 @@ if(listUser.contains(user)){%>
 
                         <hr class="my-6">
                         <div class="row">
+<<<<<<< HEAD
                             <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="DemandeDevis.jsp">Demander un devis</a><br></div>
                             <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=visuDevis">Visualiser un formulaire</a><br></div>
                             <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=consultantsEtDate">choisir des consultants et une date d'intervention</a></div>
+=======
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=listDevis">Demander un devis</a><br></div>
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=visuDevis">Visualiser un formulaire</a><br></div>
+                            <div class="col-4"><a class="btn btn-secondary" style="padding:15%" href="ServletClient?action=consultantsEtDate">choisir des consultants et une date d'intervention</a></div>     
+>>>>>>> origin/LastCopyFromCheyrouMasterCopy2
                         </div>
                 </div>
             </div>    

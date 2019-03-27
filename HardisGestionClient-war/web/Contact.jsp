@@ -52,7 +52,11 @@
 
                         </fieldset>
                         <input class="btn btn-secondary" type="submit" value="Valider"/>
+<<<<<<< HEAD
                         <input class="btn btn-secondary" ype="reset" value="Remettre à zéro"/><br/>
+=======
+                        <input class="btn btn-secondary" ype="reset" value="Remettre à zéro"/><br/>                       
+>>>>>>> origin/LastCopyFromCheyrouMasterCopy2
                     </form>
                     <hr class="my-6">
                     <a class="btn btn-outline-teal right" href="Menu_principal.jsp" value="retour"> Retour </a> 

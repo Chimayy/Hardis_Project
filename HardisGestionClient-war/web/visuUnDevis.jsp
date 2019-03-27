@@ -41,7 +41,6 @@
                     <input type="text" name="refus">
                 
     <input type="hidden" name="devis" value="<%=devis.getId()%>">
-            </fieldset>
            <button type="submit" name="action" value="Valider"> Valider</button>
            <button type="submit" name="action" value="Modifier"> Modifier</button>
            <button type="submit" name="action" value="Refuser"> Refuser le devis</button>

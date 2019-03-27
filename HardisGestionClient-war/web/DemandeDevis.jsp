@@ -1,4 +1,3 @@
-
 <%@page import="java.util.List"%>
 <%@page import="entite.Service"%>
 <%-- 
@@ -38,8 +37,13 @@
                          </div>
                          <div class="form-group">
                             
+<<<<<<< HEAD
                            <label for="idService"> Service voulu :</label>
                             <select name="idService">
+=======
+                           <label for="idService"> idService</label>
+                            <select name="idService" class='form-control'>
+>>>>>>> origin/LastCopyFromCheyrouMasterCopy2
                                 <% List<Service> lesServices = listService;
                                     for (Service s : lesServices){%>
                                 <option value="<%=s.getId()%>"><%=s.getNom_Service()%></option>
@@ -49,10 +53,10 @@
                          <input type="hidden" name="action" value="demandeDevis">
                      </fieldset>
                      <input type="submit" class="btn btn-secondary" value="Valider"/>
-                     <input type="reset"class="btn btn-secondary" value="Remettre à zéro"/><br/>
+                     <input type="reset" class="btn btn-secondary" value="Remettre à zéro"/><br/>
                  </form>
                 <hr class="my-6">
-                <a class="btn btn-outline-teal right" href="MenuClient.jsp" value="retour"> Retour </a> 
+                <a class="btn btn-outline-teal right" href="MenuClient.jsp" > Retour </a> 
             </div>
             </div>
                 <%@include file="jsp_reused/footer.jsp"%>
