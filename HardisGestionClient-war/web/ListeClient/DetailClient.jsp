@@ -59,7 +59,11 @@
                                     List<Historique_Consultant> L1 = d.getHistorique_Consultants();
                                  for(Historique_Consultant LHS : L1){
                                      if(LHS.getLeConsultant().getId()== u.getId()){
-                                %>
+                                         if(d.getStatut()!=statut_Devis.a_affecter){
+                                             if(LHS.getLeDevis().getId()==d.getId()){
+                                                 String t =LHS.getFonctionConsultant();
+                                                 if(t.equals("gestionnaire Devis")){
+                                %>     
                         </tr>
                     </table>
 
@@ -89,7 +93,7 @@
                             <td width=15%>Aucune action disponible pour ce devis</td><%}%>
                             <%if (d.getStatut() == statut_Devis.valide) {%>
                             <td width=15%>Devis validé! Bientôt la promotion</td><%}%>
-                        </tr><%}%> <%}%> <%}%>     
+                        </tr><%}%> <%}%> <%}}}}%>     
                     </table>
                      <hr class="my-6">
                     <a class="btn btn-outline-teal right" href="AcceuilGestionnaire?action=VisuClients" value="retour"> Retour </a>

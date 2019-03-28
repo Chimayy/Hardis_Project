@@ -60,7 +60,20 @@ if(user_H.getProfil_Technique().equals(profil_Technique.gestionnaire))
 {
         out.println("Merci de cliquer sur <a href='HardisGestionClient-war/MenuVisualisationjsp'>ce lien</a> si cette page ne se charge pas :");
 }}%>
-        
+        <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-xl-4" > 
+                            
+                                <div class="view overlay">
+                                    <img src="Images/load.gif" class="img-thumbnail " alt="">    
+                                    <div class="mask flex-center rgba-white-strong"> 
+                                        
+                                    </div>
+                            
+                        </div>
+                    </div>
+                        </div>
+                    </div>
         <!--<input type="hidden" name="user" value="">-->
         <input type="hidden" name="action" value="">
     </form>

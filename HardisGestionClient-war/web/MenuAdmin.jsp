@@ -1,6 +1,7 @@
 
 
 
+<%@page import="entite.Utilisateur"%>
 <%-- 
     Document   : MenuAdmin
     Created on : 14 mars 2019, 11:34:31
@@ -16,13 +17,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="jsp_reused/style.jsp" %>
+        <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
+<jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
         <title>Menu Administrateur</title>
     </head>
     <body>
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
+                    <% 
+                        List<Utilisateur> listeUser = listUser;
+                        entite.Utilisateur user = UserARecup;
+                    
+                    if (!listeUser.contains(user)){%>
                     <%@include file="jsp_reused/header.jsp" %>
+                    <%}
+                if(listUser.contains(user)){%>
+                <%@include file="jsp_reused/header_deconnexion.jsp" %><%}%>
                 </header>
 
                 <div class="container">
@@ -44,7 +55,7 @@
                     </div>
                      
                     <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="Accueil" value="retour"> Retour </a>
+                    <a class="btn btn-outline-teal right" href="Accueil" value="retour"> Retour Menu </a>
                 </div>
             </div>
             <%@include file="jsp_reused/footer.jsp"%>

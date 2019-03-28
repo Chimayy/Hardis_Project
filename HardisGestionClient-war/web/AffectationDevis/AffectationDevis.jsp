@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="entite.Profil_Metier"%>
 <%@page import="entite.Utilisateur"%>
 
@@ -44,6 +46,7 @@
                         <% List<Devis> d = ListeDevisNonAttribue; %>  
                         <%Utilisateur gest = User;
                     List<Profil_Metier> ListePM = profil;%>
+                    <% DateFormat f = new SimpleDateFormat("dd/MM/yyyy");%>
                         
                         <table class="table table-bordered">
                             <thead>
@@ -66,7 +69,7 @@
 
                                 <td width=15%><%=devis.getId()%></td>                    
                                 <td width=15%><%=devis.getLeClient().getNom_Utilisateur()%></td>                    
-                                <td width=15%><input type="text" readonly name="NomCli" readonly value ="<%=devis.getDate_Devis()%>" required minlength="0" maxlength="100" size="35"></td>    
+                                <td width=15%><input type="text" readonly name="NomCli" readonly value ="<%=f.format(devis.getDate_Devis())%>" required minlength="0" maxlength="100" size="35"></td>    
                                 <td width=15%><%=devis.getlOffre().getNom_Offre()%></td> 
                                 <%if (pm.getNiveau_Habilitation() == 4) {%>
                                 <td width=15%><input type="text" readonly name="NomAaffecter" value ="<%=gest.getNom_Utilisateur()%>" required minlength="0" maxlength="100" size="10"></td>   <%}%>    

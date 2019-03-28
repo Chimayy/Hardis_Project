@@ -7,6 +7,7 @@
 package Hardis;
 
 import entite.Agence;
+import entite.Client;
 import entite.Entreprise;
 import entite.Historique_QuestionPublique;
 import entite.Offre;
@@ -30,6 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import session.gestionAdminLocal;
+import session.gestionVisiteurLocal;
 
 /**
  *
@@ -37,6 +39,9 @@ import session.gestionAdminLocal;
  */
 @WebServlet(name = "ServletAdmin", urlPatterns = {"/ServletAdmin"})
 public class ServletAdmin extends HttpServlet {
+
+    @EJB
+    private gestionVisiteurLocal gestionVisiteur;
 
     @EJB
     private gestionAdminLocal gestionAdmin;
@@ -407,10 +412,13 @@ public class ServletAdmin extends HttpServlet {
         String jspClient = null;
                
         String act = request.getParameter("action");
-      
+            Utilisateur_Hardis user = (Utilisateur_Hardis)sess.getAttribute("UserARecup");
+             List<Utilisateur> listdeco = gestionVisiteur.listUtilisateur();  
+             sess.setAttribute("listUser", listdeco);
+             sess.setAttribute("UserARecup", user);
         
         // récupération de l'utilisateur qui s'est loggué
-        Utilisateur_Hardis user =(Utilisateur_Hardis)sess.getAttribute("UserARecup");
+        
          
         if(act==null||act==""){
              jspClient = "/MenuAdmin.jsp";

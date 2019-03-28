@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listDevis" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
-<jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
+            <jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
         <%@include file="../jsp_reused/style.jsp" %>
             <title>JSP Page</title>
         </head>

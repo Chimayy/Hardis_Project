@@ -89,7 +89,7 @@ public class ServletClient extends HttpServlet {
             Client user = (Client)sess.getAttribute("UserARecup");
              List<Utilisateur> listdeco = gestionVisiteur.listUtilisateur();  
              sess.setAttribute("listUser", listdeco);
-            if((act==null)||(act.equals("vide")))
+            if((act==null)||(act.equals("")))
             {                               
                 sess.setAttribute("user", user);
                 jspClient="/MenuClient.jsp";

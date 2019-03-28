@@ -33,6 +33,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import session.gestionClientLocal;
 import session.gestionHardisLocal;
+import session.gestionVisiteurLocal;
 
 /**
  *
@@ -40,6 +41,9 @@ import session.gestionHardisLocal;
  */
 @WebServlet(name = "AcceuilGestionnaire", urlPatterns = {"/AcceuilGestionnaire"})
 public class AcceuilGestionnaire extends HttpServlet {
+
+    @EJB
+    private gestionVisiteurLocal gestionVisiteur;
 
     @EJB
     private gestionHardisLocal gestionHardis;
@@ -67,6 +71,9 @@ public class AcceuilGestionnaire extends HttpServlet {
 
         // récupération de l'utilisateur qui s'est loggué
         Utilisateur_Hardis user = (Utilisateur_Hardis) sess.getAttribute("UserARecup");
+        List<Utilisateur> listdeco = gestionVisiteur.listUtilisateur();  
+             sess.setAttribute("listUser", listdeco);
+             sess.setAttribute("UserARecup", user);
 
         if ((act == null) || (act.equals(""))) {
             sess.setAttribute("User", user);

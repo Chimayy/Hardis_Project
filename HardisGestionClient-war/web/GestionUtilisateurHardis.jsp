@@ -82,7 +82,7 @@
                             <td Width=15%><%=user.getNom_Utilisateur()%></td>
                             <td Width=15%><%=user.getPrenom_Utilisateur()%></td>
                             <td Width=15%><%=user.getMail_Connexion()%></td>
-                            <td Width=15%><%=user.getMot_De_Passe()%></td>
+                            <td Width=15%><input  type ="password" readonly name="mdp" value="<%=user.getMot_De_Passe()%>"style="border: hidden; border: 0"></td>
                             <td Width=15%><%=user.getPlafond_Delegation()%></td>
                             <td Width=15%><%=user.getProfil_Technique()%></td>
                             <td Width=15%><%=user.getlAgence().getVille_Agence()%></td>

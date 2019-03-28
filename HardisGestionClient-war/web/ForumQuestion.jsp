@@ -28,7 +28,7 @@
                 <div class="container">
                     <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
                         
-                        <h1>Forum des question publique</h1>
+                        <h1>Forum des questions publiques</h1>
                     </div>
                      <form method="get" action="Accueil"class="form-inline">
                     <select class="form form-control" style="width:400px" name="Offre" class='custom-dropdown__select custom-dropdown__select--white'>

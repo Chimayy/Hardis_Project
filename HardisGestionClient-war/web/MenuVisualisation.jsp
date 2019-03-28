@@ -3,11 +3,15 @@
     Created on : 14 mars 2019, 17:38:10
     Author     : 3096764
 --%>
+<%@page import="java.util.List"%>
+<%@page import="entite.Utilisateur"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
+        <jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
         
         <%@include file="jsp_reused/style.jsp" %>
         <title>Menu Administrateur</title>
@@ -16,7 +20,15 @@
         <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
-                     <%@include file="jsp_reused/header.jsp" %>
+                    <% 
+                        List<Utilisateur> listeUser = listUser;
+                        entite.Utilisateur user = UserARecup;
+                    
+                    if (!listeUser.contains(user)){%>
+                    <%@include file="jsp_reused/header.jsp" %>
+                    <%}
+                if(listUser.contains(user)){%>
+                <%@include file="jsp_reused/header_deconnexion.jsp" %><%}%>
                 </header>
         
                 <div class="container">

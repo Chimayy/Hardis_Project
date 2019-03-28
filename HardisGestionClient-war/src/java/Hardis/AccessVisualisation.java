@@ -30,6 +30,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import session.gestionVisiteurLocal;
+
 import session.gestionVisualisationLocal;
 
 /**
@@ -40,13 +43,18 @@ import session.gestionVisualisationLocal;
 public class AccessVisualisation extends HttpServlet {
 
     @EJB
+    private gestionVisiteurLocal gestionVisiteur;
+
+    @EJB
     private gestionVisualisationLocal gestionVisualisation;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String jspClient = null;
         String act = request.getParameter("action");
-
+        HttpSession sess= request.getSession(true);
+         
+        String message="";
         /*
         String nom = request.getParameter("nom_Utilisateur");
         Client client = gestionVisualisation.rechercheNomClient(nom);
@@ -59,13 +67,18 @@ public class AccessVisualisation extends HttpServlet {
         request.setAttribute("utilisateur", utilisateur);
         request.getRequestDispatcher("RechercheUtilisateur.jsp").forward(request, response);
          */
+ 
+            Client user = (Client)sess.getAttribute("UserARecup");
+             List<Utilisateur> listdeco = gestionVisiteur.listUtilisateur();  
+             sess.setAttribute("listUser", listdeco);
+             sess.setAttribute("UserARecup", user);
         if ((act == null) || (act.equals("vide"))) {
             jspClient = "/MenuVisualisation.jsp";
             request.setAttribute("message", "pas d'information");
             
         } else if (act.equals("AfficherClient")) {
             jspClient = "/Visualisation/AfficherClient.jsp";
-            List<Client> list = gestionVisualisation.afficherClient2();
+            List<Client> list = (List<Client>)gestionVisualisation.afficherClient2();
             request.setAttribute("listeClient", list);
             request.setAttribute("message", "Liste des clients existants");
         } 

@@ -1,5 +1,6 @@
 
 
+<%@page import="java.util.List"%>
 <%-- 
     Document   : AcceuilGestionnaire
     Created on : 14 mars 2019, 10:55:51
@@ -17,6 +18,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="User" scope="session" class="entite.Utilisateur_Hardis"></jsp:useBean>
+        <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
+        <jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
         <%@include file="jsp_reused/style.jsp" %>
         <title>Acceuil Gestionnaire</title>
     </head>
@@ -25,7 +28,15 @@
                 <div class="flex-wrapper">
             <div class="container-fluid nopad">
                 <header>
+                    <% 
+                        List<Utilisateur> listeUser = listUser;
+                        entite.Utilisateur user = UserARecup;
+                    
+                    if (!listeUser.contains(user)){%>
                     <%@include file="jsp_reused/header.jsp" %>
+                    <%}
+                if(listUser.contains(user)){%>
+                <%@include file="jsp_reused/header_deconnexion.jsp" %><%}%>
                 </header>
 
                 <div class="container">
@@ -37,7 +48,7 @@
                     <div class="row">
 
 
-                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%;min-height: 110px; min-width: 450px;" href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions</a></div>
+                        <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%;min-height: 110px; min-width: 450px;" href="AcceuilGestionnaire?action=ReponseQuestions">Répondre aux questions sur les devis</a></div>
                         <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%;min-height: 110px; min-width: 450px;" href="AcceuilGestionnaire?action=AffectationDevis">Affectation des devis</a></div>  
                         <div class="col-3 col-sm-6"><a class="btn btn-blue" style="padding:15%;min-height: 110px; min-width: 450px;" href="AcceuilGestionnaire?action=VisuClients">Gestion des devis clients</a></div>
 
@@ -49,6 +60,7 @@
 
                     </div>
                       </div>
+                <hr class="my-6">
                 <% Utilisateur_Hardis guest =User;
                if(guest.getProfil_Technique().equals(profil_Technique.administrateur)){%>
                    <form method="get" action="AcceuilGestionnaire">
@@ -56,8 +68,8 @@
                    <input class="btn btn-outline-teal right" type="submit" value="Retour Menu Admin">
                    </form>
                <%}%>
-               <hr class="my-6">
-                    <a class="btn btn-outline-teal right" href="ServletAdmin" value="retour"> Retour </a>
+               
+                    <a class="btn btn-outline-teal right" href="Accueil" value="retour"> Retour Menu</a>
                 </div>
                
           
