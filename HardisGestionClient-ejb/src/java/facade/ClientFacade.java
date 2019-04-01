@@ -38,9 +38,13 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
 
     @Override
     public List<Client> listeClient() {
-        String txt = "SELECT c FROM Client AS c";
+        String a = "Client";
+        String txt = "SELECT c FROM Utilisateur AS c WHERE c.DType =:par";   
+        
         Query req = getEntityManager().createQuery(txt);
+        req=req.setParameter("par", a);
         List<Client> liste = req.getResultList();
+       
         return liste;
     }
 

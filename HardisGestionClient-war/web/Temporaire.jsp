@@ -40,38 +40,39 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Chargement ...</h1>
+       
         <form method ="get" action="ServletClient">
         <% if (UserARecup instanceof Client) {
         Client client =(Client)UserARecup;
-        out.println("Merci de cliquer sur <a href='HardisGestionClient-war/MenuClient.jsp'>ce lien</a> si cette page ne se charge pas :");%>
+        %>
         <input type="hidden" name="user" value="<%=client%>">
         <%}
                 if (UserARecup instanceof Utilisateur_Hardis) {
         Utilisateur_Hardis user_H =(Utilisateur_Hardis) UserARecup;
 if(user_H.getProfil_Technique().equals(profil_Technique.administrateur)){
-out.println("Merci de cliquer sur <a href='HardisGestionClient-war/MenuAdmin.jsp'>ce lien</a> si cette page ne se charge pas :");
+
 }
 if(user_H.getProfil_Technique().equals(profil_Technique.gestionnaire))
 {
-        out.println("Merci de cliquer sur <a href='HardisGestionClient-war/MenuGestionnaire.jsp'>ce lien</a> si cette page ne se charge pas :");
+        
 }
         if(user_H.getProfil_Technique().equals(profil_Technique.visualisation))
 {
-        out.println("Merci de cliquer sur <a href='HardisGestionClient-war/MenuVisualisationjsp'>ce lien</a> si cette page ne se charge pas :");
+        
 }}%>
         <div class="container">
                     <div class="row">
-                        <div class="col-sm-6 col-md-4 col-xl-4" > 
+                        
                             
                                 <div class="view overlay">
-                                    <img src="Images/load.gif" class="img-thumbnail " alt="">    
                                     <div class="mask flex-center rgba-white-strong"> 
+                                    <img src="Images/load.gif" class="img-thumbnail " alt="">    
+                                   
                                         
                                     </div>
                             
                         </div>
-                    </div>
+                   
                         </div>
                     </div>
         <!--<input type="hidden" name="user" value="">-->

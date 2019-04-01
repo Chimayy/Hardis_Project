@@ -21,7 +21,7 @@
         <jsp:useBean id="listUser" scope="session" class = "java.util.List"> </jsp:useBean>
         <jsp:useBean id="UserARecup" scope="session" class = "entite.Utilisateur"> </jsp:useBean>
         <%@include file="jsp_reused/style.jsp" %>
-        <title>Acceuil Gestionnaire</title>
+        <title>Accueil Gestionnaire</title>
     </head>
     <body>
         
@@ -41,7 +41,7 @@
 
                 <div class="container">
                     <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
-                        <h1>Acceuil Gestionaire</h1>
+                        <h1>Accueil Gestionnaire</h1>
                     </div>
 
                     <hr class="my-6">

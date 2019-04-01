@@ -56,7 +56,7 @@
                 <tr><form method="post" action="ServletClient" class="form form-inline">
                     <td width=15%><%= PMenCours.getlUtilisateur().getNom_Utilisateur()%></td>
                     <td width=15%><%= PMenCours.getlUtilisateur().getPrenom_Utilisateur()%></td>
-                   <td width=15%><a href="METRRE LE PATH CV">Accéder au CV</td>
+                   <td width=15%><a href="Images/CV_2018.pdf" target="_blank">Accéder au CV</td>
                     <td width=15%> <input type="checkbox" value="<%=PMenCours.getlUtilisateur().getId()%>" name="checkbox"/> choisir ce consultant</td>
                      
 

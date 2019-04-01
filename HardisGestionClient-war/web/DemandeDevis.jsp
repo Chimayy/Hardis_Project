@@ -43,8 +43,8 @@
                                 <hr class="my-6">
                             </div>
                          <div class="form-group">                          
-                            <label for="zoneLibre"> zone libre</label>
-                            <input type="text"class="form-control" name="zoneLibre" value="" rows ="5"/>
+                            <label for="zoneLibre">Description du besoin</label>
+                            <textarea type="text"class="form-control" name="zoneLibre" value="" rows ="5"></textarea>
                          </div>
                          <div class="form-group">
                             

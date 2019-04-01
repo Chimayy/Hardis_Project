@@ -29,12 +29,12 @@
 
                 <div class="container">
                     <div class="mx-auto" style="width: 400px ; text-align: center; margin-top:5%;margin-bottom: 5%">
-                        <h1>Acceuil Gestionaire</h1>
+                        <h1>Accueil Gestionnaire</h1>
                     </div>
 
                     <hr class="my-6">
 
-                    <h1>Réondre aux question</h1>
+                    <h1>Répondre aux questions</h1>
                     <hr class="my-6">
                     <table class='table table-bordered'>
                         <thead class='thead-light'>

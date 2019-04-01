@@ -40,26 +40,28 @@
                     <table class='table table-bordered'>
                         <thead>
                             <tr> 
-                                <th>Les devis</th>
-                                <th>Les entreprises</th>
+                                
                                 <th>L'email</th>
                                 <th>Le Nom</th>
                                 <th>Le Prénom</th>
+                                <th>Les entreprises</th>
                                 <th>Les dates de consentement</th>
                             </tr>
                         </thead>
                         <% List<Client> lesCli = listeClient;
                             for (Client cp : lesCli) {%>
                         <tr>
-                            <% List<Devis> lesDev = cp.getLesDevis();
-                                for (Devis d : lesDev) {%>
-                            <td width=15%><ul><li><a href="AccessVisualisation?action=recherchedeviscl&Date_Intervention=<%=d.getDate_Intervention()%>"><%=d.getDate_Intervention()%></a></li></ul></td><%}%>
-                            <td width=15%><a href="AccessVisualisation?action=rechercheentreprisecl&Nom_Entreprise=<%=cp.getlEntreprise().getNom_Entreprise()%>"><%=cp.getlEntreprise().getNom_Entreprise()%></a></td>
+                            
                             <td width=15%><%=cp.getMail_Connexion()%></td>
                             <td width=15%><%=cp.getNom_Utilisateur()%></td>
                             <td width=15%><%=cp.getPrenom_Utilisateur()%></td>
-                            <td width=15%><a href="AccessVisualisation?action=rechercheconsentementcl&DateConsentement=<%=cp.getLeConsentement().getDateConsentement()%>"><%=cp.getLeConsentement().getDateConsentement()%></a></td>
-
+                            <td width=15%><%=cp.getlEntreprise().getNom_Entreprise()%></td>
+                            <%if(cp.getLeConsentement()==null){%>
+                            <td width=15%>Consentemment pas encore acquis</td>
+                            <%}
+                            if(cp.getLeConsentement()!=null){%>
+                            <td width=15%><%=cp.getLeConsentement().getDateConsentement()%>"></td>
+                            <%}%>
                         </tr><%}%> 
                         <input type="hidden" value="afficherClient" name="action">
                     </table>

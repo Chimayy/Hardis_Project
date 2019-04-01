@@ -97,11 +97,11 @@ public class gestionClient implements gestionClientLocal {
         Prestation presta = null;
         
         //si le service fait partie de la liste des services standards, on lie le brouillon de devis à une nouvelle prestation standard
-        if(service.getNom_Service().equals("prestation standard")||service.getNom_Service().equals("prestation standard 2"))
+        if(service.getNom_Service().equalsIgnoreCase("prestation standard")||service.getNom_Service().equalsIgnoreCase("prestation standard 2")||service.getNom_Service().equalsIgnoreCase("prestation standard - Gaming"))
         {
             presta = prestation_StandardFacade.creerPrestaS(service);
         }
-        if(service.getNom_Service().equals("prestation non standard")||service.getNom_Service().equals("prestation non standard 2"))
+        if(service.getNom_Service().equalsIgnoreCase("prestation non standard")||service.getNom_Service().equalsIgnoreCase("prestation non standard 2")||service.getNom_Service().equalsIgnoreCase("prestation non standard - Gaming"))
         {
            presta =  prestation_Non_StandardFacade.creerPrestaNS(service);
         }

@@ -68,7 +68,7 @@ public class AccessVisualisation extends HttpServlet {
         request.getRequestDispatcher("RechercheUtilisateur.jsp").forward(request, response);
          */
  
-            Client user = (Client)sess.getAttribute("UserARecup");
+            Utilisateur_Hardis user = (Utilisateur_Hardis)sess.getAttribute("UserARecup");
              List<Utilisateur> listdeco = gestionVisiteur.listUtilisateur();  
              sess.setAttribute("listUser", listdeco);
              sess.setAttribute("UserARecup", user);
@@ -150,12 +150,7 @@ public class AccessVisualisation extends HttpServlet {
             request.setAttribute("consentement", consentement);
             jspClient = "/AfficherConsentement.jsp";
         } */
-        else if (act.equals("rechercheentreprisea")) {
-            String nom = request.getParameter("Nom_Entreprise");
-            Entreprise entreprise = gestionVisualisation.rechercheEntreprisenom(nom);
-            request.setAttribute("Nom_Entreprise", entreprise);
-            jspClient = "/AfficherlEntreprise.jsp";
-        } 
+       
          else if (act.equals("rechercheutilisateura")) {
             String nom = request.getParameter("Nom_Utilisateur");
             Utilisateur_Hardis utilisateur_hardis = gestionVisualisation.rechercherNomUtilisateurHardis(nom);

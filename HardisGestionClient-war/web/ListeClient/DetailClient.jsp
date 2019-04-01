@@ -53,18 +53,7 @@
                             
                             <td width=15%><%=c.getNom_Utilisateur()%></td>
                             <td width=15%><%=c.getPrenom_Utilisateur()%></td> 
-                            <% List<Devis> ListeDevis = c.getLesDevis(); 
-                                for (Devis d : ListeDevis) {
-                                    
-                                    List<Historique_Consultant> L1 = d.getHistorique_Consultants();
-                                 for(Historique_Consultant LHS : L1){
-                                     if(LHS.getLeConsultant().getId()== u.getId()){
-                                         if(d.getStatut()!=statut_Devis.a_affecter){
-                                             if(LHS.getLeDevis().getId()==d.getId()){
-                                                 String t =LHS.getFonctionConsultant();
-                                                 if(t.equals("gestionnaire Devis")){
-                                %>     
-                        </tr>
+                              </tr>
                     </table>
 
                     <table class='table table-border'>
@@ -77,6 +66,20 @@
                                 <th>Action </th>
                             </tr>
                         </thead>
+
+                        <tr>
+                            <% List<Devis> ListeDevis = c.getLesDevis(); 
+                                for (Devis d : ListeDevis) {
+                                    
+                                    List<Historique_Consultant> L1 = d.getHistorique_Consultants();
+                                 for(Historique_Consultant LHS : L1){
+                                     if(LHS.getLeConsultant().getId()== u.getId()){
+                                         if(d.getStatut()!=statut_Devis.a_affecter){
+                                             if(LHS.getLeDevis().getId()==d.getId()){
+                                                 String t =LHS.getFonctionConsultant();
+                                                 if(t.equals("gestionnaire Devis")){
+                                %>     
+                    
 
                         <tr>
                             <td width=15%><%=d.getId()%></td>
